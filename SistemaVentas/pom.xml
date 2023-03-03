@@ -10,5 +10,16 @@
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
         <exec.mainClass>com.thors.sistemaventas.SistemaVentas</exec.mainClass>
+        
+        
     </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.jtattoo/JTattoo -->
+        <dependency>
+            <groupId>com.jtattoo</groupId>
+            <artifactId>JTattoo</artifactId>
+            <version>1.6.7</version>
+        </dependency>
+    </dependencies>
+
 </project>

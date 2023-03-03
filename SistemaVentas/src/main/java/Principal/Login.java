@@ -1,5 +1,6 @@
 package Principal;
 
+import Objetos.Sesion;
 import com.ventas.administrador.PrincipalAdministrador;
 import java.util.logging.Level;
 import java.util.logging.Logger;

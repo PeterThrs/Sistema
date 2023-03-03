@@ -1,11 +1,13 @@
 package com.ventas.administrador;
 
 import Cajero.ModificarListaUsuarios;
+import Contador.InicioContador;
 
 public class PrincipalAdministrador extends javax.swing.JFrame {
 
     public PrincipalAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -139,7 +141,8 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        
+        InicioContador iCont = new InicioContador();
+        iCont.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

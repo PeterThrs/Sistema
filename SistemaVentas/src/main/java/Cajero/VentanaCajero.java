@@ -4,6 +4,7 @@ public class VentanaCajero extends javax.swing.JFrame {
 
     public VentanaCajero() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

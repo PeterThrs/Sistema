@@ -4,6 +4,7 @@ public class RegistrarCompra extends javax.swing.JFrame {
 
     public RegistrarCompra() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

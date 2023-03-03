@@ -5,7 +5,7 @@ public class FormCrearUsuario extends javax.swing.JDialog {
     public FormCrearUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

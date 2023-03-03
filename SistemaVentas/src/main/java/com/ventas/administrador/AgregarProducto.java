@@ -4,6 +4,7 @@ public class AgregarProducto extends javax.swing.JFrame {
 
     public AgregarProducto() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

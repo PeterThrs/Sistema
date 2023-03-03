@@ -5,7 +5,7 @@
 package Cajero;
 
 import Objetos.Persona;
-import com.ventas.administrador.FormCrearUsuario;
+import VentasAdministrador.FormCrearUsuario;
 import java.sql.PreparedStatement;
 import javax.swing.JDialog;
 import javax.swing.JFrame;

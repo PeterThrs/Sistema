@@ -9,7 +9,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import org.pushingpixels.substance.api.skin.SubstanceBusinessLookAndFeel;
+import javax.swing.JFrame;
+import org.pushingpixels.substance.api.SubstanceLookAndFeel;
 /**
  *
  * @author juanj
@@ -20,8 +22,10 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Market
      */
     public Login() {
+        JFrame.setDefaultLookAndFeelDecorated(true); //que nos permite dejar a Substance la decoracion ( por asi decirlo)
+        //SubstanceLookAndFeel.setSkin(«org.jvnet.substance.skin.CremeSkin»); // Setencia que aplica el skin Creme de Substance
         try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
+            UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
             //UIManager.setLookAndFeel("com.jtattoo.plaf.texture.patterns.textile");
         } catch (ClassNotFoundException ex) {
             //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);

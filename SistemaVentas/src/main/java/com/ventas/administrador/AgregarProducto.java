@@ -1,4 +1,4 @@
-package VentasAdministrador;
+package com.ventas.administrador;
 
 import Objetos.Sesion;
 

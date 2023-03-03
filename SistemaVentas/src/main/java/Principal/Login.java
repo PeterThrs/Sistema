@@ -1,11 +1,31 @@
 package Principal;
 
-import Objetos.Sesion;
-import VentasAdministrador.PrincipalAdministrador;
+import com.ventas.administrador.PrincipalAdministrador;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import org.pushingpixels.substance.api.SubstanceLookAndFeel;
+
 
 public class Login extends javax.swing.JFrame {
 
     public Login() {
+        /*JFrame.setDefaultLookAndFeelDecorated(true);
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.MistAquaSkin");*/
+        try {
+            UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
+            //UIManager.setLookAndFeel("com.jtattoo.plaf.texture.patterns.textile");
+        } catch (ClassNotFoundException ex) {
+            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle(Sesion.app.getAppNombre());
@@ -100,11 +120,12 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        PrincipalAdministrador admin=new PrincipalAdministrador();
+        PrincipalAdministrador admin = new PrincipalAdministrador();
         admin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -46,7 +46,6 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
     public void actualizarDatos(){
         int fila=tblDatos.getSelectedRow();
         int id=Integer.parseInt(this.tblDatos.getValueAt(fila, 0).toString());
-
         String nombreUsuario=tblDatos.getValueAt(fila, 2).toString();
         String nombre=tblDatos.getValueAt(fila, 3).toString();
         String apellidoP=tblDatos.getValueAt(fila, 4).toString();
@@ -55,16 +54,16 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
         String correoElec=tblDatos.getValueAt(fila, 7).toString();
         String nacionalidad=tblDatos.getValueAt(fila, 8).toString();
         String calle=tblDatos.getValueAt(fila, 9).toString();
-        
+        System.out.println("");
         
         
     }
-    /*private void actualizar2(){
+    private void actualizar2(){
         int fila=tblDatos.getSelectedRow();
-        dtm.setValueAt(jTextId.getText(), fila, 0);
-        dtm.setValueAt(jTextNombre.getText(), fila, 1);
-        dtm.setValueAt(jTextApellido.getText(), fila, 2);
-    }*/
+        //dtm.setValueAt(jTextId.getText(), fila, 0);
+        //dtm.setValueAt(jTextNombre.getText(), fila, 1);
+        //dtm.setValueAt(jTextApellido.getText(), fila, 2);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

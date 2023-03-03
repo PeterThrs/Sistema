@@ -1,6 +1,7 @@
 package VentasAdministrador;
 
 import Objetos.Persona;
+import Objetos.Sesion;
 
 public class FormCrearUsuario extends javax.swing.JDialog {
     Persona person;
@@ -8,6 +9,7 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(Sesion.app.getAppNombre());
     }
 
     @SuppressWarnings("unchecked")

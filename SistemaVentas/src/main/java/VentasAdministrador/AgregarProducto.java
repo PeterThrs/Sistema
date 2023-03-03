@@ -1,10 +1,13 @@
 package VentasAdministrador;
 
+import Objetos.Sesion;
+
 public class AgregarProducto extends javax.swing.JFrame {
 
     public AgregarProducto() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(Sesion.app.getAppNombre());
     }
 
     @SuppressWarnings("unchecked")

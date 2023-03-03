@@ -1,10 +1,13 @@
 package Cajero;
 
+import Objetos.Sesion;
+
 public class RegistrarCompra extends javax.swing.JFrame {
 
     public RegistrarCompra() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(Sesion.app.getAppNombre());
     }
 
     @SuppressWarnings("unchecked")

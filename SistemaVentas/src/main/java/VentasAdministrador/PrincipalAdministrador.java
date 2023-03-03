@@ -2,11 +2,13 @@ package VentasAdministrador;
 
 import Cajero.ModificarListaUsuarios;
 import Contador.InicioContador;
+import Objetos.Sesion;
 public class PrincipalAdministrador extends javax.swing.JFrame {
 
     public PrincipalAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(Sesion.app.getAppNombre());
     }
 
     @SuppressWarnings("unchecked")

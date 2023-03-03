@@ -4,6 +4,7 @@
  */
 package VentasAdministrador;
 
+import Objetos.Sesion;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,6 +21,7 @@ public class ListProductos extends javax.swing.JFrame {
     public ListProductos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(Sesion.app.getAppNombre());
         
         String[] titulo = new String[] {"Existencia","Producto","Precio","Origen"};
         dtm.setColumnIdentifiers(titulo);

@@ -5,6 +5,8 @@
 package Cajero;
 
 import Objetos.Persona;
+import Objetos.Sesion;
+import VentasAdministrador.FormCrearUsuario;
 import VentasAdministrador.FormCrearUsuario;
 import java.sql.PreparedStatement;
 import javax.swing.JDialog;
@@ -24,6 +26,7 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(Sesion.app.getAppNombre());
         String[] titulo=new String[]{"Id","Usuario","Nombre","Apellido Paterno","Apellido Materno","Telefono","Correo electrónico","Nacionalidad","Calle"};
         dtm.setColumnIdentifiers(titulo);
         tblDatos.setModel(dtm);
@@ -37,12 +40,7 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
         int fila=tblDatos.getSelectedRow();
         dtm.removeRow(fila);
     }
-    /*private void actualizar(){
-        int fila=tblDatos.getSelectedRow();
-        dtm.setValueAt(jTextId.getText(), fila, 0);
-        dtm.setValueAt(jTextNombre.getText(), fila, 1);
-        dtm.setValueAt(jTextApellido.getText(), fila, 2);
-    }*/
+    
     public void actualizarDatos(){
         int fila=tblDatos.getSelectedRow();
         int id=Integer.parseInt(this.tblDatos.getValueAt(fila, 0).toString());

@@ -1,4 +1,4 @@
-package com.ventas.administrador;
+package VentasAdministrador;
 
 public class AgregarProducto extends javax.swing.JFrame {
 

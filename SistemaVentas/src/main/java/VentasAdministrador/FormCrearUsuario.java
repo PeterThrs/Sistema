@@ -1,4 +1,4 @@
-package com.ventas.administrador;
+package VentasAdministrador;
 
 public class FormCrearUsuario extends javax.swing.JDialog {
 

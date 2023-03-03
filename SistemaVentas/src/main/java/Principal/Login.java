@@ -4,7 +4,7 @@
  */
 package Principal;
 
-import com.ventas.administrador.PrincipalAdministrador;
+import VentasAdministrador.PrincipalAdministrador;
 
 /**
  *

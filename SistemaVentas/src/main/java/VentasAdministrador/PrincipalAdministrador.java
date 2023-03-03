@@ -1,8 +1,7 @@
-package com.ventas.administrador;
+package VentasAdministrador;
 
 import Cajero.ModificarListaUsuarios;
 import Contador.InicioContador;
-
 public class PrincipalAdministrador extends javax.swing.JFrame {
 
     public PrincipalAdministrador() {
@@ -14,6 +13,7 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem4 = new javax.swing.JMenuItem();
         panel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -21,10 +21,13 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuListProducto = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,13 +82,13 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
 
         jMenu2.setText("Productos");
 
-        jMenuItem4.setText("Listar Productos");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menuListProducto.setText("Listar Productos");
+        menuListProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuListProductoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenu2.add(menuListProducto);
 
         jMenuItem3.setText("Agregar Productos");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +103,20 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
         jMenu3.setText("Configuración");
 
         jMenuItem5.setText("Diseño Ventana");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
+
+        jMenuItem6.setText("Contador Prueba");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem6);
 
         jMenuBar1.add(jMenu3);
 
@@ -139,11 +155,11 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void menuListProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListProductoActionPerformed
         // TODO add your handling code here:
-        InicioContador iCont = new InicioContador();
-        iCont.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+        ListProductos listProducto = new  ListProductos();
+         listProducto.setVisible(true);
+    }//GEN-LAST:event_menuListProductoActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
@@ -156,6 +172,16 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
         modi.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        InicioContador iniContador =new InicioContador();
+        iniContador.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
@@ -167,6 +193,8 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem menuListProducto;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

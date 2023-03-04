@@ -1,6 +1,7 @@
 package Cajero;
 
 import Objetos.Sesion;
+import Principal.Login;
 
 public class VentanaCajero extends javax.swing.JFrame {
 
@@ -220,7 +221,8 @@ public class VentanaCajero extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        Login login = new Login(); 
+        login.setVisible(true); 
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -3,6 +3,7 @@ package com.ventas.administrador;
 import Cajero.ModificarListaUsuarios;
 import Contador.InicioContador;
 import Objetos.Sesion;
+import Principal.Login;
 public class PrincipalAdministrador extends javax.swing.JFrame {
 
     public PrincipalAdministrador() {
@@ -153,8 +154,9 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
+        Login login = new Login(); 
+        login.setVisible(true); 
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void menuListProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListProductoActionPerformed

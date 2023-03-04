@@ -59,8 +59,8 @@
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jUsuario" pref="192" max="32767" attributes="0"/>
-                      <Component id="jPassword" max="32767" attributes="0"/>
+                      <Component id="cPassword" pref="192" max="32767" attributes="0"/>
+                      <Component id="cUser" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -74,12 +74,12 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cUser" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -124,9 +124,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jUsuario">
+        <Component class="javax.swing.JPasswordField" name="cPassword">
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPassword">
+        <Component class="javax.swing.JTextField" name="cUser">
         </Component>
       </SubComponents>
     </Container>

@@ -4,6 +4,8 @@
  */
 package Contador;
 
+import Principal.Login;
+
 /**
  *
  * @author EdRyz
@@ -110,7 +112,8 @@ public class InicioContador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+        Login login = new Login(); 
+        login.setVisible(true); 
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 

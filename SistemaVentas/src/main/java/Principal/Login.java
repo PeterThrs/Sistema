@@ -1,14 +1,16 @@
 package Principal;
 
+import Cajero.VentanaCajero;
+import Contador.InicioContador;
 import Objetos.Sesion;
 import com.ventas.administrador.PrincipalAdministrador;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.pushingpixels.substance.api.SubstanceLookAndFeel;
-
 
 public class Login extends javax.swing.JFrame {
 
@@ -41,8 +43,8 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jUsuario = new javax.swing.JPasswordField();
-        jPassword = new javax.swing.JPasswordField();
+        cPassword = new javax.swing.JPasswordField();
+        cUser = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,8 +85,8 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                    .addComponent(jPassword))
+                    .addComponent(cPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(cUser))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,11 +97,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jButton1)
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -120,21 +122,39 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        PrincipalAdministrador admin = new PrincipalAdministrador();
-        admin.setVisible(true);
+        try {
+            String user = cUser.getText();
+            String password = String.valueOf(cPassword.getPassword());
+            boolean correcto = Sesion.validar(user, password);
+
+            if (correcto) {
+                if (user.equals(Sesion.seguridad.getUserAdmin())) {
+                    PrincipalAdministrador pa = new PrincipalAdministrador();
+                    pa.setVisible(true);
+                } else if (user.equals(Sesion.seguridad.getUserCount())) {
+                    InicioContador ic = new InicioContador(); 
+                    ic.setVisible(true);
+                }else {
+                    VentanaCajero vc = new VentanaCajero(); 
+                    vc.setVisible(true);
+                }
+                this.dispose();
+            }else {
+                JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", user, HEIGHT);
+            }
+        } catch (Exception ex) {
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField cPassword;
+    private javax.swing.JTextField cUser;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPassword;
-    private javax.swing.JPasswordField jUsuario;
     // End of variables declaration//GEN-END:variables
 }

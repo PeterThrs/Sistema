@@ -176,7 +176,7 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        AgregarProducto AP = new AgregarProducto();
+        Agregar_Producto AP = new Agregar_Producto(this,true);
         AP.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 

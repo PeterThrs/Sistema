@@ -5,6 +5,7 @@
 package Contador;
 
 import Principal.Login;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -112,13 +113,24 @@ public class InicioContador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        Login login = new Login(); 
-        login.setVisible(true); 
-        dispose();
+        try
+        {
+            Login login = new Login(); 
+            login.setVisible(true); 
+            dispose();
+        } catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void menuReporteVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReporteVentaActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_menuReporteVentaActionPerformed
 
     private void menuReporteInversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReporteInversionActionPerformed

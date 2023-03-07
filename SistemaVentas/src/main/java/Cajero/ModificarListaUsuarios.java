@@ -147,17 +147,32 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        FormCrearUsuario crear=new FormCrearUsuario(new JFrame(), true);
-        crear.setVisible(true);
-        agregar(crear.usuario());
+        try
+        {
+            FormCrearUsuario crear=new FormCrearUsuario(new JFrame(), true);
+            crear.setVisible(true);
+            agregar(crear.usuario());
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-        eliminar();
+        try
+        {
+            eliminar();
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        actualizarDatos();
+        try
+        {
+            actualizarDatos();
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
 

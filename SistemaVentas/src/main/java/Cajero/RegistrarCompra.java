@@ -45,9 +45,19 @@ public class RegistrarCompra extends javax.swing.JDialog {
 
         btncobrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btncobrar.setText("COBRAR");
+        btncobrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncobrarActionPerformed(evt);
+            }
+        });
 
         btnregistrarcompra.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         btnregistrarcompra.setText("Registrar Compra");
+        btnregistrarcompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregistrarcompraActionPerformed(evt);
+            }
+        });
 
         btnsalir.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         btnsalir.setText("Salir");
@@ -103,9 +113,31 @@ public class RegistrarCompra extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        // TODO add your handling code here:
-        dispose();
+        try
+        {
+            dispose();
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_btnsalirActionPerformed
+
+    private void btncobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncobrarActionPerformed
+        try
+        {
+            
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_btncobrarActionPerformed
+
+    private void btnregistrarcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarcompraActionPerformed
+        try
+        {
+            
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_btnregistrarcompraActionPerformed
 
     /**
      * @param args the command line arguments

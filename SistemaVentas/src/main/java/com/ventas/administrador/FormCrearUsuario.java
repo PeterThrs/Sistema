@@ -284,7 +284,12 @@ public class FormCrearUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextNombreActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        dispose(); 
+        try
+        {
+            dispose(); 
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void jTextIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextIdActionPerformed
@@ -296,12 +301,15 @@ public class FormCrearUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextCorreoElecActionPerformed
 
     private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
-        if(!jTextId.getText().isEmpty() && !jTextUsuario.getText().isEmpty() && !jTextNombre.getText().isEmpty() && !jTextFieldApellidoP.getText().isEmpty() && !jTextApellidoM.getText().isEmpty() && !jTextTelefono.getText().isEmpty() && !jTextCorreoElec.getText().isEmpty() && !jTextNacionalidad.getText().isEmpty() && !jTextCalle.getText().isEmpty()){
-            person=new Persona(Integer.parseInt(jTextId.getText()),jTextUsuario.getText() , jTextNombre.getText(), jTextFieldApellidoP.getText(), jTextApellidoM.getText(), Integer.parseInt(jTextTelefono.getText()), jTextCorreoElec.getText(), jTextNacionalidad.getText(), jTextCalle.getText());
-            
+        try
+        {
+            if(!jTextId.getText().isEmpty() && !jTextUsuario.getText().isEmpty() && !jTextNombre.getText().isEmpty() && !jTextFieldApellidoP.getText().isEmpty() && !jTextApellidoM.getText().isEmpty() && !jTextTelefono.getText().isEmpty() && !jTextCorreoElec.getText().isEmpty() && !jTextNacionalidad.getText().isEmpty() && !jTextCalle.getText().isEmpty()){
+                person=new Persona(Integer.parseInt(jTextId.getText()),jTextUsuario.getText() , jTextNombre.getText(), jTextFieldApellidoP.getText(), jTextApellidoM.getText(), Integer.parseInt(jTextTelefono.getText()), jTextCorreoElec.getText(), jTextNacionalidad.getText(), jTextCalle.getText());            
+            }
+            this.dispose();
+        } catch (Exception e)
+        {
         }
-        this.dispose();
-        
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
     public Persona usuario(){
         return this.person;

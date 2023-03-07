@@ -145,8 +145,12 @@ public class Agregar_Producto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        // TODO add your handling code here:
-        dispose();
+        try
+        {
+            dispose();
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_btnsalirActionPerformed
 
     /**

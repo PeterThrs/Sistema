@@ -93,6 +93,11 @@ public class VentanaCajero extends javax.swing.JFrame {
         });
 
         jButton2.setText("CANCELAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("SALIR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -221,16 +226,33 @@ public class VentanaCajero extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Login login = new Login(); 
-        login.setVisible(true); 
-        dispose();
+        try
+        {
+            Login login = new Login(); 
+            login.setVisible(true); 
+            dispose();
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        RegistrarCompra pago = new RegistrarCompra(this, true);
-        pago.setVisible(true);
+        try{
+            RegistrarCompra pago = new RegistrarCompra(this, true);
+            pago.setVisible(true);
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try
+        {
+            
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

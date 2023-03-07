@@ -7,6 +7,7 @@ import Principal.Login;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class PrincipalAdministrador extends javax.swing.JFrame {
 
@@ -153,9 +154,12 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        FormCrearUsuario fau = new FormCrearUsuario(this, true);
-        fau.setVisible(true);
+        try{
+            FormCrearUsuario fau = new FormCrearUsuario(this, true);
+            fau.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -163,36 +167,60 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Login login = new Login();
-        login.setVisible(true);
-        dispose();
+        try{
+            Login login = new Login();
+            login.setVisible(true);
+            dispose();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void menuListProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListProductoActionPerformed
-        // TODO add your handling code here:
-        ListProductos listProducto = new ListProductos();
-        listProducto.setVisible(true);
+        try{
+            ListProductos listProducto = new ListProductos();
+            listProducto.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_menuListProductoActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        Agregar_Producto AP = new Agregar_Producto(this,true);
-        AP.setVisible(true);
+        try{
+            Agregar_Producto AP = new Agregar_Producto(this,true);
+            AP.setVisible(true);    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        ModificarListaUsuarios modi = new ModificarListaUsuarios(this, true);
-        modi.setVisible(true);
+        try{
+            ModificarListaUsuarios modi = new ModificarListaUsuarios(this, true);
+            modi.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            
+        } catch (Exception e)
+        {
+        }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-        InicioContador iniContador = new InicioContador();
-        iniContador.setVisible(true);
+        try
+        {
+            InicioContador iniContador = new InicioContador();
+            iniContador.setVisible(true);
+        } catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

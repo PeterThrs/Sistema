@@ -4,6 +4,7 @@ import Cajero.VentanaCajero;
 import Contador.InicioContador;
 import Objetos.Sesion;
 import com.ventas.administrador.PrincipalAdministrador;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -42,7 +43,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jIngresar = new javax.swing.JButton();
         cPassword = new javax.swing.JPasswordField();
         cUser = new javax.swing.JTextField();
 
@@ -57,11 +58,36 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel2.setText("Contraseña");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jIngresar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jIngresar.setText("Ingresar");
+        jIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jIngresarActionPerformed(evt);
+            }
+        });
+        jIngresar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jIngresarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jIngresarKeyReleased(evt);
+            }
+        });
+
+        cPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cPasswordKeyTyped(evt);
+            }
+        });
+
+        cUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cUserActionPerformed(evt);
+            }
+        });
+        cUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cUserKeyTyped(evt);
             }
         });
 
@@ -73,7 +99,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jIngresar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(86, Short.MAX_VALUE)
                         .addComponent(jLabel4)))
@@ -103,7 +129,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(jButton1)
+                .addComponent(jIngresar)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -121,7 +147,7 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngresarActionPerformed
         try {
             String user = cUser.getText();
             String password = String.valueOf(cPassword.getPassword());
@@ -145,13 +171,39 @@ public class Login extends javax.swing.JFrame {
         } catch (Exception ex) {
 
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jIngresarActionPerformed
+
+    private void cUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cUserActionPerformed
+
+    private void jIngresarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIngresarKeyPressed
+        
+    }//GEN-LAST:event_jIngresarKeyPressed
+
+    private void jIngresarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIngresarKeyReleased
+        
+    }//GEN-LAST:event_jIngresarKeyReleased
+
+    private void cUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cUserKeyTyped
+        char cTeclaPresionada=evt.getKeyChar();
+        if(cTeclaPresionada==KeyEvent.VK_ENTER){
+            jIngresar.doClick();
+        }
+    }//GEN-LAST:event_cUserKeyTyped
+
+    private void cPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cPasswordKeyTyped
+        char cTeclaPresionada=evt.getKeyChar();
+        if(cTeclaPresionada==KeyEvent.VK_ENTER){
+            jIngresar.doClick();
+        }
+    }//GEN-LAST:event_cPasswordKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField cPassword;
     private javax.swing.JTextField cUser;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

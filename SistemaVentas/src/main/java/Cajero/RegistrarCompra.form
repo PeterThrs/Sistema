@@ -99,6 +99,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="COBRAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncobrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnregistrarcompra">
       <Properties>
@@ -107,6 +110,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Registrar Compra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnregistrarcompraActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnsalir">
       <Properties>

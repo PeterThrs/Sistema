@@ -109,7 +109,11 @@ public class ListProductos extends javax.swing.JFrame {
 
     
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        dispose();
+        try{
+            dispose();
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_btnCancelarActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

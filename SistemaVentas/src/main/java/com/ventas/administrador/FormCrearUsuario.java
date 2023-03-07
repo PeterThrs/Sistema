@@ -2,6 +2,7 @@ package com.ventas.administrador;
 
 import Objetos.Persona;
 import Objetos.Sesion;
+import java.awt.event.KeyEvent;
 
 public class FormCrearUsuario extends javax.swing.JDialog {
     Persona person;
@@ -74,10 +75,20 @@ public class FormCrearUsuario extends javax.swing.JDialog {
                 jTextUsuarioActionPerformed(evt);
             }
         });
+        jTextUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextUsuarioKeyTyped(evt);
+            }
+        });
 
         jTextNacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNacionalidadActionPerformed(evt);
+            }
+        });
+        jTextNacionalidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextNacionalidadKeyTyped(evt);
             }
         });
 
@@ -86,10 +97,20 @@ public class FormCrearUsuario extends javax.swing.JDialog {
                 jTextTelefonoActionPerformed(evt);
             }
         });
+        jTextTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextTelefonoKeyTyped(evt);
+            }
+        });
 
         jTextApellidoM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextApellidoMActionPerformed(evt);
+            }
+        });
+        jTextApellidoM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextApellidoMKeyTyped(evt);
             }
         });
 
@@ -98,16 +119,31 @@ public class FormCrearUsuario extends javax.swing.JDialog {
                 jTextCalleActionPerformed(evt);
             }
         });
+        jTextCalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextCalleKeyTyped(evt);
+            }
+        });
 
         jTextFieldApellidoP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldApellidoPActionPerformed(evt);
             }
         });
+        jTextFieldApellidoP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldApellidoPKeyTyped(evt);
+            }
+        });
 
         jTextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNombreActionPerformed(evt);
+            }
+        });
+        jTextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextNombreKeyTyped(evt);
             }
         });
 
@@ -130,10 +166,20 @@ public class FormCrearUsuario extends javax.swing.JDialog {
                 jTextIdActionPerformed(evt);
             }
         });
+        jTextId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextIdKeyTyped(evt);
+            }
+        });
 
         jTextCorreoElec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextCorreoElecActionPerformed(evt);
+            }
+        });
+        jTextCorreoElec.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextCorreoElecKeyTyped(evt);
             }
         });
 
@@ -311,6 +357,109 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         {
         }
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
+
+    private void jTextIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextIdKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jTextIdKeyTyped
+
+    private void jTextUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextUsuarioKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jTextUsuarioKeyTyped
+
+    private void jTextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNombreKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jTextNombreKeyTyped
+
+    private void jTextFieldApellidoPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoPKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jTextFieldApellidoPKeyTyped
+
+    private void jTextApellidoMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextApellidoMKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jTextApellidoMKeyTyped
+
+    private void jTextTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextTelefonoKeyTyped
+        char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+    }//GEN-LAST:event_jTextTelefonoKeyTyped
+
+    private void jTextCorreoElecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCorreoElecKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jTextCorreoElecKeyTyped
+
+    private void jTextNacionalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNacionalidadKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jTextNacionalidadKeyTyped
+
+    private void jTextCalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCalleKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnCrearUsuario.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_jTextCalleKeyTyped
     public Persona usuario(){
         return this.person;
     }

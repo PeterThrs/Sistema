@@ -1,0 +1,25 @@
+[33m2fef87a[m[33m ([m[1;36mHEAD -> [m[1;32mbranchGeorge[m[33m, [m[1;31morigin/branchGeorge[m[33m)[m mensaje
+[33m13352e4[m[33m ([m[1;32mmaster[m[33m)[m Creando nuevas ramas para cada usuario
+[33maa026dd[m Uniendo las ramas principales remoto -local
+[33m3489472[m modificando la pantalla administrador modificando icono del programa
+[33ma3fdd46[m Ultimos Cambios
+[33mbc199cb[m Se cambiaron los nombres de los componentes.
+[33m7304a9a[m Se Cambio de paginas JFrame pricipal A JDialog
+[33m0ea589d[m Se agrego las credenciales para poder iniciar sesion
+[33m2d4d33b[m[33m ([m[1;31morigin/main[m[33m)[m proyecto actualizado con el look and feel
+[33me0f2ed0[m modificando la rama union
+[33m0bbae8a[m agregando la informacion de la aplicacion
+[33m59113f8[m[33m ([m[1;31morigin/vista[m[33m)[m colocando el lookAndFeel a utilizar
+[33m6112a1c[m Bug arreglado
+[33m82053aa[m uniendo la rama prueba a main
+[33m161d2cc[m[33m ([m[1;31morigin/prueba[m[33m)[m Segundo intento de la clase persona
+[33m8fe24e7[m agregué la clase persona y modifique la lista
+[33m4b29425[m Actualizacion de Ventana Contador y Listar Producto
+[33m2029614[m Probando con la libreria JTatto para darle una mejor intefaz al programa
+[33mc1ecf6f[m Creacion de ventana listar producto y de contador
+[33m313c64a[m Union de la rama main con la rama cajero, vinculacion de las diferentes ventanas
+[33mc4836c7[m[33m ([m[1;31morigin/cajero[m[33m)[m Agregué el login y listar
+[33m7c6be5f[m Se creo la ventana cajero  y la ventana crear producto
+[33m5bea814[m creacion de principal administrador y agregar usuario
+[33ma9cadf4[m Subiendo el proyecto
+[33md723053[m Initial commit

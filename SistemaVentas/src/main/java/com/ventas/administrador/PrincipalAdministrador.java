@@ -170,7 +170,7 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
 
     private void menuListProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListProductoActionPerformed
         // TODO add your handling code here:
-        ListProductos listProducto = new ListProductos();
+        ListarProductos listProducto = new ListarProductos(this,true);
         listProducto.setVisible(true);
     }//GEN-LAST:event_menuListProductoActionPerformed
 

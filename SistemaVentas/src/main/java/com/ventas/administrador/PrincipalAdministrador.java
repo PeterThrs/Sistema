@@ -2,21 +2,14 @@ package com.ventas.administrador;
 
 import Cajero.ModificarListaUsuarios;
 import Contador.InicioContador;
-import Objetos.Sesion;
 import Principal.Login;
 import configuracion.Configuracion;
-import java.awt.Image;
-import java.awt.Toolkit;
-import javax.swing.ImageIcon;
 
 public class PrincipalAdministrador extends javax.swing.JFrame {
 
     public PrincipalAdministrador() {
         initComponents();
         Configuracion.styles(this);
-        //Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/imagen01.png"));
-        Image icon = new ImageIcon("/images/icono.png").getImage();
-        setIconImage(icon);
     }
 
     @SuppressWarnings("unchecked")
@@ -151,7 +144,6 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         FormCrearUsuario fau = new FormCrearUsuario(this, true);
         fau.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed

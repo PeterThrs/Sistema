@@ -13,17 +13,18 @@ public class Configuracion {
         t.setExtendedState(t.MAXIMIZED_BOTH);
         t.setTitle(Sesion.app.getAppNombre());
         t.setLocationRelativeTo(null);
-        //t.setFont(new Font("Arial", Font.ITALIC, 13)); 
+        t.setIconImage(Sesion.app.getIcono());
     }
     
     public static <T extends JDialog> void styles(T t){
         t.setTitle(Sesion.app.getAppNombre());
         t.setLocationRelativeTo(null);
+        t.setIconImage(Sesion.app.getIcono());
     }
     
     public static <T extends JComponent> void normal(T... t){
         for(int i = 0; i < t.length; i++){
-            t[i].setFont(new Font("Arial", Font.ITALIC, 13));
+            t[i].setFont(new Font("Verdana", Font.PLAIN, 13));
         } 
     }
     

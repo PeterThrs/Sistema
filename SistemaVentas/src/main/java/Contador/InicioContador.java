@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Contador;
 
 import Principal.Login;
+import configuracion.Configuracion;
 
 /**
  *
@@ -12,19 +9,10 @@ import Principal.Login;
  */
 public class InicioContador extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InicioContador
-     */
-    
     public InicioContador() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        Configuracion.styles(this);
     }
-
-    
-    
-    
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -4,6 +4,7 @@ import Cajero.ModificarListaUsuarios;
 import Contador.InicioContador;
 import Objetos.Sesion;
 import Principal.Login;
+import configuracion.Configuracion;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -12,10 +13,7 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
 
     public PrincipalAdministrador() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle(Sesion.app.getAppNombre());
-        this.setExtendedState(this.MAXIMIZED_BOTH);
-
+        Configuracion.styles(this);
         //Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/imagen01.png"));
         Image icon = new ImageIcon("/images/icono.png").getImage();
         setIconImage(icon);

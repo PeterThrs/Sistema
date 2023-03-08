@@ -2,13 +2,13 @@ package Cajero;
 
 import Objetos.Sesion;
 import Principal.Login;
+import configuracion.Configuracion;
 
 public class VentanaCajero extends javax.swing.JFrame {
 
     public VentanaCajero() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle(Sesion.app.getAppNombre());
+        Configuracion.styles(this);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -228,7 +228,7 @@ public class VentanaCajero extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        RegistrarCompra pago = new RegistrarCompra();
+        RegistrarCompra pago = new RegistrarCompra(this, true);
         pago.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

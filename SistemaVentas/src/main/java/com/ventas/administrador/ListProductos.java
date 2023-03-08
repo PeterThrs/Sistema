@@ -1,27 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.ventas.administrador;
 
 import Objetos.Sesion;
+import configuracion.Configuracion;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author EdRyz
- */
 public class ListProductos extends javax.swing.JFrame {
 
     DefaultTableModel dtm = new DefaultTableModel();
     
-    /**
-     * Creates new form ListProductos
-     */
     public ListProductos() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle(Sesion.app.getAppNombre());
+        
+        Configuracion.styles(this);
         
         String[] titulo = new String[] {"Existencia","Producto","Precio","Origen"};
         dtm.setColumnIdentifiers(titulo);

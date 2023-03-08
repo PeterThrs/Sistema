@@ -2,25 +2,18 @@ package com.ventas.administrador;
 
 import Cajero.ModificarListaUsuarios;
 import Contador.InicioContador;
-import Objetos.Sesion;
 import Principal.Login;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import configuracion.Configuracion;
 
 public class PrincipalAdministrador extends javax.swing.JFrame {
 
     public PrincipalAdministrador() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle(Sesion.app.getAppNombre());
-        this.setExtendedState(this.MAXIMIZED_BOTH);
-
-        //Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/imagen01.png"));
-        Image icon = new ImageIcon("/images/icono.png").getImage();
-        setIconImage(icon);
+        Configuracion.styles(this);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

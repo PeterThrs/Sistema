@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package Cajero;
 
 import Objetos.Persona;
 import Objetos.Sesion;
 import com.ventas.administrador.FormCrearUsuario;
 import com.ventas.administrador.FormCrearUsuario;
+import configuracion.Configuracion;
 import java.sql.PreparedStatement;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -25,8 +22,8 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
     public ModificarListaUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle(Sesion.app.getAppNombre());
+        Configuracion.styles(this);
+        
         String[] titulo=new String[]{"Id","Usuario","Nombre","Apellido Paterno","Apellido Materno","Telefono","Correo electrónico","Nacionalidad","Calle"};
         dtm.setColumnIdentifiers(titulo);
         tblDatos.setModel(dtm);

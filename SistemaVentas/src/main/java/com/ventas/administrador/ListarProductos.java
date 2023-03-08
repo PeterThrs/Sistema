@@ -5,6 +5,7 @@
 package com.ventas.administrador;
 
 import Objetos.Sesion;
+import configuracion.Configuracion;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,17 +19,16 @@ public class ListarProductos extends javax.swing.JDialog {
     public ListarProductos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Configuracion.styles(this);
         this.setLocationRelativeTo(null);
         this.setTitle(Sesion.app.getAppNombre());
         String[] titulo=new String[]{"Existencia","Producto","Precio","----"};
         dtm.setColumnIdentifiers(titulo);
-        tblProductos.setModel(dtm);
-        
+        tblProductos.setModel(dtm);    
     }
-    
-    
-    
-    
+    public void Listar(){
+        //Con este metodo se espera traer los productos de la base de datos :)
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -3,14 +3,14 @@ package com.ventas.administrador;
 import Objetos.Persona;
 import Objetos.Sesion;
 import java.awt.event.KeyEvent;
+import configuracion.Configuracion;
 
 public class FormCrearUsuario extends javax.swing.JDialog {
     Persona person;
     public FormCrearUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle(Sesion.app.getAppNombre());
+        Configuracion.styles(this);
     }
 
     @SuppressWarnings("unchecked")

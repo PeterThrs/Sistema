@@ -1,12 +1,12 @@
 package Objetos;
 
 import java.awt.Image;
-import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class AppData {
     private final String APPNOMBRE = "Sistema De Ventas"; 
     private final String VERSION = "v.1.0"; 
-    //private final Image ICONO = new ImageIcon(getClass().getResource("/com/thors/icon/iconAppRedimen.png")).getImage(); 
+    private final Image image = Toolkit.getDefaultToolkit().getImage("src/main/resources/images/icono/austronauta.png");
 
     public String getAppNombre() {
         return APPNOMBRE;
@@ -16,9 +16,9 @@ public class AppData {
         return VERSION;
     }
 
-    /*public Image getIcono() {
-        return ICONO;
-    }*/
+    public Image getIcono() {
+        return image;
+    }
     
     
 }

@@ -3,6 +3,11 @@ package administrador;
 import configuracion.Configuracion;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import Objetos.DatosFalsos; 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -10,22 +15,22 @@ import java.awt.Dimension;
  */
 public class FormProduct extends javax.swing.JDialog {
 
+    private ButtonGroup groupRadioBtn;
 
     public FormProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         agregarEstilos();
-        //addPanel();
-        //this.getContentPane().setBackground(new Color(255, 255, 255));
+        configuracion();
 
     }
 
     private void agregarEstilos() {
         this.setMinimumSize(new Dimension(650, 600));
-        this.setSize(new Dimension(650,600));
+        this.setSize(new Dimension(650, 600));
         //this.panel.setBackground(new Color(224,225,221));
         //this.linea1.setBackground(new Color(94,159,163));
-      
+
         Configuracion.styles(this);
         Configuracion.titulo(jlTitle);
         Configuracion.normalItalic(this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,
@@ -35,41 +40,109 @@ public class FormProduct extends javax.swing.JDialog {
         Configuracion.normalItalic(this.rbGranel, this.rbUnit);
         Configuracion.normalItalic(this.btnCancel, this.btnCreate, this.btnUpdate);
         Configuracion.normalItalic(this.cbInventory, this.cbDepartment);
-        
+
         //Quitar el borde a los text Field
         Configuracion.borde(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,
                 this.tfWholePrice, this.sRevenue, this.cbDepartment);
-        
+
         //configuracion para establecer el foreground
         //color azul fuerte
-        Color color = new Color(29,53,87);
+        Color color = new Color(29, 53, 87);
         Configuracion.foreground(color, this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,
                 this.jlRevenue, this.jlSale, this.jlSalePrice, this.jlTotal, this.jlWholeSalePrice, this.jlTitle);
-        
+
         Configuracion.foreground(color, this.rbGranel, this.rbUnit);
         Configuracion.foreground(color, this.btnCancel, this.btnCreate, this.btnUpdate);
         Configuracion.foreground(color, this.cbInventory, this.cbDepartment);
-        
+
         //color rojo fuerte
-        color = new Color(230,57,70);
-        Configuracion.foreground(color, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6, 
-                 this.linea8);
-        
+        color = new Color(230, 57, 70);
+        Configuracion.foreground(color, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
+                this.linea8);
+
         //color blanco crema
-        color = new Color(241,250,238); 
+        color = new Color(241, 250, 238);
         Configuracion.background(color, this.panel, this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,
                 this.tfWholePrice, this.sRevenue, this.cbDepartment);
-        Configuracion.background(color, this.btnCancel, this.btnCreate, this.btnUpdate, this.rbGranel, this.rbUnit, 
+        Configuracion.background(color, this.btnCancel, this.btnCreate, this.btnUpdate, this.rbGranel, this.rbUnit,
                 this.cbInventory, this.sRevenue);
         Configuracion.foreground(color, this.btnCancel, this.btnCreate, this.btnUpdate);
-        
+
         //color azul bajo
-        color = new Color(168,218,220);
+        color = new Color(168, 218, 220);
         //color azul intermedio
-        color = new Color(69,123,157); 
+        color = new Color(69, 123, 157);
         Configuracion.background(color, this.btnCancel, this.btnCreate, this.btnUpdate);
+
+    }
+
+    private void configuracion() {
+        agregarRadioBotones();
+        estadoTfTotal();
+        checkBoxEventItemListener();
+        listDesplegable();
+        confSpinner();
+    }
+
+    private void agregarRadioBotones() {
+        try {
+            groupRadioBtn = new ButtonGroup();
+            groupRadioBtn.add(this.rbGranel);
+            groupRadioBtn.add(this.rbUnit);
+        } catch (Exception ex) {
+
+        }
+    }
+
+    private void estadoTfTotal() {
+        try {
+            this.tfTotal.setEnabled(false);
+            this.jlTotal.setEnabled(false);
+            this.linea8.setVisible(false);
+        } catch (Exception ex) {
+
+        }
+    }
+
+    private void checkBoxEventItemListener() {
+        try {
+            this.cbInventory.addItemListener(e -> {
+                if (this.cbInventory.isSelected()) {
+                    System.out.println(cbInventory.isSelected());
+                    this.tfTotal.setEnabled(true);
+                    this.jlTotal.setEnabled(true);
+                    this.linea8.setVisible(true);
+                } else {
+                    this.tfTotal.setEnabled(false);
+                    this.jlTotal.setEnabled(false);
+                    this.linea8.setVisible(false);
+                }
+            });
+        } catch (Exception ex) {
+
+        }
+    }
+    
+    
+    private void listDesplegable() {
+        DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>(); 
+        dcbm.addElement(DatosFalsos.p1.getDepartamento().getDepartamento());
         
-        
+        dcbm.addElement(DatosFalsos.p2.getDepartamento().getDepartamento());
+        dcbm.addElement(DatosFalsos.p3.getDepartamento().getDepartamento()); 
+        dcbm.addElement(DatosFalsos.p4.getDepartamento().getDepartamento());
+        this.cbDepartment.setModel(dcbm);
+        //this.cbDepartment.setSelectedItem(paises[2]);//seleccionar el primer objeto visto
+    }
+    
+    private void confSpinner(){
+        SpinnerNumberModel snm = new SpinnerNumberModel(1,1,300,10); 
+        this.sRevenue.setModel(snm);
+    }
+
+    public static void main(String[] args) {
+        FormProduct vProduct = new FormProduct(new JFrame(), true);
+        vProduct.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -154,7 +227,7 @@ public class FormProduct extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
         panel.add(jlPriceCost, gridBagConstraints);
 
-        jlRevenue.setText("Ganancia");
+        jlRevenue.setText("Ganancia (%):");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 13;
@@ -236,6 +309,8 @@ public class FormProduct extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 10);
         panel.add(tfWholePrice, gridBagConstraints);
+
+        sRevenue.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 13;
@@ -374,7 +449,7 @@ public class FormProduct extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
 

@@ -6,6 +6,8 @@ import java.awt.Font;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JSeparator;
 
 public class Configuracion {
     
@@ -33,6 +35,34 @@ public class Configuracion {
     public static <T extends JComponent> void titulo(T... t){
         for(int i = 0; i < t.length; i++){
             t[i].setFont(new Font("Roboto", Font.BOLD, 16));
+        } 
+    }
+    
+    //metodos creados por peter. 
+    
+    public static <T extends JComponent> void borde(T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setBorder(null);
+        } 
+    }
+    
+    public static <T extends JComponent> void normalItalic(T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setFont(new Font("Roboto", Font.ITALIC, 13));
+        } 
+    }
+    
+    //Establecer Foreground
+    public static <T extends JComponent> void foreground(Color color, T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setForeground(color);
+        } 
+    }
+    
+    //Establecer background
+    public static <T extends JComponent> void background(Color color, T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setBackground(color);
         } 
     }
     

@@ -1,6 +1,7 @@
 package configuracion;
 
 import Objetos.Sesion;
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -14,6 +15,7 @@ public class Configuracion {
         t.setTitle(Sesion.app.getAppNombre());
         t.setLocationRelativeTo(null);
         t.setIconImage(Sesion.app.getIcono());
+        
     }
     //configuraciones generales par auna ventana de tipo JDialog
     public static <T extends JDialog> void styles(T t){
@@ -30,7 +32,7 @@ public class Configuracion {
     //configuraicones para el tipo de titulos general de la aplicacion
     public static <T extends JComponent> void titulo(T... t){
         for(int i = 0; i < t.length; i++){
-            t[i].setFont(new Font("Arial", Font.BOLD, 16));
+            t[i].setFont(new Font("Roboto", Font.BOLD, 16));
         } 
     }
     

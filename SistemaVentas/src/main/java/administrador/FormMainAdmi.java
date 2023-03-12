@@ -3,11 +3,8 @@ package administrador;
 import Principal.Login;
 import configuracion.Configuracion;
 import administrador.FormUser;
+import javax.swing.JFrame;
 
-/**
- *
- * @author Root
- */
 public class FormMainAdmi extends javax.swing.JFrame {
 
     public FormMainAdmi() {
@@ -59,6 +56,11 @@ public class FormMainAdmi extends javax.swing.JFrame {
         getContentPane().add(btnClose, gridBagConstraints);
 
         menuUser.setText("Administrar Usuarios");
+        menuUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuUserActionPerformed(evt);
+            }
+        });
 
         opcAddUser.setText("Registrar Usuario");
         opcAddUser.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +137,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
 
     private void opcAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcAddUserActionPerformed
         try {
-            FormUser user = new FormUser(this, true);
+            FormUser user = new FormUser(this, true, false);
             user.setVisible(true);
         } catch (Exception ex) {
 
@@ -143,7 +145,12 @@ public class FormMainAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_opcAddUserActionPerformed
 
     private void opcUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcUpdateUserActionPerformed
-        
+        try{
+            FormIdUpdate vUpdate = new FormIdUpdate(this, true); 
+            vUpdate.setVisible(true);
+        }catch(Exception ex){
+            
+        }
     }//GEN-LAST:event_opcUpdateUserActionPerformed
 
     private void opcUpdateProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcUpdateProductActionPerformed
@@ -154,6 +161,15 @@ public class FormMainAdmi extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_opcUpdateProductActionPerformed
+
+    private void menuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUserActionPerformed
+        try{
+            FormIdUpdate vUpdate = new FormIdUpdate(this, true); 
+            vUpdate.setVisible(true);
+        }catch(Exception ex){
+            
+        }
+    }//GEN-LAST:event_menuUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

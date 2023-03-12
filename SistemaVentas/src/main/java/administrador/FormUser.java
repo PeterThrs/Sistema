@@ -8,11 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.SpinnerNumberModel;
 
 public class FormUser extends javax.swing.JDialog {
-
+    private Boolean update; 
     private ButtonGroup groupRadioBtn;
 
-    public FormUser(java.awt.Frame parent, boolean modal) {
+    public FormUser(java.awt.Frame parent, boolean modal, boolean update) {
         super(parent, modal);
+        this.update = update; 
         initComponents();
         agregarEstilos();
         configuracion();
@@ -66,6 +67,7 @@ public class FormUser extends javax.swing.JDialog {
     private void configuracion() {
         agregarRadioBotones();
         confSpinner();
+        estadoBtnUpdate(); 
     }
 
     private void agregarRadioBotones() {
@@ -81,12 +83,32 @@ public class FormUser extends javax.swing.JDialog {
     private void confSpinner() {
         SpinnerNumberModel snm = new SpinnerNumberModel(18, 18, 100, 1);
         this.sAge.setModel(snm);
+        this.sAge.getEditor().getComponent(0).setForeground(new Color(29, 53, 87));
+        this.sAge.getEditor().getComponent(0).setBackground(new Color(241, 250, 238));
     }
     
-    public static void main(String[] args) {
-        FormUser vUser = new FormUser(new JFrame(), true);
-        vUser.setVisible(true);
+    private void estadoBtnUpdate(){
+        try{
+            System.out.println(this.update);
+            if(this.update){
+                this.btnUpdate.setEnabled(true);
+            }else {
+                this.btnUpdate.setEnabled(false);
+            }
+        }catch(Exception ex){
+            
+        }
     }
+
+    public Boolean getUpdate() {
+        return update;
+    }
+
+    public void setUpdate(Boolean update) {
+        this.update = update;
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -142,6 +164,7 @@ public class FormUser extends javax.swing.JDialog {
         linea11 = new javax.swing.JSeparator();
         linea12 = new javax.swing.JSeparator();
         linea13 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -395,7 +418,6 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
@@ -568,6 +590,12 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         panel.add(linea13, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        panel.add(jSeparator1, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -601,6 +629,7 @@ public class FormUser extends javax.swing.JDialog {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jlAge;
     private javax.swing.JLabel jlCol;
     private javax.swing.JLabel jlCurp;

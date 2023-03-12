@@ -5,9 +5,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
-import Objetos.DatosFalsos; 
+import Objetos.DatosFalsos;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -20,9 +23,8 @@ public class FormProduct extends javax.swing.JDialog {
     public FormProduct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        agregarEstilos();
         configuracion();
-
+        agregarEstilos();
     }
 
     private void agregarEstilos() {
@@ -122,22 +124,24 @@ public class FormProduct extends javax.swing.JDialog {
 
         }
     }
-    
-    
+
     private void listDesplegable() {
-        DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>(); 
+        DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
         dcbm.addElement(DatosFalsos.p1.getDepartamento().getDepartamento());
-        
+
         dcbm.addElement(DatosFalsos.p2.getDepartamento().getDepartamento());
-        dcbm.addElement(DatosFalsos.p3.getDepartamento().getDepartamento()); 
+        dcbm.addElement(DatosFalsos.p3.getDepartamento().getDepartamento());
         dcbm.addElement(DatosFalsos.p4.getDepartamento().getDepartamento());
         this.cbDepartment.setModel(dcbm);
-        //this.cbDepartment.setSelectedItem(paises[2]);//seleccionar el primer objeto visto
+        this.cbDepartment.getEditor().getEditorComponent().setForeground(new Color(29, 53, 87)); 
+        this.cbDepartment.getEditor().getEditorComponent().setBackground(new Color(241, 250, 238)); 
     }
-    
-    private void confSpinner(){
-        SpinnerNumberModel snm = new SpinnerNumberModel(1,1,300,10); 
+
+    private void confSpinner() {
+        SpinnerNumberModel snm = new SpinnerNumberModel(0, 0, 300, 10);
         this.sRevenue.setModel(snm);
+        this.sRevenue.getEditor().getComponent(0).setForeground(new Color(29, 53, 87));
+        this.sRevenue.getEditor().getComponent(0).setBackground(new Color(241, 250, 238));
     }
 
     public static void main(String[] args) {
@@ -310,11 +314,12 @@ public class FormProduct extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 10);
         panel.add(tfWholePrice, gridBagConstraints);
 
+        sRevenue.setModel(new javax.swing.SpinnerNumberModel());
         sRevenue.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 10);
         panel.add(sRevenue, gridBagConstraints);
@@ -403,7 +408,7 @@ public class FormProduct extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         panel.add(linea4, gridBagConstraints);

@@ -1,65 +1,77 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Cajero;
 
 import Objetos.Persona;
-import Objetos.Sesion;
+import com.ventas.administrador.EditarUsuario;
 import com.ventas.administrador.FormCrearUsuario;
-import com.ventas.administrador.FormCrearUsuario;
-import java.sql.PreparedStatement;
-import javax.swing.JDialog;
+import configuracion.Configuracion;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import raven.cell.TableActionCellEditor;
+import raven.cell.TableActionCellRender;
+import raven.cell.TableActionEvent;
 
 /**
  *
  * @author juanj
  */
-public class ModificarListaUsuarios extends javax.swing.JDialog {
-    DefaultTableModel dtm=new DefaultTableModel();
+public class ModificarListaUsuarios extends javax.swing.JFrame {
+    
     /**
-     * Creates new form ModificarListaUsuarios
+     * Creates new form test
      */
-    public ModificarListaUsuarios(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public ModificarListaUsuarios() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle(Sesion.app.getAppNombre());
-        String[] titulo=new String[]{"Id","Usuario","Nombre","Apellido Paterno","Apellido Materno","Telefono","Correo electrónico","Nacionalidad","Calle"};
-        dtm.setColumnIdentifiers(titulo);
-        tblDatos.setModel(dtm);
+        Configuracion.titulo(btnAgregar);
+        Configuracion.styles(this);
+        this.setTitle("Lista de Usuarios");
+        this.setMinimumSize(new Dimension(569,256));
+        this.setExtendedState(MAXIMIZED_BOTH);
+        TableActionEvent event=new TableActionEvent() {
+            @Override
+            public void onEdit(int row) {
+                datosActualizados();
+            }
+
+            @Override
+            public void onDelete(int row) {
+                if(table.isEditing()){
+                    table.getCellEditor().stopCellEditing();
+                }
+                DefaultTableModel model=(DefaultTableModel) table.getModel();
+                model.removeRow(row);
+            }
+
+            @Override
+            public void onView(int row) {
+            }
+        };
+        table.getColumnModel().getColumn(9).setCellRenderer(new TableActionCellRender());
+        table.getColumnModel().getColumn(9).setCellEditor(new TableActionCellEditor(event));
     }
-    private void agregar(Persona p){
-        dtm.addRow(new Object[]{
+    private void registrar(Persona p, DefaultTableModel model){
+        model.addRow(new Object[]{
             p.getId(),p.getNomUsuario(),p.getNombre(),p.getApellidoPaterno(),p.getApellidoMaterno(),p.getNumTelefono(),p.getCorreoElectronico(),p.getNacionalidad(),p.getCalle()
         });
     }
-    private void eliminar(){
-        int fila=tblDatos.getSelectedRow();
-        dtm.removeRow(fila);
-    }
-    
     public void actualizarDatos(){
-        int fila=tblDatos.getSelectedRow();
-        int id=Integer.parseInt(this.tblDatos.getValueAt(fila, 0).toString());
-        String nombreUsuario=tblDatos.getValueAt(fila, 2).toString();
-        String nombre=tblDatos.getValueAt(fila, 3).toString();
-        String apellidoP=tblDatos.getValueAt(fila, 4).toString();
-        String apellidoM=tblDatos.getValueAt(fila, 5).toString();
-        String telefono=tblDatos.getValueAt(fila, 6).toString();
-        String correoElec=tblDatos.getValueAt(fila, 7).toString();
-        String nacionalidad=tblDatos.getValueAt(fila, 8).toString();
-        String calle=tblDatos.getValueAt(fila, 9).toString();
+        int fila=table.getSelectedRow();
+        int id=Integer.parseInt(this.table.getValueAt(fila, 0).toString());
+        String nombreUsuario=table.getValueAt(fila, 2).toString();
+        String nombre=table.getValueAt(fila, 3).toString();
+        String apellidoP=table.getValueAt(fila, 4).toString();
+        String apellidoM=table.getValueAt(fila, 5).toString();
+        String telefono=table.getValueAt(fila, 6).toString();
+        String correoElec=table.getValueAt(fila, 7).toString();
+        String nacionalidad=table.getValueAt(fila, 8).toString();
+        String calle=table.getValueAt(fila, 9).toString();
         
     }
-    private void actualizar2(){
-        int fila=tblDatos.getSelectedRow();
-        //dtm.setValueAt(jTextId.getText(), fila, 0);
-        //dtm.setValueAt(jTextNombre.getText(), fila, 1);
-        //dtm.setValueAt(jTextApellido.getText(), fila, 2);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,117 +80,177 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jButtonAgregar = new javax.swing.JButton();
-        jButtonEliminar = new javax.swing.JButton();
-        jButtonModificar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        btnAgregar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDatos = new javax.swing.JTable();
+        table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButtonAgregar.setText("Agregar");
-        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAgregarActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        jPanel3.add(btnAgregar, gridBagConstraints);
 
-        jButtonEliminar.setText("Eliminar");
-        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminarActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Lista de Usuarios");
+        jPanel3.add(jLabel1, new java.awt.GridBagConstraints());
 
-        jButtonModificar.setText("Modificar");
-        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
-        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Usuario", "Name", "Apellido Paterno", "Apellido Materno", "Teléfono", "Correo Electrónico", "Nacionalidad", "Calle", "Action"
             }
-        ));
-        jScrollPane1.setViewportView(tblDatos);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, true
+            };
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAgregar)
-                .addGap(68, 68, 68)
-                .addComponent(jButtonEliminar)
-                .addGap(52, 52, 52)
-                .addComponent(jButtonModificar)
-                .addGap(70, 70, 70))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAgregar)
-                    .addComponent(jButtonEliminar)
-                    .addComponent(jButtonModificar))
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setRowHeight(25);
+        table.setSelectionBackground(new java.awt.Color(20, 169, 98));
+        jScrollPane1.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(1).setPreferredWidth(50);
+            table.getColumnModel().getColumn(6).setPreferredWidth(100);
+            table.getColumnModel().getColumn(9).setPreferredWidth(30);
+        }
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        try
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        try{
+            agregar();
+        } catch (Exception e)
         {
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+    private void agregar(){
+        try{
             FormCrearUsuario crear=new FormCrearUsuario(new JFrame(), true);
             crear.setVisible(true);
-            agregar(crear.usuario());
+            DefaultTableModel model=(DefaultTableModel) table.getModel();
+            registrar(crear.usuario(),model);
         } catch (Exception e)
         {
+            System.err.print(e);
         }
-    }//GEN-LAST:event_jButtonAgregarActionPerformed
+    }
+    private void datosActualizados(){
+        int fila=table.getSelectedRow();
+        long id=Long.parseLong(table.getValueAt(fila, 0).toString());
+        String nombreUsuario=table.getValueAt(fila, 1).toString();
+        String nombre=table.getValueAt(fila, 2).toString();
+        String apellidoP=table.getValueAt(fila, 3).toString();
+        String apellidoM=table.getValueAt(fila, 4).toString();
+        long telefono=Long.parseLong(table.getValueAt(fila, 5).toString());
+        String correoElec=table.getValueAt(fila, 6).toString();
+        String nacionalidad=table.getValueAt(fila, 7).toString();
+        String calle=table.getValueAt(fila, 8).toString();
+        Persona persona=new Persona(id, nombreUsuario, nombre, apellidoP, apellidoM, telefono, correoElec, nacionalidad, calle);
 
-    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        EditarUsuario actualizar=new EditarUsuario(this, true,persona);
+        actualizar.setVisible(true);
+        actualizar.usuario();   
+        nuevosDatos(actualizar.usuario(),fila);
+    }
+    private void nuevosDatos(Persona p,int fila){
+        table.setValueAt(p.getId(),fila, 0);
+        table.setValueAt(p.getNomUsuario(),fila, 1);
+        table.setValueAt(p.getNombre(),fila, 2);
+        table.setValueAt(p.getApellidoPaterno(),fila, 3);
+        table.setValueAt(p.getApellidoMaterno(),fila, 4);
+        table.setValueAt(p.getNumTelefono(),fila, 5);
+        table.setValueAt(p.getCorreoElectronico(),fila, 6);
+        table.setValueAt(p.getNacionalidad(),fila, 7);
+        table.setValueAt(p.getCalle(),fila, 8);
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
         try
         {
-            eliminar();
-        } catch (Exception e)
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex)
         {
+            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex)
+        {
+            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex)
+        {
+            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
+            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButtonEliminarActionPerformed
+        //</editor-fold>
+        //</editor-fold>
 
-    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        try
-        {
-            actualizarDatos();
-        } catch (Exception e)
-        {
-        }
-    }//GEN-LAST:event_jButtonModificarActionPerformed
-
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ModificarListaUsuarios().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAgregar;
-    private javax.swing.JButton jButtonEliminar;
-    private javax.swing.JButton jButtonModificar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblDatos;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

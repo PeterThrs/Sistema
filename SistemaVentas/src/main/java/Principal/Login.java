@@ -47,7 +47,7 @@ public class Login extends javax.swing.JFrame {
         //Configuracion.normal(this.cUser, this.jIngresar, this.jlUser, this.jlPassword, this.cPassword);
         //Configuracion.titulo(jlTitulo);
         
-        //this.setIconImage(Sesion.app.getIcono());
+        this.setIconImage(Sesion.app.getIcono());
         
         ImageIcon wallpaper = new ImageIcon("src/main/resources/images/User.png"); 
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(image.getWidth(), image.getHeight(), Image.SCALE_DEFAULT)); 
@@ -514,8 +514,8 @@ public class Login extends javax.swing.JFrame {
 
             if (correcto) {
                 if (user.equals(Sesion.seguridad.getUserAdmin())) {
-                    PrincipalAdministrador pa = new PrincipalAdministrador();
-                    pa.setVisible(true);
+                    FormMainAdmi fma = new FormMainAdmi();
+                    fma.setVisible(true);
                 } else if (user.equals(Sesion.seguridad.getUserCount())) {
                     InicioContador ic = new InicioContador(); 
                     ic.setVisible(true);

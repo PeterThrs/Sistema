@@ -4,6 +4,7 @@ import Principal.Login;
 import configuracion.Configuracion;
 import administrador.FormUser;
 import configuracion.CodigoColor;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class FormMainAdmi extends javax.swing.JFrame {
@@ -14,11 +15,23 @@ public class FormMainAdmi extends javax.swing.JFrame {
     }
 
     public void agregarEstilos() {
+        //configuracion ventana
+        this.setMinimumSize(new Dimension(700,500));
         Configuracion.styles(this);
+        
+        //configuracon menu
         Configuracion.normal(this.menuUser, this.menuProduct, this.menuMain, this.menuSettings, this.menuCompany);
         Configuracion.normal(this.opcAddUser, this.opcUpdateUser, this.opcListUser);
         Configuracion.normal(this.opcAddProduct, this.opcUpdateProduct, this.opcListProduct, this.opcListProductOut);
+        
+        //configuracion del JPanel
+        Configuracion.background(CodigoColor.cFondo, this.jPanel1);
+        
+        //configuracion botones
         Configuracion.normal(this.btnClose);
+        Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnClose);
+        Configuracion.background(CodigoColor.cFondoBtn, this.btnClose);
+        
     }
     
     public static void main(String[] args) {
@@ -30,6 +43,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         menuMain = new javax.swing.JMenuBar();
         menuUser = new javax.swing.JMenu();
@@ -52,6 +66,23 @@ public class FormMainAdmi extends javax.swing.JFrame {
                 btnCloseActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(443, Short.MAX_VALUE)
+                .addComponent(btnClose)
+                .addGap(32, 32, 32))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(377, Short.MAX_VALUE)
+                .addComponent(btnClose)
+                .addGap(37, 37, 37))
+        );
 
         menuUser.setText("Administrar Usuarios");
         menuUser.addActionListener(new java.awt.event.ActionListener() {
@@ -119,17 +150,11 @@ public class FormMainAdmi extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(398, Short.MAX_VALUE)
-                .addComponent(btnClose)
-                .addGap(70, 70, 70))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(376, Short.MAX_VALUE)
-                .addComponent(btnClose)
-                .addGap(38, 38, 38))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -189,6 +214,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menuCompany;
     private javax.swing.JMenuBar menuMain;
     private javax.swing.JMenu menuProduct;

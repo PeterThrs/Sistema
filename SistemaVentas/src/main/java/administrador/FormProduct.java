@@ -140,8 +140,8 @@ public class FormProduct extends javax.swing.JDialog {
         dcbm.addElement(DatosFalsos.p3.getDepartamento().getDepartamento());
         dcbm.addElement(DatosFalsos.p4.getDepartamento().getDepartamento());
         this.cbDepartment.setModel(dcbm);
-        this.cbDepartment.getEditor().getEditorComponent().setForeground(new Color(29, 53, 87)); 
-        this.cbDepartment.getEditor().getEditorComponent().setBackground(new Color(241, 250, 238)); 
+        this.cbDepartment.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasObscuras); 
+        this.cbDepartment.getEditor().getEditorComponent().setBackground(CodigoColor.cFondo); 
     }
 
     private void confSpinner() {

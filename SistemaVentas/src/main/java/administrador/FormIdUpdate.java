@@ -15,41 +15,31 @@ public class FormIdUpdate extends javax.swing.JDialog {
     }
 
     private void agregarEstilos() {
+        //configuracion ventana
         this.setMinimumSize(new Dimension(300, 200));
         this.setSize(new Dimension(300, 200));
-        //this.panel.setBackground(new Color(224,225,221));
-        //this.linea1.setBackground(new Color(94,159,163));
-
         Configuracion.styles(this);
+        
+        //configuración JPanel
+        Configuracion.background(CodigoColor.cFondo, this.panel);
+        
+        //configuracion JLabel
         Configuracion.normalItalic(this.jlIndication);
+        Configuracion.foreground(CodigoColor.cLetrasTitulo, this.jlIndication);
+        
+        //configuracion JTextField
         Configuracion.normal(this.tfId);
+        Configuracion.withoutBorde(this.tfId);
+        Configuracion.background(CodigoColor.cFondo,this.tfId);
+        
+        //Configuracion JButton
         Configuracion.normalItalic(this.btnCancel, this.btnAcept);
-
-        //Quitar el borde a los text Field
-        Configuracion.borde(this.tfId);
-
-        //configuracion para establecer el foreground
-        //color azul fuerte
-        Color color = new Color(29, 53, 87);
-        Configuracion.foreground(color, this.jlIndication);
-
-        Configuracion.foreground(color, this.btnCancel, this.btnAcept);
-
-        //color rojo fuerte
-        color = new Color(230, 57, 70);
-        Configuracion.foreground(color, this.linea1);
-
-        //color blanco crema
-        color = new Color(241, 250, 238);
-        Configuracion.background(color, this.panel, this.tfId);
-        Configuracion.background(color, this.btnCancel, this.btnAcept);
-        Configuracion.foreground(color, this.btnCancel, this.btnAcept);
-
-        //color azul bajo
-        color = new Color(168, 218, 220);
-        //color azul intermedio
-        color = new Color(69, 123, 157);
-        Configuracion.background(color, this.btnCancel, this.btnAcept);
+        Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnCancel, this.btnAcept);
+        Configuracion.background(CodigoColor.cFondoBtn, this.btnCancel, this.btnAcept);
+        
+        //Configuración JSeparador
+        Configuracion.foreground(CodigoColor.cSeparadores, this.linea1);
+        
 
     }
 

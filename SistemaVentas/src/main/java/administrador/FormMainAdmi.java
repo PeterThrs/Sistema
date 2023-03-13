@@ -3,6 +3,7 @@ package administrador;
 import Principal.Login;
 import configuracion.Configuracion;
 import administrador.FormUser;
+import configuracion.CodigoColor;
 import javax.swing.JFrame;
 
 public class FormMainAdmi extends javax.swing.JFrame {
@@ -19,11 +20,15 @@ public class FormMainAdmi extends javax.swing.JFrame {
         Configuracion.normal(this.opcAddProduct, this.opcUpdateProduct, this.opcListProduct, this.opcListProductOut);
         Configuracion.normal(this.btnClose);
     }
+    
+    public static void main(String[] args) {
+        FormMainAdmi fma = new FormMainAdmi(); 
+        fma.setVisible(true);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         btnClose = new javax.swing.JButton();
         menuMain = new javax.swing.JMenuBar();
@@ -40,7 +45,6 @@ public class FormMainAdmi extends javax.swing.JFrame {
         menuSettings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         btnClose.setText("Cerrar Sesion");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -48,12 +52,6 @@ public class FormMainAdmi extends javax.swing.JFrame {
                 btnCloseActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(385, 439, 29, 29);
-        getContentPane().add(btnClose, gridBagConstraints);
 
         menuUser.setText("Administrar Usuarios");
         menuUser.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +114,23 @@ public class FormMainAdmi extends javax.swing.JFrame {
         menuMain.add(menuSettings);
 
         setJMenuBar(menuMain);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(398, Short.MAX_VALUE)
+                .addComponent(btnClose)
+                .addGap(70, 70, 70))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(376, Short.MAX_VALUE)
+                .addComponent(btnClose)
+                .addGap(38, 38, 38))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

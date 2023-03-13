@@ -46,6 +46,12 @@ public class Configuracion {
         } 
     }
     
+    public static <T extends JComponent> void withoutBorde(T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setBorder(null);
+        } 
+    }
+    
     public static <T extends JComponent> void normalItalic(T... t){
         for(int i = 0; i < t.length; i++){
             t[i].setFont(new Font("Roboto", Font.ITALIC, 13));

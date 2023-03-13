@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import Objetos.DatosFalsos;
+import configuracion.CodigoColor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -28,53 +29,59 @@ public class FormProduct extends javax.swing.JDialog {
     }
 
     private void agregarEstilos() {
+        //configuracion de la ventana 
         this.setMinimumSize(new Dimension(650, 600));
         this.setSize(new Dimension(650, 600));
-        //this.panel.setBackground(new Color(224,225,221));
-        //this.linea1.setBackground(new Color(94,159,163));
-
         Configuracion.styles(this);
+        
+        //configuracion al JPanel
+         Configuracion.background(CodigoColor.cFondo, this.panel); 
+        
+        //configuracion JLabel
         Configuracion.titulo(jlTitle);
-        Configuracion.normalItalic(this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jlTitle);
+        Configuracion.normalItalic(this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,this.jlRevenue, 
+                this.jlSale, this.jlSalePrice, this.jlTotal, this.jlWholeSalePrice);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,
                 this.jlRevenue, this.jlSale, this.jlSalePrice, this.jlTotal, this.jlWholeSalePrice);
-        Configuracion.normal(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,
-                this.tfWholePrice);
-        Configuracion.normalItalic(this.rbGranel, this.rbUnit);
-        Configuracion.normalItalic(this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.normalItalic(this.cbInventory, this.cbDepartment);
-
-        //Quitar el borde a los text Field
-        Configuracion.borde(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,
-                this.tfWholePrice, this.sRevenue, this.cbDepartment);
-
-        //configuracion para establecer el foreground
-        //color azul fuerte
-        Color color = new Color(29, 53, 87);
-        Configuracion.foreground(color, this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,
-                this.jlRevenue, this.jlSale, this.jlSalePrice, this.jlTotal, this.jlWholeSalePrice, this.jlTitle);
-
-        Configuracion.foreground(color, this.rbGranel, this.rbUnit);
-        Configuracion.foreground(color, this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.foreground(color, this.cbInventory, this.cbDepartment);
-
-        //color rojo fuerte
-        color = new Color(230, 57, 70);
-        Configuracion.foreground(color, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
+        
+        //configuraicon JTextField
+        Configuracion.normal(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,this.tfWholePrice);
+        Configuracion.withoutBorde(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal, this.tfWholePrice);
+        Configuracion.background(CodigoColor.cFondo,this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, 
+                this.tfTotal,this.tfWholePrice); 
+        Configuracion.foreground(CodigoColor.cLetrasTextField,this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, 
+                this.tfTotal,this.tfWholePrice);
+        
+        //configuracion JSeparator
+        Configuracion.foreground(CodigoColor.cSeparadores, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
                 this.linea8);
-
-        //color blanco crema
-        color = new Color(241, 250, 238);
-        Configuracion.background(color, this.panel, this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,
-                this.tfWholePrice, this.sRevenue, this.cbDepartment);
-        Configuracion.background(color, this.btnCancel, this.btnCreate, this.btnUpdate, this.rbGranel, this.rbUnit,
-                this.cbInventory, this.sRevenue);
-        Configuracion.foreground(color, this.btnCancel, this.btnCreate, this.btnUpdate);
-
-        //color azul bajo
-        color = new Color(168, 218, 220);
-        //color azul intermedio
-        color = new Color(69, 123, 157);
-        Configuracion.background(color, this.btnCancel, this.btnCreate, this.btnUpdate);
+        
+        
+        //configuracion JButton
+        Configuracion.normalItalic(this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.background(CodigoColor.cFondoBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
+        
+        //configuraicion JComboBox 
+        Configuracion.normalItalic(this.cbDepartment);
+        Configuracion.withoutBorde(this.cbDepartment);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras,this.cbDepartment);
+        Configuracion.background(CodigoColor.cFondo,this.cbDepartment);
+        
+        //configuracion JRadioButton
+        Configuracion.normalItalic(this.rbGranel, this.rbUnit);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.rbGranel, this.rbUnit);
+        Configuracion.background(CodigoColor.cFondo,this.rbGranel, this.rbUnit);
+        
+        //configuracion JCheckBox
+        Configuracion.normalItalic(this.cbInventory);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.cbInventory);
+        Configuracion.background(CodigoColor.cFondo,this.cbInventory);
+        
+        
+        //configuracion JSpinner
+        
 
     }
 
@@ -140,8 +147,8 @@ public class FormProduct extends javax.swing.JDialog {
     private void confSpinner() {
         SpinnerNumberModel snm = new SpinnerNumberModel(0, 0, 300, 10);
         this.sRevenue.setModel(snm);
-        this.sRevenue.getEditor().getComponent(0).setForeground(new Color(29, 53, 87));
-        this.sRevenue.getEditor().getComponent(0).setBackground(new Color(241, 250, 238));
+        this.sRevenue.getEditor().getComponent(0).setForeground(CodigoColor.cLetrasObscuras);
+        this.sRevenue.getEditor().getComponent(0).setBackground(CodigoColor.cFondo);
     }
 
     public static void main(String[] args) {
@@ -446,8 +453,8 @@ public class FormProduct extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();

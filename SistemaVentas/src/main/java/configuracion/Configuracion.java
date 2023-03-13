@@ -24,7 +24,7 @@ public class Configuracion {
     
     public static <T extends JComponent> void normal(T... t){
         for(int i = 0; i < t.length; i++){
-            t[i].setFont(new Font("Verdana", Font.PLAIN, 13));
+            t[i].setFont(new Font("Roboto", Font.PLAIN, 13));
         } 
     }
     

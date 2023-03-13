@@ -18,20 +18,6 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     public Login() {
-        /*JFrame.setDefaultLookAndFeelDecorated(true);
-        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.MistAquaSkin");*/
-        /*try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
-            //UIManager.setLookAndFeel("com.jtattoo.plaf.texture.patterns.textile");
-        } catch (ClassNotFoundException ex) {
-            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
         initComponents();
         Configuracion.styles(this);
         this.setExtendedState(this.NORMAL);

@@ -1,16 +1,24 @@
 package com.ventas.administrador;
 
 import Objetos.Persona;
-import Objetos.Sesion;
 import java.awt.event.KeyEvent;
 import configuracion.Configuracion;
 import javax.swing.JOptionPane;
 
-public class FormCrearUsuario extends javax.swing.JDialog {
+public class EditarUsuario extends javax.swing.JDialog {
     Persona person;
-    public FormCrearUsuario(java.awt.Frame parent, boolean modal) {
+    public EditarUsuario(java.awt.Frame parent, boolean modal, Persona p) {
         super(parent, modal);
         initComponents();
+        jTextId.setText(Long.toString(p.getId()));
+        jTextUsuario.setText(p.getNomUsuario());
+        jTextNombre.setText(p.getNombre());
+        jTextApellidoP.setText(p.getApellidoPaterno());
+        jTextApellidoM.setText(p.getApellidoMaterno());
+        jTextTelefono.setText(Long.toString(p.getNumTelefono()));
+        jTextCorreoElec.setText(p.getCorreoElectronico());
+        jTextNacionalidad.setText(p.getNacionalidad());
+        jTextCalle.setText(p.getCalle());
         Configuracion.styles(this);
     }
 
@@ -34,9 +42,9 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         jTextTelefono = new javax.swing.JTextField();
         jTextApellidoM = new javax.swing.JTextField();
         jTextCalle = new javax.swing.JTextField();
-        jTextFieldApellidoP = new javax.swing.JTextField();
+        jTextApellidoP = new javax.swing.JTextField();
         jTextNombre = new javax.swing.JTextField();
-        btnCrearUsuario = new javax.swing.JButton();
+        btnActualizarDatos = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jTextId = new javax.swing.JTextField();
         jTextCorreoElec = new javax.swing.JTextField();
@@ -55,15 +63,15 @@ public class FormCrearUsuario extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 204));
-        jLabel1.setText("Crear Usuario ");
+        jLabel1.setText("Editar Usuario ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 23;
-        gridBagConstraints.ipadx = 5;
+        gridBagConstraints.gridwidth = 36;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 60, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(22, 50, 0, 0);
         getContentPane().add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("Id: ");
@@ -149,13 +157,13 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 3, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(21, 24, 0, 32);
         getContentPane().add(jTextUsuario, gridBagConstraints);
 
         jTextNacionalidad.addActionListener(new java.awt.event.ActionListener() {
@@ -169,13 +177,13 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 3, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(18, 24, 0, 32);
         getContentPane().add(jTextNacionalidad, gridBagConstraints);
 
         jTextTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -189,12 +197,12 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 3, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(18, 24, 0, 32);
         getContentPane().add(jTextTelefono, gridBagConstraints);
 
         jTextApellidoM.addActionListener(new java.awt.event.ActionListener() {
@@ -208,13 +216,13 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(23, 3, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(23, 24, 0, 32);
         getContentPane().add(jTextApellidoM, gridBagConstraints);
 
         jTextCalle.addActionListener(new java.awt.event.ActionListener() {
@@ -228,34 +236,34 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 3, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(18, 24, 0, 32);
         getContentPane().add(jTextCalle, gridBagConstraints);
 
-        jTextFieldApellidoP.addActionListener(new java.awt.event.ActionListener() {
+        jTextApellidoP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldApellidoPActionPerformed(evt);
+                jTextApellidoPActionPerformed(evt);
             }
         });
-        jTextFieldApellidoP.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextApellidoP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldApellidoPKeyTyped(evt);
+                jTextApellidoPKeyTyped(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 3, 0, 32);
-        getContentPane().add(jTextFieldApellidoP, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(18, 24, 0, 32);
+        getContentPane().add(jTextApellidoP, gridBagConstraints);
 
         jTextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,19 +276,19 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 3, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(24, 24, 0, 32);
         getContentPane().add(jTextNombre, gridBagConstraints);
 
-        btnCrearUsuario.setText("Crear Usuario");
-        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarDatos.setText("Actualizar datos");
+        btnActualizarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearUsuarioActionPerformed(evt);
+                btnActualizarDatosActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -289,7 +297,7 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         gridBagConstraints.gridwidth = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 64, 31, 0);
-        getContentPane().add(btnCrearUsuario, gridBagConstraints);
+        getContentPane().add(btnActualizarDatos, gridBagConstraints);
 
         btnCancelar.setText("Cerrar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -298,9 +306,9 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 41;
         gridBagConstraints.gridy = 17;
-        gridBagConstraints.gridwidth = 24;
+        gridBagConstraints.gridwidth = 37;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 31, 0);
         getContentPane().add(btnCancelar, gridBagConstraints);
@@ -316,13 +324,13 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(27, 3, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(27, 24, 0, 32);
         getContentPane().add(jTextId, gridBagConstraints);
 
         jTextCorreoElec.addActionListener(new java.awt.event.ActionListener() {
@@ -336,12 +344,12 @@ public class FormCrearUsuario extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 58;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 3, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(18, 24, 0, 32);
         getContentPane().add(jTextCorreoElec, gridBagConstraints);
 
         jLabel10.setText("Correo electrónico:");
@@ -380,9 +388,9 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextCalleActionPerformed
 
-    private void jTextFieldApellidoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellidoPActionPerformed
+    private void jTextApellidoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextApellidoPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldApellidoPActionPerformed
+    }//GEN-LAST:event_jTextApellidoPActionPerformed
 
     private void jTextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreActionPerformed
         // TODO add your handling code here:
@@ -405,11 +413,11 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextCorreoElecActionPerformed
 
-    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
+    private void btnActualizarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarDatosActionPerformed
         try
         {
-            if(!jTextId.getText().isEmpty() && !jTextUsuario.getText().isEmpty() && !jTextNombre.getText().isEmpty() && !jTextFieldApellidoP.getText().isEmpty() && !jTextApellidoM.getText().isEmpty() && !jTextTelefono.getText().isEmpty() && !jTextCorreoElec.getText().isEmpty() && !jTextNacionalidad.getText().isEmpty() && !jTextCalle.getText().isEmpty()){
-                person=new Persona(Integer.parseInt(jTextId.getText()),jTextUsuario.getText() , jTextNombre.getText(), jTextFieldApellidoP.getText(), jTextApellidoM.getText(), Long.parseLong(jTextTelefono.getText()), jTextCorreoElec.getText(), jTextNacionalidad.getText(), jTextCalle.getText());            
+            if(!jTextId.getText().isEmpty() && !jTextUsuario.getText().isEmpty() && !jTextNombre.getText().isEmpty() && !jTextApellidoP.getText().isEmpty() && !jTextApellidoM.getText().isEmpty() && !jTextTelefono.getText().isEmpty() && !jTextCorreoElec.getText().isEmpty() && !jTextNacionalidad.getText().isEmpty() && !jTextCalle.getText().isEmpty()){
+                person=new Persona(Integer.parseInt(jTextId.getText()),jTextUsuario.getText() , jTextNombre.getText(), jTextApellidoP.getText(), jTextApellidoM.getText(), Long.parseLong(jTextTelefono.getText()), jTextCorreoElec.getText(), jTextNacionalidad.getText(), jTextCalle.getText());            
             }else{
                 JOptionPane.showMessageDialog(null, "Verifica los datos ingresados!");
             }
@@ -418,14 +426,14 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         {
             System.err.print(e);
         }
-    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
+    }//GEN-LAST:event_btnActualizarDatosActionPerformed
 
     private void jTextIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextIdKeyTyped
         try
         {
             char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
         } catch (Exception e)
         {
@@ -437,7 +445,7 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         {
             char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
         } catch (Exception e)
         {
@@ -449,31 +457,31 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         {
             char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
         } catch (Exception e)
         {
         }
     }//GEN-LAST:event_jTextNombreKeyTyped
 
-    private void jTextFieldApellidoPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoPKeyTyped
+    private void jTextApellidoPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextApellidoPKeyTyped
         try
         {
             char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
         } catch (Exception e)
         {
         }
-    }//GEN-LAST:event_jTextFieldApellidoPKeyTyped
+    }//GEN-LAST:event_jTextApellidoPKeyTyped
 
     private void jTextApellidoMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextApellidoMKeyTyped
         try
         {
             char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
         } catch (Exception e)
         {
@@ -483,7 +491,7 @@ public class FormCrearUsuario extends javax.swing.JDialog {
     private void jTextTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextTelefonoKeyTyped
         char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
     }//GEN-LAST:event_jTextTelefonoKeyTyped
 
@@ -492,7 +500,7 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         {
             char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
         } catch (Exception e)
         {
@@ -504,7 +512,7 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         {
             char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
         } catch (Exception e)
         {
@@ -516,7 +524,7 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         {
             char cTeclaPresionada=evt.getKeyChar();
             if(cTeclaPresionada==KeyEvent.VK_ENTER){
-                btnCrearUsuario.doClick();
+                btnActualizarDatos.doClick();
             }
         } catch (Exception e)
         {
@@ -526,8 +534,8 @@ public class FormCrearUsuario extends javax.swing.JDialog {
         return this.person;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarDatos;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -539,10 +547,10 @@ public class FormCrearUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextApellidoM;
+    private javax.swing.JTextField jTextApellidoP;
     private javax.swing.JTextField jTextCalle;
     private javax.swing.JTextField jTextCorreoElec;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextFieldApellidoP;
     private javax.swing.JTextField jTextId;
     private javax.swing.JTextField jTextNacionalidad;
     private javax.swing.JTextField jTextNombre;

@@ -52,8 +52,6 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
         String correoElec=tblDatos.getValueAt(fila, 7).toString();
         String nacionalidad=tblDatos.getValueAt(fila, 8).toString();
         String calle=tblDatos.getValueAt(fila, 9).toString();
-        System.out.println("");
-        
         
     }
     private void actualizar2(){

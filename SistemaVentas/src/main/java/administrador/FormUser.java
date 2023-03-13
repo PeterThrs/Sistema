@@ -1,5 +1,6 @@
 package administrador;
 
+import configuracion.CodigoColor;
 import configuracion.Configuracion;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,47 +21,52 @@ public class FormUser extends javax.swing.JDialog {
     }
 
     private void agregarEstilos() {
+        //configuraciones de la ventana
         this.setMinimumSize(new Dimension(550, 700));
         Configuracion.styles(this);
+        
+        //configuraciones del panel
+        Configuracion.background(CodigoColor.cFondo, this.panel);
+        
+        //configuraciones de los JLabel
         Configuracion.titulo(this.jlTitle);
         Configuracion.normalItalic(this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
                 this.jlLastNameP, this.jlMun, this.jlName, this.jlPhone1, this.jlPhone2, this.jlPostalCode,
-                this.jlRfc, this.jlSex, this.jlStreet, this.rbMan, this.rbWoman);
+                this.jlRfc, this.jlSex, this.jlStreet);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras,this.jlTitle);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
+                this.jlLastNameP, this.jlMun, this.jlName, this.jlPhone1, this.jlPhone2, this.jlPostalCode,
+                this.jlRfc, this.jlSex, this.jlStreet);
+        
+        
+        //configuraciones de los JTextField
         Configuracion.normal(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet);
-        Configuracion.normal(this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.normal(this.rbMan, this.rbWoman);
-
-        //Quitar el borde a los text Field
-        Configuracion.borde(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
+        Configuracion.withoutBorde(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
-                this.tfStreet, this.sAge);
-
-        //configuracion para establecer el foreground
-        //color azul fuerte
-        Color color = new Color(29, 53, 87);
-        Configuracion.foreground(color, this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
-                this.jlLastNameP, this.jlMun, this.jlName, this.jlPhone1, this.jlPhone2, this.jlPostalCode,
-                this.jlRfc, this.jlSex, this.jlStreet);
-
-        //color rojo fuerte
-        color = new Color(230, 57, 70);
-        Configuracion.foreground(color, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
+                this.tfStreet);
+        Configuracion.background(CodigoColor.cFondo,this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
+                this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
+                this.tfStreet);
+        
+        
+        //configuraciones de los botones
+        Configuracion.normalItalic(this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.background(CodigoColor.cFondoBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
+        
+        //configurciones del JSpinner
+        
+        //configuraciones del JRadioButton
+        Configuracion.normalItalic(this.rbMan, this.rbWoman); 
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.rbMan, this.rbWoman);
+        Configuracion.background(CodigoColor.cFondo, this.rbMan, this.rbWoman);
+        
+        
+        //configuraciones de los jSeparator
+        Configuracion.foreground(CodigoColor.cSeparadores, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
                 this.linea7, this.linea8, this.linea9, this.linea10, this.linea11, this.linea12, this.linea13);
-
-        //color blanco crema
-        color = new Color(241, 250, 238);
-        Configuracion.background(color, this.panel, this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
-                this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
-                this.tfStreet, this.sAge, this.rbMan, this.rbWoman);
-        Configuracion.foreground(color, this.btnCancel, this.btnCreate, this.btnUpdate);
-
-        //color azul bajo
-        color = new Color(168, 218, 220);
-        //color azul intermedio
-        color = new Color(69, 123, 157);
-        Configuracion.background(color, this.btnCancel, this.btnCreate, this.btnUpdate);
 
     }
 
@@ -83,8 +89,8 @@ public class FormUser extends javax.swing.JDialog {
     private void confSpinner() {
         SpinnerNumberModel snm = new SpinnerNumberModel(18, 18, 100, 1);
         this.sAge.setModel(snm);
-        this.sAge.getEditor().getComponent(0).setForeground(new Color(29, 53, 87));
-        this.sAge.getEditor().getComponent(0).setBackground(new Color(241, 250, 238));
+        this.sAge.getEditor().getComponent(0).setForeground(CodigoColor.cLetrasObscuras);
+        this.sAge.getEditor().getComponent(0).setBackground(CodigoColor.cFondo);
     }
     
     private void estadoBtnUpdate(){
@@ -106,6 +112,11 @@ public class FormUser extends javax.swing.JDialog {
 
     public void setUpdate(Boolean update) {
         this.update = update;
+    }
+    
+    public static void main(String[] args) {
+        FormUser vUser = new FormUser(new JFrame(), true, true); 
+        vUser.setVisible(true);
     }
     
     

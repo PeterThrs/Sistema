@@ -402,6 +402,7 @@ public class EditarUsuario extends javax.swing.JDialog {
             dispose(); 
         } catch (Exception e)
         {
+            System.err.print(e);
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 

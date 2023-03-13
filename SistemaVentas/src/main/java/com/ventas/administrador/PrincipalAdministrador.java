@@ -175,9 +175,7 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_menuListProductoActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        try{
-            Agregar_Producto AP = new Agregar_Producto(this,true);
-            AP.setVisible(true);    
+        try{  
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }

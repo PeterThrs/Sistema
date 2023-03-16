@@ -1,17 +1,17 @@
 package Objetos;
 
 public class Persona {
-    private int id;
+    private long id;
     private String nomUsuario;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private int numTelefono;
+    private long numTelefono;
     private String correoElectronico;
     private String nacionalidad;
     private String calle;
 
-    public Persona(int id, String nomUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, int numTelefono, String correoElectronico, String nacionalidad, String calle) {
+    public Persona(long id, String nomUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, long numTelefono, String correoElectronico, String nacionalidad, String calle) {
         this.id = id;
         this.nomUsuario = nomUsuario;
         this.nombre = nombre;
@@ -55,11 +55,11 @@ public class Persona {
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -71,11 +71,11 @@ public class Persona {
         this.correoElectronico = correoElectronico;
     }
 
-    public int getNumTelefono() {
+    public long getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(int numTelefono) {
+    public void setNumTelefono(long numTelefono) {
         this.numTelefono = numTelefono;
     }
     

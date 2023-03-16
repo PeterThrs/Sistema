@@ -3,6 +3,7 @@ package Principal;
 import Cajero.VentanaCajero;
 import Contador.InicioContador;
 import Objetos.Sesion;
+import administrador.FormMainAdmi;
 import com.ventas.administrador.PrincipalAdministrador;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
@@ -22,20 +23,6 @@ public class Login extends javax.swing.JFrame {
     int xMouse,yMouse;
     
     public Login() {
-        /*JFrame.setDefaultLookAndFeelDecorated(true);
-        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.MistAquaSkin");*/
-        /*try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
-            //UIManager.setLookAndFeel("com.jtattoo.plaf.texture.patterns.textile");
-        } catch (ClassNotFoundException ex) {
-            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
         initComponents();
         
         
@@ -46,7 +33,7 @@ public class Login extends javax.swing.JFrame {
         //Configuracion.normal(this.cUser, this.jIngresar, this.jlUser, this.jlPassword, this.cPassword);
         //Configuracion.titulo(jlTitulo);
         
-        //this.setIconImage(Sesion.app.getIcono());
+        this.setIconImage(Sesion.app.getIcono());
         
         ImageIcon wallpaper = new ImageIcon("src/main/resources/images/User.png"); 
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(image.getWidth(), image.getHeight(), Image.SCALE_DEFAULT)); 
@@ -367,8 +354,8 @@ public class Login extends javax.swing.JFrame {
 
             if (correcto) {
                 if (user.equals(Sesion.seguridad.getUserAdmin())) {
-                    PrincipalAdministrador pa = new PrincipalAdministrador();
-                    pa.setVisible(true);
+                    FormMainAdmi fma = new FormMainAdmi();
+                    fma.setVisible(true);
                 } else if (user.equals(Sesion.seguridad.getUserCount())) {
                     InicioContador ic = new InicioContador(); 
                     ic.setVisible(true);

@@ -2,11 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Cajero;
+package com.ventas.administrador;
 
-import Objetos.Persona;
-import com.ventas.administrador.EditarUsuario;
-import com.ventas.administrador.FormCrearUsuario;
+import Objetos.Producto;
 import configuracion.Configuracion;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -19,16 +17,16 @@ import raven.cell.TableActionEvent;
  *
  * @author juanj
  */
-public class ModificarListaUsuarios extends javax.swing.JFrame {
+public class ListaProductos extends javax.swing.JFrame {
     
     /**
      * Creates new form test
      */
-    public ModificarListaUsuarios() {
+    public ListaProductos() {
         initComponents();
         Configuracion.titulo(btnAgregar);
         Configuracion.styles(this);
-        this.setTitle("Lista de Usuarios");
+        this.setTitle("Lista de Productos");
         this.setMinimumSize(new Dimension(569,256));
         this.setExtendedState(MAXIMIZED_BOTH);
         TableActionEvent event=new TableActionEvent() {
@@ -50,12 +48,12 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
             public void onView(int row) {
             }
         };
-        table.getColumnModel().getColumn(9).setCellRenderer(new TableActionCellRender());
-        table.getColumnModel().getColumn(9).setCellEditor(new TableActionCellEditor(event));
+        table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
+        table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
     }
-    private void registrar(Persona p, DefaultTableModel model){
+    private void registrar(Producto p, DefaultTableModel model){
         model.addRow(new Object[]{
-            p.getId(),p.getNomUsuario(),p.getNombre(),p.getApellidoPaterno(),p.getApellidoMaterno(),p.getNumTelefono(),p.getCorreoElectronico(),p.getNacionalidad(),p.getCalle()
+            p.getCodigo(),p.getNombre(),p.getPrecio(),p.getArea(),p.getMarca(),p.getCantidad()
         });
     }
     /**
@@ -70,14 +68,18 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        btnAgregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Lista de productos en Almacen");
+        jPanel3.add(jLabel1, new java.awt.GridBagConstraints());
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -88,12 +90,8 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 0, 22, 0);
         jPanel3.add(btnAgregar, gridBagConstraints);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Lista de Usuarios");
-        jPanel3.add(jLabel1, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -115,11 +113,11 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Usuario", "Name", "Apellido Paterno", "Apellido Materno", "Teléfono", "Correo Electrónico", "Nacionalidad", "Calle", "Action"
+                "Código", "Nombre", "Precio", "Área", "Marca", "Cantidad", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -131,8 +129,7 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
             table.getColumnModel().getColumn(1).setPreferredWidth(50);
-            table.getColumnModel().getColumn(6).setPreferredWidth(100);
-            table.getColumnModel().getColumn(9).setPreferredWidth(30);
+            table.getColumnModel().getColumn(6).setPreferredWidth(30);
         }
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -150,10 +147,10 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
     private void agregar(){
         try{
-            FormCrearUsuario crear=new FormCrearUsuario(new JFrame(), true);
+            Agregar_Producto crear=new Agregar_Producto(new JFrame(), true);
             crear.setVisible(true);
             DefaultTableModel model=(DefaultTableModel) table.getModel();
-            registrar(crear.usuario(),model);
+            registrar(crear.getProducto(),model);
         } catch (Exception e)
         {
             System.err.print(e);
@@ -161,75 +158,30 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
     }
     private void datosActualizados(){
         int fila=table.getSelectedRow();
-        long id=Long.parseLong(table.getValueAt(fila, 0).toString());
-        String nombreUsuario=table.getValueAt(fila, 1).toString();
-        String nombre=table.getValueAt(fila, 2).toString();
-        String apellidoP=table.getValueAt(fila, 3).toString();
-        String apellidoM=table.getValueAt(fila, 4).toString();
-        long telefono=Long.parseLong(table.getValueAt(fila, 5).toString());
-        String correoElec=table.getValueAt(fila, 6).toString();
-        String nacionalidad=table.getValueAt(fila, 7).toString();
-        String calle=table.getValueAt(fila, 8).toString();
-        Persona persona=new Persona(id, nombreUsuario, nombre, apellidoP, apellidoM, telefono, correoElec, nacionalidad, calle);
+        long codigo=Long.parseLong(table.getValueAt(fila, 0).toString());
+        String nombre=table.getValueAt(fila, 1).toString();
+        double precio=Double.parseDouble(table.getValueAt(fila, 2).toString());
+        String area=table.getValueAt(fila, 3).toString();
+        String marca=table.getValueAt(fila, 4).toString();
+        double cantidad=Double.parseDouble(table.getValueAt(fila, 5).toString());
+        Producto producto=new Producto(codigo, nombre, precio, area, marca, cantidad);
 
-        EditarUsuario actualizar=new EditarUsuario(this, true,persona);
+        EditarProducto actualizar=new EditarProducto(this, true,producto);
         actualizar.setVisible(true);
-        actualizar.usuario();   
-        nuevosDatos(actualizar.usuario(),fila);
+        actualizar.producto();   
+        nuevosDatos(actualizar.producto(),fila);
     }
-    private void nuevosDatos(Persona p,int fila){
-        table.setValueAt(p.getId(),fila, 0);
-        table.setValueAt(p.getNomUsuario(),fila, 1);
-        table.setValueAt(p.getNombre(),fila, 2);
-        table.setValueAt(p.getApellidoPaterno(),fila, 3);
-        table.setValueAt(p.getApellidoMaterno(),fila, 4);
-        table.setValueAt(p.getNumTelefono(),fila, 5);
-        table.setValueAt(p.getCorreoElectronico(),fila, 6);
-        table.setValueAt(p.getNacionalidad(),fila, 7);
-        table.setValueAt(p.getCalle(),fila, 8);
+    private void nuevosDatos(Producto p,int fila){
+        table.setValueAt(p.getCodigo(),fila, 0);
+        table.setValueAt(p.getNombre(),fila, 1);
+        table.setValueAt(p.getPrecio(),fila, 2);
+        table.setValueAt(p.getArea(),fila, 3);
+        table.setValueAt(p.getMarca(),fila, 4);
+        table.setValueAt(p.getCantidad(),fila, 5);
     }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
-            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModificarListaUsuarios().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

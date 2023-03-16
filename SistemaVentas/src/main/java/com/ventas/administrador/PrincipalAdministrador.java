@@ -1,6 +1,7 @@
 package com.ventas.administrador;
 
 import Cajero.ModificarListaUsuarios;
+
 import Contador.InicioContador;
 import Principal.Login;
 import java.awt.Image;
@@ -166,20 +167,15 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
 
     private void menuListProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListProductoActionPerformed
         try{
-            ListarProductos listProducto = new ListarProductos(this,true);
+            ListaProductos listProducto = new ListaProductos();
             listProducto.setVisible(true);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
-        }
-        // TODO add your handling code here:
-        ListarProductos listProducto = new ListarProductos(this,true);
-        listProducto.setVisible(true);
+        }        
     }//GEN-LAST:event_menuListProductoActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        try{
-            Agregar_Producto AP = new Agregar_Producto(this,true);
-            AP.setVisible(true);    
+        try{  
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -187,7 +183,7 @@ public class PrincipalAdministrador extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         try{
-            ModificarListaUsuarios modi = new ModificarListaUsuarios(this, true);
+            ModificarListaUsuarios modi = new ModificarListaUsuarios();
             modi.setVisible(true);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

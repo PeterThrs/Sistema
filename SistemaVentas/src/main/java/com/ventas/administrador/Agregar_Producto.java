@@ -4,12 +4,16 @@
  */
 package com.ventas.administrador;
 
+import Objetos.Producto;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author corte
  */
 public class Agregar_Producto extends javax.swing.JDialog {
-
+    Producto producto;
     /**
      * Creates new form Agregrar_Producto
      */
@@ -26,6 +30,7 @@ public class Agregar_Producto extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         labelagregarproducto = new javax.swing.JLabel();
         labelnombre = new javax.swing.JLabel();
@@ -40,119 +45,285 @@ public class Agregar_Producto extends javax.swing.JDialog {
         tfarea = new javax.swing.JTextField();
         tfmarca = new javax.swing.JTextField();
         tfcantidad = new javax.swing.JTextField();
-        btnsalir = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         labelagregarproducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelagregarproducto.setForeground(new java.awt.Color(0, 51, 204));
         labelagregarproducto.setText("Agregar Producto");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(32, 12, 0, 0);
+        getContentPane().add(labelagregarproducto, gridBagConstraints);
 
         labelnombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelnombre.setText("Nombre:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(41, 49, 0, 0);
+        getContentPane().add(labelnombre, gridBagConstraints);
 
         labelcodigo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelcodigo.setText("Codigo:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(39, 56, 0, 0);
+        getContentPane().add(labelcodigo, gridBagConstraints);
 
         labelprecio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelprecio.setText("Precio:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(48, 49, 0, 0);
+        getContentPane().add(labelprecio, gridBagConstraints);
 
         labelarea.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelarea.setText("Area:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(45, 49, 0, 0);
+        getContentPane().add(labelarea, gridBagConstraints);
 
         labelmarca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelmarca.setText("Marca:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(52, 49, 0, 0);
+        getContentPane().add(labelmarca, gridBagConstraints);
 
         labelcantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelcantidad.setText("Cantidad:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(46, 49, 0, 0);
+        getContentPane().add(labelcantidad, gridBagConstraints);
 
-        btnsalir.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        btnsalir.setText("Exit");
-        btnsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsalirActionPerformed(evt);
+        tfnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfnombreKeyTyped(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 112;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(41, 12, 0, 0);
+        getContentPane().add(tfnombre, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelcantidad)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfcantidad))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelnombre)
-                            .addComponent(labelcodigo)
-                            .addComponent(labelprecio)
-                            .addComponent(labelarea)
-                            .addComponent(labelmarca))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelagregarproducto)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                .addComponent(tfcodigo)
-                                .addComponent(tfprecio)
-                                .addComponent(tfarea)
-                                .addComponent(tfmarca)))))
-                .addContainerGap(97, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnsalir)
-                .addGap(36, 36, 36))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(labelagregarproducto)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelnombre)
-                    .addComponent(tfnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelcodigo)
-                    .addComponent(tfcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelprecio)
-                    .addComponent(tfprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelarea)
-                    .addComponent(tfarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelmarca)
-                    .addComponent(tfmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelcantidad)
-                    .addComponent(tfcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btnsalir)
-                .addGap(18, 18, 18))
-        );
+        tfcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfcodigoKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 112;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(39, 12, 0, 0);
+        getContentPane().add(tfcodigo, gridBagConstraints);
+
+        tfprecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfprecioKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 112;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(48, 12, 0, 0);
+        getContentPane().add(tfprecio, gridBagConstraints);
+
+        tfarea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfareaKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 112;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(45, 12, 0, 0);
+        getContentPane().add(tfarea, gridBagConstraints);
+
+        tfmarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfmarcaKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 112;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(52, 12, 0, 0);
+        getContentPane().add(tfmarca, gridBagConstraints);
+
+        tfcantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfcantidadKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 106;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(46, 18, 0, 0);
+        getContentPane().add(tfcantidad, gridBagConstraints);
+
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+        btnRegistrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnRegistrarKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 164, 18, 36);
+        getContentPane().add(btnRegistrar, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try
         {
+            if(!tfcodigo.getText().isEmpty() && !tfnombre.getText().isEmpty() && !tfprecio.getText().isEmpty() && !tfarea.getText().isEmpty() && !tfmarca.getText().isEmpty() && !tfcantidad.getText().isEmpty()){
+                producto=new Producto(Long.parseLong(tfcodigo.getText()), tfnombre.getText(), Double.parseDouble(tfprecio.getText()), tfarea.getText(), tfmarca.getText(), Double.parseDouble(tfcantidad.getText()));
+            }else{
+                JOptionPane.showMessageDialog(null, "Verifica los datos ingresados!");
+            }
             dispose();
         } catch (Exception e)
         {
+            System.err.print(e);
         }
-    }//GEN-LAST:event_btnsalirActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    private void btnRegistrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRegistrarKeyTyped
+    
+
+    }//GEN-LAST:event_btnRegistrarKeyTyped
+
+    private void tfcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfcodigoKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnRegistrar.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_tfcodigoKeyTyped
+
+    private void tfnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfnombreKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnRegistrar.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_tfnombreKeyTyped
+
+    private void tfprecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfprecioKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnRegistrar.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_tfprecioKeyTyped
+
+    private void tfareaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfareaKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnRegistrar.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_tfareaKeyTyped
+
+    private void tfmarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfmarcaKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnRegistrar.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_tfmarcaKeyTyped
+
+    private void tfcantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfcantidadKeyTyped
+        try
+        {
+            char cTeclaPresionada=evt.getKeyChar();
+            if(cTeclaPresionada==KeyEvent.VK_ENTER){
+                btnRegistrar.doClick();
+            }
+        } catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_tfcantidadKeyTyped
+    
     /**
      * @param args the command line arguments
      */
@@ -195,9 +366,11 @@ public class Agregar_Producto extends javax.swing.JDialog {
             }
         });
     }
-
+    public Producto getProducto(){
+        return this.producto;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnsalir;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel labelagregarproducto;
     private javax.swing.JLabel labelarea;
     private javax.swing.JLabel labelcantidad;

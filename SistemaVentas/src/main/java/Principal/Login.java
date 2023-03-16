@@ -5,12 +5,14 @@ import Contador.InicioContador;
 import Objetos.Sesion;
 import administrador.FormMainAdmi;
 import com.ventas.administrador.PrincipalAdministrador;
+import configuracion.CodigoColor;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import configuracion.Configuracion;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -24,14 +26,7 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
-        
-        
-        
-        Configuracion.styles(this);
-        this.setExtendedState(this.NORMAL);
-        
-        //Configuracion.normal(this.cUser, this.jIngresar, this.jlUser, this.jlPassword, this.cPassword);
-        //Configuracion.titulo(jlTitulo);
+        agregarEstilos();
         
         this.setIconImage(Sesion.app.getIcono());
         
@@ -42,6 +37,47 @@ public class Login extends javax.swing.JFrame {
         this.repaint(); 
         
         setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
+    }
+    
+    private void agregarEstilos() {
+        //configuracion de la ventana 
+        Configuracion.styles(this);
+        this.setExtendedState(this.NORMAL);
+        
+        //configuracion al JPanel
+         Configuracion.background(CodigoColor.cFondoBlanco, this.PanelDerecho); 
+         Configuracion.background(CodigoColor.cFondoGris, this.PanelIzquierdo); 
+        
+        //configuracion JLabel
+        Configuracion.titulo(this.jLabel2, this.jlTitulo);
+        Configuracion.foreground(CodigoColor.cLetrasTitulo, this.jlTitulo, this.jLabel2);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jlTitulo);
+        
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jLF, this.jLabel1, this.jLabel3, this.jLabel4, 
+                this.jLabel5, this.jlPassword, this.jlUser);
+        Configuracion.normalItalic(this.jLF, this.jLabel1, this.jLabel3, this.jLabel4, 
+                this.jLabel5, this.jlPassword, this.jlUser);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jLF, this.jLabel1, this.jLabel3, this.jLabel4, 
+                this.jLabel5, this.jlPassword, this.jlUser);
+        
+        //configuraicon JTextField
+        Configuracion.normal(this.cPassword, this.cUser);
+        Configuracion.withoutBorde(this.cPassword, this.cUser);
+        Configuracion.background(CodigoColor.cFondoBlanco,this.cUser, this.cPassword); 
+        Configuracion.foreground(CodigoColor.cLetrasTextField,this.cUser, this.cPassword);
+        
+        //configuracion JSeparator
+        Configuracion.foreground(CodigoColor.cSeparadores, this.jSeparator1, this.jSeparator2);
+        
+        
+        //configuracion JButton
+        Configuracion.normalItalic(this.jIngresar);
+        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.jIngresar);
+        Configuracion.background(CodigoColor.cFondoBtn, this.jIngresar);
+        
+        //configuracion JSpinner
+        
+
     }
     
     public void Cerrar () {
@@ -68,7 +104,6 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelDerecho = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         image = new javax.swing.JLabel();
         PanelIzquierdo = new javax.swing.JPanel();
         jlTitulo = new javax.swing.JLabel();
@@ -87,6 +122,7 @@ public class Login extends javax.swing.JFrame {
         cPassword = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -101,11 +137,6 @@ public class Login extends javax.swing.JFrame {
         PanelDerecho.setBackground(new java.awt.Color(255, 255, 255));
         PanelDerecho.setPreferredSize(new java.awt.Dimension(1100, 700));
         PanelDerecho.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel2.setText("INICIAR SESIÓN");
-        PanelDerecho.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 190, -1));
         PanelDerecho.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 200, 200));
 
         PanelIzquierdo.setBackground(new java.awt.Color(255, 255, 204));
@@ -243,8 +274,6 @@ public class Login extends javax.swing.JFrame {
         jlUser.setText("USUARIO:");
 
         cUser.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        cUser.setForeground(new java.awt.Color(204, 204, 204));
-        cUser.setText("Ingrese Su Nombre De Usuario:");
         cUser.setBorder(null);
         cUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -257,12 +286,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        cPassword.setForeground(new java.awt.Color(204, 204, 204));
-        cPassword.setText("********");
         cPassword.setBorder(null);
         cPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 cPasswordMousePressed(evt);
+            }
+        });
+        cPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cPasswordActionPerformed(evt);
             }
         });
         cPassword.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -279,12 +311,16 @@ public class Login extends javax.swing.JFrame {
         jSeparator2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jSeparator2.setPreferredSize(new java.awt.Dimension(50, 20));
 
+        jLabel2.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel2.setText("INICIAR SESIÓN");
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addContainerGap(622, Short.MAX_VALUE)
+                .addContainerGap(632, Short.MAX_VALUE)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,26 +332,28 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(282, 282, 282)))
                         .addComponent(jlUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(headerLayout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cUser, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cUser, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                         .addComponent(jIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(213, 213, 213))))
+                        .addGap(213, 213, 213))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(155, 155, 155))))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(exitBtn0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(33, 33, 33)
                 .addComponent(jlUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jlPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,7 +361,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(cPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -371,7 +409,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jIngresarActionPerformed
 
     private void jIngresarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIngresarKeyPressed
-        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jIngresar.setBackground(Color.red);
+        }
     }//GEN-LAST:event_jIngresarKeyPressed
 
     private void jIngresarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIngresarKeyReleased
@@ -446,13 +486,13 @@ public class Login extends javax.swing.JFrame {
     private void cUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cUserMousePressed
         // TODO add your handling code here:
         
-        if(cUser.getText().equals("Ingrese Su Nombre De Usuario:")) {
+        if(cUser.getText().equals("")) {
            cUser.setText(""); 
            cUser.setForeground(Color.black);
         }
         
         if(String.valueOf(cPassword.getPassword()).isEmpty()) {
-           cPassword.setText("********");
+           cPassword.setText("");
            cPassword.setForeground(Color.gray); 
         }
     }//GEN-LAST:event_cUserMousePressed
@@ -460,7 +500,7 @@ public class Login extends javax.swing.JFrame {
     private void cPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cPasswordMousePressed
         // TODO add your handling code here:
         
-        if(String.valueOf(cPassword.getPassword()).equals("********")) {
+        if(String.valueOf(cPassword.getPassword()).equals("")) {
            cPassword.setText("");
            cPassword.setForeground(Color.black); 
         }
@@ -493,6 +533,9 @@ public class Login extends javax.swing.JFrame {
     private void cPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cPasswordKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            jIngresar.setBackground(Color.RED);
+            
             try {
             String user = cUser.getText();
             String password = String.valueOf(cPassword.getPassword());
@@ -500,8 +543,8 @@ public class Login extends javax.swing.JFrame {
 
             if (correcto) {
                 if (user.equals(Sesion.seguridad.getUserAdmin())) {
-                    FormMainAdmi fma = new FormMainAdmi();
-                    fma.setVisible(true);
+                    FormMainAdmi pa = new FormMainAdmi();
+                    pa.setVisible(true);
                 } else if (user.equals(Sesion.seguridad.getUserCount())) {
                     InicioContador ic = new InicioContador(); 
                     ic.setVisible(true);
@@ -516,8 +559,13 @@ public class Login extends javax.swing.JFrame {
         } catch (Exception ex) {
 
         }
+            
         }
     }//GEN-LAST:event_cPasswordKeyPressed
+
+    private void cPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cPasswordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

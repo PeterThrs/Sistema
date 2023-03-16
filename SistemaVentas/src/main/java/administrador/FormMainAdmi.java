@@ -16,26 +16,32 @@ public class FormMainAdmi extends javax.swing.JFrame {
 
     public void agregarEstilos() {
         //configuracion ventana
-        this.setMinimumSize(new Dimension(700,500));
+        this.setMinimumSize(new Dimension(700, 500));
         Configuracion.styles(this);
-        
+
         //configuracon menu
         Configuracion.normal(this.menuUser, this.menuProduct, this.menuMain, this.menuSettings, this.menuCompany);
         Configuracion.normal(this.opcAddUser, this.opcUpdateUser, this.opcListUser);
         Configuracion.normal(this.opcAddProduct, this.opcUpdateProduct, this.opcListProduct, this.opcListProductOut);
-        
+
+        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.menuUser, this.menuProduct, this.menuMain,
+                this.menuSettings, this.menuCompany);
+        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.opcAddUser, this.opcUpdateUser, this.opcListUser);
+        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.opcAddProduct, this.opcUpdateProduct,
+                this.opcListProduct, this.opcListProductOut);
+
         //configuracion del JPanel
-        Configuracion.background(CodigoColor.cFondo, this.jPanel1);
-        
+        Configuracion.background(CodigoColor.cFondoGris, this.jPanel1);
+
         //configuracion botones
         Configuracion.normal(this.btnClose);
-        Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnClose);
+        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnClose);
         Configuracion.background(CodigoColor.cFondoBtn, this.btnClose);
-        
+
     }
-    
+
     public static void main(String[] args) {
-        FormMainAdmi fma = new FormMainAdmi(); 
+        FormMainAdmi fma = new FormMainAdmi();
         fma.setVisible(true);
     }
 
@@ -72,14 +78,14 @@ public class FormMainAdmi extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(443, Short.MAX_VALUE)
+                .addContainerGap(599, Short.MAX_VALUE)
                 .addComponent(btnClose)
                 .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(377, Short.MAX_VALUE)
+                .addContainerGap(406, Short.MAX_VALUE)
                 .addComponent(btnClose)
                 .addGap(37, 37, 37))
         );
@@ -150,7 +156,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,11 +191,11 @@ public class FormMainAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_opcAddUserActionPerformed
 
     private void opcUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcUpdateUserActionPerformed
-        try{
-            FormIdUpdate vUpdate = new FormIdUpdate(this, true); 
+        try {
+            FormIdUpdate vUpdate = new FormIdUpdate(this, true);
             vUpdate.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_opcUpdateUserActionPerformed
 
@@ -197,17 +203,17 @@ public class FormMainAdmi extends javax.swing.JFrame {
         try {
             FormBarCodeUpdate update = new FormBarCodeUpdate(this, true);
             update.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_opcUpdateProductActionPerformed
 
     private void menuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUserActionPerformed
-        try{
-            FormIdUpdate vUpdate = new FormIdUpdate(this, true); 
+        try {
+            FormIdUpdate vUpdate = new FormIdUpdate(this, true);
             vUpdate.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_menuUserActionPerformed
 

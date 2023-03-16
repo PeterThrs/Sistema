@@ -21,7 +21,7 @@ public class FormBarCodeUpdate extends javax.swing.JDialog {
             Configuracion.styles(this);
 
             //configuración JPanel
-            Configuracion.background(CodigoColor.cFondo, this.panel);
+            Configuracion.background(CodigoColor.cFondoBlanco, this.panel);
 
             //configuracion JLabel
             Configuracion.normalItalic(this.jlIndication);
@@ -30,11 +30,11 @@ public class FormBarCodeUpdate extends javax.swing.JDialog {
             //configuracion JTextField
             Configuracion.normal(this.tfBarCode);
             Configuracion.withoutBorde(this.tfBarCode);
-            Configuracion.background(CodigoColor.cFondo, this.tfBarCode);
+            Configuracion.background(CodigoColor.cFondoBlanco, this.tfBarCode);
 
             //Configuracion JButton
             Configuracion.normalItalic(this.btnClose, this.btnContinue);
-            Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnClose, this.btnContinue);
+            Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnClose, this.btnContinue);
             Configuracion.background(CodigoColor.cFondoBtn, this.btnClose, this.btnContinue);
 
             //Configuración JSeparador

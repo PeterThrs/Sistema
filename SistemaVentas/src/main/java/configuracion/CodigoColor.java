@@ -12,39 +12,45 @@ public class CodigoColor {
     /**
      * Este es un color blanco-gris
      */
-    public static Color cFondo = new Color(255, 255, 255);
+    public static Color cFondoBlanco = new Color(255, 255, 255);
+    
+    public static Color cFondoGrisLevel2 = new Color(206, 214, 224); 
+    
+    public static Color cFondoGris = new Color(241, 242, 246); 
     /**
      * Este es un color azul obscuro 
      */
-    public static Color cLetrasObscuras = new Color(83, 82, 237);
+    public static Color cLetrasObscuras = new Color(0, 0, 0);
     /**
      * Este es un color azul intermeido
      */
-    public static Color cLetrasClaras = new Color(255, 255, 255);
+    public static Color cLetrasClaras = new Color(241, 242, 246);
     /**
      * Este es un color azul claro
      */
-    public static Color cLetrasTitulo = new Color(47, 53, 66);
+    public static Color cLetrasTitulo = new Color(55, 66, 250);
     /**
      * Este se un color Rojo Obscuro (ginda) 
      */
-    public static Color cSeparadores = new Color(255, 107, 129);
+    public static Color cSeparadores = new Color(55, 66, 250);
     /**
      * Este es un rojo intermedio (rojizo) 
      */
-    public static Color cFondoBtn = new Color(112, 161, 255);
+    public static Color cFondoBtn = new Color(83, 82, 237);
     /**
      * NO me acuerdo 
      */
-    public static Color cLetrasBtn = new Color(255, 255, 255);
+    public static Color cLetrasBtnClaro = new Color(255, 255, 255);
+    
+    public static Color cLetrasBtnObscuro = new Color(0, 0, 0);
     /**
      * NO me acuerdo 
      */
-    public static Color cLetrasTextField = new Color(0, 18, 25);
+    public static Color cLetrasTextField = new Color(0, 0, 0);
     /**
      * NO me acuerdo 
      */
-    public static Color cLetrasLabel = new Color(155, 34, 38);
+    public static Color cLetrasLabel = new Color(0, 0, 0);
     
     
     //-> Colores de Juan

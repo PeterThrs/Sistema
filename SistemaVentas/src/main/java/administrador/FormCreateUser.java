@@ -22,7 +22,7 @@ public class FormCreateUser extends javax.swing.JDialog {
             Configuracion.styles(this);
 
             //configuracion jPanel
-            Configuracion.background(CodigoColor.cFondo, this.panel);
+            Configuracion.background(CodigoColor.cFondoBlanco, this.panel);
 
             //Configuracion JLabels
             Configuracion.normalItalic(this.jlTitle);
@@ -35,25 +35,25 @@ public class FormCreateUser extends javax.swing.JDialog {
             //Configuraciion JTextField 
             Configuracion.normal(this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
             Configuracion.withoutBorde(this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
-            Configuracion.background(CodigoColor.cFondo, this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
+            Configuracion.background(CodigoColor.cFondoBlanco, this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
 
             //Configuracion JCheckBox
             Configuracion.normalItalic(this.cbSendEmail);
             Configuracion.withoutBorde(this.cbSendEmail);
             Configuracion.foreground(CodigoColor.cLetrasObscuras, this.cbSendEmail);
-            Configuracion.background(CodigoColor.cFondo, this.cbSendEmail);
+            Configuracion.background(CodigoColor.cFondoBlanco, this.cbSendEmail);
 
             //Configuracion jComboBox
             Configuracion.normalItalic(this.cbRol);
 
             //Configuracion JButton
             Configuracion.normalItalic(this.btnCancel, this.btnAcept);
-            Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnCancel, this.btnAcept);
+            Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnCancel, this.btnAcept);
             Configuracion.background(CodigoColor.cFondoBtn, this.btnCancel, this.btnAcept);
 
             //Configuracion JSeparator 
             Configuracion.foreground(CodigoColor.cSeparadores, this.linea2, this.linea3, this.linea4, this.linea5);
-            Configuracion.background(CodigoColor.cFondo, this.linea2, this.linea3, this.linea4, this.linea5);
+            Configuracion.background(CodigoColor.cFondoBlanco, this.linea2, this.linea3, this.linea4, this.linea5);
 
         } catch (Exception ex) {
 
@@ -72,9 +72,9 @@ public class FormCreateUser extends javax.swing.JDialog {
         dcbm.addElement(Roles.contador);
         this.cbRol.setModel(dcbm);
         this.cbRol.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasObscuras); 
-        this.cbRol.getEditor().getEditorComponent().setBackground(CodigoColor.cFondo); 
+        this.cbRol.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoBlanco); 
         Configuracion.foreground(CodigoColor.cLetrasObscuras, this.cbRol);
-        Configuracion.background(CodigoColor.cFondo, this.cbRol);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.cbRol);
     }
 
     private void checkBoxItemListened() {

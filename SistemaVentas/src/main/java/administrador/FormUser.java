@@ -27,7 +27,7 @@ public class FormUser extends javax.swing.JDialog {
         Configuracion.styles(this);
         
         //configuraciones del panel
-        Configuracion.background(CodigoColor.cFondo, this.panel);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.panel);
         
         //configuraciones de los JLabel
         Configuracion.titulo(this.jlTitle);
@@ -47,7 +47,7 @@ public class FormUser extends javax.swing.JDialog {
         Configuracion.withoutBorde(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet);
-        Configuracion.background(CodigoColor.cFondo,this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
+        Configuracion.background(CodigoColor.cFondoBlanco,this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet);
         Configuracion.foreground(CodigoColor.cLetrasObscuras,this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
@@ -57,7 +57,7 @@ public class FormUser extends javax.swing.JDialog {
         
         //configuraciones de los botones
         Configuracion.normalItalic(this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnCancel, this.btnCreate, this.btnUpdate);
         Configuracion.background(CodigoColor.cFondoBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
         
         //configurciones del JSpinner
@@ -65,13 +65,13 @@ public class FormUser extends javax.swing.JDialog {
         //configuraciones del JRadioButton
         Configuracion.normalItalic(this.rbMan, this.rbWoman); 
         Configuracion.foreground(CodigoColor.cLetrasObscuras, this.rbMan, this.rbWoman);
-        Configuracion.background(CodigoColor.cFondo, this.rbMan, this.rbWoman);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.rbMan, this.rbWoman);
         
         
         //configuraciones de los jSeparator
         Configuracion.foreground(CodigoColor.cSeparadores, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
                 this.linea7, this.linea8, this.linea9, this.linea10, this.linea11, this.linea12, this.linea13, this.linea14);
-        Configuracion.background(CodigoColor.cFondo, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
+        Configuracion.background(CodigoColor.cFondoBlanco, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
                 this.linea7, this.linea8, this.linea9, this.linea10, this.linea11, this.linea12, this.linea13, this.linea14);
 
     }
@@ -96,7 +96,7 @@ public class FormUser extends javax.swing.JDialog {
         SpinnerNumberModel snm = new SpinnerNumberModel(18, 18, 100, 1);
         this.sAge.setModel(snm);
         this.sAge.getEditor().getComponent(0).setForeground(CodigoColor.cLetrasObscuras);
-        this.sAge.getEditor().getComponent(0).setBackground(CodigoColor.cFondo);
+        this.sAge.getEditor().getComponent(0).setBackground(CodigoColor.cFondoBlanco);
     }
     
     private void estadoBtnUpdate(){

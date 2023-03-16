@@ -21,7 +21,7 @@ public class FormIdUpdate extends javax.swing.JDialog {
         Configuracion.styles(this);
         
         //configuración JPanel
-        Configuracion.background(CodigoColor.cFondo, this.panel);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.panel);
         
         //configuracion JLabel
         Configuracion.normalItalic(this.jlIndication);
@@ -30,11 +30,11 @@ public class FormIdUpdate extends javax.swing.JDialog {
         //configuracion JTextField
         Configuracion.normal(this.tfId);
         Configuracion.withoutBorde(this.tfId);
-        Configuracion.background(CodigoColor.cFondo,this.tfId);
+        Configuracion.background(CodigoColor.cFondoBlanco,this.tfId);
         
         //Configuracion JButton
         Configuracion.normalItalic(this.btnCancel, this.btnAcept);
-        Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnCancel, this.btnAcept);
+        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnCancel, this.btnAcept);
         Configuracion.background(CodigoColor.cFondoBtn, this.btnCancel, this.btnAcept);
         
         //Configuración JSeparador

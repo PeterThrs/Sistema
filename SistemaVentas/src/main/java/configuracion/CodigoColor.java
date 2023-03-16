@@ -10,15 +10,15 @@ public class CodigoColor {
     /**
      * Este es un color blanco crema
      */
-    public static Color cFondo = new Color(233, 216, 166);
+    public static Color cFondo = new Color(255, 255, 255);
     /**
      * Este es un color azul obscuro 
      */
-    public static Color cLetrasObscuras = new Color(0, 18, 25);
+    public static Color cLetrasObscuras = new Color(47, 53, 66);
     /**
      * Este es un color azul intermeido
      */
-    public static Color cLetrasClaras = new Color(233, 216, 166);
+    public static Color cLetrasClaras = new Color(255, 255, 255);
     /**
      * Este es un color azul claro
      */

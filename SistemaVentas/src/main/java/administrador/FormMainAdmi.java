@@ -11,6 +11,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
     public FormMainAdmi() {
         initComponents();
         agregarEstilos();
+        btnClose.setIcon(new Configuracion().setIconoBoton("/cerrar-sesion.png", btnClose));
     }
 
     public void agregarEstilos() {
@@ -31,6 +32,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
     private void initComponents() {
 
         btnClose = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         menuMain = new javax.swing.JMenuBar();
         menuUser = new javax.swing.JMenu();
         opcAddUser = new javax.swing.JMenuItem();
@@ -45,13 +47,15 @@ public class FormMainAdmi extends javax.swing.JFrame {
         menuSettings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        btnClose.setText("Cerrar Sesion");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("WTFFFF");
 
         menuUser.setText("Administrar Usuarios");
         menuUser.addActionListener(new java.awt.event.ActionListener() {
@@ -119,17 +123,23 @@ public class FormMainAdmi extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(243, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(398, Short.MAX_VALUE)
-                .addComponent(btnClose)
-                .addGap(70, 70, 70))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(376, Short.MAX_VALUE)
-                .addComponent(btnClose)
-                .addGap(38, 38, 38))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -189,6 +199,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu menuCompany;
     private javax.swing.JMenuBar menuMain;
     private javax.swing.JMenu menuProduct;

@@ -90,7 +90,7 @@ public class ModificarListaUsuarios extends javax.swing.JDialog {
             }
         });
 
-        jButtonModificar.setText("Modificar");
+        jButtonModificar.setText("ergeg");
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarActionPerformed(evt);

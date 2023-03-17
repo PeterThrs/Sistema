@@ -4,6 +4,7 @@ import Principal.Login;
 import configuracion.Configuracion;
 import administrador.FormUser;
 import configuracion.CodigoColor;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class FormMainAdmi extends javax.swing.JFrame {
@@ -15,15 +16,33 @@ public class FormMainAdmi extends javax.swing.JFrame {
     }
 
     public void agregarEstilos() {
+        //configuracion ventana
+        this.setMinimumSize(new Dimension(700, 500));
         Configuracion.styles(this);
+
+        //configuracon menu
         Configuracion.normal(this.menuUser, this.menuProduct, this.menuMain, this.menuSettings, this.menuCompany);
         Configuracion.normal(this.opcAddUser, this.opcUpdateUser, this.opcListUser);
         Configuracion.normal(this.opcAddProduct, this.opcUpdateProduct, this.opcListProduct, this.opcListProductOut);
+
+        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.menuUser, this.menuProduct, this.menuMain,
+                this.menuSettings, this.menuCompany);
+        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.opcAddUser, this.opcUpdateUser, this.opcListUser);
+        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.opcAddProduct, this.opcUpdateProduct,
+                this.opcListProduct, this.opcListProductOut);
+
+        //configuracion del JPanel
+        Configuracion.background(CodigoColor.cFondoGris, this.jPanel1);
+
+        //configuracion botones
         Configuracion.normal(this.btnClose);
+        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnClose);
+        Configuracion.background(CodigoColor.cFondoBtn, this.btnClose);
+
     }
-    
+
     public static void main(String[] args) {
-        FormMainAdmi fma = new FormMainAdmi(); 
+        FormMainAdmi fma = new FormMainAdmi();
         fma.setVisible(true);
     }
 
@@ -31,6 +50,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         menuMain = new javax.swing.JMenuBar();
@@ -55,7 +75,22 @@ public class FormMainAdmi extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("WTFFFF");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(599, Short.MAX_VALUE)
+                .addComponent(btnClose)
+                .addGap(32, 32, 32))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(406, Short.MAX_VALUE)
+                .addComponent(btnClose)
+                .addGap(37, 37, 37))
+        );
 
         menuUser.setText("Administrar Usuarios");
         menuUser.addActionListener(new java.awt.event.ActionListener() {
@@ -123,23 +158,11 @@ public class FormMainAdmi extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(243, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -170,11 +193,11 @@ public class FormMainAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_opcAddUserActionPerformed
 
     private void opcUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcUpdateUserActionPerformed
-        try{
-            FormIdUpdate vUpdate = new FormIdUpdate(this, true); 
+        try {
+            FormIdUpdate vUpdate = new FormIdUpdate(this, true);
             vUpdate.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_opcUpdateUserActionPerformed
 
@@ -182,24 +205,24 @@ public class FormMainAdmi extends javax.swing.JFrame {
         try {
             FormBarCodeUpdate update = new FormBarCodeUpdate(this, true);
             update.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_opcUpdateProductActionPerformed
 
     private void menuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUserActionPerformed
-        try{
-            FormIdUpdate vUpdate = new FormIdUpdate(this, true); 
+        try {
+            FormIdUpdate vUpdate = new FormIdUpdate(this, true);
             vUpdate.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_menuUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menuCompany;
     private javax.swing.JMenuBar menuMain;
     private javax.swing.JMenu menuProduct;

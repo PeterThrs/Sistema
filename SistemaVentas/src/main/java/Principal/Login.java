@@ -5,6 +5,7 @@ import Contador.InicioContador;
 import Objetos.Sesion;
 import administrador.FormMainAdmi;
 import com.ventas.administrador.PrincipalAdministrador;
+import configuracion.CodigoColor;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,7 @@ import javax.swing.JFrame;
 import configuracion.Configuracion;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -26,14 +28,7 @@ public class Login extends javax.swing.JFrame {
     FondoPanel fondo=new FondoPanel();
     public Login() {
         initComponents();
-        //this.setContentPane(fondo);
-         
-        
-        Configuracion.styles(this);
-        this.setExtendedState(this.NORMAL);
-        
-        //Configuracion.normal(this.cUser, this.jIngresar, this.jlUser, this.jlPassword, this.cPassword);
-        //Configuracion.titulo(jlTitulo);
+        agregarEstilos();
         
         this.setIconImage(Sesion.app.getIcono());
         
@@ -48,6 +43,47 @@ public class Login extends javax.swing.JFrame {
         this.repaint(); 
         
         setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
+    }
+    
+    private void agregarEstilos() {
+        //configuracion de la ventana 
+        Configuracion.styles(this);
+        this.setExtendedState(this.NORMAL);
+        
+        //configuracion al JPanel
+         Configuracion.background(CodigoColor.cFondoBlanco, this.PanelDerecho); 
+         //Configuracion.background(CodigoColor.cFondoGris); 
+        
+        //configuracion JLabel
+        Configuracion.titulo(this.jLabel2, this.jlTitulo);
+        Configuracion.foreground(CodigoColor.cLetrasTitulo, this.jlTitulo, this.jLabel2);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jlTitulo);
+        
+        Configuracion.foreground(CodigoColor.cLetrasObscuras,this.jLabel3, this.jLabel4, 
+                this.jLabel5, this.jlPassword, this.jlUser);
+        Configuracion.normalItalic(this.jLabel3, this.jLabel4, 
+                this.jLabel5, this.jlPassword, this.jlUser);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras,this.jLabel3, this.jLabel4, 
+                this.jLabel5, this.jlPassword, this.jlUser);
+        
+        //configuraicon JTextField
+        Configuracion.normal(this.cPassword, this.cUser);
+        Configuracion.withoutBorde(this.cPassword, this.cUser);
+        Configuracion.background(CodigoColor.cFondoBlanco,this.cUser, this.cPassword); 
+        Configuracion.foreground(CodigoColor.cLetrasTextField,this.cUser, this.cPassword);
+        
+        //configuracion JSeparator
+        Configuracion.foreground(CodigoColor.cSeparadores, this.jSeparator1, this.jSeparator2);
+        
+        
+        //configuracion JButton
+        Configuracion.normalItalic(this.jIngresar);
+        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.jIngresar);
+        Configuracion.background(CodigoColor.cFondoBtn, this.jIngresar);
+        
+        //configuracion JSpinner
+        
+
     }
     
     public void Cerrar () {

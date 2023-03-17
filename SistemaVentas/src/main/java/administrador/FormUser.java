@@ -22,11 +22,12 @@ public class FormUser extends javax.swing.JDialog {
 
     private void agregarEstilos() {
         //configuraciones de la ventana
-        this.setMinimumSize(new Dimension(550, 700));
+        this.setMinimumSize(new Dimension(550, 650));
+        this.setSize(new Dimension(550, 700));
         Configuracion.styles(this);
         
         //configuraciones del panel
-        Configuracion.background(CodigoColor.cFondo, this.panel);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.panel);
         
         //configuraciones de los JLabel
         Configuracion.titulo(this.jlTitle);
@@ -46,14 +47,17 @@ public class FormUser extends javax.swing.JDialog {
         Configuracion.withoutBorde(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet);
-        Configuracion.background(CodigoColor.cFondo,this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
+        Configuracion.background(CodigoColor.cFondoBlanco,this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
+                this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
+                this.tfStreet);
+        Configuracion.foreground(CodigoColor.cLetrasObscuras,this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet);
         
         
         //configuraciones de los botones
         Configuracion.normalItalic(this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.foreground(CodigoColor.cLetrasBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnCancel, this.btnCreate, this.btnUpdate);
         Configuracion.background(CodigoColor.cFondoBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
         
         //configurciones del JSpinner
@@ -61,12 +65,14 @@ public class FormUser extends javax.swing.JDialog {
         //configuraciones del JRadioButton
         Configuracion.normalItalic(this.rbMan, this.rbWoman); 
         Configuracion.foreground(CodigoColor.cLetrasObscuras, this.rbMan, this.rbWoman);
-        Configuracion.background(CodigoColor.cFondo, this.rbMan, this.rbWoman);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.rbMan, this.rbWoman);
         
         
         //configuraciones de los jSeparator
         Configuracion.foreground(CodigoColor.cSeparadores, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
-                this.linea7, this.linea8, this.linea9, this.linea10, this.linea11, this.linea12, this.linea13);
+                this.linea7, this.linea8, this.linea9, this.linea10, this.linea11, this.linea12, this.linea13, this.linea14);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
+                this.linea7, this.linea8, this.linea9, this.linea10, this.linea11, this.linea12, this.linea13, this.linea14);
 
     }
 
@@ -90,7 +96,7 @@ public class FormUser extends javax.swing.JDialog {
         SpinnerNumberModel snm = new SpinnerNumberModel(18, 18, 100, 1);
         this.sAge.setModel(snm);
         this.sAge.getEditor().getComponent(0).setForeground(CodigoColor.cLetrasObscuras);
-        this.sAge.getEditor().getComponent(0).setBackground(CodigoColor.cFondo);
+        this.sAge.getEditor().getComponent(0).setBackground(CodigoColor.cFondoBlanco);
     }
     
     private void estadoBtnUpdate(){
@@ -175,7 +181,7 @@ public class FormUser extends javax.swing.JDialog {
         linea11 = new javax.swing.JSeparator();
         linea12 = new javax.swing.JSeparator();
         linea13 = new javax.swing.JSeparator();
-        jSeparator1 = new javax.swing.JSeparator();
+        linea14 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -345,7 +351,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 6);
         panel.add(tfName, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -354,7 +360,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 6);
         panel.add(tfLastNameP, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -363,7 +369,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 6);
         panel.add(tfLastNameM, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -372,7 +378,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 6);
         panel.add(tfEmail, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -381,7 +387,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 6);
         panel.add(tfPhone1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -390,7 +396,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfPhone2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -399,7 +405,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfMun, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -408,7 +414,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfCol, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -417,14 +423,14 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfStreet, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 30;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfHouseNumber, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -459,7 +465,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfRfc, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -468,7 +474,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfCurp, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -477,7 +483,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 2, 6);
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfPostalCode, gridBagConstraints);
 
         btnCancel.setText("Regresar");
@@ -606,7 +612,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.gridy = 15;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
-        panel.add(jSeparator1, gridBagConstraints);
+        panel.add(linea14, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -616,7 +622,7 @@ public class FormUser extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
         );
 
         pack();
@@ -640,7 +646,6 @@ public class FormUser extends javax.swing.JDialog {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jlAge;
     private javax.swing.JLabel jlCol;
     private javax.swing.JLabel jlCurp;
@@ -662,6 +667,7 @@ public class FormUser extends javax.swing.JDialog {
     private javax.swing.JSeparator linea11;
     private javax.swing.JSeparator linea12;
     private javax.swing.JSeparator linea13;
+    private javax.swing.JSeparator linea14;
     private javax.swing.JSeparator linea2;
     private javax.swing.JSeparator linea3;
     private javax.swing.JSeparator linea4;

@@ -28,7 +28,7 @@ public class FormIdUpdate extends javax.swing.JDialog {
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlIndication);
         
         //configuracion JTextField
-        Configuracion.normal(this.tfId);
+        Configuracion.robotoPlain12(this.tfId);
         Configuracion.withoutBorde(this.tfId);
         Configuracion.background(CodigoColor.cFondoGris,this.tfId);
         

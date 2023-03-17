@@ -70,7 +70,7 @@ public class Login extends javax.swing.JFrame {
                 this.jLabel5);
         
         //configuraicon JTextField
-        Configuracion.normal(this.cPassword, this.cUser);
+        Configuracion.robotoPlain12(this.cPassword, this.cUser);
         Configuracion.withoutBorde(this.cPassword, this.cUser);
         Configuracion.background(CodigoColor.cFondoGris,this.cUser, this.cPassword); 
         Configuracion.foreground(CodigoColor.cLetrasTextField,this.cUser, this.cPassword);

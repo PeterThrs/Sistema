@@ -4,6 +4,8 @@
  */
 package Objetos;
 
+import Objetos.Departamento;
+
 /**
  *
  * @author juanj
@@ -16,6 +18,8 @@ public class Producto {
     private String marca;
     private double cantidad;
 
+    private Departamento departamento; //del pedro
+    
     public Producto(long codigo, String nombre, double precio, String area, String marca, double cantidad) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -72,8 +76,17 @@ public class Producto {
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
-    
-    
+    //Del pedro
+    public Producto(Departamento departamento){
+        this.departamento = departamento; 
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
     
 }
-

@@ -1,5 +1,7 @@
 package administrador;
 
+
+
 import Principal.Login;
 import configuracion.Configuracion;
 import administrador.FormUser;
@@ -12,7 +14,6 @@ public class FormMainAdmi extends javax.swing.JFrame {
     public FormMainAdmi() {
         initComponents();
         agregarEstilos();
-        btnClose.setIcon(new Configuracion().setIconoBoton("/cerrar-sesion.png", btnClose));
     }
 
     public void agregarEstilos() {
@@ -52,7 +53,6 @@ public class FormMainAdmi extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         menuMain = new javax.swing.JMenuBar();
         menuUser = new javax.swing.JMenu();
         opcAddUser = new javax.swing.JMenuItem();
@@ -67,8 +67,8 @@ public class FormMainAdmi extends javax.swing.JFrame {
         menuSettings = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
+        btnClose.setText("Cerrar Sesion");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);

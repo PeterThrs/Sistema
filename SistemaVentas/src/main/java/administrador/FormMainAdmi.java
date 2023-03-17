@@ -26,10 +26,10 @@ public class FormMainAdmi extends javax.swing.JFrame {
         Configuracion.normal(this.opcAddUser, this.opcUpdateUser, this.opcListUser);
         Configuracion.normal(this.opcAddProduct, this.opcUpdateProduct, this.opcListProduct, this.opcListProductOut);
 
-        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.menuUser, this.menuProduct, this.menuMain,
+        Configuracion.background(CodigoColor.cFondoGris2, this.menuUser, this.menuProduct, this.menuMain,
                 this.menuSettings, this.menuCompany);
-        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.opcAddUser, this.opcUpdateUser, this.opcListUser);
-        Configuracion.background(CodigoColor.cFondoGrisLevel2, this.opcAddProduct, this.opcUpdateProduct,
+        Configuracion.background(CodigoColor.cFondoGris2, this.opcAddUser, this.opcUpdateUser, this.opcListUser);
+        Configuracion.background(CodigoColor.cFondoGris2, this.opcAddProduct, this.opcUpdateProduct,
                 this.opcListProduct, this.opcListProductOut);
 
         //configuracion del JPanel
@@ -37,8 +37,8 @@ public class FormMainAdmi extends javax.swing.JFrame {
 
         //configuracion botones
         Configuracion.normal(this.btnClose);
-        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnClose);
-        Configuracion.background(CodigoColor.cFondoBtn, this.btnClose);
+        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnClose);
+        Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnClose);
 
     }
 

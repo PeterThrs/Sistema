@@ -46,7 +46,7 @@ public class Configuracion {
     //configuraicones para el tipo de letra general de la aplicacion
     public static <T extends JComponent> void normal(T... t){
         for(int i = 0; i < t.length; i++){
-            t[i].setFont(new Font("Amasis MT Pro Medium", Font.PLAIN, 18));
+            t[i].setFont(new Font("Roboto", Font.PLAIN, 12));
         } 
     }
     //configuraicones para el tipo de titulos general de la aplicacion

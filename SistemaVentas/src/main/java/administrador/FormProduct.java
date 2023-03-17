@@ -39,10 +39,10 @@ public class FormProduct extends javax.swing.JDialog {
         
         //configuracion JLabel
         Configuracion.titulo(jlTitle);
-        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jlTitle);
+        Configuracion.foreground(CodigoColor.cLetrasTituloAzul,this.jlTitle);
         Configuracion.normalItalic(this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,this.jlRevenue, 
                 this.jlSale, this.jlSalePrice, this.jlTotal, this.jlWholeSalePrice);
-        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,
                 this.jlRevenue, this.jlSale, this.jlSalePrice, this.jlTotal, this.jlWholeSalePrice);
         
         //configuraicon JTextField
@@ -54,29 +54,29 @@ public class FormProduct extends javax.swing.JDialog {
                 this.tfTotal,this.tfWholePrice);
         
         //configuracion JSeparator
-        Configuracion.foreground(CodigoColor.cSeparadores, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
+        Configuracion.foreground(CodigoColor.cSeparatorRed, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
                 this.linea8);
         
         
         //configuracion JButton
         Configuracion.normalItalic(this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.background(CodigoColor.cFondoBtn, this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnCreate, this.btnUpdate);
         
         //configuraicion JComboBox 
         Configuracion.normalItalic(this.cbDepartment);
         Configuracion.withoutBorde(this.cbDepartment);
-        Configuracion.foreground(CodigoColor.cLetrasObscuras,this.cbDepartment);
+        Configuracion.foreground(CodigoColor.cLetrasNegro,this.cbDepartment);
         Configuracion.background(CodigoColor.cFondoGris,this.cbDepartment);
         
         //configuracion JRadioButton
         Configuracion.normalItalic(this.rbGranel, this.rbUnit);
-        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.rbGranel, this.rbUnit);
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.rbGranel, this.rbUnit);
         Configuracion.background(CodigoColor.cFondoGris,this.rbGranel, this.rbUnit);
         
         //configuracion JCheckBox
         Configuracion.normalItalic(this.cbInventory);
-        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.cbInventory);
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbInventory);
         Configuracion.background(CodigoColor.cFondoGris,this.cbInventory);
         
         
@@ -140,14 +140,14 @@ public class FormProduct extends javax.swing.JDialog {
         dcbm.addElement(DatosFalsos.p3.getDepartamento().getDepartamento());
         dcbm.addElement(DatosFalsos.p4.getDepartamento().getDepartamento());
         this.cbDepartment.setModel(dcbm);
-        this.cbDepartment.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasObscuras); 
+        this.cbDepartment.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasNegro); 
         this.cbDepartment.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris); 
     }
 
     private void confSpinner() {
         SpinnerNumberModel snm = new SpinnerNumberModel(0, 0, 300, 10);
         this.sRevenue.setModel(snm);
-        this.sRevenue.getEditor().getComponent(0).setForeground(CodigoColor.cLetrasObscuras);
+        this.sRevenue.getEditor().getComponent(0).setForeground(CodigoColor.cLetrasNegro);
         this.sRevenue.getEditor().getComponent(0).setBackground(CodigoColor.cFondoGris);
     }
 

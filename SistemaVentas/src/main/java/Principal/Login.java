@@ -43,6 +43,7 @@ public class Login extends javax.swing.JFrame {
         this.repaint(); 
         
         setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
+        this.setIconImage(Sesion.app.getIcono());
     }
     
     private void agregarEstilos() {
@@ -51,35 +52,37 @@ public class Login extends javax.swing.JFrame {
         this.setExtendedState(this.NORMAL);
         
         //configuracion al JPanel
-         Configuracion.background(CodigoColor.cFondoBlanco, this.PanelDerecho); 
+         Configuracion.background(CodigoColor.cFondoGris, this.PanelDerecho, this.header); 
          //Configuracion.background(CodigoColor.cFondoGris); 
         
         //configuracion JLabel
         Configuracion.titulo(this.jLabel2, this.jlTitulo);
-        Configuracion.foreground(CodigoColor.cLetrasTitulo, this.jlTitulo, this.jLabel2);
-        Configuracion.foreground(CodigoColor.cLetrasObscuras, this.jlTitulo);
+        Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitulo, this.jLabel2);
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlTitulo);
         
-        Configuracion.foreground(CodigoColor.cLetrasObscuras,this.jLabel3, this.jLabel4, 
+        Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
         Configuracion.normalItalic(this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
-        Configuracion.foreground(CodigoColor.cLetrasObscuras,this.jLabel3, this.jLabel4, 
+        Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
+        Configuracion.foreground(CodigoColor.cLetrasBlanco,this.jLabel3, this.jLabel4, 
+                this.jLabel5);
         
         //configuraicon JTextField
         Configuracion.normal(this.cPassword, this.cUser);
         Configuracion.withoutBorde(this.cPassword, this.cUser);
-        Configuracion.background(CodigoColor.cFondoBlanco,this.cUser, this.cPassword); 
+        Configuracion.background(CodigoColor.cFondoGris,this.cUser, this.cPassword); 
         Configuracion.foreground(CodigoColor.cLetrasTextField,this.cUser, this.cPassword);
         
         //configuracion JSeparator
-        Configuracion.foreground(CodigoColor.cSeparadores, this.jSeparator1, this.jSeparator2);
+        Configuracion.foreground(CodigoColor.cSeparatorRed, this.jSeparator1, this.jSeparator2);
         
         
         //configuracion JButton
         Configuracion.normalItalic(this.jIngresar);
-        Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.jIngresar);
-        Configuracion.background(CodigoColor.cFondoBtn, this.jIngresar);
+        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.jIngresar);
+        Configuracion.background(CodigoColor.cFondoBtnAzul, this.jIngresar);
         
         //configuracion JSpinner
         
@@ -281,19 +284,19 @@ public class Login extends javax.swing.JFrame {
         iconUser.setText("jLabel6");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Todos los derechos reservados © 2023.");
 
-        jlTitulo.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        jlTitulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jlTitulo.setForeground(new java.awt.Color(0, 0, 102));
         jlTitulo.setText("SISTEMA DE VENTAS");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("SisVentas®");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Un producto de PJEJ Consulting.");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
@@ -301,53 +304,54 @@ public class Login extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addGap(280, 280, 280)
-                .addComponent(jLabel3)
-                .addGap(372, 372, 372)
+                .addGap(198, 198, 198)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel3)
+                        .addGap(87, 87, 87))
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel5)
+                        .addGap(10, 10, 10))
+                    .addComponent(jLabel4))
+                .addGap(265, 265, 265)
                 .addComponent(jIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(117, 117, 117)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
-                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                                .addComponent(iconUser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cUser, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(162, 162, 162))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                                    .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(exitBtn0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap())
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(190, 190, 190)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                                .addComponent(iconPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(156, 156, 156))))
+                        .addGap(123, 123, 123)
+                        .addComponent(jLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(headerLayout.createSequentialGroup()
-                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlTitulo)
-                            .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(headerLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jLabel5))
-                                .addComponent(jLabel4)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(187, 187, 187)
+                        .addComponent(jlTitulo)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addComponent(iconUser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cUser, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(162, 162, 162))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(177, 177, 177)
+                        .addComponent(exitBtn0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(190, 190, 190))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addComponent(iconPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(156, 156, 156))))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,7 +360,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(headerLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jlTitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(55, 55, 55)
                         .addComponent(jLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(headerLayout.createSequentialGroup()
@@ -387,14 +391,17 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)))
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(48, 48, 48))
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addComponent(jIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addGap(32, 32, 32))))
         );
 
         PanelDerecho.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 700));
@@ -464,7 +471,7 @@ public class Login extends javax.swing.JFrame {
 
                 if (correcto) {
                     if (user.equals(Sesion.seguridad.getUserAdmin())) {
-                        PrincipalAdministrador pa = new PrincipalAdministrador();
+                        FormMainAdmi pa = new FormMainAdmi();
                         pa.setVisible(true);
                     } else if (user.equals(Sesion.seguridad.getUserCount())) {
                         InicioContador ic = new InicioContador();

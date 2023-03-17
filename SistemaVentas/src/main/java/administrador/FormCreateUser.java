@@ -1,8 +1,8 @@
 package administrador;
 
 import Objetos.Roles;
+import configuracion.CodigoColor;
 import configuracion.Configuracion;
-import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.DefaultComboBoxModel;
 
@@ -11,70 +11,77 @@ public class FormCreateUser extends javax.swing.JDialog {
     public FormCreateUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        configuracion();
         this.agregarEstilos();
-        configuracion(); 
     }
 
     private void agregarEstilos() {
         try {
+            //configuracion ventana
             this.setMinimumSize(new Dimension(350, 330));
             Configuracion.styles(this);
-            Configuracion.normalItalic(this.btnCancel, this.btnAcept);
+
+            //configuracion jPanel
+            Configuracion.background(CodigoColor.cFondoGris, this.panel);
+
+            //Configuracion JLabels
+            Configuracion.normalItalic(this.jlTitle);
+            Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
+            Configuracion.normalItalic(this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol,
+                    this.jlUser, this.jlId);
+            Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol,
+                    this.jlUser, this.jlId);
+
+            //Configuraciion JTextField 
             Configuracion.normal(this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
-            Configuracion.normalItalic(this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol, this.jlTitle,
-                    this.jlUser, this.jlId);
-            Configuracion.normalItalic(this.cbRol, this.cbSendEmail);
+            Configuracion.withoutBorde(this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
+            Configuracion.background(CodigoColor.cFondoGris, this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
 
-            //Quitar el borde a los text Field
-            Configuracion.borde(this.tfConfirm, this.tfPassword, this.tfUser, this.cbRol, this.tfId);
+            //Configuracion JCheckBox
+            Configuracion.normalItalic(this.cbSendEmail);
+            Configuracion.withoutBorde(this.cbSendEmail);
+            Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbSendEmail);
+            Configuracion.background(CodigoColor.cFondoGris, this.cbSendEmail);
 
-            //configuracion para establecer el foreground
-            //color azul fuerte
-            Color color = new Color(29, 53, 87);
-            Configuracion.foreground(color, this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol, this.jlTitle,
-                    this.jlUser, this.jlId);
-            Configuracion.background(color, this.btnCancel, this.btnAcept);
+            //Configuracion jComboBox
+            Configuracion.normalItalic(this.cbRol);
 
-            //color rojo fuerte
-            color = new Color(230, 57, 70);
-            Configuracion.foreground(color, this.linea2, this.linea3, this.linea4, this.linea5);
+            //Configuracion JButton
+            Configuracion.normalItalic(this.btnCancel, this.btnAcept);
+            Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnCancel, this.btnAcept);
+            Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnAcept);
 
-            //color blanco crema
-            color = new Color(241, 250, 238);
-            Configuracion.background(color, this.panel, this.tfConfirm, this.tfPassword, this.tfUser, this.cbSendEmail,
-                    this.cbRol);
-            Configuracion.foreground(color, this.btnCancel, this.btnAcept);
-
-            //color azul bajo
-            color = new Color(168, 218, 220);
-            //color azul intermedio
-            color = new Color(69, 123, 157);
-            
+            //Configuracion JSeparator 
+            Configuracion.foreground(CodigoColor.cSeparatorRed, this.linea2, this.linea3, this.linea4, this.linea5);
+            Configuracion.background(CodigoColor.cFondoGris, this.linea2, this.linea3, this.linea4, this.linea5);
 
         } catch (Exception ex) {
 
         }
     }
-    
-    
-    private void configuracion(){
+
+    private void configuracion() {
         modeloComboBox();
         checkBoxItemListened();
     }
-    
-    private void modeloComboBox(){
-        DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>(); 
+
+    private void modeloComboBox() {
+        DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
         dcbm.addElement(Roles.administrador);
-        dcbm.addElement(Roles.cajero); 
-        dcbm.addElement(Roles.contador); 
+        dcbm.addElement(Roles.cajero);
+        dcbm.addElement(Roles.contador);
         this.cbRol.setModel(dcbm);
+        this.cbRol.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasNegro); 
+        this.cbRol.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris); 
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbRol);
+        Configuracion.background(CodigoColor.cFondoGris, this.cbRol);
     }
-    
-    private void checkBoxItemListened(){
-        this.cbSendEmail.addItemListener( e -> {
-            if(this.cbSendEmail.isSelected()){
+
+    private void checkBoxItemListened() {
+        this.cbSendEmail.addItemListener(e -> {
+            if (this.cbSendEmail.isSelected()) {
                 System.out.println("Enviamos un mensaje al correo del usuario");
-            }else {
+            } else {
                 System.out.println("No se envia nada al email del usuario");
             }
         });
@@ -115,7 +122,7 @@ public class FormCreateUser extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
+        gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
         panel.add(jlIndication, gridBagConstraints);
 
         jlRol.setText("Rol a desempeñar: ");
@@ -184,7 +191,7 @@ public class FormCreateUser extends javax.swing.JDialog {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
+        gridBagConstraints.insets = new java.awt.Insets(17, 17, 17, 17);
         panel.add(cbSendEmail, gridBagConstraints);
 
         btnCancel.setText("Cancelar");
@@ -266,18 +273,18 @@ public class FormCreateUser extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptActionPerformed
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_btnAceptActionPerformed
 
     /**

@@ -1,9 +1,12 @@
 package administrador;
 
+
+
 import Principal.Login;
 import configuracion.Configuracion;
 import administrador.FormUser;
 import configuracion.CodigoColor;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class FormMainAdmi extends javax.swing.JFrame {
@@ -14,15 +17,33 @@ public class FormMainAdmi extends javax.swing.JFrame {
     }
 
     public void agregarEstilos() {
+        //configuracion ventana
+        this.setMinimumSize(new Dimension(700, 500));
         Configuracion.styles(this);
+
+        //configuracon menu
         Configuracion.normal(this.menuUser, this.menuProduct, this.menuMain, this.menuSettings, this.menuCompany);
         Configuracion.normal(this.opcAddUser, this.opcUpdateUser, this.opcListUser);
         Configuracion.normal(this.opcAddProduct, this.opcUpdateProduct, this.opcListProduct, this.opcListProductOut);
+
+        Configuracion.background(CodigoColor.cFondoGris2, this.menuUser, this.menuProduct, this.menuMain,
+                this.menuSettings, this.menuCompany);
+        Configuracion.background(CodigoColor.cFondoGris2, this.opcAddUser, this.opcUpdateUser, this.opcListUser);
+        Configuracion.background(CodigoColor.cFondoGris2, this.opcAddProduct, this.opcUpdateProduct,
+                this.opcListProduct, this.opcListProductOut);
+
+        //configuracion del JPanel
+        Configuracion.background(CodigoColor.cFondoGris, this.jPanel1);
+
+        //configuracion botones
         Configuracion.normal(this.btnClose);
+        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnClose);
+        Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnClose);
+
     }
-    
+
     public static void main(String[] args) {
-        FormMainAdmi fma = new FormMainAdmi(); 
+        FormMainAdmi fma = new FormMainAdmi();
         fma.setVisible(true);
     }
 
@@ -30,6 +51,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         menuMain = new javax.swing.JMenuBar();
         menuUser = new javax.swing.JMenu();
@@ -52,6 +74,23 @@ public class FormMainAdmi extends javax.swing.JFrame {
                 btnCloseActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(599, Short.MAX_VALUE)
+                .addComponent(btnClose)
+                .addGap(32, 32, 32))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(406, Short.MAX_VALUE)
+                .addComponent(btnClose)
+                .addGap(37, 37, 37))
+        );
 
         menuUser.setText("Administrar Usuarios");
         menuUser.addActionListener(new java.awt.event.ActionListener() {
@@ -119,17 +158,11 @@ public class FormMainAdmi extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(398, Short.MAX_VALUE)
-                .addComponent(btnClose)
-                .addGap(70, 70, 70))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(376, Short.MAX_VALUE)
-                .addComponent(btnClose)
-                .addGap(38, 38, 38))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -160,11 +193,11 @@ public class FormMainAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_opcAddUserActionPerformed
 
     private void opcUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcUpdateUserActionPerformed
-        try{
-            FormIdUpdate vUpdate = new FormIdUpdate(this, true); 
+        try {
+            FormIdUpdate vUpdate = new FormIdUpdate(this, true);
             vUpdate.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_opcUpdateUserActionPerformed
 
@@ -172,23 +205,24 @@ public class FormMainAdmi extends javax.swing.JFrame {
         try {
             FormBarCodeUpdate update = new FormBarCodeUpdate(this, true);
             update.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_opcUpdateProductActionPerformed
 
     private void menuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUserActionPerformed
-        try{
-            FormIdUpdate vUpdate = new FormIdUpdate(this, true); 
+        try {
+            FormIdUpdate vUpdate = new FormIdUpdate(this, true);
             vUpdate.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_menuUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menuCompany;
     private javax.swing.JMenuBar menuMain;
     private javax.swing.JMenu menuProduct;

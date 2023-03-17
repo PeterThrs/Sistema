@@ -1,5 +1,6 @@
 package administrador;
 
+import configuracion.CodigoColor;
 import configuracion.Configuracion;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,36 +16,30 @@ public class FormBarCodeUpdate extends javax.swing.JDialog {
 
     private void agregarEstilos() {
         try {
+            //configuración Ventana
             this.setMinimumSize(new Dimension(350, 200));
             Configuracion.styles(this);
-            Configuracion.normalItalic(this.btnClose, this.btnContinue);
-            Configuracion.normal(this.tfBarCode);
+
+            //configuración JPanel
+            Configuracion.background(CodigoColor.cFondoGris, this.panel);
+
+            //configuracion JLabel
             Configuracion.normalItalic(this.jlIndication);
+            Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlIndication);
 
-            //Quitar el borde a los text Field
-            Configuracion.borde(this.tfBarCode);
+            //configuracion JTextField
+            Configuracion.normal(this.tfBarCode);
+            Configuracion.withoutBorde(this.tfBarCode);
+            Configuracion.background(CodigoColor.cFondoGris, this.tfBarCode);
 
-            //configuracion para establecer el foreground
-            //color azul fuerte
-            Color color = new Color(29, 53, 87);
-            Configuracion.foreground(color, this.jlIndication);
-            //Configuracion.foreground(color, this.btnClose, this.btnContinue);
+            //Configuracion JButton
+            Configuracion.normalItalic(this.btnClose, this.btnContinue);
+            Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnClose, this.btnContinue);
+            Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnClose, this.btnContinue);
 
-            //color rojo fuerte
-            color = new Color(230, 57, 70);
-            Configuracion.foreground(color, this.linea1);
+            //Configuración JSeparador
+            Configuracion.foreground(CodigoColor.cSeparatorRed, this.linea1);
 
-            //color blanco crema
-            color = new Color(241, 250, 238);
-            Configuracion.background(color, this.panel, this.tfBarCode);
-            Configuracion.foreground(color, this.btnClose, this.btnContinue);
-
-            //color azul bajo
-            color = new Color(168, 218, 220);
-            //color azul intermedio
-            color = new Color(69, 123, 157);
-            Configuracion.background(color, this.btnClose, this.btnContinue);
-            
         } catch (Exception ex) {
 
         }
@@ -136,16 +131,16 @@ public class FormBarCodeUpdate extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
-        try{
-            this.dispose(); 
-            FormProduct vProduct = new FormProduct(new JFrame(), true); 
+        try {
+            this.dispose();
+            FormProduct vProduct = new FormProduct(new JFrame(), true);
             vProduct.setVisible(true);
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_btnContinueActionPerformed
 

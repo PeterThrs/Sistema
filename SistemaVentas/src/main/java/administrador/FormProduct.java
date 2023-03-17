@@ -46,7 +46,7 @@ public class FormProduct extends javax.swing.JDialog {
                 this.jlRevenue, this.jlSale, this.jlSalePrice, this.jlTotal, this.jlWholeSalePrice);
         
         //configuraicon JTextField
-        Configuracion.normal(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,this.tfWholePrice);
+        Configuracion.robotoPlain12(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,this.tfWholePrice);
         Configuracion.withoutBorde(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal, this.tfWholePrice);
         Configuracion.background(CodigoColor.cFondoGris,this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, 
                 this.tfTotal,this.tfWholePrice); 

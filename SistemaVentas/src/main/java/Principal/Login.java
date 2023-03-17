@@ -36,7 +36,8 @@ public class Login extends javax.swing.JFrame {
         this.image.setIcon(icono);
         this.repaint(); 
         
-        setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
+       agregarEstilos();
     }
     
     private void agregarEstilos() {

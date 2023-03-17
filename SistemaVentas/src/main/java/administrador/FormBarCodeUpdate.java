@@ -21,24 +21,24 @@ public class FormBarCodeUpdate extends javax.swing.JDialog {
             Configuracion.styles(this);
 
             //configuración JPanel
-            Configuracion.background(CodigoColor.cFondoBlanco, this.panel);
+            Configuracion.background(CodigoColor.cFondoGris, this.panel);
 
             //configuracion JLabel
             Configuracion.normalItalic(this.jlIndication);
-            Configuracion.foreground(CodigoColor.cLetrasTitulo, this.jlIndication);
+            Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlIndication);
 
             //configuracion JTextField
             Configuracion.normal(this.tfBarCode);
             Configuracion.withoutBorde(this.tfBarCode);
-            Configuracion.background(CodigoColor.cFondoBlanco, this.tfBarCode);
+            Configuracion.background(CodigoColor.cFondoGris, this.tfBarCode);
 
             //Configuracion JButton
             Configuracion.normalItalic(this.btnClose, this.btnContinue);
-            Configuracion.foreground(CodigoColor.cLetrasBtnClaro, this.btnClose, this.btnContinue);
-            Configuracion.background(CodigoColor.cFondoBtn, this.btnClose, this.btnContinue);
+            Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnClose, this.btnContinue);
+            Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnClose, this.btnContinue);
 
             //Configuración JSeparador
-            Configuracion.foreground(CodigoColor.cSeparadores, this.linea1);
+            Configuracion.foreground(CodigoColor.cSeparatorRed, this.linea1);
 
         } catch (Exception ex) {
 

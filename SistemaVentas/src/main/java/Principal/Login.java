@@ -42,8 +42,8 @@ public class Login extends javax.swing.JFrame {
         this.image.setIcon(icono);
         this.repaint(); 
         
-        setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
-        this.setIconImage(Sesion.app.getIcono());
+        //setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
+        //this.setIconImage(Sesion.app.getIcono());
     }
     
     private void agregarEstilos() {
@@ -303,21 +303,6 @@ public class Login extends javax.swing.JFrame {
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel3)
-                        .addGap(87, 87, 87))
-                    .addGroup(headerLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel5)
-                        .addGap(10, 10, 10))
-                    .addComponent(jLabel4))
-                .addGap(265, 265, 265)
-                .addComponent(jIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(headerLayout.createSequentialGroup()
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerLayout.createSequentialGroup()
@@ -352,6 +337,22 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(cPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(156, 156, 156))))
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(headerLayout.createSequentialGroup()
+                                .addGap(198, 198, 198)
+                                .addComponent(jLabel4))
+                            .addGroup(headerLayout.createSequentialGroup()
+                                .addGap(282, 282, 282)
+                                .addComponent(jLabel3)))
+                        .addGap(265, 265, 265)
+                        .addComponent(jIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addComponent(jLabel5)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

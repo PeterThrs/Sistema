@@ -52,7 +52,7 @@ public class Configuracion {
     //configuraicones para el tipo de titulos general de la aplicacion
     public static <T extends JComponent> void titulo(T... t){
         for(int i = 0; i < t.length; i++){
-            t[i].setFont(new Font("Roboto", Font.BOLD, 16));
+            t[i].setFont(new Font("Calisto MT", Font.BOLD, 16));
         } 
     }
     
@@ -76,14 +76,14 @@ public class Configuracion {
         } 
     }
     
-    //Establecer Foreground
+    //Establecer Foreground (letras)
     public static <T extends JComponent> void foreground(Color color, T... t){
         for(int i = 0; i < t.length; i++){
             t[i].setForeground(color);
         } 
     }
     
-    //Establecer background
+    //Establecer background 
     public static <T extends JComponent> void background(Color color, T... t){
         for(int i = 0; i < t.length; i++){
             t[i].setBackground(color);

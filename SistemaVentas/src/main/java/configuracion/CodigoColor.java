@@ -10,7 +10,7 @@ public class CodigoColor {
     /**
      * Este es un color blanco crema
      */
-    public static Color cFondo = new Color(233, 216, 166);
+    public static Color cFondo = new Color(179, 229, 252);
     /**
      * Este es un color azul obscuro 
      */

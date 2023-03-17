@@ -619,7 +619,7 @@ public class Login extends javax.swing.JFrame {
         private Image imagen;
         @Override
         public void paint(Graphics g){
-            imagen=new ImageIcon(getClass().getResource("/f.jpg")).getImage();
+            imagen=new ImageIcon("src/main/resources/imagenes/juan/f.jpg").getImage();
             g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
             setOpaque(false);
             super.paint(g);

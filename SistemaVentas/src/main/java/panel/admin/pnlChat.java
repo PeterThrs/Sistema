@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package panel.contador;
-
-import panel.admin.*;
+package panel.admin;
 
 /**
  *
  * @author RojeruSan
  */
-public class pnlIOS extends javax.swing.JPanel {
+public class pnlChat extends javax.swing.JPanel {
 
     /**
      * Creates new form pnlHome
      */
-    public pnlIOS() {
+    public pnlChat() {
         initComponents();
     }
 
@@ -46,8 +44,8 @@ public class pnlIOS extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(128, 128, 131));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/ios.png"))); // NOI18N
-        jLabel7.setText("IOS");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/chat.png"))); // NOI18N
+        jLabel7.setText("CHAT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,7 +68,7 @@ public class pnlIOS extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

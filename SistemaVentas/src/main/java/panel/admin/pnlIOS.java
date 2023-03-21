@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles;
+package panel.admin;
 
 /**
  *
  * @author RojeruSan
  */
-public class pnlCollection extends javax.swing.JPanel {
+public class pnlIOS extends javax.swing.JPanel {
 
     /**
      * Creates new form pnlHome
      */
-    public pnlCollection() {
+    public pnlIOS() {
         initComponents();
     }
 
@@ -44,8 +44,8 @@ public class pnlCollection extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(128, 128, 131));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/collection.png"))); // NOI18N
-        jLabel7.setText("COLLECTION");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/ios.png"))); // NOI18N
+        jLabel7.setText("IOS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -63,8 +63,8 @@ public class pnlCollection extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addComponent(jLabel7)
+                .addGap(56, 56, 56)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)

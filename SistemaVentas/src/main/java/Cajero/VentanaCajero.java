@@ -1,6 +1,6 @@
 package Cajero;
 
-import Objetos.Sesion;
+import configuracion.CodigoColor;
 import Principal.Login;
 import configuracion.Configuracion;
 import java.awt.Color;
@@ -11,42 +11,82 @@ public class VentanaCajero extends javax.swing.JFrame {
 
     public VentanaCajero() {
         initComponents();
+        AgregarConfiguración ();
         //Configuracion.styles(this);
         setIconImage(new ImageIcon(getClass().getResource("/images/ventass.png")).getImage());
+    }
+    
+    private void AgregarConfiguración () {
+    
+        //Configuracion Ventana()
+        
+        Configuracion.styles(this);
+        this.setExtendedState(this.NORMAL);
+        
+        //Configuracion al JPanel()
+        
+         Configuracion.background(CodigoColor.cFondo, this.JPanelPrincipal);
+         Configuracion.background(CodigoColor.cFondoizq, this.jPanelIzq);
+         
+        
+        //Configuracion JLabel()
+        
+        Configuracion.titulo( this.jLabelTituloP);
+        Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jLabelTituloP);
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.jLabelTituloP);
+        
+        
+        Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabelProducto, this.jLabelCantidad, 
+                this.jLabelPrecio, this.jLabelImporte, this.jLabelSubtotal,this.jLabelTotal,jLabelIva);
+        Configuracion.normalItalic(this.jLabelProducto, this.jLabelCantidad, 
+                this.jLabelPrecio, this.jLabelImporte, this.jLabelSubtotal,this.jLabelTotal,jLabelIva);
+        Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabelProducto, this.jLabelCantidad, 
+                this.jLabelPrecio, this.jLabelImporte, this.jLabelSubtotal,this.jLabelTotal,jLabelIva);
+       
+        //Configurar JTextField()
+        
+        Configuracion.normal(this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA);
+        Configuracion.withoutBorde(this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA);
+        Configuracion.background(CodigoColor.cFondoGris,this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA); 
+        Configuracion.foreground(CodigoColor.cLetrasTextField,this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA);
+            
+        //Configuración En JButton ()
+        
+        Configuracion.normalItalic(this.jButtonRegistro,this.jButtonCobrar,this.jButtonCancelar,this.jButtonSalir);
+        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.jButtonRegistro,this.jButtonCobrar,this.jButtonCancelar,this.jButtonSalir);
+        Configuracion.background(CodigoColor.cFondoBtnAzul, this.jButtonRegistro,this.jButtonCobrar,this.jButtonCancelar,this.jButtonSalir);
+    
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
-        Panel1 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        JPanelPrincipal = new javax.swing.JPanel();
+        jLabelProducto = new javax.swing.JLabel();
+        jComboBoxSelecProduc = new javax.swing.JComboBox<>();
+        jLabelCantidad = new javax.swing.JLabel();
+        jComboBoxCantidad = new javax.swing.JComboBox<>();
+        jLabelPrecio = new javax.swing.JLabel();
+        jLabelImporte = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jTableCajero = new javax.swing.JTable();
+        jTextFieldImporte = new javax.swing.JTextField();
+        jPanelIzq = new javax.swing.JPanel();
+        jLabelTituloP = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jButtonRegistro = new javax.swing.JButton();
+        jTextFieldPrecio = new javax.swing.JTextField();
+        jLabelSubtotal = new javax.swing.JLabel();
+        jTextFieldSubtotal = new javax.swing.JTextField();
+        jLabelTotal = new javax.swing.JLabel();
         totaldecompra = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabelIva = new javax.swing.JLabel();
+        jTextFieldIVA = new javax.swing.JTextField();
+        jButtonCobrar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
+        exit = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -59,74 +99,42 @@ public class VentanaCajero extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1200, 700));
 
-        Panel1.setBackground(new java.awt.Color(255, 255, 153));
-        Panel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Panel1.setMinimumSize(new java.awt.Dimension(1210, 700));
-        Panel1.setPreferredSize(new java.awt.Dimension(1210, 700));
-        Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JPanelPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JPanelPrincipal.setMinimumSize(new java.awt.Dimension(1210, 700));
+        JPanelPrincipal.setPreferredSize(new java.awt.Dimension(1210, 700));
+        JPanelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 862));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabelProducto.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jLabelProducto.setText("Producto:");
+        JPanelPrincipal.add(jLabelProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, -1, 40));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 204));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/venta.png"))); // NOI18N
-        jButton4.setText("      Registrar Compra");
-        jButton4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxSelecProduc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jComboBoxSelecProduc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Un Producto:", "Mayonesa", "Tortillas", "Aguacate", "Galletas", "Sabrita", "Agua", "Leche", "Miel", "Alcohol", " " }));
+        jComboBoxSelecProduc.setBorder(null);
+        jComboBoxSelecProduc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jComboBoxSelecProducActionPerformed(evt);
             }
         });
-        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton4KeyPressed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 290, 80));
+        JPanelPrincipal.add(jComboBoxSelecProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 210, 40));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ven.png"))); // NOI18N
-        jLabel9.setPreferredSize(new java.awt.Dimension(350, 300));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 360));
+        jLabelCantidad.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jLabelCantidad.setText("Cantidad:");
+        JPanelPrincipal.add(jLabelCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, 40));
 
-        Panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 454, 570));
+        jComboBoxCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        JPanelPrincipal.add(jComboBoxCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, 70, 40));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel2.setText("Producto:");
-        Panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 127, -1, 30));
+        jLabelPrecio.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jLabelPrecio.setText("Precio:");
+        JPanelPrincipal.add(jLabelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 80, 50, 40));
 
-        jComboBox1.setBackground(new java.awt.Color(153, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Un Producto:", "Mayonesa", "Tortillas", "Aguacate", "Galletas", "Sabrita", "Agua", "Leche", "Miel", "Alcohol", " " }));
-        jComboBox1.setBorder(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        Panel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 210, 40));
+        jLabelImporte.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jLabelImporte.setText("Importe:");
+        JPanelPrincipal.add(jLabelImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 150, -1, 40));
 
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel3.setText("Cantidad:");
-        Panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 177, -1, 30));
-
-        jComboBox2.setBackground(new java.awt.Color(153, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-        Panel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 70, 40));
-
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel4.setText("Precio:");
-        Panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 50, 30));
-
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel5.setText("Importe:");
-        Panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 177, -1, 30));
-
-        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCajero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTableCajero.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -145,158 +153,166 @@ public class VentanaCajero extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(255, 255, 153));
-        jTable1.setSelectionBackground(new java.awt.Color(51, 51, 255));
-        jTable1.setSelectionForeground(new java.awt.Color(51, 51, 255));
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        jTableCajero.setGridColor(new java.awt.Color(255, 255, 153));
+        jTableCajero.setSelectionBackground(new java.awt.Color(51, 51, 255));
+        jTableCajero.setSelectionForeground(new java.awt.Color(51, 51, 255));
+        jTableCajero.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableCajero.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(jTableCajero);
 
-        Panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 632, 130));
+        JPanelPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 610, 130));
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jTextFieldImporte.setText("$ ");
+        JPanelPrincipal.add(jTextFieldImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 150, 190, 40));
 
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel6.setText("Subtotal:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 70, -1));
+        jLabelTituloP.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jLabelTituloP.setForeground(new java.awt.Color(51, 51, 255));
+        jLabelTituloP.setText("CAJERO");
 
-        jTextField2.setText("$ ");
-        jTextField2.setBorder(null);
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 150, 30));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ven.png"))); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(350, 300));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel8.setText("Total:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+        jButtonRegistro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonRegistro.setForeground(new java.awt.Color(0, 0, 255));
+        jButtonRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/venta.png"))); // NOI18N
+        jButtonRegistro.setText("      Registrar Compra");
+        jButtonRegistro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButtonRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistroActionPerformed(evt);
+            }
+        });
+        jButtonRegistro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonRegistroKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelIzqLayout = new javax.swing.GroupLayout(jPanelIzq);
+        jPanelIzq.setLayout(jPanelIzqLayout);
+        jPanelIzqLayout.setHorizontalGroup(
+            jPanelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelIzqLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(jButtonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIzqLayout.createSequentialGroup()
+                .addContainerGap(90, Short.MAX_VALUE)
+                .addGroup(jPanelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIzqLayout.createSequentialGroup()
+                        .addComponent(jLabelTituloP, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(203, 203, 203))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIzqLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))))
+        );
+        jPanelIzqLayout.setVerticalGroup(
+            jPanelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelIzqLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabelTituloP, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(jButtonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+
+        JPanelPrincipal.add(jPanelIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 700));
+
+        jTextFieldPrecio.setText("$ ");
+        jTextFieldPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPrecioActionPerformed(evt);
+            }
+        });
+        JPanelPrincipal.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 80, 190, 40));
+
+        jLabelSubtotal.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jLabelSubtotal.setText("Subtotal:");
+        JPanelPrincipal.add(jLabelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 70, 40));
+
+        jTextFieldSubtotal.setText("$ ");
+        JPanelPrincipal.add(jTextFieldSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 150, 40));
+
+        jLabelTotal.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jLabelTotal.setText("Total:");
+        JPanelPrincipal.add(jLabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 60, 40));
 
         totaldecompra.setText("$ ");
-        totaldecompra.setBorder(null);
         totaldecompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 totaldecompraActionPerformed(evt);
             }
         });
-        jPanel3.add(totaldecompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 30));
+        JPanelPrincipal.add(totaldecompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, 150, 40));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel7.setText("IVA:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 50, -1));
+        jLabelIva.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jLabelIva.setText("IVA:");
+        JPanelPrincipal.add(jLabelIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 457, 50, 40));
 
-        jTextField3.setText("                         %");
-        jTextField3.setBorder(null);
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 160, 30));
+        jTextFieldIVA.setText("                         %");
+        JPanelPrincipal.add(jTextFieldIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 460, 160, 30));
 
-        Panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 760, 150));
+        jButtonCobrar.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jButtonCobrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IconoVCobrar.png"))); // NOI18N
+        jButtonCobrar.setText("    COBRAR");
+        jButtonCobrar.setBorder(null);
+        jButtonCobrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCobrarActionPerformed(evt);
+            }
+        });
+        JPanelPrincipal.add(jButtonCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 610, 150, 50));
 
-        jPanel4.setBackground(new java.awt.Color(204, 255, 204));
+        jButtonCancelar.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
+        jButtonCancelar.setText("     CANCELAR");
+        jButtonCancelar.setBorder(null);
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+        JPanelPrincipal.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 610, 150, 50));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        jLabel1.setText("CAJERO");
+        jButtonSalir.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir.png"))); // NOI18N
+        jButtonSalir.setText("      SALIR");
+        jButtonSalir.setBorder(null);
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+        JPanelPrincipal.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 610, 140, 50));
 
-        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel10.setText("     X");
-        jLabel10.setPreferredSize(new java.awt.Dimension(30, 30));
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        exit.setBackground(new java.awt.Color(0, 0, 0));
+        exit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        exit.setForeground(new java.awt.Color(255, 0, 51));
+        exit.setText("     X");
+        exit.setPreferredSize(new java.awt.Dimension(30, 30));
+        exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
+                exitMouseClicked(evt);
             }
         });
-        jLabel10.addKeyListener(new java.awt.event.KeyAdapter() {
+        exit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jLabel10KeyPressed(evt);
+                exitKeyPressed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(548, 548, 548)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 506, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        Panel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 80));
-
-        jTextField9.setText("$ ");
-        Panel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 180, 190, 30));
-
-        jTextField10.setText("$ ");
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
-            }
-        });
-        Panel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 190, 30));
-
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(100, 872));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IconoVCobrar.png"))); // NOI18N
-        jButton1.setText("COBRAR");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 150, 60));
-
-        jButton2.setBackground(new java.awt.Color(102, 153, 255));
-        jButton2.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png"))); // NOI18N
-        jButton2.setText("CANCELAR");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 150, 40));
-
-        jButton3.setBackground(new java.awt.Color(102, 153, 255));
-        jButton3.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
-        jButton3.setText("SALIR");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 120, 40));
-
-        Panel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 560, 760, 90));
+        JPanelPrincipal.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 10, 50, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(JPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleDescription("COBRAR COMPRA");
@@ -304,49 +320,38 @@ public class VentanaCajero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxSelecProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelecProducActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxSelecProducActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         try
         {
-            
             dispose();
+            Login ventana = new Login();
+            ventana.setVisible(true);
         } catch (Exception e)
         {
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCobrarActionPerformed
         try{
             RegistrarCompra pago = new RegistrarCompra(this, true);
             pago.setVisible(true);
         }catch(Exception e){
             
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonCobrarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         try
         {
             
         } catch (Exception e)
         {
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_jButton4KeyPressed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        RegistrarCompra pago = new RegistrarCompra(this, true);
-            pago.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void totaldecompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totaldecompraActionPerformed
         // TODO add your handling code here:
@@ -358,16 +363,16 @@ public class VentanaCajero extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,resultado);
     }//GEN-LAST:event_totaldecompraActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void jTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_jTextFieldPrecioActionPerformed
 
-    private void jLabel10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel10KeyPressed
+    private void exitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_exitKeyPressed
         // TODO add your handling code here:
-       jLabel10.setBackground(Color.ORANGE);
-    }//GEN-LAST:event_jLabel10KeyPressed
+       exit.setBackground(Color.ORANGE);
+    }//GEN-LAST:event_exitKeyPressed
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
         // TODO add your handling code here:
         String botones[] = {"Si_Cerrar","No_Cancelar"};
         
@@ -378,38 +383,46 @@ public class VentanaCajero extends javax.swing.JFrame {
         }else if (eleccion==JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null, "Se Cancelo El Cierre De Su Ventana.");
         }
-    }//GEN-LAST:event_jLabel10MouseClicked
+    }//GEN-LAST:event_exitMouseClicked
+
+    private void jButtonRegistroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonRegistroKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jButtonRegistroKeyPressed
+
+    private void jButtonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroActionPerformed
+        // TODO add your handling code here:
+        RegistrarCompra pago = new RegistrarCompra(this, true);
+        pago.setVisible(true);
+    }//GEN-LAST:event_jButtonRegistroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Panel1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel JPanelPrincipal;
+    private javax.swing.JLabel exit;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonCobrar;
+    private javax.swing.JButton jButtonRegistro;
+    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JComboBox<String> jComboBoxCantidad;
+    private javax.swing.JComboBox<String> jComboBoxSelecProduc;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel jLabelCantidad;
+    private javax.swing.JLabel jLabelImporte;
+    private javax.swing.JLabel jLabelIva;
+    private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelProducto;
+    private javax.swing.JLabel jLabelSubtotal;
+    private javax.swing.JLabel jLabelTituloP;
+    private javax.swing.JLabel jLabelTotal;
+    private javax.swing.JPanel jPanelIzq;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableCajero;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldIVA;
+    private javax.swing.JTextField jTextFieldImporte;
+    private javax.swing.JTextField jTextFieldPrecio;
+    private javax.swing.JTextField jTextFieldSubtotal;
     private javax.swing.JTextField totaldecompra;
     // End of variables declaration//GEN-END:variables
 }

@@ -89,6 +89,9 @@ public class CodigoColor {
     
     //-> Colores de Jorge
     
+    public static Color cFondo = new Color(255, 255, 255);
+    public static Color cFondoizq = new Color(153, 204, 255);
+    public static Color cLetrasTitulo = new Color(29, 53, 87);
     
     //-> Colores de 
     

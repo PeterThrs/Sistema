@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import paneles.CambiaPanel;
+import panel.admin.CambiaPanel;
 
 /**
  *
@@ -429,7 +429,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdminUserMousePressed
 
     private void btnInfoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpresaActionPerformed
-        new CambiaPanel(pnlPrincipal, new paneles.pnlChat());
+        new CambiaPanel(pnlPrincipal, new panel.admin.pnlChat());
         if(this.btnInfoEmpresa.isSelected()){
             this.btnInfoEmpresa.setColorNormal(new Color(204,204,204));
             this.btnInfoEmpresa.setColorHover(new Color(204,204,204));
@@ -530,7 +530,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        new CambiaPanel(pnlPrincipal, new paneles.pnlMarket());
+        new CambiaPanel(pnlPrincipal, new panel.admin.pnlMarket());
         if(this.btnCerrarSesion.isSelected()){
             this.btnAdminUser.setColorNormal(new Color(239,238,244));
             this.btnAdminUser.setColorHover(new Color(204,204,204));
@@ -576,7 +576,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfiguracionMousePressed
 
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
-        new CambiaPanel(pnlPrincipal, new paneles.pnlFeeBack());
+        new CambiaPanel(pnlPrincipal, new panel.admin.pnlFeeBack());
         if(this.btnConfiguracion.isSelected()){
             this.btnAdminUser.setColorNormal(new Color(239,238,244));
             this.btnAdminUser.setColorHover(new Color(204,204,204));

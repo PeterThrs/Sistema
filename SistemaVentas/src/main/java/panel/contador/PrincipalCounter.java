@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package panel.admin;
+package panel.contador;
 
+import panel.admin.*;
 import Animacion.Animacion;
 import java.awt.Color;
 import java.awt.MouseInfo;
@@ -19,14 +20,14 @@ import panel.admin.CambiaPanel;
  *
  * @author RojeruSan
  */
-public class PrincipalAdmin extends javax.swing.JFrame {
+public class PrincipalCounter extends javax.swing.JFrame {
 
     int x, y;
     /**
      * Creates new form Principal
      */
     
-    public PrincipalAdmin() {
+    public PrincipalCounter() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
@@ -709,14 +710,17 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalCounter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalCounter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalCounter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalCounter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -724,9 +728,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             public void run() {
                 try {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    new PrincipalAdmin().setVisible(true);
+                    new PrincipalCounter().setVisible(true);
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(PrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PrincipalCounter.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

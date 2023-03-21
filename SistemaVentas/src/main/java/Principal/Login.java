@@ -42,7 +42,7 @@ public class Login extends javax.swing.JFrame {
         this.repaint(); 
         
         //setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
-        //this.setIconImage(Sesion.app.getIcono());
+
     }
     
     private void agregarEstilos() {
@@ -69,7 +69,7 @@ public class Login extends javax.swing.JFrame {
                 this.jLabel5);
         
         //configuraicon JTextField
-        Configuracion.normal(this.cPassword, this.cUser);
+        Configuracion.robotoPlain12(this.cPassword, this.cUser);
         Configuracion.withoutBorde(this.cPassword, this.cUser);
         Configuracion.background(CodigoColor.cFondoGris,this.cUser, this.cPassword); 
         Configuracion.foreground(CodigoColor.cLetrasTextField,this.cUser, this.cPassword);
@@ -618,7 +618,7 @@ public class Login extends javax.swing.JFrame {
         private Image imagen;
         @Override
         public void paint(Graphics g){
-            imagen=new ImageIcon(getClass().getResource("/f.jpg")).getImage();
+            imagen=new ImageIcon("src/main/resources/imagenes/juan/f.jpg").getImage();
             g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
             setOpaque(false);
             super.paint(g);

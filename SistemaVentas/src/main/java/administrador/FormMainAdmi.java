@@ -22,9 +22,9 @@ public class FormMainAdmi extends javax.swing.JFrame {
         Configuracion.styles(this);
 
         //configuracon menu
-        Configuracion.normal(this.menuUser, this.menuProduct, this.menuMain, this.menuSettings, this.menuCompany);
-        Configuracion.normal(this.opcAddUser, this.opcUpdateUser, this.opcListUser);
-        Configuracion.normal(this.opcAddProduct, this.opcUpdateProduct, this.opcListProduct, this.opcListProductOut);
+        Configuracion.robotoPlain12(this.menuUser, this.menuProduct, this.menuMain, this.menuSettings, this.menuCompany);
+        Configuracion.robotoPlain12(this.opcAddUser, this.opcUpdateUser, this.opcListUser);
+        Configuracion.robotoPlain12(this.opcAddProduct, this.opcUpdateProduct, this.opcListProduct, this.opcListProductOut);
 
         Configuracion.background(CodigoColor.cFondoGris2, this.menuUser, this.menuProduct, this.menuMain,
                 this.menuSettings, this.menuCompany);
@@ -36,7 +36,7 @@ public class FormMainAdmi extends javax.swing.JFrame {
         Configuracion.background(CodigoColor.cFondoGris, this.jPanel1);
 
         //configuracion botones
-        Configuracion.normal(this.btnClose);
+        Configuracion.robotoPlain12(this.btnClose);
         Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnClose);
         Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnClose);
 

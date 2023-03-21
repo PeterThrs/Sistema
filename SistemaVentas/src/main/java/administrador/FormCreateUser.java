@@ -33,7 +33,7 @@ public class FormCreateUser extends javax.swing.JDialog {
                     this.jlUser, this.jlId);
 
             //Configuraciion JTextField 
-            Configuracion.normal(this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
+            Configuracion.robotoPlain12(this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
             Configuracion.withoutBorde(this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
             Configuracion.background(CodigoColor.cFondoGris, this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
 

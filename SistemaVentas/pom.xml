@@ -28,13 +28,6 @@
             <version>1.6.7</version>
         </dependency>
         
-        
-        <dependency>
-            <groupId>org.jetbrains.compose.animation</groupId>
-            <artifactId>animation</artifactId>
-            <version>2.1</version>
-        </dependency>
-        
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>placeholder</artifactId>
@@ -44,7 +37,7 @@
         <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>AbsoluteLayout</artifactId>
-            <version>RESEALSE170</version>
+            <version>RELEASE170</version>
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/org.java.net.substance/substance -->
@@ -53,10 +46,17 @@
             <artifactId>substance</artifactId>
             <version>6.0</version>
         </dependency>
+        
         <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>AbsoluteLayout</artifactId>
-            <version>SNAPSHOT</version>
+            <groupId>animacion</groupId>
+            <artifactId>NefAnimacion</artifactId>
+            <version>3.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>app.bolivia.swing</groupId>
+            <artifactId></artifactId>
+            <version>3.0</version>
         </dependency>
     </dependencies>
 

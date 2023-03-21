@@ -9,18 +9,13 @@ package panel.admin;
  *
  * @author RojeruSan
  */
-public class pnlAndroid extends javax.swing.JPanel {
+public class PanelSetting extends javax.swing.JPanel {
 
     /**
      * Creates new form pnlHome
      */
-    public pnlAndroid() {
+    public PanelSetting() {
         initComponents();
-    }
-    
-    public static void main(String[] args) {
-        pnlAndroid a = new pnlAndroid();
-        a.setVisible(true);
     }
 
     /**
@@ -49,8 +44,8 @@ public class pnlAndroid extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(128, 128, 131));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/android.png"))); // NOI18N
-        jLabel7.setText("ANDROID");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/ios.png"))); // NOI18N
+        jLabel7.setText("IOS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

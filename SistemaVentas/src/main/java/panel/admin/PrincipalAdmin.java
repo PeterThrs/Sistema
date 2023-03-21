@@ -31,7 +31,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         this.uno.setSelected(true);
         
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlHome());
+        new CambiaPanel(pnlPrincipal, new panel.admin.PanelHome());
     }
 
     /**
@@ -503,7 +503,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unoActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlHome());
+        new CambiaPanel(pnlPrincipal, new panel.admin.PanelHome());
         if(this.uno.isSelected()){
             this.uno.setColorNormal(new Color(204,204,204));
             this.uno.setColorHover(new Color(204,204,204));
@@ -555,7 +555,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_unoMousePressed
 
     private void tresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlChat());
+        new CambiaPanel(pnlPrincipal, new panel.admin.PanelProduct());
         if(this.tres.isSelected()){
             this.tres.setColorNormal(new Color(204,204,204));
             this.tres.setColorHover(new Color(204,204,204));
@@ -618,7 +618,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_dosMousePressed
 
     private void dosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlCollection());
+        new CambiaPanel(pnlPrincipal, new panel.admin.PanelListUser());
         if(this.dos.isSelected()){
             this.dos.setColorNormal(new Color(204,204,204));
             this.dos.setColorHover(new Color(204,204,204));
@@ -731,7 +731,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_sieteMousePressed
 
     private void sieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sieteActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlIOS());
+        new CambiaPanel(pnlPrincipal, new panel.admin.PanelSetting());
         if(this.siete.isSelected()){
             this.uno.setColorNormal(new Color(239,238,244));
             this.uno.setColorHover(new Color(204,204,204));
@@ -783,7 +783,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_seisMousePressed
 
     private void seisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlAndroid());
+        new CambiaPanel(pnlPrincipal, new panel.admin.PanelUser());
         if(this.seis.isSelected()){
             this.uno.setColorNormal(new Color(239,238,244));
             this.uno.setColorHover(new Color(204,204,204));
@@ -887,7 +887,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_cuatroMousePressed
 
     private void cuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlFeeBack());
+        new CambiaPanel(pnlPrincipal, new panel.admin.PanelListProduct());
         if(this.cuatro.isSelected()){
             this.uno.setColorNormal(new Color(239,238,244));
             this.uno.setColorHover(new Color(204,204,204));

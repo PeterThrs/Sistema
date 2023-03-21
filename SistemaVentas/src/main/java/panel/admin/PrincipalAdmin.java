@@ -5,6 +5,7 @@
  */
 package panel.admin;
 
+import Animacion.Animacion;
 import java.awt.Color;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -29,9 +30,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
-        this.uno.setSelected(true);
+        this.btnAdminUser.setSelected(true);
         
-        new CambiaPanel(pnlPrincipal, new panel.admin.PanelHome());
+        //Animacion.bajar(PNuevo.getY(), PNuevo.getY()+PNuevo.getHeight()*5, 1, 10, PNuevo);
+        //Animacion.bajar(subpanelProductos.getY(), subpanelProductos.getY()+subpanelProductos.getHeight()*5, 1, 10, subpanelProductos);
+        
+        //new CambiaPanel(pnlPrincipal, new paneles.pnlHome());
     }
 
     /**
@@ -46,25 +50,18 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
-        uno = new rsbuttom.RSButtonMetro();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        tres = new rsbuttom.RSButtonMetro();
-        dos = new rsbuttom.RSButtonMetro();
-        cinco = new rsbuttom.RSButtonMetro();
+        btnAdminUser = new rsbuttom.RSButtonMetro();
+        btnInfoEmpresa = new rsbuttom.RSButtonMetro();
+        btnAdminProductos = new rsbuttom.RSButtonMetro();
         jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        ocho = new rsbuttom.RSButtonMetro();
-        siete = new rsbuttom.RSButtonMetro();
-        seis = new rsbuttom.RSButtonMetro();
-        cuatro = new rsbuttom.RSButtonMetro();
+        btnCerrarSesion = new rsbuttom.RSButtonMetro();
+        btnConfiguracion = new rsbuttom.RSButtonMetro();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jCTextField1 = new app.bolivia.swing.JCTextField();
         pnlCentro = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlPrincipal = new javax.swing.JPanel();
 
@@ -76,240 +73,140 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         pnlMenu.setBackground(new java.awt.Color(239, 238, 244));
         pnlMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(239, 238, 244)));
 
-        uno.setForeground(new java.awt.Color(128, 128, 131));
-        uno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
-        uno.setText("Home");
-        uno.setColorHover(new java.awt.Color(204, 204, 204));
-        uno.setColorNormal(new java.awt.Color(204, 204, 204));
-        uno.setColorPressed(new java.awt.Color(204, 204, 204));
-        uno.setColorTextHover(new java.awt.Color(128, 128, 131));
-        uno.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        uno.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        uno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        uno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        uno.setIconTextGap(25);
-        uno.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAdminUser.setForeground(new java.awt.Color(128, 128, 131));
+        btnAdminUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administracion.png"))); // NOI18N
+        btnAdminUser.setText("Administrar usuarios");
+        btnAdminUser.setColorHover(new java.awt.Color(204, 204, 204));
+        btnAdminUser.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnAdminUser.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnAdminUser.setColorTextHover(new java.awt.Color(128, 128, 131));
+        btnAdminUser.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        btnAdminUser.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        btnAdminUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAdminUser.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnAdminUser.setIconTextGap(25);
+        btnAdminUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                unoMousePressed(evt);
+                btnAdminUserMousePressed(evt);
             }
         });
-        uno.addActionListener(new java.awt.event.ActionListener() {
+        btnAdminUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unoActionPerformed(evt);
+                btnAdminUserActionPerformed(evt);
             }
         });
 
-        jPanel4.setBackground(new java.awt.Color(239, 238, 244));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(128, 128, 131));
-        jLabel1.setText("MENU");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
-
-        tres.setBackground(new java.awt.Color(239, 238, 244));
-        tres.setForeground(new java.awt.Color(128, 128, 131));
-        tres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/chat.png"))); // NOI18N
-        tres.setText("Producto");
-        tres.setColorHover(new java.awt.Color(204, 204, 204));
-        tres.setColorNormal(new java.awt.Color(239, 238, 244));
-        tres.setColorPressed(new java.awt.Color(204, 204, 204));
-        tres.setColorTextHover(new java.awt.Color(128, 128, 131));
-        tres.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        tres.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        tres.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tres.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        tres.setIconTextGap(19);
-        tres.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnInfoEmpresa.setBackground(new java.awt.Color(239, 238, 244));
+        btnInfoEmpresa.setForeground(new java.awt.Color(128, 128, 131));
+        btnInfoEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion-del-cambio.png"))); // NOI18N
+        btnInfoEmpresa.setText("Datos de la empresa");
+        btnInfoEmpresa.setColorHover(new java.awt.Color(204, 204, 204));
+        btnInfoEmpresa.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnInfoEmpresa.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnInfoEmpresa.setColorTextHover(new java.awt.Color(128, 128, 131));
+        btnInfoEmpresa.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        btnInfoEmpresa.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        btnInfoEmpresa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnInfoEmpresa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnInfoEmpresa.setIconTextGap(19);
+        btnInfoEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tresMousePressed(evt);
+                btnInfoEmpresaMousePressed(evt);
             }
         });
-        tres.addActionListener(new java.awt.event.ActionListener() {
+        btnInfoEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tresActionPerformed(evt);
+                btnInfoEmpresaActionPerformed(evt);
             }
         });
 
-        dos.setBackground(new java.awt.Color(239, 238, 244));
-        dos.setForeground(new java.awt.Color(128, 128, 131));
-        dos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/collection.png"))); // NOI18N
-        dos.setText("Usuario");
-        dos.setColorHover(new java.awt.Color(204, 204, 204));
-        dos.setColorNormal(new java.awt.Color(239, 238, 244));
-        dos.setColorPressed(new java.awt.Color(204, 204, 204));
-        dos.setColorTextHover(new java.awt.Color(128, 128, 131));
-        dos.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        dos.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        dos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        dos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        dos.setIconTextGap(25);
-        dos.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAdminProductos.setBackground(new java.awt.Color(239, 238, 244));
+        btnAdminProductos.setForeground(new java.awt.Color(128, 128, 131));
+        btnAdminProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion-de-productos.png"))); // NOI18N
+        btnAdminProductos.setText("Administrar productos");
+        btnAdminProductos.setColorHover(new java.awt.Color(204, 204, 204));
+        btnAdminProductos.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnAdminProductos.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnAdminProductos.setColorTextHover(new java.awt.Color(128, 128, 131));
+        btnAdminProductos.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        btnAdminProductos.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        btnAdminProductos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAdminProductos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnAdminProductos.setIconTextGap(25);
+        btnAdminProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                dosMousePressed(evt);
+                btnAdminProductosMousePressed(evt);
             }
         });
-        dos.addActionListener(new java.awt.event.ActionListener() {
+        btnAdminProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dosActionPerformed(evt);
-            }
-        });
-
-        cinco.setBackground(new java.awt.Color(239, 238, 244));
-        cinco.setForeground(new java.awt.Color(128, 128, 131));
-        cinco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/market.png"))); // NOI18N
-        cinco.setText("Listar Productos");
-        cinco.setColorHover(new java.awt.Color(204, 204, 204));
-        cinco.setColorNormal(new java.awt.Color(239, 238, 244));
-        cinco.setColorPressed(new java.awt.Color(204, 204, 204));
-        cinco.setColorTextHover(new java.awt.Color(128, 128, 131));
-        cinco.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        cinco.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        cinco.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        cinco.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        cinco.setIconTextGap(19);
-        cinco.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cincoMousePressed(evt);
-            }
-        });
-        cinco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cincoActionPerformed(evt);
+                btnAdminProductosActionPerformed(evt);
             }
         });
 
         jPanel5.setBackground(new java.awt.Color(239, 238, 244));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(128, 128, 131));
-        jLabel3.setText("DEVICE");
+        btnCerrarSesion.setBackground(new java.awt.Color(239, 238, 244));
+        btnCerrarSesion.setForeground(new java.awt.Color(128, 128, 131));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
+        btnCerrarSesion.setText("Cerrar sesión");
+        btnCerrarSesion.setColorHover(new java.awt.Color(204, 204, 204));
+        btnCerrarSesion.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnCerrarSesion.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnCerrarSesion.setColorTextHover(new java.awt.Color(128, 128, 131));
+        btnCerrarSesion.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        btnCerrarSesion.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCerrarSesion.setIconTextGap(19);
+        btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCerrarSesionMousePressed(evt);
+            }
+        });
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        ocho.setBackground(new java.awt.Color(239, 238, 244));
-        ocho.setForeground(new java.awt.Color(128, 128, 131));
-        ocho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/web.png"))); // NOI18N
-        ocho.setText("Web");
-        ocho.setColorHover(new java.awt.Color(204, 204, 204));
-        ocho.setColorNormal(new java.awt.Color(239, 238, 244));
-        ocho.setColorPressed(new java.awt.Color(204, 204, 204));
-        ocho.setColorTextHover(new java.awt.Color(128, 128, 131));
-        ocho.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        ocho.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        ocho.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ocho.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ocho.setIconTextGap(19);
-        ocho.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnConfiguracion.setBackground(new java.awt.Color(239, 238, 244));
+        btnConfiguracion.setForeground(new java.awt.Color(128, 128, 131));
+        btnConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuracion.png"))); // NOI18N
+        btnConfiguracion.setText("Configuración");
+        btnConfiguracion.setColorHover(new java.awt.Color(204, 204, 204));
+        btnConfiguracion.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnConfiguracion.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnConfiguracion.setColorTextHover(new java.awt.Color(128, 128, 131));
+        btnConfiguracion.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        btnConfiguracion.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        btnConfiguracion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnConfiguracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnConfiguracion.setIconTextGap(19);
+        btnConfiguracion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ochoMousePressed(evt);
+                btnConfiguracionMousePressed(evt);
             }
         });
-        ocho.addActionListener(new java.awt.event.ActionListener() {
+        btnConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ochoActionPerformed(evt);
-            }
-        });
-
-        siete.setBackground(new java.awt.Color(239, 238, 244));
-        siete.setForeground(new java.awt.Color(128, 128, 131));
-        siete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ios.png"))); // NOI18N
-        siete.setText("IOS");
-        siete.setColorHover(new java.awt.Color(204, 204, 204));
-        siete.setColorNormal(new java.awt.Color(239, 238, 244));
-        siete.setColorPressed(new java.awt.Color(204, 204, 204));
-        siete.setColorTextHover(new java.awt.Color(128, 128, 131));
-        siete.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        siete.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        siete.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        siete.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        siete.setIconTextGap(19);
-        siete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                sieteMousePressed(evt);
-            }
-        });
-        siete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sieteActionPerformed(evt);
-            }
-        });
-
-        seis.setBackground(new java.awt.Color(239, 238, 244));
-        seis.setForeground(new java.awt.Color(128, 128, 131));
-        seis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/android.png"))); // NOI18N
-        seis.setText("Android");
-        seis.setColorHover(new java.awt.Color(204, 204, 204));
-        seis.setColorNormal(new java.awt.Color(239, 238, 244));
-        seis.setColorPressed(new java.awt.Color(204, 204, 204));
-        seis.setColorTextHover(new java.awt.Color(128, 128, 131));
-        seis.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        seis.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        seis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        seis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        seis.setIconTextGap(25);
-        seis.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                seisMousePressed(evt);
-            }
-        });
-        seis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                seisActionPerformed(evt);
-            }
-        });
-
-        cuatro.setBackground(new java.awt.Color(239, 238, 244));
-        cuatro.setForeground(new java.awt.Color(128, 128, 131));
-        cuatro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/feeedback.png"))); // NOI18N
-        cuatro.setText("Listar Usuarios");
-        cuatro.setColorHover(new java.awt.Color(204, 204, 204));
-        cuatro.setColorNormal(new java.awt.Color(239, 238, 244));
-        cuatro.setColorPressed(new java.awt.Color(204, 204, 204));
-        cuatro.setColorTextHover(new java.awt.Color(128, 128, 131));
-        cuatro.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        cuatro.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        cuatro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        cuatro.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        cuatro.setIconTextGap(19);
-        cuatro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cuatroMousePressed(evt);
-            }
-        });
-        cuatro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cuatroActionPerformed(evt);
+                btnConfiguracionActionPerformed(evt);
             }
         });
 
@@ -317,43 +214,32 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlMenuLayout.createSequentialGroup()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(uno, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tres, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cuatro, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cinco, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(seis, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(siete, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ocho, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(uno, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(dos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(tres, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(cuatro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMenuLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cinco, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addComponent(seis, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(siete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(ocho, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(252, 252, 252))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -391,7 +277,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Sistema de Ventas");
+        jLabel2.setText("Juan");
 
         jCTextField1.setBackground(new java.awt.Color(38, 86, 186));
         jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
@@ -409,7 +295,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 464, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 574, Short.MAX_VALUE)
                 .addComponent(jCTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -437,25 +323,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(128, 128, 131));
-        jLabel4.setText("Información del Dia");
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(535, Short.MAX_VALUE))
+            .addGap(0, 687, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 34, Short.MAX_VALUE)
         );
 
         jScrollPane1.setBorder(null);
@@ -476,7 +352,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             .addGroup(pnlCentroLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -501,431 +378,236 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void userAction(){
+        if(this.btnAdminUser.isSelected()){
+            this.btnAdminUser.setColorNormal(new Color(204,204,204));
+            this.btnAdminUser.setColorHover(new Color(204,204,204));
+            this.btnAdminUser.setColorPressed(new Color(204,204,204));
 
-    private void unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unoActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.PanelHome());
-        if(this.uno.isSelected()){
-            this.uno.setColorNormal(new Color(204,204,204));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
+            this.btnAdminProductos.setColorNormal(new Color(239,238,244));
+            this.btnAdminProductos.setColorHover(new Color(204,204,204));
+            this.btnAdminProductos.setColorPressed(new Color(204,204,204));
             
-            this.dos.setColorNormal(new Color(239,238,244));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorNormal(new Color(239,238,244));
+            this.btnInfoEmpresa.setColorHover(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorPressed(new Color(204,204,204));
             
-            this.tres.setColorNormal(new Color(239,238,244));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
+            this.btnConfiguracion.setColorNormal(new Color(239,238,244));
+            this.btnConfiguracion.setColorHover(new Color(204,204,204));
+            this.btnConfiguracion.setColorPressed(new Color(204,204,204));
             
-            this.cuatro.setColorNormal(new Color(239,238,244));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
-            
-            this.cinco.setColorNormal(new Color(239,238,244));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
-            
-            this.seis.setColorNormal(new Color(239,238,244));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-            
-            this.siete.setColorNormal(new Color(239,238,244));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-            
-            this.ocho.setColorNormal(new Color(239,238,244));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
+            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
+            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
         }else{
-            this.uno.setColorNormal(new Color(239,238,244));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
+            this.btnAdminUser.setColorNormal(new Color(239,238,244));
+            this.btnAdminUser.setColorHover(new Color(204,204,204));
+            this.btnAdminUser.setColorPressed(new Color(204,204,204));
         }
-    }//GEN-LAST:event_unoActionPerformed
-
-    private void unoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unoMousePressed
-        this.uno.setSelected(true);
-        this.dos.setSelected(false);
-        this.tres.setSelected(false);
-        this.cuatro.setSelected(false);
-        this.cinco.setSelected(false);
-        this.seis.setSelected(false);
-        this.siete.setSelected(false);
-        this.ocho.setSelected(false);
-    }//GEN-LAST:event_unoMousePressed
-
-    private void tresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.PanelProduct());
-        if(this.tres.isSelected()){
-            this.tres.setColorNormal(new Color(204,204,204));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
-            
-            this.uno.setColorNormal(new Color(239,238,244));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
-            
-            this.dos.setColorNormal(new Color(239,238,244));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
-            
-            this.cuatro.setColorNormal(new Color(239,238,244));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
-            
-            this.cinco.setColorNormal(new Color(239,238,244));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
-            
-            this.seis.setColorNormal(new Color(239,238,244));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-            
-            this.siete.setColorNormal(new Color(239,238,244));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-            
-            this.ocho.setColorNormal(new Color(239,238,244));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
+        /*if(btnAdminProductos.getY()==96){
+           if(btnInfoEmpresa.getY()!=194){
+               adminAction();
+           }
+           Animacion.bajar(194-btnAdminProductos.getHeight(), 194, 1, 2, btnAdminProductos);
+           Animacion.bajar(424-btnConfiguracion.getHeight(), 424, 1, 2, btnConfiguracion);
+           Animacion.bajar(324-btnInfoEmpresa.getHeight(),324, 1, 2, btnInfoEmpresa);
+           Animacion.bajar(514-btnCerrarSesion.getHeight(), 514, 1, 2, btnCerrarSesion);
+           Animacion.subir( 100+PNuevo.getHeight(), 100,0, 10, PNuevo);
         }else{
-            this.tres.setColorNormal(new Color(239,238,244));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
-        }
-    }//GEN-LAST:event_tresActionPerformed
+           Animacion.subir(96+btnAdminProductos.getHeight(), 96, 0, 2, btnAdminProductos);
+           Animacion.subir(304+btnConfiguracion.getHeight(), 304, 0, 2, btnConfiguracion);
+           Animacion.subir(194+btnInfoEmpresa.getHeight(), 194, 0, 2, btnInfoEmpresa);
+           Animacion.subir(404+btnCerrarSesion.getHeight(), 404, 0, 2, btnCerrarSesion);
+           Animacion.bajar(980-PNuevo.getHeight(), 980, 0, 10, PNuevo);
+        }*/
+    }
+    private void btnAdminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminUserActionPerformed
+        userAction();
+    }//GEN-LAST:event_btnAdminUserActionPerformed
 
-    private void tresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tresMousePressed
-        this.uno.setSelected(false);
-        this.dos.setSelected(false);
-        this.tres.setSelected(true);
-        this.cuatro.setSelected(false);
-        this.cinco.setSelected(false);
-        this.seis.setSelected(false);
-        this.siete.setSelected(false);
-        this.ocho.setSelected(false);
-    }//GEN-LAST:event_tresMousePressed
+    private void btnAdminUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminUserMousePressed
+        this.btnAdminUser.setSelected(true);
+        this.btnAdminProductos.setSelected(false);
+        this.btnInfoEmpresa.setSelected(false);
+        this.btnConfiguracion.setSelected(false);
+        this.btnCerrarSesion.setSelected(false);
+    }//GEN-LAST:event_btnAdminUserMousePressed
 
-    private void dosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dosMousePressed
-        this.uno.setSelected(false);
-        this.dos.setSelected(true);
-        this.tres.setSelected(false);
-        this.cuatro.setSelected(false);
-        this.cinco.setSelected(false);
-        this.seis.setSelected(false);
-        this.siete.setSelected(false);
-        this.ocho.setSelected(false);
-    }//GEN-LAST:event_dosMousePressed
-
-    private void dosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.PanelListUser());
-        if(this.dos.isSelected()){
-            this.dos.setColorNormal(new Color(204,204,204));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
+    private void btnInfoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpresaActionPerformed
+        new CambiaPanel(pnlPrincipal, new panel.admin.pnlChat());
+        if(this.btnInfoEmpresa.isSelected()){
+            this.btnInfoEmpresa.setColorNormal(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorHover(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorPressed(new Color(204,204,204));
             
-            this.uno.setColorNormal(new Color(239,238,244));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
+            this.btnAdminUser.setColorNormal(new Color(239,238,244));
+            this.btnAdminUser.setColorHover(new Color(204,204,204));
+            this.btnAdminUser.setColorPressed(new Color(204,204,204));
             
-            this.tres.setColorNormal(new Color(239,238,244));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
+            this.btnAdminProductos.setColorNormal(new Color(239,238,244));
+            this.btnAdminProductos.setColorHover(new Color(204,204,204));
+            this.btnAdminProductos.setColorPressed(new Color(204,204,204));
             
-            this.cuatro.setColorNormal(new Color(239,238,244));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
+            this.btnConfiguracion.setColorNormal(new Color(239,238,244));
+            this.btnConfiguracion.setColorHover(new Color(204,204,204));
+            this.btnConfiguracion.setColorPressed(new Color(204,204,204));
             
-            this.cinco.setColorNormal(new Color(239,238,244));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
-            
-            this.seis.setColorNormal(new Color(239,238,244));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-            
-            this.siete.setColorNormal(new Color(239,238,244));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-            
-            this.ocho.setColorNormal(new Color(239,238,244));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
+            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
+            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));            
         }else{
-            this.dos.setColorNormal(new Color(239,238,244));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorNormal(new Color(239,238,244));
+            this.btnInfoEmpresa.setColorHover(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorPressed(new Color(204,204,204));
         }
-    }//GEN-LAST:event_dosActionPerformed
+    }//GEN-LAST:event_btnInfoEmpresaActionPerformed
+
+    private void btnInfoEmpresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoEmpresaMousePressed
+        this.btnAdminUser.setSelected(false);
+        this.btnAdminProductos.setSelected(false);
+        this.btnInfoEmpresa.setSelected(true);
+        this.btnConfiguracion.setSelected(false);
+        this.btnCerrarSesion.setSelected(false);
+    }//GEN-LAST:event_btnInfoEmpresaMousePressed
+
+    private void btnAdminProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminProductosMousePressed
+        this.btnAdminUser.setSelected(false);
+        this.btnAdminProductos.setSelected(true);
+        this.btnInfoEmpresa.setSelected(false);
+        this.btnConfiguracion.setSelected(false);
+        this.btnCerrarSesion.setSelected(false);
+    }//GEN-LAST:event_btnAdminProductosMousePressed
+    private void adminAction(){
+       if(this.btnAdminProductos.isSelected()){
+            this.btnAdminProductos.setColorNormal(new Color(204,204,204));
+            this.btnAdminProductos.setColorHover(new Color(204,204,204));
+            this.btnAdminProductos.setColorPressed(new Color(204,204,204));
+
+            this.btnAdminUser.setColorNormal(new Color(239,238,244));
+            this.btnAdminUser.setColorHover(new Color(204,204,204));
+            this.btnAdminUser.setColorPressed(new Color(204,204,204));
+            
+            this.btnInfoEmpresa.setColorNormal(new Color(239,238,244));
+            this.btnInfoEmpresa.setColorHover(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorPressed(new Color(204,204,204));
+            
+            this.btnConfiguracion.setColorNormal(new Color(239,238,244));
+            this.btnConfiguracion.setColorHover(new Color(204,204,204));
+            this.btnConfiguracion.setColorPressed(new Color(204,204,204));
+            
+            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
+            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
+            
+        }else{
+            this.btnAdminProductos.setColorNormal(new Color(239,238,244));
+            this.btnAdminProductos.setColorHover(new Color(204,204,204));
+            this.btnAdminProductos.setColorPressed(new Color(204,204,204));
+        }
+        /*if(btnInfoEmpresa.getY()==194 || btnAdminProductos.getY()!=96){
+            if(btnAdminProductos.getY()!=96){
+               userAction();
+           }
+           Animacion.bajar(424-btnConfiguracion.getHeight(), 424, 1, 2, btnConfiguracion);
+           Animacion.bajar(324-btnInfoEmpresa.getHeight(),324, 1, 2, btnInfoEmpresa);
+           Animacion.bajar(514-btnCerrarSesion.getHeight(), 514, 1, 2, btnCerrarSesion);
+           
+           Animacion.subir( 174+subpanelProductos.getHeight(), 174,0, 10, subpanelProductos);
+        }else{
+           Animacion.subir(304+btnConfiguracion.getHeight(), 304, 0, 2, btnConfiguracion);
+           Animacion.subir(194+btnInfoEmpresa.getHeight(), 194, 0, 2, btnInfoEmpresa);
+           Animacion.subir(404+btnCerrarSesion.getHeight(), 404, 0, 2, btnCerrarSesion);
+            
+           Animacion.bajar(1224-subpanelProductos.getHeight(), 1224, 0, 10, subpanelProductos);
+        } */ 
+    }
+    private void btnAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminProductosActionPerformed
+        adminAction();
+    }//GEN-LAST:event_btnAdminProductosActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int posicion = pnlMenu.getX();
         if(posicion > -1){
-            Animacion.Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
+            Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
         }else{
-            Animacion.Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
+            Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void ochoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ochoMousePressed
-        this.uno.setSelected(false);
-        this.dos.setSelected(false);
-        this.tres.setSelected(false);
-        this.cuatro.setSelected(false);
-        this.cinco.setSelected(false);
-        this.seis.setSelected(false);
-        this.siete.setSelected(false);
-        this.ocho.setSelected(true);
-    }//GEN-LAST:event_ochoMousePressed
-
-    private void ochoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ochoActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlWeb());
-        if(this.ocho.isSelected()){
-            this.uno.setColorNormal(new Color(239,238,244));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
-            
-            this.dos.setColorNormal(new Color(239,238,244));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
-            
-            this.tres.setColorNormal(new Color(239,238,244));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
-            
-            this.cuatro.setColorNormal(new Color(239,238,244));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
-            
-            this.cinco.setColorNormal(new Color(239,238,244));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
-            
-            this.seis.setColorNormal(new Color(239,238,244));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-            
-            this.siete.setColorNormal(new Color(239,238,244));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-            
-            this.ocho.setColorNormal(new Color(204,204,204));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
-        }else{
-            this.ocho.setColorNormal(new Color(239,238,244));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
-        }
-    }//GEN-LAST:event_ochoActionPerformed
-
-    private void sieteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sieteMousePressed
-        this.uno.setSelected(false);
-        this.dos.setSelected(false);
-        this.tres.setSelected(false);
-        this.cuatro.setSelected(false);
-        this.cinco.setSelected(false);
-        this.seis.setSelected(false);
-        this.siete.setSelected(true);
-        this.ocho.setSelected(false);
-    }//GEN-LAST:event_sieteMousePressed
-
-    private void sieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sieteActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.PanelSetting());
-        if(this.siete.isSelected()){
-            this.uno.setColorNormal(new Color(239,238,244));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
-            
-            this.dos.setColorNormal(new Color(239,238,244));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
-            
-            this.tres.setColorNormal(new Color(239,238,244));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
-            
-            this.cuatro.setColorNormal(new Color(239,238,244));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
-            
-            this.cinco.setColorNormal(new Color(239,238,244));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
-            
-            this.seis.setColorNormal(new Color(239,238,244));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-            
-            this.siete.setColorNormal(new Color(204,204,204));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-            
-            this.ocho.setColorNormal(new Color(239,238,244));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
-        }else{
-            this.siete.setColorNormal(new Color(239,238,244));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-        }
-    }//GEN-LAST:event_sieteActionPerformed
-
-    private void seisMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seisMousePressed
-        this.uno.setSelected(false);
-        this.dos.setSelected(false);
-        this.tres.setSelected(false);
-        this.cuatro.setSelected(false);
-        this.cinco.setSelected(false);
-        this.seis.setSelected(true);
-        this.siete.setSelected(false);
-        this.ocho.setSelected(false);
-    }//GEN-LAST:event_seisMousePressed
-
-    private void seisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.PanelUser());
-        if(this.seis.isSelected()){
-            this.uno.setColorNormal(new Color(239,238,244));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
-            
-            this.dos.setColorNormal(new Color(239,238,244));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
-            
-            this.tres.setColorNormal(new Color(239,238,244));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
-            
-            this.cuatro.setColorNormal(new Color(239,238,244));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
-            
-            this.cinco.setColorNormal(new Color(239,238,244));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
-            
-            this.seis.setColorNormal(new Color(204,204,204));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-            
-            this.siete.setColorNormal(new Color(239,238,244));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-            
-            this.ocho.setColorNormal(new Color(239,238,244));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
-        }else{
-            this.seis.setColorNormal(new Color(239,238,244));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-        }
-    }//GEN-LAST:event_seisActionPerformed
-
-    private void cincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincoActionPerformed
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         new CambiaPanel(pnlPrincipal, new panel.admin.pnlMarket());
-        if(this.cinco.isSelected()){
-            this.uno.setColorNormal(new Color(239,238,244));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
+        if(this.btnCerrarSesion.isSelected()){
+            this.btnAdminUser.setColorNormal(new Color(239,238,244));
+            this.btnAdminUser.setColorHover(new Color(204,204,204));
+            this.btnAdminUser.setColorPressed(new Color(204,204,204));
             
-            this.dos.setColorNormal(new Color(239,238,244));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
+            this.btnAdminProductos.setColorNormal(new Color(239,238,244));
+            this.btnAdminProductos.setColorHover(new Color(204,204,204));
+            this.btnAdminProductos.setColorPressed(new Color(204,204,204));
             
-            this.tres.setColorNormal(new Color(239,238,244));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorNormal(new Color(239,238,244));
+            this.btnInfoEmpresa.setColorHover(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorPressed(new Color(204,204,204));
             
-            this.cuatro.setColorNormal(new Color(239,238,244));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
+            this.btnConfiguracion.setColorNormal(new Color(239,238,244));
+            this.btnConfiguracion.setColorHover(new Color(204,204,204));
+            this.btnConfiguracion.setColorPressed(new Color(204,204,204));
             
-            this.cinco.setColorNormal(new Color(204,204,204));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
-            
-            this.seis.setColorNormal(new Color(239,238,244));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-            
-            this.siete.setColorNormal(new Color(239,238,244));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-            
-            this.ocho.setColorNormal(new Color(239,238,244));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
+            this.btnCerrarSesion.setColorNormal(new Color(204,204,204));
+            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
+           
         }else{
-            this.cinco.setColorNormal(new Color(239,238,244));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
+            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
+            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
         }
-    }//GEN-LAST:event_cincoActionPerformed
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
-    private void cincoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cincoMousePressed
-        this.uno.setSelected(false);
-        this.dos.setSelected(false);
-        this.tres.setSelected(false);
-        this.cuatro.setSelected(false);
-        this.cinco.setSelected(true);
-        this.seis.setSelected(false);
-        this.siete.setSelected(false);
-        this.ocho.setSelected(false);
-    }//GEN-LAST:event_cincoMousePressed
+    private void btnCerrarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMousePressed
+        this.btnAdminUser.setSelected(false);
+        this.btnAdminProductos.setSelected(false);
+        this.btnInfoEmpresa.setSelected(false);
+        this.btnConfiguracion.setSelected(false);
+        this.btnCerrarSesion.setSelected(true);
+    }//GEN-LAST:event_btnCerrarSesionMousePressed
 
-    private void cuatroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuatroMousePressed
-        this.uno.setSelected(false);
-        this.dos.setSelected(false);
-        this.tres.setSelected(false);
-        this.cuatro.setSelected(true);
-        this.cinco.setSelected(false);
-        this.seis.setSelected(false);
-        this.siete.setSelected(false);
-        this.ocho.setSelected(false);
-    }//GEN-LAST:event_cuatroMousePressed
+    private void btnConfiguracionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfiguracionMousePressed
+        this.btnAdminUser.setSelected(false);
+        this.btnAdminProductos.setSelected(false);
+        this.btnInfoEmpresa.setSelected(false);
+        this.btnConfiguracion.setSelected(true);
+        this.btnCerrarSesion.setSelected(false);
+    }//GEN-LAST:event_btnConfiguracionMousePressed
 
-    private void cuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.PanelListProduct());
-        if(this.cuatro.isSelected()){
-            this.uno.setColorNormal(new Color(239,238,244));
-            this.uno.setColorHover(new Color(204,204,204));
-            this.uno.setColorPressed(new Color(204,204,204));
+    private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
+        new CambiaPanel(pnlPrincipal, new panel.admin.pnlFeeBack());
+        if(this.btnConfiguracion.isSelected()){
+            this.btnAdminUser.setColorNormal(new Color(239,238,244));
+            this.btnAdminUser.setColorHover(new Color(204,204,204));
+            this.btnAdminUser.setColorPressed(new Color(204,204,204));
             
-            this.dos.setColorNormal(new Color(239,238,244));
-            this.dos.setColorHover(new Color(204,204,204));
-            this.dos.setColorPressed(new Color(204,204,204));
+            this.btnAdminProductos.setColorNormal(new Color(239,238,244));
+            this.btnAdminProductos.setColorHover(new Color(204,204,204));
+            this.btnAdminProductos.setColorPressed(new Color(204,204,204));
             
-            this.tres.setColorNormal(new Color(239,238,244));
-            this.tres.setColorHover(new Color(204,204,204));
-            this.tres.setColorPressed(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorNormal(new Color(239,238,244));
+            this.btnInfoEmpresa.setColorHover(new Color(204,204,204));
+            this.btnInfoEmpresa.setColorPressed(new Color(204,204,204));
             
-            this.cuatro.setColorNormal(new Color(204,204,204));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
+            this.btnConfiguracion.setColorNormal(new Color(204,204,204));
+            this.btnConfiguracion.setColorHover(new Color(204,204,204));
+            this.btnConfiguracion.setColorPressed(new Color(204,204,204));
             
-            this.cinco.setColorNormal(new Color(239,238,244));
-            this.cinco.setColorHover(new Color(204,204,204));
-            this.cinco.setColorPressed(new Color(204,204,204));
-            
-            this.seis.setColorNormal(new Color(239,238,244));
-            this.seis.setColorHover(new Color(204,204,204));
-            this.seis.setColorPressed(new Color(204,204,204));
-            
-            this.siete.setColorNormal(new Color(239,238,244));
-            this.siete.setColorHover(new Color(204,204,204));
-            this.siete.setColorPressed(new Color(204,204,204));
-            
-            this.ocho.setColorNormal(new Color(239,238,244));
-            this.ocho.setColorHover(new Color(204,204,204));
-            this.ocho.setColorPressed(new Color(204,204,204));
+            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
+            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
         }else{
-            this.cuatro.setColorNormal(new Color(239,238,244));
-            this.cuatro.setColorHover(new Color(204,204,204));
-            this.cuatro.setColorPressed(new Color(204,204,204));
+            this.btnConfiguracion.setColorNormal(new Color(239,238,244));
+            this.btnConfiguracion.setColorHover(new Color(204,204,204));
+            this.btnConfiguracion.setColorPressed(new Color(204,204,204));
         }
-    }//GEN-LAST:event_cuatroActionPerformed
+    }//GEN-LAST:event_btnConfiguracionActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         x = evt.getX();
@@ -963,7 +645,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -979,28 +660,21 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rsbuttom.RSButtonMetro cinco;
-    private rsbuttom.RSButtonMetro cuatro;
-    private rsbuttom.RSButtonMetro dos;
+    private rsbuttom.RSButtonMetro btnAdminProductos;
+    private rsbuttom.RSButtonMetro btnAdminUser;
+    private rsbuttom.RSButtonMetro btnCerrarSesion;
+    private rsbuttom.RSButtonMetro btnConfiguracion;
+    private rsbuttom.RSButtonMetro btnInfoEmpresa;
     private javax.swing.JButton jButton1;
     private app.bolivia.swing.JCTextField jCTextField1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private rsbuttom.RSButtonMetro ocho;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlPrincipal;
-    private rsbuttom.RSButtonMetro seis;
-    private rsbuttom.RSButtonMetro siete;
-    private rsbuttom.RSButtonMetro tres;
-    private rsbuttom.RSButtonMetro uno;
     // End of variables declaration//GEN-END:variables
 }

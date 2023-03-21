@@ -127,7 +127,6 @@ public class Login extends javax.swing.JFrame {
 
         PanelDerecho.setBackground(new java.awt.Color(255, 255, 255));
         PanelDerecho.setPreferredSize(new java.awt.Dimension(1100, 700));
-        PanelDerecho.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         header.setBackground(new java.awt.Color(255, 255, 255));
         header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -396,7 +395,16 @@ public class Login extends javax.swing.JFrame {
                         .addGap(32, 32, 32))))
         );
 
-        PanelDerecho.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 700));
+        javax.swing.GroupLayout PanelDerechoLayout = new javax.swing.GroupLayout(PanelDerecho);
+        PanelDerecho.setLayout(PanelDerechoLayout);
+        PanelDerechoLayout.setHorizontalGroup(
+            PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        PanelDerechoLayout.setVerticalGroup(
+            PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -15,13 +15,15 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
 import javax.swing.border.Border;
 
 /**
 * @author Rojeru San
  */
-public class RSButtonMetro extends JButton{
+public class RSButtonMetro extends JButton implements MouseListener, MouseMotionListener {
     /**
      * Color para el fondo del boton
      */
@@ -56,6 +58,8 @@ public class RSButtonMetro extends JButton{
         this.setForeground(this.colorTextNormal);
         this.setOpaque(true);
         this.setVisible(true);
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
     }
 
     /**
@@ -152,7 +156,17 @@ public class RSButtonMetro extends JButton{
         this.bordeMoved = bordeMoved;
     }
 
-    
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        
+    }
 
-    
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        
+        this.setForeground(this.colorTextHover);
+        this.setBackground(this.colorHover);
+        
+        this.setBorder(bordeMoved);
+    }
 }

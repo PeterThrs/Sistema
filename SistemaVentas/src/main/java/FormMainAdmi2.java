@@ -45,7 +45,7 @@ public class FormMainAdmi2 extends javax.swing.JFrame {
         Configuracion.background(CodigoColor.cFondoGris, this.jPanel1);
 
         //configuracion botones
-        Configuracion.normal(this.btnClose);
+        //Configuracion.normal(this.btnClose);
         Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnClose);
         Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnClose);
 
@@ -70,9 +70,12 @@ public class FormMainAdmi2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnAdministrarUsuarios.setBackground(new java.awt.Color(204, 204, 204));
         btnAdministrarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnAdministrarUsuarios.setForeground(new java.awt.Color(128, 128, 131));
         btnAdministrarUsuarios.setText("Administrar Usuarios");
 
+        btnClose.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnClose.setText("Cerrar Sesion");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,42 +83,47 @@ public class FormMainAdmi2 extends javax.swing.JFrame {
             }
         });
 
+        btnAdministrarProductos.setBackground(new java.awt.Color(204, 204, 204));
         btnAdministrarProductos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnAdministrarProductos.setForeground(new java.awt.Color(128, 128, 131));
         btnAdministrarProductos.setText("Administrar Productos");
 
+        btnGestionarEmpresa.setBackground(new java.awt.Color(204, 204, 204));
         btnGestionarEmpresa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnGestionarEmpresa.setText("Administrar Productos");
+        btnGestionarEmpresa.setForeground(new java.awt.Color(128, 128, 131));
+        btnGestionarEmpresa.setText("Datos de la empresa");
+        btnGestionarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarEmpresaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClose))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdministrarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGestionarEmpresa)
-                        .addGap(0, 87, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(30, 30, 30)
+                .addComponent(btnAdministrarUsuarios)
+                .addGap(0, 35, Short.MAX_VALUE)
+                .addComponent(btnAdministrarProductos)
+                .addGap(97, 97, 97)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGestionarEmpresa)
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 47, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(80, 80, 80)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGestionarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdministrarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
-                .addComponent(btnClose)
-                .addContainerGap())
+                    .addComponent(btnGestionarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,6 +145,10 @@ public class FormMainAdmi2 extends javax.swing.JFrame {
         Login login = new Login();
         login.setVisible(true);
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnGestionarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarEmpresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGestionarEmpresaActionPerformed
 
     /**
      * @param args the command line arguments

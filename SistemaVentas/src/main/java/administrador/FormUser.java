@@ -41,7 +41,7 @@ public class FormUser extends javax.swing.JDialog {
         
         
         //configuraciones de los JTextField
-        Configuracion.normal(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
+        Configuracion.robotoPlain12(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet);
         Configuracion.withoutBorde(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,

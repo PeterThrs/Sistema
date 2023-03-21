@@ -44,7 +44,7 @@ public class Configuracion {
         t.setIconImage(Sesion.app.getIcono());
     }
     //configuraicones para el tipo de letra general de la aplicacion
-    public static <T extends JComponent> void normal(T... t){
+    public static <T extends JComponent> void robotoPlain12(T... t){
         for(int i = 0; i < t.length; i++){
             t[i].setFont(new Font("Roboto", Font.PLAIN, 12));
         } 

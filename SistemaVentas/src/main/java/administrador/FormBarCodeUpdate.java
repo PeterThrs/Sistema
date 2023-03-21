@@ -28,7 +28,7 @@ public class FormBarCodeUpdate extends javax.swing.JDialog {
             Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlIndication);
 
             //configuracion JTextField
-            Configuracion.normal(this.tfBarCode);
+            Configuracion.robotoPlain12(this.tfBarCode);
             Configuracion.withoutBorde(this.tfBarCode);
             Configuracion.background(CodigoColor.cFondoGris, this.tfBarCode);
 

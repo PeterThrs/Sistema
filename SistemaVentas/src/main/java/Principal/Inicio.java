@@ -4,6 +4,14 @@
  */
 package Principal;
 
+import configuracion.Configuracion;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import Objetos.Sesion;
+
 /**
  *
  * @author EdRyz
@@ -15,6 +23,18 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        //agregarEstilos();
+        
+        this.setIconImage(Sesion.app.getIcono());
+        
+        //ImageIcon wallpaper = new ImageIcon("src/main/resources/images/User.png"); 
+        //Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(imagenf.getWidth(), imagenf.getHeight(), Image.SCALE_DEFAULT)); 
+        
+        //iconUser.setIcon(new Configuracion().setIconoEtiqueta("/user.png", iconUser));
+        //iconPassword.setIcon(new Configuracion().setIconoEtiqueta("/password icon.png", iconPassword));
+        //jLogo.setIcon(new Configuracion().setIconoEtiqueta("/logo.png", jLogo));
+        //this.imagenf.setIcon(icono);
+        //this.repaint(); 
     }
 
     /**
@@ -26,69 +46,66 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        imagenf = new javax.swing.JLabel();
+        btnEntrarInicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        imagenf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagenf.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        btnEntrarInicio.setText("Entrar");
+        btnEntrarInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarInicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addComponent(imagenf, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(307, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEntrarInicio)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addComponent(imagenf, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                .addComponent(btnEntrarInicio)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Inicio().setVisible(true);
-            }
-        });
-    }
+    private void btnEntrarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarInicioActionPerformed
+        // TODO add your handling code here:
+        Login login=new Login();
+        login.setVisible(true);
+    }//GEN-LAST:event_btnEntrarInicioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnEntrarInicio;
+    private javax.swing.JLabel imagenf;
     // End of variables declaration//GEN-END:variables
+
+   class FondoPanel extends JPanel{
+        private Image imagen;
+        @Override
+        public void paint(Graphics g){
+            imagen=new ImageIcon(getClass().getResource("/f.jpg")).getImage();
+            g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
+            setOpaque(false);
+            super.paint(g);
+        }
+    }
 }

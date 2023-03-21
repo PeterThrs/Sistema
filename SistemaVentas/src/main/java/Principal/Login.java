@@ -25,7 +25,7 @@ import javax.swing.JPanel;
 public class Login extends javax.swing.JFrame {
 
     int xMouse,yMouse;
-    FondoPanel fondo=new FondoPanel();
+    public FondoPanel fondo=new FondoPanel();
     public Login() {
         initComponents();
         agregarEstilos();

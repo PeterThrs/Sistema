@@ -3,20 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package panel.admin;
+package panel.contador;
+
+import panel.admin.*;
 
 /**
  *
  * @author RojeruSan
  */
-public class pnlAndroid extends javax.swing.JPanel {
+public class pnlMarket extends javax.swing.JPanel {
 
     /**
      * Creates new form pnlHome
      */
-    public pnlAndroid() {
+    public pnlMarket() {
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,8 +46,8 @@ public class pnlAndroid extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(128, 128, 131));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/android.png"))); // NOI18N
-        jLabel7.setText("ANDROID");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img1/market.png"))); // NOI18N
+        jLabel7.setText("MARKET");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -32,7 +32,7 @@ public class FormUser extends javax.swing.JDialog {
         //configuraciones de los JLabel
         Configuracion.titulo(this.jlTitle);
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul,this.jlTitle);
-        Configuracion.normalItalic(this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
+        Configuracion.robotoItalic14(this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
                 this.jlLastNameP, this.jlMun, this.jlName, this.jlPhone1, this.jlPhone2, this.jlPostalCode,
                 this.jlRfc, this.jlSex, this.jlStreet);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
@@ -56,14 +56,14 @@ public class FormUser extends javax.swing.JDialog {
         
         
         //configuraciones de los botones
-        Configuracion.normalItalic(this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.robotoItalic14(this.btnCancel, this.btnCreate, this.btnUpdate);
         Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnCancel, this.btnCreate, this.btnUpdate);
         Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnCreate, this.btnUpdate);
         
         //configurciones del JSpinner
         
         //configuraciones del JRadioButton
-        Configuracion.normalItalic(this.rbMan, this.rbWoman); 
+        Configuracion.robotoItalic14(this.rbMan, this.rbWoman); 
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.rbMan, this.rbWoman);
         Configuracion.background(CodigoColor.cFondoGris, this.rbMan, this.rbWoman);
         

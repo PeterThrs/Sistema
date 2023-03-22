@@ -25,9 +25,9 @@ public class FormCreateUser extends javax.swing.JDialog {
             Configuracion.background(CodigoColor.cFondoGris, this.panel);
 
             //Configuracion JLabels
-            Configuracion.normalItalic(this.jlTitle);
+            Configuracion.robotoItalic14(this.jlTitle);
             Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
-            Configuracion.normalItalic(this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol,
+            Configuracion.robotoItalic14(this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol,
                     this.jlUser, this.jlId);
             Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol,
                     this.jlUser, this.jlId);
@@ -38,16 +38,16 @@ public class FormCreateUser extends javax.swing.JDialog {
             Configuracion.background(CodigoColor.cFondoGris, this.tfConfirm, this.tfPassword, this.tfUser, this.tfId);
 
             //Configuracion JCheckBox
-            Configuracion.normalItalic(this.cbSendEmail);
+            Configuracion.robotoItalic14(this.cbSendEmail);
             Configuracion.withoutBorde(this.cbSendEmail);
             Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbSendEmail);
             Configuracion.background(CodigoColor.cFondoGris, this.cbSendEmail);
 
             //Configuracion jComboBox
-            Configuracion.normalItalic(this.cbRol);
+            Configuracion.robotoItalic14(this.cbRol);
 
             //Configuracion JButton
-            Configuracion.normalItalic(this.btnCancel, this.btnAcept);
+            Configuracion.robotoItalic14(this.btnCancel, this.btnAcept);
             Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnCancel, this.btnAcept);
             Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnAcept);
 

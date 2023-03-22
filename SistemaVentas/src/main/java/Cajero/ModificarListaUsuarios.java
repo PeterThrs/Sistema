@@ -58,6 +58,20 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
             p.getId(),p.getNomUsuario(),p.getNombre(),p.getApellidoPaterno(),p.getApellidoMaterno(),p.getNumTelefono(),p.getCorreoElectronico(),p.getNacionalidad(),p.getCalle()
         });
     }
+    public void actualizarDatos(){
+        int fila=table.getSelectedRow();
+        int id=Integer.parseInt(this.table.getValueAt(fila, 0).toString());
+        String nombreUsuario=table.getValueAt(fila, 2).toString();
+        String nombre=table.getValueAt(fila, 3).toString();
+        String apellidoP=table.getValueAt(fila, 4).toString();
+        String apellidoM=table.getValueAt(fila, 5).toString();
+        String telefono=table.getValueAt(fila, 6).toString();
+        String correoElec=table.getValueAt(fila, 7).toString();
+        String nacionalidad=table.getValueAt(fila, 8).toString();
+        String calle=table.getValueAt(fila, 9).toString();
+        
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

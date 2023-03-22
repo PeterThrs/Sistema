@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package panel.admin;
+package Principal;
 
 import Animacion.Animacion;
 import java.awt.Color;
@@ -98,7 +98,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         btnInfoEmpresa.setBackground(new java.awt.Color(239, 238, 244));
         btnInfoEmpresa.setForeground(new java.awt.Color(128, 128, 131));
-        btnInfoEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion-del-cambio.png"))); // NOI18N
         btnInfoEmpresa.setText("Datos de la empresa");
         btnInfoEmpresa.setColorHover(new java.awt.Color(204, 204, 204));
         btnInfoEmpresa.setColorNormal(new java.awt.Color(239, 238, 244));
@@ -122,7 +121,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         btnAdminProductos.setBackground(new java.awt.Color(239, 238, 244));
         btnAdminProductos.setForeground(new java.awt.Color(128, 128, 131));
-        btnAdminProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion-de-productos.png"))); // NOI18N
         btnAdminProductos.setText("Administrar productos");
         btnAdminProductos.setColorHover(new java.awt.Color(204, 204, 204));
         btnAdminProductos.setColorNormal(new java.awt.Color(239, 238, 244));
@@ -148,7 +146,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         btnCerrarSesion.setBackground(new java.awt.Color(239, 238, 244));
         btnCerrarSesion.setForeground(new java.awt.Color(128, 128, 131));
-        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         btnCerrarSesion.setText("Cerrar sesión");
         btnCerrarSesion.setColorHover(new java.awt.Color(204, 204, 204));
         btnCerrarSesion.setColorNormal(new java.awt.Color(239, 238, 244));
@@ -188,7 +185,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         btnConfiguracion.setBackground(new java.awt.Color(239, 238, 244));
         btnConfiguracion.setForeground(new java.awt.Color(128, 128, 131));
-        btnConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuracion.png"))); // NOI18N
         btnConfiguracion.setText("Configuración");
         btnConfiguracion.setColorHover(new java.awt.Color(204, 204, 204));
         btnConfiguracion.setColorNormal(new java.awt.Color(239, 238, 244));

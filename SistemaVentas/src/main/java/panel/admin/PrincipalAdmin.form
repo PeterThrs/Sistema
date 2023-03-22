@@ -64,10 +64,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnInfoEmpresa" min="-2" pref="258" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnInfoEmpresa" min="-2" pref="258" max="-2" attributes="0"/>
+                          <Component id="btnConfiguracion" min="-2" pref="258" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="jPanel5" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -75,7 +77,6 @@
                           <Component id="btnAdminUser" min="-2" pref="258" max="-2" attributes="0"/>
                           <Component id="btnAdminProductos" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                           <Component id="btnCerrarSesion" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnConfiguracion" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                           <Component id="btnAdminProductos2" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                           <Component id="btnAdminProductos1" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                       </Group>
@@ -89,7 +90,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnAdminUser" min="-2" pref="68" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -102,13 +103,13 @@
                               <Component id="btnAdminProductos1" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnInfoEmpresa" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnConfiguracion" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Component id="btnConfiguracion" min="-2" pref="64" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCerrarSesion" min="-2" pref="65" max="-2" attributes="0"/>
-                      <EmptySpace pref="95" max="32767" attributes="0"/>
+                      <EmptySpace pref="122" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

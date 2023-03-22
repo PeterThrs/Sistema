@@ -53,7 +53,7 @@ public class Login extends javax.swing.JFrame {
         
         Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
-        Configuracion.normalItalic(this.jLabel3, this.jLabel4, 
+        Configuracion.robotoItalic14(this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
         Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
@@ -71,7 +71,7 @@ public class Login extends javax.swing.JFrame {
         
         
         //configuracion JButton
-        Configuracion.normalItalic(this.jIngresar);
+        Configuracion.robotoItalic14(this.jIngresar);
         Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.jIngresar);
         Configuracion.background(CodigoColor.cFondoBtnAzul, this.jIngresar);
         

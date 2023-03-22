@@ -5,6 +5,9 @@
  */
 package panel.admin;
 
+import administrador.FormCreateUser;
+import javax.swing.JFrame;
+
 /**
  *
  * @author RojeruSan
@@ -456,7 +459,7 @@ public class PanelUser extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.dispose();
+        
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed

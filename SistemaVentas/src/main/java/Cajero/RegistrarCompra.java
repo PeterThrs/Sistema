@@ -6,7 +6,7 @@ package Cajero;
 
 import Contador.InicioContador;
 import Objetos.Sesion;
-import com.ventas.administrador.PrincipalAdministrador;
+//import com.ventas.administrador.PrincipalAdministrador;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import static java.awt.image.ImageObserver.HEIGHT;

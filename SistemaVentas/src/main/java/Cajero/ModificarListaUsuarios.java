@@ -5,8 +5,8 @@
 package Cajero;
 
 import Objetos.Persona;
-import com.ventas.administrador.EditarUsuario;
-import com.ventas.administrador.FormCrearUsuario;
+//import com.ventas.administrador.EditarUsuario;
+//import com.ventas.administrador.FormCrearUsuario;
 import configuracion.Configuracion;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -164,10 +164,10 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
     private void agregar(){
         try{
-            FormCrearUsuario crear=new FormCrearUsuario(new JFrame(), true);
+            /*FormCrearUsuario crear=new FormCrearUsuario(new JFrame(), true);
             crear.setVisible(true);
             DefaultTableModel model=(DefaultTableModel) table.getModel();
-            registrar(crear.usuario(),model);
+            registrar(crear.usuario(),model);*/
         } catch (Exception e)
         {
             System.err.print(e);
@@ -186,10 +186,10 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
         String calle=table.getValueAt(fila, 8).toString();
         Persona persona=new Persona(id, nombreUsuario, nombre, apellidoP, apellidoM, telefono, correoElec, nacionalidad, calle);
 
-        EditarUsuario actualizar=new EditarUsuario(this, true,persona);
-        actualizar.setVisible(true);
-        actualizar.usuario();   
-        nuevosDatos(actualizar.usuario(),fila);
+        //EditarUsuario actualizar=new EditarUsuario(this, true,persona);
+        //actualizar.setVisible(true);
+        //actualizar.usuario();   
+        //nuevosDatos(actualizar.usuario(),fila);
     }
     private void nuevosDatos(Persona p,int fila){
         table.setValueAt(p.getId(),fila, 0);

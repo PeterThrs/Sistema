@@ -147,10 +147,10 @@ public class ListaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
     private void agregar(){
         try{
-            Agregar_Producto crear=new Agregar_Producto(new JFrame(), true);
+            /*Agregar_Producto crear=new Agregar_Producto(new JFrame(), true);
             crear.setVisible(true);
             DefaultTableModel model=(DefaultTableModel) table.getModel();
-            registrar(crear.getProducto(),model);
+            registrar(crear.getProducto(),model);*/
         } catch (Exception e)
         {
             System.err.print(e);
@@ -166,10 +166,10 @@ public class ListaProductos extends javax.swing.JFrame {
         double cantidad=Double.parseDouble(table.getValueAt(fila, 5).toString());
         Producto producto=new Producto(codigo, nombre, precio, area, marca, cantidad);
 
-        EditarProducto actualizar=new EditarProducto(this, true,producto);
-        actualizar.setVisible(true);
-        actualizar.producto();   
-        nuevosDatos(actualizar.producto(),fila);
+        //EditarProducto actualizar=new EditarProducto(this, true,producto);
+        //actualizar.setVisible(true);
+        //actualizar.producto();   
+        //nuevosDatos(actualizar.producto(),fila);
     }
     private void nuevosDatos(Producto p,int fila){
         table.setValueAt(p.getCodigo(),fila, 0);

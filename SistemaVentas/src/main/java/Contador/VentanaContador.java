@@ -334,97 +334,121 @@ public class VentanaContador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void userAction(){
-        if(this.btnVentas.isSelected()){
-            this.btnVentas.setColorNormal(new Color(204,204,204));
-            this.btnVentas.setColorHover(new Color(204,204,204));
-            this.btnVentas.setColorPressed(new Color(204,204,204));
 
-            this.btnHome.setColorNormal(new Color(239,238,244));
-            this.btnHome.setColorHover(new Color(204,204,204));
-            this.btnHome.setColorPressed(new Color(204,204,204));
-            
-            this.btnInversiones.setColorNormal(new Color(239,238,244));
-            this.btnInversiones.setColorHover(new Color(204,204,204));
-            this.btnInversiones.setColorPressed(new Color(204,204,204));
-            
-            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
-            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-        }else{
-            this.btnVentas.setColorNormal(new Color(239,238,244));
-            this.btnVentas.setColorHover(new Color(204,204,204));
-            this.btnVentas.setColorPressed(new Color(204,204,204));
-        }
-        /*if(btnAdminProductos.getY()==96){
-           if(btnInfoEmpresa.getY()!=194){
-               adminAction();
-           }
-           Animacion.bajar(194-btnAdminProductos.getHeight(), 194, 1, 2, btnAdminProductos);
-           Animacion.bajar(424-btnConfiguracion.getHeight(), 424, 1, 2, btnConfiguracion);
-           Animacion.bajar(324-btnInfoEmpresa.getHeight(),324, 1, 2, btnInfoEmpresa);
-           Animacion.bajar(514-btnCerrarSesion.getHeight(), 514, 1, 2, btnCerrarSesion);
-           Animacion.subir( 100+PNuevo.getHeight(), 100,0, 10, PNuevo);
-        }else{
-           Animacion.subir(96+btnAdminProductos.getHeight(), 96, 0, 2, btnAdminProductos);
-           Animacion.subir(304+btnConfiguracion.getHeight(), 304, 0, 2, btnConfiguracion);
-           Animacion.subir(194+btnInfoEmpresa.getHeight(), 194, 0, 2, btnInfoEmpresa);
-           Animacion.subir(404+btnCerrarSesion.getHeight(), 404, 0, 2, btnCerrarSesion);
-           Animacion.bajar(980-PNuevo.getHeight(), 980, 0, 10, PNuevo);
-        }*/
-    }
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
-        userAction();
+        try
+        {
+            if(this.btnVentas.isSelected()){
+                this.btnVentas.setColorNormal(new Color(204,204,204));
+                this.btnVentas.setColorHover(new Color(204,204,204));
+                this.btnVentas.setColorPressed(new Color(204,204,204));
+
+                this.btnHome.setColorNormal(new Color(239,238,244));
+                this.btnHome.setColorHover(new Color(204,204,204));
+                this.btnHome.setColorPressed(new Color(204,204,204));
+            
+                this.btnInversiones.setColorNormal(new Color(239,238,244));
+                this.btnInversiones.setColorHover(new Color(204,204,204));
+                this.btnInversiones.setColorPressed(new Color(204,204,204));
+            
+                this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
+                this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+                this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
+            }else{
+                this.btnVentas.setColorNormal(new Color(239,238,244));
+                this.btnVentas.setColorHover(new Color(204,204,204));
+                this.btnVentas.setColorPressed(new Color(204,204,204));
+            }
+            /*if(btnAdminProductos.getY()==96){
+               if(btnInfoEmpresa.getY()!=194){
+                   adminAction();
+               }
+               Animacion.bajar(194-btnAdminProductos.getHeight(), 194, 1, 2, btnAdminProductos);
+               Animacion.bajar(424-btnConfiguracion.getHeight(), 424, 1, 2, btnConfiguracion);
+               Animacion.bajar(324-btnInfoEmpresa.getHeight(),324, 1, 2, btnInfoEmpresa);
+               Animacion.bajar(514-btnCerrarSesion.getHeight(), 514, 1, 2, btnCerrarSesion);
+               Animacion.subir( 100+PNuevo.getHeight(), 100,0, 10, PNuevo);
+            }else{
+               Animacion.subir(96+btnAdminProductos.getHeight(), 96, 0, 2, btnAdminProductos);
+               Animacion.subir(304+btnConfiguracion.getHeight(), 304, 0, 2, btnConfiguracion);
+               Animacion.subir(194+btnInfoEmpresa.getHeight(), 194, 0, 2, btnInfoEmpresa);
+               Animacion.subir(404+btnCerrarSesion.getHeight(), 404, 0, 2, btnCerrarSesion);
+               Animacion.bajar(980-PNuevo.getHeight(), 980, 0, 10, PNuevo);
+            }*/
+        } catch (Exception e)
+        {
+            System.err.println(e);
+        }
     }//GEN-LAST:event_btnVentasActionPerformed
 
     private void btnVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMousePressed
-        this.btnVentas.setSelected(true);
-        this.btnInversiones.setSelected(false);
-        this.btnHome.setSelected(false);
-        this.btnCerrarSesion.setSelected(false);
+        try
+        {
+            this.btnVentas.setSelected(true);
+            this.btnInversiones.setSelected(false);
+            this.btnHome.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        } catch (Exception e)
+        {
+            System.err.println(e);
+        }
     }//GEN-LAST:event_btnVentasMousePressed
 
     private void btnInversionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInversionesMousePressed
-        this.btnInversiones.setSelected(true);
-        this.btnHome.setSelected(false);
-        this.btnVentas.setSelected(false);
-        this.btnCerrarSesion.setSelected(false);
-    }//GEN-LAST:event_btnInversionesMousePressed
-    private void adminAction(){
-       if(this.btnInversiones.isSelected()){
-            this.btnInversiones.setColorNormal(new Color(204,204,204));
-            this.btnInversiones.setColorHover(new Color(204,204,204));
-            this.btnInversiones.setColorPressed(new Color(204,204,204));
-
-            this.btnVentas.setColorNormal(new Color(239,238,244));
-            this.btnVentas.setColorHover(new Color(204,204,204));
-            this.btnVentas.setColorPressed(new Color(204,204,204));
-            
-            this.btnHome.setColorNormal(new Color(239,238,244));
-            this.btnHome.setColorHover(new Color(204,204,204));
-            this.btnHome.setColorPressed(new Color(204,204,204));
-            
-            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
-            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-            
-        }else{
-            this.btnInversiones.setColorNormal(new Color(239,238,244));
-            this.btnInversiones.setColorHover(new Color(204,204,204));
-            this.btnInversiones.setColorHover(new Color(204,204,204));
-            this.btnInversiones.setColorPressed(new Color(204,204,204));
+        try{
+            this.btnInversiones.setSelected(true);
+            this.btnHome.setSelected(false);
+            this.btnVentas.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        }catch(Exception e){
+            System.err.println(e);
         }
-    }
+    }//GEN-LAST:event_btnInversionesMousePressed
+
     private void btnInversionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInversionesActionPerformed
-        adminAction();
+        try
+        {
+            if(this.btnInversiones.isSelected()){
+                this.btnInversiones.setColorNormal(new Color(204,204,204));
+                this.btnInversiones.setColorHover(new Color(204,204,204));
+                this.btnInversiones.setColorPressed(new Color(204,204,204));
+
+                this.btnVentas.setColorNormal(new Color(239,238,244));
+                this.btnVentas.setColorHover(new Color(204,204,204));
+                this.btnVentas.setColorPressed(new Color(204,204,204));
+            
+                this.btnHome.setColorNormal(new Color(239,238,244));
+                this.btnHome.setColorHover(new Color(204,204,204));
+                this.btnHome.setColorPressed(new Color(204,204,204));
+            
+                this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
+                this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+                this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
+            
+            }else{
+                this.btnInversiones.setColorNormal(new Color(239,238,244));
+                this.btnInversiones.setColorHover(new Color(204,204,204));
+                this.btnInversiones.setColorHover(new Color(204,204,204));
+                this.btnInversiones.setColorPressed(new Color(204,204,204));
+            }
+        } catch (Exception e)
+        {
+            System.err.println(e);
+        }
     }//GEN-LAST:event_btnInversionesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int posicion = pnlMenu.getX();
-        if(posicion > -1){
-            Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
-        }else{
-            Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
+        try
+        {
+            int posicion = pnlMenu.getX();
+            if(posicion > -1){
+                Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
+            }else{
+                Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
+            }
+        } catch (Exception e)
+        {
+            System.err.println(e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -463,10 +487,16 @@ public class VentanaContador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnCerrarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMousePressed
-        this.btnCerrarSesion.setSelected(true);
-        this.btnHome.setSelected(false);
-        this.btnVentas.setSelected(false);
-        this.btnInversiones.setSelected(false);
+        try
+        {
+            this.btnCerrarSesion.setSelected(true);
+            this.btnHome.setSelected(false);
+            this.btnVentas.setSelected(false);
+            this.btnInversiones.setSelected(false);
+        } catch (Exception e)
+        {
+            System.err.println(e);
+        }
     }//GEN-LAST:event_btnCerrarSesionMousePressed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
@@ -480,35 +510,46 @@ public class VentanaContador extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void btnHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMousePressed
-        this.btnHome.setSelected(true);
-        this.btnVentas.setSelected(false);
-        this.btnInversiones.setSelected(false);
-        this.btnCerrarSesion.setSelected(false);
+        try
+        {
+            this.btnHome.setSelected(true);
+            this.btnVentas.setSelected(false);
+            this.btnInversiones.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        } catch (Exception e)
+        {
+            System.err.println(e);
+        }
     }//GEN-LAST:event_btnHomeMousePressed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        if(this.btnHome.isSelected()){
-            this.btnHome.setColorNormal(new Color(204,204,204));
-            this.btnHome.setColorHover(new Color(204,204,204));
-            this.btnHome.setColorPressed(new Color(204,204,204));
-
-            this.btnVentas.setColorNormal(new Color(239,238,244));
-            this.btnVentas.setColorHover(new Color(204,204,204));
-            this.btnVentas.setColorPressed(new Color(204,204,204));
+        try
+        {
+            if(this.btnHome.isSelected()){
+                this.btnHome.setColorNormal(new Color(204,204,204));
+                this.btnHome.setColorHover(new Color(204,204,204));
+                this.btnHome.setColorPressed(new Color(204,204,204));
             
-            this.btnInversiones.setColorNormal(new Color(239,238,244));
-            this.btnInversiones.setColorHover(new Color(204,204,204));
-            this.btnInversiones.setColorPressed(new Color(204,204,204));
+                this.btnVentas.setColorNormal(new Color(239,238,244));
+                this.btnVentas.setColorHover(new Color(204,204,204));
+                this.btnVentas.setColorPressed(new Color(204,204,204));
             
-            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
-            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-        }else{
-            this.btnHome.setColorNormal(new Color(239,238,244));
-            this.btnHome.setColorHover(new Color(204,204,204));
-            this.btnHome.setColorPressed(new Color(204,204,204));
+                this.btnInversiones.setColorNormal(new Color(239,238,244));
+                this.btnInversiones.setColorHover(new Color(204,204,204));
+                this.btnInversiones.setColorPressed(new Color(204,204,204));
+            
+                this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
+                this.btnCerrarSesion.setColorHover(new Color(204,204,204));
+                this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
+            }else{
+                this.btnHome.setColorNormal(new Color(239,238,244));
+                this.btnHome.setColorHover(new Color(204,204,204));
+                this.btnHome.setColorPressed(new Color(204,204,204));
+            }
+            new CambiaPanel(pnlPrincipal, new pnlHomeContador());
+        } catch (Exception e)
+        {
         }
-        new CambiaPanel(pnlPrincipal, new pnlHomeContador());
     }//GEN-LAST:event_btnHomeActionPerformed
 
     /**

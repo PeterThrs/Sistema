@@ -492,7 +492,7 @@ public class PrincipalCounter extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdminUserMousePressed
 
     private void btnInfoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpresaActionPerformed
-        new CambiaPanel(pnlPrincipal, new panel.admin.pnlChat());
+        new CambiaPanel(pnlPrincipal, new panel.admin.PanelProducto());
         if(this.btnInfoEmpresa.isSelected()){
             this.btnInfoEmpresa.setColorNormal(new Color(204,204,204));
             this.btnInfoEmpresa.setColorHover(new Color(204,204,204));

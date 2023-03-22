@@ -66,7 +66,7 @@ public class CodigoColor {
     /**
      * Este es un rojo intermedio (rojizo) 
      */
-    public static Color cFondoBtnAzul = new Color(0, 18, 25);
+    public static Color cFondoBtnAzul = new Color(38,86,186);
     /**
      * NO me acuerdo 
      */

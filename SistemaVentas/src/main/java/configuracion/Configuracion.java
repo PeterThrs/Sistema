@@ -43,16 +43,35 @@ public class Configuracion {
         t.setLocationRelativeTo(null);
         t.setIconImage(Sesion.app.getIcono());
     }
+    
+    //configuraicones para el tipo de titulos general de la aplicacion
+    public static <T extends JComponent> void titulo(T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setFont(new Font("Calisto MT", Font.BOLD, 16));
+        } 
+    }
+    
     //configuraicones para el tipo de letra general de la aplicacion
     public static <T extends JComponent> void robotoPlain12(T... t){
         for(int i = 0; i < t.length; i++){
             t[i].setFont(new Font("Roboto", Font.PLAIN, 12));
         } 
     }
-    //configuraicones para el tipo de titulos general de la aplicacion
-    public static <T extends JComponent> void titulo(T... t){
+    
+    public static <T extends JComponent> void robotoBold20(T... t){
         for(int i = 0; i < t.length; i++){
-            t[i].setFont(new Font("Calisto MT", Font.BOLD, 16));
+            t[i].setFont(new Font("Roboto", Font.BOLD, 20));
+        } 
+    }
+    
+    public static <T extends JComponent> void robotoPlain16(T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setFont(new Font("Roboto", Font.PLAIN, 16));
+        } 
+    }
+    public static <T extends JComponent> void robotoItalic14(T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setFont(new Font("Roboto", Font.ITALIC, 14));
         } 
     }
     
@@ -70,7 +89,7 @@ public class Configuracion {
         } 
     }
     
-    public static <T extends JComponent> void normalItalic(T... t){
+    public static <T extends JComponent> void robotoItalic13(T... t){
         for(int i = 0; i < t.length; i++){
             t[i].setFont(new Font("Roboto", Font.ITALIC, 13));
         } 

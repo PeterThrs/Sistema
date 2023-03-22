@@ -17,12 +17,6 @@ public class pnlAndroid extends javax.swing.JPanel {
     public pnlAndroid() {
         initComponents();
     }
-    
-    public static void main(String[] args) {
-        pnlAndroid a = new pnlAndroid();
-        a.setVisible(true);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

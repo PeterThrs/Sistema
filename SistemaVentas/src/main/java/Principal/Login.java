@@ -4,19 +4,12 @@ import Cajero.VentanaCajero;
 import Contador.InicioContador;
 import Objetos.Sesion;
 import administrador.FormMainAdmi;
-import com.ventas.administrador.PrincipalAdministrador;
 import configuracion.CodigoColor;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
 import configuracion.Configuracion;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Dimension;
-import java.awt.HeadlessException;
 import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -41,8 +34,6 @@ public class Login extends javax.swing.JFrame {
         
         this.image.setIcon(icono);
         this.repaint(); 
-        
-        //setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
 
     }
     
@@ -62,7 +53,7 @@ public class Login extends javax.swing.JFrame {
         
         Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
-        Configuracion.normalItalic(this.jLabel3, this.jLabel4, 
+        Configuracion.robotoItalic14(this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
         Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabel3, this.jLabel4, 
                 this.jLabel5, this.jlPassword, this.jlUser);
@@ -80,7 +71,7 @@ public class Login extends javax.swing.JFrame {
         
         
         //configuracion JButton
-        Configuracion.normalItalic(this.jIngresar);
+        Configuracion.robotoItalic14(this.jIngresar);
         Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.jIngresar);
         Configuracion.background(CodigoColor.cFondoBtnAzul, this.jIngresar);
         

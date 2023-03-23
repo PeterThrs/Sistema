@@ -57,7 +57,7 @@ public class RegistrarCompra extends javax.swing.JDialog {
        
         //Configurar JTextField()
         
-        Configuracion.normal(this.pago, this.tfcambio);
+        Configuracion.robotoPlain12(this.pago, this.tfcambio);
         Configuracion.withoutBorde(this.pago, this.tfcambio);
         Configuracion.background(CodigoColor.cFondoGris,this.pago, this.tfcambio); 
         Configuracion.foreground(CodigoColor.cLetrasTextField,this.pago, this.tfcambio);

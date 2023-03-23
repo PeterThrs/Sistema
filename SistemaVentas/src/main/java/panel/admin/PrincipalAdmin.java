@@ -58,7 +58,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         btnCerrarSesion = new rsbuttom.RSButtonMetro();
         btnAdminProductos1 = new rsbuttom.RSButtonMetro();
         btnAdminProductos2 = new rsbuttom.RSButtonMetro();
-        btnHome = new rsbuttom.RSButtonMetro();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -75,7 +74,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         pnlMenu.setBackground(new java.awt.Color(239, 238, 244));
         pnlMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(239, 238, 244)));
 
-        btnAdminUser.setBackground(new java.awt.Color(239, 238, 244));
         btnAdminUser.setForeground(new java.awt.Color(128, 128, 131));
         btnAdminUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administracion.png"))); // NOI18N
         btnAdminUser.setText("Administrar usuarios");
@@ -256,30 +254,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnHome.setBackground(new java.awt.Color(239, 238, 244));
-        btnHome.setForeground(new java.awt.Color(128, 128, 131));
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
-        btnHome.setText("Home");
-        btnHome.setColorHover(new java.awt.Color(204, 204, 204));
-        btnHome.setColorNormal(new java.awt.Color(239, 238, 244));
-        btnHome.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnHome.setColorTextHover(new java.awt.Color(128, 128, 131));
-        btnHome.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        btnHome.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        btnHome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnHome.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnHome.setIconTextGap(19);
-        btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnHomeMousePressed(evt);
-            }
-        });
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
@@ -294,8 +268,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                     .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdminProductos2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdminProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAdminProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -308,9 +281,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
-                        .addContainerGap(12, Short.MAX_VALUE)
-                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addContainerGap(82, Short.MAX_VALUE)
                         .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -701,27 +672,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdminProductos2ActionPerformed
 
-    private void btnHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHomeMousePressed
-
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        if(this.btnHome.isSelected()){
-            this.btnHome.setColorNormal(new Color(204,204,204));
-            this.btnHome.setColorHover(new Color(204,204,204));
-            this.btnHome.setColorPressed(new Color(204,204,204));
-            
-            this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
-            this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-            this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-        }else{
-            this.btnHome.setColorNormal(new Color(239,238,244));
-            this.btnHome.setColorHover(new Color(204,204,204));
-            this.btnHome.setColorPressed(new Color(204,204,204));
-        }
-        new CambiaPanel(pnlPrincipal, new PanelHomeAdmin());
-    }//GEN-LAST:event_btnHomeActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -769,7 +719,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private rsbuttom.RSButtonMetro btnAdminUser;
     private rsbuttom.RSButtonMetro btnCerrarSesion;
     private rsbuttom.RSButtonMetro btnConfiguracion;
-    private rsbuttom.RSButtonMetro btnHome;
     private rsbuttom.RSButtonMetro btnInfoEmpresa;
     private javax.swing.JButton jButton1;
     private app.bolivia.swing.JCTextField jCTextField1;

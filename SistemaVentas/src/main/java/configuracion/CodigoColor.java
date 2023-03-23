@@ -35,6 +35,10 @@ public class CodigoColor {
     230, 57, 70 -> rojo
     */
     
+    public static Color cLetrasAzul = new Color(38,86,186);
+    
+    public static Color cLetrasGris = new Color(128,128,131); 
+    
     //-> Colores de Peter 
     /**
      * Este es color gris nivel 1

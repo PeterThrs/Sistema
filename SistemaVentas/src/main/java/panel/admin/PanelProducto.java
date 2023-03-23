@@ -34,8 +34,10 @@ public class PanelProducto extends javax.swing.JPanel {
          Configuracion.background(CodigoColor.cFondoGris, this); 
         
         //configuracion JLabel
-        Configuracion.titulo(jlTitle);
+        //titulo
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul,this.jlTitle);
+        Configuracion.robotoBold20(this.jlTitle);
+        //demas datos
         Configuracion.robotoItalic14(this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,this.jlRevenue, 
                 this.jlSale, this.jlSalePrice, this.jlTotal, this.jlWholeSalePrice, this.jlName);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlBarCode, this.jlDepartment, this.jlDescription, this.jlPriceCost,
@@ -51,7 +53,7 @@ public class PanelProducto extends javax.swing.JPanel {
         
         //configuracion JSeparator
         Configuracion.foreground(CodigoColor.cSeparatorRed, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
-                this.linea8, this.linea9);
+                this.linea8, this.linea9, this.linea10);
         
         
         //configuracion JButton
@@ -191,6 +193,7 @@ public class PanelProducto extends javax.swing.JPanel {
         jlName = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
         linea9 = new javax.swing.JSeparator();
+        linea10 = new javax.swing.JSeparator();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -199,7 +202,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlBarCode, gridBagConstraints);
 
         jlDescription.setText("Descripcion: ");
@@ -207,7 +210,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlDescription, gridBagConstraints);
 
         jlSale.setText("Se vende: ");
@@ -215,7 +218,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlSale, gridBagConstraints);
 
         jlPriceCost.setText("Precio Costo");
@@ -223,7 +226,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlPriceCost, gridBagConstraints);
 
         jlRevenue.setText("Ganancia (%):");
@@ -231,7 +234,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlRevenue, gridBagConstraints);
 
         jlSalePrice.setText("PrecioVenta");
@@ -239,7 +242,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlSalePrice, gridBagConstraints);
 
         jlWholeSalePrice.setText("Precio Mayoreo");
@@ -247,7 +250,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlWholeSalePrice, gridBagConstraints);
 
         jlDepartment.setText("Departamento");
@@ -255,7 +258,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlDepartment, gridBagConstraints);
 
         tfBarCode.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -264,7 +267,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfBarCode, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -272,7 +275,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfDescription, gridBagConstraints);
 
         rbUnit.setText("Por Unidad/Pza");
@@ -280,7 +283,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(rbUnit, gridBagConstraints);
 
         rbGranel.setText("A granel (usa Decimales)");
@@ -288,7 +291,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(rbGranel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -296,7 +299,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfPriceCost, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -304,7 +307,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfSalePrice, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -312,7 +315,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfWholePrice, gridBagConstraints);
 
         sRevenue.setModel(new javax.swing.SpinnerNumberModel());
@@ -322,7 +325,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(sRevenue, gridBagConstraints);
 
         cbDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -332,7 +335,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(cbDepartment, gridBagConstraints);
 
         cbInventory.setText("Este producto Utiliza Inventario");
@@ -341,7 +344,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridy = 20;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(cbInventory, gridBagConstraints);
 
         jlTotal.setText("Cantidad a registrar:");
@@ -349,7 +352,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlTotal, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -357,7 +360,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfTotal, gridBagConstraints);
 
         btnCancel.setText("Registrar");
@@ -436,12 +439,12 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 65);
         add(linea8, gridBagConstraints);
 
-        jlTitle.setText("Usuario");
+        jlTitle.setText("Producto");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.insets = new java.awt.Insets(13, 0, 24, 0);
+        gridBagConstraints.insets = new java.awt.Insets(25, 0, 25, 0);
         add(jlTitle, gridBagConstraints);
 
         jlName.setText("Nombre:");
@@ -449,14 +452,14 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlName, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfName, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -465,6 +468,12 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         add(linea9, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        add(linea10, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -490,6 +499,7 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jlTotal;
     private javax.swing.JLabel jlWholeSalePrice;
     private javax.swing.JSeparator linea1;
+    private javax.swing.JSeparator linea10;
     private javax.swing.JSeparator linea2;
     private javax.swing.JSeparator linea3;
     private javax.swing.JSeparator linea4;

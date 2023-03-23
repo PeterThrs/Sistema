@@ -63,6 +63,16 @@ public class Configuracion {
             t[i].setFont(new Font("Roboto", Font.BOLD, 20));
         } 
     }
+    public static <T extends JComponent> void robotoBold24(T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setFont(new Font("Roboto", Font.BOLD, 24));
+        } 
+    }
+    public static <T extends JComponent> void robotoBold48(T... t){
+        for(int i = 0; i < t.length; i++){
+            t[i].setFont(new Font("Roboto", Font.BOLD, 48));
+        } 
+    }
     
     public static <T extends JComponent> void robotoPlain16(T... t){
         for(int i = 0; i < t.length; i++){

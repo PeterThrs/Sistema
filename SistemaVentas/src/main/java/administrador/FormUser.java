@@ -486,6 +486,7 @@ public class FormUser extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(7, 7, 0, 7);
         panel.add(tfPostalCode, gridBagConstraints);
 
+        btnCancel.setBackground(new java.awt.Color(102, 153, 255));
         btnCancel.setText("Regresar");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

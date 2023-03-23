@@ -45,7 +45,7 @@ public class VentanaCajero extends javax.swing.JFrame {
        
         //Configurar JTextField()
         
-        Configuracion.normal(this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA);
+        Configuracion.normalItalic(this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA);
         Configuracion.withoutBorde(this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA);
         Configuracion.background(CodigoColor.cFondoGris,this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA); 
         Configuracion.foreground(CodigoColor.cLetrasTextField,this.jTextFieldPrecio, this.jTextFieldImporte,this.jTextFieldSubtotal,this.totaldecompra,this.jTextFieldIVA);

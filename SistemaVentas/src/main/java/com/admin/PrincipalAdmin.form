@@ -471,7 +471,7 @@
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="574" max="32767" attributes="0"/>
+                      <EmptySpace pref="492" max="32767" attributes="0"/>
                       <Component id="jCTextField1" min="-2" pref="281" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -520,7 +520,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Juan"/>
+                <Property name="text" type="java.lang.String" value="Sistema Ventas"/>
               </Properties>
             </Component>
             <Component class="com.librery.JCTextField" name="jCTextField1">

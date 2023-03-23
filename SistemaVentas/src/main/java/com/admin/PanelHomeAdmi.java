@@ -5,6 +5,9 @@
  */
 package com.admin;
 
+import com.settings.CodigoColor;
+import com.settings.Configuracion;
+
 /**
  *
  * @author RojeruSan
@@ -16,6 +19,11 @@ public class PanelHomeAdmi extends javax.swing.JPanel {
      */
     public PanelHomeAdmi() {
         initComponents();
+        configuracion(); 
+    }
+    
+    public void configuracion(){
+        Configuracion.background(CodigoColor.cFondoGris, this);
     }
 
     /**

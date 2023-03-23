@@ -2,8 +2,9 @@ package Principal;
 
 import Cajero.VentanaCajero;
 import Contador.InicioContador;
+import Contador.VentanaContador;
 import Objetos.Sesion;
-import administrador.FormMainAdmi;
+//import administrador.FormMainAdmi;
 import configuracion.CodigoColor;
 import java.awt.event.KeyEvent;
 import configuracion.Configuracion;
@@ -14,6 +15,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import panel.admin.PrincipalAdmin;
 
 public class Login extends javax.swing.JFrame {
 
@@ -238,6 +240,11 @@ public class Login extends javax.swing.JFrame {
                 cUserActionPerformed(evt);
             }
         });
+        cUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cUserKeyPressed(evt);
+            }
+        });
 
         cPassword.setBorder(null);
         cPassword.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -458,7 +465,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void cPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cPasswordKeyPressed
-        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
             jIngresar.setBackground(Color.RED);
@@ -470,10 +476,10 @@ public class Login extends javax.swing.JFrame {
 
                 if (correcto) {
                     if (user.equals(Sesion.seguridad.getUserAdmin())) {
-                        FormMainAdmi pa = new FormMainAdmi();
+                        PrincipalAdmin pa = new PrincipalAdmin();
                         pa.setVisible(true);
                     } else if (user.equals(Sesion.seguridad.getUserCount())) {
-                        InicioContador ic = new InicioContador();
+                        VentanaContador ic = new VentanaContador();
                         ic.setVisible(true);
                     }else {
                         VentanaCajero vc = new VentanaCajero();
@@ -513,8 +519,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_cUserActionPerformed
 
     private void cUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cUserMousePressed
-        // TODO add your handling code here:
-
         if(cUser.getText().equals("")) {
             cUser.setText("");
             cUser.setForeground(Color.black);
@@ -544,10 +548,10 @@ public class Login extends javax.swing.JFrame {
 
             if (correcto) {
                 if (user.equals(Sesion.seguridad.getUserAdmin())) {
-                    FormMainAdmi fma = new FormMainAdmi();
-                    fma.setVisible(true);
+                    PrincipalAdmin principalAdmin = new PrincipalAdmin();
+                    principalAdmin.setVisible(true);
                 } else if (user.equals(Sesion.seguridad.getUserCount())) {
-                    InicioContador ic = new InicioContador();
+                    VentanaContador ic = new VentanaContador();
                     ic.setVisible(true);
                 }else {
                     VentanaCajero vc = new VentanaCajero();
@@ -589,6 +593,38 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         close.setBackground(Color.red);
     }//GEN-LAST:event_exitBtn0MouseDragged
+
+    private void cUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cUserKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            jIngresar.setBackground(Color.RED);
+
+            try {
+                String user = cUser.getText();
+                String password = String.valueOf(cPassword.getPassword());
+                boolean correcto = Sesion.validar(user, password);
+
+                if (correcto) {
+                    if (user.equals(Sesion.seguridad.getUserAdmin())) {
+                        PrincipalAdmin pa = new PrincipalAdmin();
+                        pa.setVisible(true);
+                    } else if (user.equals(Sesion.seguridad.getUserCount())) {
+                        VentanaContador ic = new VentanaContador();
+                        ic.setVisible(true);
+                    }else {
+                        VentanaCajero vc = new VentanaCajero();
+                        vc.setVisible(true);
+                    }
+                    this.dispose();
+                }else {
+                    JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
+                }
+            } catch (Exception ex) {
+
+            }
+
+        }
+    }//GEN-LAST:event_cUserKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -88,7 +88,6 @@ public class VentanaCajero extends javax.swing.JFrame {
         jButtonCobrar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
-        exit = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -289,23 +288,6 @@ public class VentanaCajero extends javax.swing.JFrame {
         });
         JPanelPrincipal.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 690, 130, 50));
 
-        exit.setBackground(new java.awt.Color(0, 0, 0));
-        exit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        exit.setForeground(new java.awt.Color(255, 0, 51));
-        exit.setText("     X");
-        exit.setPreferredSize(new java.awt.Dimension(30, 30));
-        exit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitMouseClicked(evt);
-            }
-        });
-        exit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                exitKeyPressed(evt);
-            }
-        });
-        JPanelPrincipal.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 10, 50, 30));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -371,24 +353,6 @@ public class VentanaCajero extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPrecioActionPerformed
 
-    private void exitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_exitKeyPressed
-        // TODO add your handling code here:
-       exit.setBackground(Color.ORANGE);
-    }//GEN-LAST:event_exitKeyPressed
-
-    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
-        // TODO add your handling code here:
-        String botones[] = {"Si_Cerrar","No_Cancelar"};
-        
-        int eleccion = JOptionPane.showOptionDialog(this,"¿Desea Cerrar La Ventana?","Cerrar",0,0,null,botones,this);
-        
-        if (eleccion == JOptionPane.YES_OPTION){
-            System.exit(0);
-        }else if (eleccion==JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null, "Se Cancelo El Cierre De Su Ventana.");
-        }
-    }//GEN-LAST:event_exitMouseClicked
-
     private void jButtonRegistroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonRegistroKeyPressed
         // TODO add your handling code here:
 
@@ -403,7 +367,6 @@ public class VentanaCajero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelPrincipal;
-    private javax.swing.JLabel exit;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonCobrar;
     private javax.swing.JButton jButtonRegistro;

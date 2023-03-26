@@ -4,8 +4,14 @@
  */
 package com.cashiers;
 
-//import com.ventas.administrador.PrincipalAdministrador;
+import com.counter.VentanaContador;
+import com.settings.CodigoColor;
+import com.settings.Configuracion;
+import com.classes.Sesion;
+import com.admin.PrincipalAdmin;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
+import static java.awt.image.ImageObserver.HEIGHT;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -21,9 +27,48 @@ public class RegistrarCompra extends javax.swing.JDialog {
     public RegistrarCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        AgregarConfiguración ();
         setIconImage(new ImageIcon(getClass().getResource("/images/ven.png")).getImage());
     }
-
+    
+    private void AgregarConfiguración () {
+    
+        //Configuracion Ventana()
+        
+        Configuracion.styles(this);
+        //this.setExtendedState(this.NORMAL);
+        
+        //Configuracion al JPanel()
+        
+         //Configuracion.background(CodigoColor.cFondo, this.JPanelPrincipal);
+         //Configuracion.background(CodigoColor.cFondoizq, this.jPanelIzq);
+         
+        
+        //Configuracion JLabel()
+        
+        Configuracion.titulo( this.jLabelTituloPago);
+        Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jLabelTituloPago);
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.jLabelTituloPago);
+        
+        
+        Configuracion.foreground(CodigoColor.cLetrasNegro,this.labelpago, this.labelcambio);
+        Configuracion.robotoBold16(this.labelpago, this.labelcambio);
+        Configuracion.foreground(CodigoColor.cLetrasNegro,this.labelpago, this.labelcambio);
+       
+        //Configurar JTextField()
+        
+        Configuracion.robotoItalic14(this.pago, this.tfcambio);
+        Configuracion.withoutBorde(this.pago, this.tfcambio);
+        Configuracion.background(CodigoColor.cFondoGris,this.pago, this.tfcambio); 
+        Configuracion.foreground(CodigoColor.cLetrasTextField,this.pago, this.tfcambio);
+            
+        //Configuración En JButton ()
+        
+        Configuracion.robotoPlain12(this.btncobrar,this.btnregistrarcompra,this.btnsalir);
+        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btncobrar,this.btnregistrarcompra,this.btnsalir);
+        Configuracion.background(CodigoColor.cFondoBtnAzul1, this.btncobrar,this.btnregistrarcompra,this.btnsalir);
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +79,7 @@ public class RegistrarCompra extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelTituloPago = new javax.swing.JLabel();
         labelpago = new javax.swing.JLabel();
         pago = new javax.swing.JTextField();
         btncobrar = new javax.swing.JButton();
@@ -52,15 +97,16 @@ public class RegistrarCompra extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/venta.png"))); // NOI18N
-        jLabel1.setText("    Pago");
+        jLabelTituloPago.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelTituloPago.setForeground(new java.awt.Color(102, 102, 255));
+        jLabelTituloPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/venta.png"))); // NOI18N
+        jLabelTituloPago.setText("    Pago");
 
         labelpago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelpago.setText("Pago Con:");
 
-        pago.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pago.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pago.setActionCommand("<Not Set>");
         pago.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +122,7 @@ public class RegistrarCompra extends javax.swing.JDialog {
         btncobrar.setBackground(new java.awt.Color(153, 255, 255));
         btncobrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btncobrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IconoVCobrar.png"))); // NOI18N
-        btncobrar.setText("COBRAR");
+        btncobrar.setText("  COBRAR");
         btncobrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btncobrarMouseClicked(evt);
@@ -107,15 +153,15 @@ public class RegistrarCompra extends javax.swing.JDialog {
 
         btnsalir.setBackground(new java.awt.Color(255, 102, 102));
         btnsalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
-        btnsalir.setText("Salir");
+        btnsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salir.png"))); // NOI18N
+        btnsalir.setText("  Salir");
         btnsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsalirActionPerformed(evt);
             }
         });
 
-        tfcambio.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        tfcambio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfcambio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfcambioActionPerformed(evt);
@@ -134,58 +180,59 @@ public class RegistrarCompra extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelcambio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(62, 62, 62)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfcambio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btncobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelpago)
-                                .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(labelcambio)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tfcambio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btncobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(labelpago)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pago, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pago, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE))
+                                    .addComponent(jLabelTituloPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnregistrarcompra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 70, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnregistrarcompra, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(99, 99, 99))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabelTituloPago, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pago, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelpago, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btncobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                            .addComponent(labelpago, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pago, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addComponent(btncobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfcambio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelcambio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61)
-                        .addComponent(btnregistrarcompra, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelcambio, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfcambio, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(btnregistrarcompra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -207,13 +254,50 @@ public class RegistrarCompra extends javax.swing.JDialog {
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
         try {
-            this.dispose();
+            System.exit(0);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void btncobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncobrarActionPerformed
 
+         
+
+            try {
+                int totalfinal;
+
+                totalfinal = Integer.parseInt(JOptionPane.showInputDialog("¿ Total De Lo Que Vas A Cobrar: ?"));
+
+                String botones[] = {"Si", "No"};
+
+                int pagocon = Integer.parseInt(pago.getText());
+
+                int opcion = JOptionPane.showOptionDialog(this, "Pago Con: $ " + pagocon + " pesos es correcto.", "Comprobando Pago", 0, 0, null, botones, this);
+
+                if (opcion == JOptionPane.YES_OPTION) {
+
+                    int cambio;
+
+                    cambio = pagocon - totalfinal;
+
+                    String resultadocambio = "$ " + cambio;
+
+                    tfcambio.setText(resultadocambio);
+
+                    // JOptionPane.showMessageDialog(null,resultadocambio);
+                    if (pagocon < totalfinal) {
+                        JOptionPane.showMessageDialog(null, " ERROR - VERIFIQUE CON CUANTO PAGO EL CLIENTE.");
+                        dispose();
+                    }
+                } else if (opcion == JOptionPane.NO_OPTION) {
+                    JOptionPane.showMessageDialog(null, "- INGRESE NUEVAMENTE LOS VALORES REALES.");
+                    dispose();
+                }
+
+            } catch (Exception e) {
+
+            }
+        
 
     }//GEN-LAST:event_btncobrarActionPerformed
 
@@ -262,7 +346,7 @@ public class RegistrarCompra extends javax.swing.JDialog {
 
                     cambio = pagocon - totalfinal;
 
-                    String resultadocambio = "$ " + cambio + " pesos.";
+                    String resultadocambio = "$ " + cambio;
 
                     tfcambio.setText(resultadocambio);
 
@@ -311,7 +395,7 @@ public class RegistrarCompra extends javax.swing.JDialog {
 
                     cambio = pagocon - totalfinal;
 
-                    String resultadocambio = "$ " + cambio + " pesos.";
+                    String resultadocambio = "$ " + cambio;
 
                     tfcambio.setText(resultadocambio);
 
@@ -381,7 +465,7 @@ public class RegistrarCompra extends javax.swing.JDialog {
     private javax.swing.JButton btnregistrarcompra;
     private javax.swing.JButton btnsalir;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelTituloPago;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelcambio;
     private javax.swing.JLabel labelpago;

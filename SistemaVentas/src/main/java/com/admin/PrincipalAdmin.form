@@ -71,8 +71,8 @@
                           <Component id="btnAdminUser" min="-2" pref="258" max="-2" attributes="0"/>
                           <Component id="btnAdminProductos" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                           <Component id="btnCerrarSesion" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnAdminProductos2" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnAdminProductos1" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                          <Component id="btnListarUsuarios" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                          <Component id="btnListarProductos" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="jPanel5" max="32767" attributes="0"/>
@@ -99,9 +99,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnAdminProductos" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnAdminProductos2" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="btnListarUsuarios" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnAdminProductos1" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="btnListarProductos" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnInfoEmpresa" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -328,7 +328,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarSesionActionPerformed"/>
               </Events>
             </Component>
-            <Component class="com.librery.RSButtonMetro" name="btnAdminProductos1">
+            <Component class="com.librery.RSButtonMetro" name="btnListarProductos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f4" green="ee" red="ef" type="rgb"/>
@@ -363,11 +363,11 @@
                 <Property name="iconTextGap" type="int" value="25"/>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAdminProductos1MousePressed"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdminProductos1ActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnListarProductosMousePressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarProductosActionPerformed"/>
               </Events>
             </Component>
-            <Component class="com.librery.RSButtonMetro" name="btnAdminProductos2">
+            <Component class="com.librery.RSButtonMetro" name="btnListarUsuarios">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f4" green="ee" red="ef" type="rgb"/>
@@ -402,8 +402,8 @@
                 <Property name="iconTextGap" type="int" value="25"/>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAdminProductos2MousePressed"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdminProductos2ActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnListarUsuariosMousePressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarUsuariosActionPerformed"/>
               </Events>
             </Component>
             <Component class="com.librery.RSButtonMetro" name="btnHome">

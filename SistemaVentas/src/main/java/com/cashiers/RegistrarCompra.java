@@ -99,7 +99,7 @@ public class RegistrarCompra extends javax.swing.JDialog {
         jLabelTituloPago.setText("    Pago");
 
         labelpago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        labelpago.setText("Pago Con:");
+        labelpago.setText("Pagó Con:");
 
         pago.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         pago.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -117,7 +117,7 @@ public class RegistrarCompra extends javax.swing.JDialog {
         btncobrar.setBackground(new java.awt.Color(153, 255, 255));
         btncobrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btncobrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IconoVCobrar.png"))); // NOI18N
-        btncobrar.setText("  COBRAR");
+        btncobrar.setText("  Cobrar");
         btncobrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btncobrarMouseClicked(evt);

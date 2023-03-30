@@ -71,7 +71,7 @@ public class CodigoColor {
     /**
      * Este es un rojo intermedio (rojizo) 
      */
-    public static Color cFondoBtnAzul = new Color(0, 18, 25);
+    public static Color cFondoBtnAzul = new Color(100, 18, 25);
     /**
      * NO me acuerdo 
      */
@@ -97,6 +97,7 @@ public class CodigoColor {
     public static Color cFondo = new Color(255, 255, 255);
     public static Color cFondoizq = new Color(153, 204, 255);
     public static Color cLetrasTitulo = new Color(29, 53, 87);
+    public static Color cFondoBtnAzul1 = new Color(83, 82, 237);
     
     //-> Colores de 
     

@@ -8,23 +8,23 @@ import java.util.*;
 public class PersonaDao {
 
     private static final String SQL_SELECT = "SELECT idPersona, nombre, apellidoP, apellidoM, email, telefono1, telefono2, edad, curp, rfc, sexo, codigoPostal, estado, municipio, colonia, calle, numCasa FROM persona";
+    
 
     public List<Persona> seleccionar() {
         Connection coon = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Persona persona = null;
-        List<Persona> personas = new ArrayList<>();
+        
 
         try {
             coon = getConnection();
-            stmt = coon.prepareStatement(SQL_SELECT);
+            stmt = coon.prepareStatement(SQL_SELECT); 
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                int idPersona = rs.getInt("id_persona");
+                int idPersona = rs.getInt("idPersona");
                 System.out.println("idPersona = " + idPersona);
-                personas.add(persona);
             }
 
         } catch (SQLException ex) {
@@ -38,6 +38,6 @@ public class PersonaDao {
                 ex.printStackTrace(System.out);
             }
         }
-        return personas;
+        return null;
     }
 }

@@ -6,7 +6,6 @@ import com.settings.Configuracion;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 
 public class VentanaCajero extends javax.swing.JFrame {
@@ -104,11 +103,9 @@ public class VentanaCajero extends javax.swing.JFrame {
         JPanelPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         JPanelPrincipal.setMinimumSize(new java.awt.Dimension(1210, 700));
         JPanelPrincipal.setPreferredSize(new java.awt.Dimension(1400, 800));
-        JPanelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelProducto.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelProducto.setText("Producto:");
-        JPanelPrincipal.add(jLabelProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 70, 40));
 
         jComboBoxSelecProduc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jComboBoxSelecProduc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Un Producto:", "Mayonesa", "Tortillas", "Aguacate", "Galletas", "Sabrita", "Agua", "Leche", "Miel", "Alcohol", " " }));
@@ -118,22 +115,17 @@ public class VentanaCajero extends javax.swing.JFrame {
                 jComboBoxSelecProducActionPerformed(evt);
             }
         });
-        JPanelPrincipal.add(jComboBoxSelecProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, 210, 40));
 
         jLabelCantidad.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelCantidad.setText("Cantidad:");
-        JPanelPrincipal.add(jLabelCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 70, 40));
 
         jComboBoxCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-        JPanelPrincipal.add(jComboBoxCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 70, 40));
 
         jLabelPrecio.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelPrecio.setText("Precio:");
-        JPanelPrincipal.add(jLabelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 90, 60, 40));
 
         jLabelImporte.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelImporte.setText("Importe:");
-        JPanelPrincipal.add(jLabelImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 170, 60, 40));
 
         jTableCajero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTableCajero.setModel(new javax.swing.table.DefaultTableModel(
@@ -162,10 +154,7 @@ public class VentanaCajero extends javax.swing.JFrame {
         jTableCajero.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jTableCajero);
 
-        JPanelPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 270, 610, 130));
-
         jTextFieldImporte.setText("$ ");
-        JPanelPrincipal.add(jTextFieldImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 170, 190, 40));
 
         jLabelTituloP.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         jLabelTituloP.setForeground(new java.awt.Color(51, 51, 255));
@@ -219,26 +208,20 @@ public class VentanaCajero extends javax.swing.JFrame {
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        JPanelPrincipal.add(jPanelIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 800));
-
         jTextFieldPrecio.setText("$ ");
         jTextFieldPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPrecioActionPerformed(evt);
             }
         });
-        JPanelPrincipal.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 90, 190, 40));
 
         jLabelSubtotal.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelSubtotal.setText("Subtotal:");
-        JPanelPrincipal.add(jLabelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 470, 70, 40));
 
         jTextFieldSubtotal.setText("$ ");
-        JPanelPrincipal.add(jTextFieldSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 470, 150, 40));
 
         jLabelTotal.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelTotal.setText("Total:");
-        JPanelPrincipal.add(jLabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 550, 50, 40));
 
         totaldecompra.setText("$ ");
         totaldecompra.addActionListener(new java.awt.event.ActionListener() {
@@ -246,14 +229,11 @@ public class VentanaCajero extends javax.swing.JFrame {
                 totaldecompraActionPerformed(evt);
             }
         });
-        JPanelPrincipal.add(totaldecompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 550, 150, 40));
 
         jLabelIva.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelIva.setText("IVA:");
-        JPanelPrincipal.add(jLabelIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 520, 50, 30));
 
         jTextFieldIVA.setText("                         %");
-        JPanelPrincipal.add(jTextFieldIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 520, 160, 30));
 
         jButtonCobrar.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jButtonCobrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IconoVCobrar.png"))); // NOI18N
@@ -264,7 +244,6 @@ public class VentanaCajero extends javax.swing.JFrame {
                 jButtonCobrarActionPerformed(evt);
             }
         });
-        JPanelPrincipal.add(jButtonCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 690, 160, 50));
 
         jButtonCancelar.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png"))); // NOI18N
@@ -275,7 +254,6 @@ public class VentanaCajero extends javax.swing.JFrame {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        JPanelPrincipal.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 690, 160, 50));
 
         jButtonSalir.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
@@ -286,7 +264,95 @@ public class VentanaCajero extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        JPanelPrincipal.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 690, 130, 50));
+
+        javax.swing.GroupLayout JPanelPrincipalLayout = new javax.swing.GroupLayout(JPanelPrincipal);
+        JPanelPrincipal.setLayout(JPanelPrincipalLayout);
+        JPanelPrincipalLayout.setHorizontalGroup(
+            JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                .addComponent(jPanelIzq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addGroup(JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jComboBoxSelecProduc, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jComboBoxCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(200, 200, 200)
+                        .addComponent(jLabelImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jTextFieldImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabelSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jTextFieldSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                        .addGap(380, 380, 380)
+                        .addGroup(JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelIva, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(totaldecompra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jButtonCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        JPanelPrincipalLayout.setVerticalGroup(
+            JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelIzq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(JPanelPrincipalLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSelecProduc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addGroup(JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelIva, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totaldecompra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(100, 100, 100)
+                .addGroup(JPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

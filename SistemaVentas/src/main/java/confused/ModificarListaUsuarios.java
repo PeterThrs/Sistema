@@ -25,7 +25,7 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
      * Creates new form test
      */
     public ModificarListaUsuarios() {
-        initComponents();
+        //initComponents();
         Configuracion.titulo(btnAgregar);
         Configuracion.styles(this);
         this.setTitle("Lista de Usuarios");
@@ -54,9 +54,9 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
         table.getColumnModel().getColumn(9).setCellEditor(new TableActionCellEditor(event));
     }
     private void registrar(Persona p, DefaultTableModel model){
-        model.addRow(new Object[]{
+       /* model.addRow(new Object[]{
             p.getId(),p.getNomUsuario(),p.getNombre(),p.getApellidoPaterno(),p.getApellidoMaterno(),p.getNumTelefono(),p.getCorreoElectronico(),p.getNacionalidad(),p.getCalle()
-        });
+        });*/
     }
     public void actualizarDatos(){
         int fila=table.getSelectedRow();
@@ -184,7 +184,7 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
         String correoElec=table.getValueAt(fila, 6).toString();
         String nacionalidad=table.getValueAt(fila, 7).toString();
         String calle=table.getValueAt(fila, 8).toString();
-        Persona persona=new Persona(id, nombreUsuario, nombre, apellidoP, apellidoM, telefono, correoElec, nacionalidad, calle);
+        //Persona persona=new Persona(id, nombreUsuario, nombre, apellidoP, apellidoM, telefono, correoElec, nacionalidad, calle);
 
         //EditarUsuario actualizar=new EditarUsuario(this, true,persona);
         //actualizar.setVisible(true);
@@ -192,7 +192,7 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
         //nuevosDatos(actualizar.usuario(),fila);
     }
     private void nuevosDatos(Persona p,int fila){
-        table.setValueAt(p.getId(),fila, 0);
+        /*table.setValueAt(p.getId(),fila, 0);
         table.setValueAt(p.getNomUsuario(),fila, 1);
         table.setValueAt(p.getNombre(),fila, 2);
         table.setValueAt(p.getApellidoPaterno(),fila, 3);
@@ -200,51 +200,12 @@ public class ModificarListaUsuarios extends javax.swing.JFrame {
         table.setValueAt(p.getNumTelefono(),fila, 5);
         table.setValueAt(p.getCorreoElectronico(),fila, 6);
         table.setValueAt(p.getNacionalidad(),fila, 7);
-        table.setValueAt(p.getCalle(),fila, 8);
+        table.setValueAt(p.getCalle(),fila, 8);*/
     }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
-            java.util.logging.Logger.getLogger(ModificarListaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModificarListaUsuarios().setVisible(true);
-            }
-        });
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JLabel jLabel1;

@@ -7,20 +7,20 @@ public class Persona {
     private String apellidoPaterno; 
     private String apellidoMaterno;
     private String email; 
-    private long telefono1;
-    private long telefono2;
+    private String telefono1;
+    private String telefono2;
     private int edad;
     private String curp;
     private String RFC;
     private String sexo;
-    private String codigoPostal;
+    private int codigoPostal;
     private String estado;
     private String municipio;
     private String colonia;
     private String calle;
     private int numCasa;
 
-    public Persona(int idPersona, String nombre, String apellidoPaterno, String apellidoMaterno, String email, long telefono1, long telefono2, int edad, String curp, String RFC, String sexo, String codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {
+    public Persona(int idPersona, String nombre, String apellidoPaterno, String apellidoMaterno, String email, String telefono1, String telefono2, int edad, String curp, String RFC, String sexo, int codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {
         this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -40,7 +40,7 @@ public class Persona {
         this.numCasa = numCasa;
     }
 
-    public Persona(String nombre, String apellidoPaterno, String apellidoMaterno, String email, long telefono1, long telefono2, int edad, String curp, String RFC, String sexo, String codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {
+    public Persona(String nombre, String apellidoPaterno, String apellidoMaterno, String email, String telefono1, String telefono2, int edad, String curp, String RFC, String sexo, int codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -101,19 +101,19 @@ public class Persona {
         this.email = email;
     }
 
-    public long getTelefono1() {
+    public String getTelefono1() {
         return telefono1;
     }
 
-    public void setTelefono1(long telefono1) {
+    public void setTelefono1(String telefono1) {
         this.telefono1 = telefono1;
     }
 
-    public long getTelefono2() {
+    public String getTelefono2() {
         return telefono2;
     }
 
-    public void setTelefono2(long telefono2) {
+    public void setTelefono2(String telefono2) {
         this.telefono2 = telefono2;
     }
 
@@ -149,11 +149,11 @@ public class Persona {
         this.sexo = sexo;
     }
 
-    public String getCodigoPostal() {
+    public int getCodigoPostal() {
         return codigoPostal;
     }
 
-    public void setCodigoPostal(String codigoPostal) {
+    public void setCodigoPostal(int codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 
@@ -196,8 +196,10 @@ public class Persona {
     public void setNumCasa(int numCasa) {
         this.numCasa = numCasa;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Persona{" + "idPersona=" + idPersona + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", email=" + email + ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + ", edad=" + edad + ", curp=" + curp + ", RFC=" + RFC + ", sexo=" + sexo + ", codigoPostal=" + codigoPostal + ", estado=" + estado + ", municipio=" + municipio + ", colonia=" + colonia + ", calle=" + calle + ", numCasa=" + numCasa + '}';
+    }
     
 }

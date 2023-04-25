@@ -21,8 +21,9 @@ public class PersonaDao {
         Persona persona = null; 
         List<Persona> personas = new ArrayList<>(); 
         try {
+            System.out.println("si");
             coon = Conexion.getConnection(); 
-            stmt = coon.prepareStatement(SQL_SELECT); 
+            stmt = coon.prepareStatement("select * from persona"); 
             rs = stmt.executeQuery();
             
             while(rs.next()){

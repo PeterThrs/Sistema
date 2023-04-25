@@ -74,7 +74,7 @@ public class VentanaContador extends javax.swing.JFrame {
 
         btnVentas.setForeground(new java.awt.Color(128, 128, 131));
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosContador/ventas.png"))); // NOI18N
-        btnVentas.setText("Reporte de ventas");
+        btnVentas.setText("Reporte de Ventas");
         btnVentas.setColorHover(new java.awt.Color(204, 204, 204));
         btnVentas.setColorNormal(new java.awt.Color(204, 204, 204));
         btnVentas.setColorPressed(new java.awt.Color(204, 204, 204));
@@ -98,7 +98,7 @@ public class VentanaContador extends javax.swing.JFrame {
         btnInversiones.setBackground(new java.awt.Color(239, 238, 244));
         btnInversiones.setForeground(new java.awt.Color(128, 128, 131));
         btnInversiones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosContador/informe-de-venta.png"))); // NOI18N
-        btnInversiones.setText("Reporte de inversiones");
+        btnInversiones.setText("Reporte de Inversiones");
         btnInversiones.setColorHover(new java.awt.Color(204, 204, 204));
         btnInversiones.setColorNormal(new java.awt.Color(239, 238, 244));
         btnInversiones.setColorPressed(new java.awt.Color(204, 204, 204));
@@ -158,7 +158,7 @@ public class VentanaContador extends javax.swing.JFrame {
         btnCerrarSesion.setBackground(new java.awt.Color(239, 238, 244));
         btnCerrarSesion.setForeground(new java.awt.Color(128, 128, 131));
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
-        btnCerrarSesion.setText("Cerrar sesión");
+        btnCerrarSesion.setText("Cerrar Sesión");
         btnCerrarSesion.setColorHover(new java.awt.Color(204, 204, 204));
         btnCerrarSesion.setColorNormal(new java.awt.Color(239, 238, 244));
         btnCerrarSesion.setColorPressed(new java.awt.Color(204, 204, 204));

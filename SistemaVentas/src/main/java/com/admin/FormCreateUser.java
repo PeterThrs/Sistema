@@ -117,7 +117,7 @@ public class FormCreateUser extends javax.swing.JDialog {
 
         panel.setLayout(new java.awt.GridBagLayout());
 
-        jlIndication.setText("Ultimos Pasos para crear al nuevo usuario");
+        jlIndication.setText("Ultimos pasos para crear al nuevo usuario");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -125,7 +125,7 @@ public class FormCreateUser extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
         panel.add(jlIndication, gridBagConstraints);
 
-        jlRol.setText("Rol a desempeñar: ");
+        jlRol.setText("Rol a Desempeñar: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;

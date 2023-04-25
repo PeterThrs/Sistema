@@ -39,7 +39,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jlIndication">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ultimos Pasos para crear al nuevo usuario"/>
+            <Property name="text" type="java.lang.String" value="Ultimos pasos para crear al nuevo usuario"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -49,7 +49,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jlRol">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Rol a desempe&#xf1;ar: "/>
+            <Property name="text" type="java.lang.String" value="Rol a Desempe&#xf1;ar: "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">

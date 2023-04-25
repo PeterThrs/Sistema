@@ -205,7 +205,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlBarCode, gridBagConstraints);
 
-        jlDescription.setText("Descripcion: ");
+        jlDescription.setText("Descripción: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;

@@ -243,7 +243,7 @@ public class PanelUser extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
         add(jlAge, gridBagConstraints);
 
-        jlCurp.setText("Curp: ");
+        jlCurp.setText("CURP:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 17;

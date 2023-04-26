@@ -4,8 +4,8 @@
  */
 package com.conexion;
 
-import com.classes.Tienda;
 import static com.conexion.Conexion.*;
+import com.classes.Tienda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 public class TiendaDAO {
 
     private static final String SQL_SELECT = "SELECT * from tienda";
+    private static final String SQL_INSERT = "INSERT INTO tienda(nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     public List<Tienda> seleccionar() {
         Connection conn = null;
@@ -37,8 +38,8 @@ public class TiendaDAO {
                 int idTienda = rs.getInt("idTienda");
                 String nombre = rs.getString("nombre");
                 String slogan = rs.getString("slogan");
-                long telefono1 = rs.getLong("telefono1");
-                long telefono2 = rs.getLong("telefono2");
+                String telefono1 = rs.getString("telefono1");
+                String telefono2 = rs.getString("telefono2");
                 String email = rs.getString("email");
                 String mision = rs.getString("mision");
                 String vision = rs.getString("vision");
@@ -69,5 +70,44 @@ public class TiendaDAO {
             }
         }
         return tiendas;
+    }
+
+    public static int insertar(Tienda tienda) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        try
+        {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_INSERT);
+            stmt.setString(1, tienda.getNombre());
+            stmt.setString(2, tienda.getSlogan());
+            stmt.setString(3, tienda.getTelefono1());
+            stmt.setString(4, tienda.getTelefono2());
+            stmt.setString(5, tienda.getEmail());
+            stmt.setString(6, tienda.getMision());
+            stmt.setString(7, tienda.getVision());
+            stmt.setString(8, String.valueOf(tienda.getCodigoPostal()));
+            stmt.setString(9, tienda.getEstado());
+            stmt.setString(10, tienda.getMunicipio());
+            stmt.setString(11, tienda.getColonia());
+            stmt.setString(12, tienda.getCalle());
+            stmt.setString(13, String.valueOf(tienda.getNumCasa()));
+            registros = stmt.executeUpdate();
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace(System.out);
+        } finally
+        {
+            try
+            {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
     }
 }

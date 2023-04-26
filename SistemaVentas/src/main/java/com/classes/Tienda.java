@@ -12,8 +12,8 @@ public class Tienda {
     private int idTienda;
     private String nombre;
     private String slogan;
-    private long telefono1;
-    private long telefono2;
+    private String telefono1;
+    private String telefono2;
     private String email;
     private String mision;
     private String vision;
@@ -31,7 +31,7 @@ public class Tienda {
         this.idTienda = idTienda;
     }
 
-    public Tienda(String nombre, String slogan, long telefono1, long telefono2, String email, String mision, String vision, int codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {//No necesitamos la llave primaria para hacer un registro
+    public Tienda(String nombre, String slogan, String telefono1, String telefono2, String email, String mision, String vision, int codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {//No necesitamos la llave primaria para hacer un registro
         this.nombre = nombre;
         this.slogan = slogan;
         this.telefono1 = telefono1;
@@ -47,7 +47,7 @@ public class Tienda {
         this.numCasa = numCasa;
     }
 
-    public Tienda(int idTienda, String nombre, String slogan, long telefono1, long telefono2, String email, String mision, String vision, int codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {//PAra el caso de la modificación
+    public Tienda(int idTienda, String nombre, String slogan, String telefono1, String telefono2, String email, String mision, String vision, int codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {//PAra el caso de la modificación
         this.idTienda = idTienda;
         this.nombre = nombre;
         this.slogan = slogan;
@@ -88,19 +88,19 @@ public class Tienda {
         this.slogan = slogan;
     }
 
-    public long getTelefono1() {
+    public String getTelefono1() {
         return telefono1;
     }
 
-    public void setTelefono1(long telefono1) {
+    public void setTelefono1(String telefono1) {
         this.telefono1 = telefono1;
     }
 
-    public long getTelefono2() {
+    public String getTelefono2() {
         return telefono2;
     }
 
-    public void setTelefono2(long telefono2) {
+    public void setTelefono2(String telefono2) {
         this.telefono2 = telefono2;
     }
 

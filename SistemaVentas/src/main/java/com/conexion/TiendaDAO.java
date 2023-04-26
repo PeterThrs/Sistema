@@ -16,23 +16,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TiendaDAO {
-
+    
     private static final String SQL_SELECT = "SELECT * from tienda";
     private static final String SQL_INSERT = "INSERT INTO tienda(nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    private static final String SQL_UPDATE = "UPDATE tienda SET nombre = ?, slogan = ?, telefono1 = ?, telefono2 = ?, email = ?, mision = ?, vision = ?, codigoPostal = ?, estado = ?, municipio = ?, colonia = ?, calle = ?, numCasa = ? WHERE idTienda = ?";
+    private static final String SQL_DELETE = "DELETE FROM tienda WHERE idTienda = ?";
     public List<Tienda> seleccionar() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Tienda tienda = null;
         List<Tienda> tiendas = new ArrayList<>();
-
+        
         try
         {
             conn = getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
-
+            
             while (rs.next())
             {
                 int idTienda = rs.getInt("idTienda");
@@ -49,9 +50,9 @@ public class TiendaDAO {
                 String colonia = rs.getString("colonia");
                 String calle = rs.getString("calle");
                 int numCasa = rs.getInt("numCasa");
-
+                
                 tienda = new Tienda(idTienda, nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa);
-
+                
                 tiendas.add(tienda);
             }
         } catch (SQLException ex)
@@ -71,7 +72,7 @@ public class TiendaDAO {
         }
         return tiendas;
     }
-
+    
     public static int insertar(Tienda tienda) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -93,6 +94,73 @@ public class TiendaDAO {
             stmt.setString(11, tienda.getColonia());
             stmt.setString(12, tienda.getCalle());
             stmt.setString(13, String.valueOf(tienda.getNumCasa()));
+            registros = stmt.executeUpdate();
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace(System.out);
+        } finally
+        {
+            try
+            {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+    
+    public static int actualizar(Tienda tienda) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        try
+        {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt.setString(1, tienda.getNombre());
+            stmt.setString(2, tienda.getSlogan());
+            stmt.setString(3, tienda.getTelefono1());
+            stmt.setString(4, tienda.getTelefono2());
+            stmt.setString(5, tienda.getEmail());
+            stmt.setString(6, tienda.getMision());
+            stmt.setString(7, tienda.getVision());
+            stmt.setString(8, String.valueOf(tienda.getCodigoPostal()));
+            stmt.setString(9, tienda.getEstado());
+            stmt.setString(10, tienda.getMunicipio());
+            stmt.setString(11, tienda.getColonia());
+            stmt.setString(12, tienda.getCalle());
+            stmt.setString(13, String.valueOf(tienda.getNumCasa()));
+            stmt.setInt(14, tienda.getIdTienda());
+            registros = stmt.executeUpdate();
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace(System.out);
+        } finally
+        {
+            try
+            {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+    
+    public static int eliminar(Tienda tienda) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        try
+        {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_DELETE);
+            stmt.setInt(1, tienda.getIdTienda());
             registros = stmt.executeUpdate();
         } catch (SQLException ex)
         {

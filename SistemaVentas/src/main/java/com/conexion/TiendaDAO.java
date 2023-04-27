@@ -21,6 +21,7 @@ public class TiendaDAO {
     private static final String SQL_INSERT = "INSERT INTO tienda(nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE tienda SET nombre = ?, slogan = ?, telefono1 = ?, telefono2 = ?, email = ?, mision = ?, vision = ?, codigoPostal = ?, estado = ?, municipio = ?, colonia = ?, calle = ?, numCasa = ? WHERE idTienda = ?";
     private static final String SQL_DELETE = "DELETE FROM tienda WHERE idTienda = ?";
+    
     public List<Tienda> seleccionar() {
         Connection conn = null;
         PreparedStatement stmt = null;

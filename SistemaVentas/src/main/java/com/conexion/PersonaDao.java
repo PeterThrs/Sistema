@@ -8,9 +8,9 @@ import java.util.*;
 public class PersonaDao {
 
     private static final String SQL_SELECT = "SELECT idPersona, nombre, apellidoP, apellidoM, email, telefono1, telefono2, edad, curp, rfc, sexo, codigoPostal, estado, municipio, colonia, calle, numCasa FROM persona";
-    private static final String SQL_INSERT = "INSERT INTO persona (nombre, apellidoP, apellidoM, email, telefono1, telefono2, edad, curp, rfc, sexo, codigoPostal, estado, municipio, colonia, calle, numCasa) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?))";
-    private static final String SQL_UPDATE = "UPDATE persona SET nombre=?, apellidoP=?, apellidoM=?, email=?, telfono1=?, telefono2=?, edad=?, curp=?, rfc=?, sexo=?, codigoPostal=?, estado=?, municipio=?, colonia=?, calle=?, numCasa=? WHERE idPersona=?";
-    private static final String SQL_DELETE = "DELETE FROM persona WHERE idPersona=?";
+    private static final String SQL_INSERT = "INSERT INTO persona (nombre, apellidoP, apellidoM, email, telefono1, telefono2, edad, curp, rfc, sexo, codigoPostal, estado, municipio, colonia, calle, numCasa) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE persona SET nombre=?, apellidoP=?, apellidoM=?, email=?, telefono1=?, telefono2=?, edad=?, curp=?, rfc=?, sexo=?, codigoPostal=?, estado=?, municipio=?, colonia=?, calle=?, numCasa=? WHERE idPersona=?";
+    private static final String SQL_DELETE = "DELETE FROM persona WHERE idPersona = ?";
 
     public List<Persona> seleccionar() {
         Connection coon = null;
@@ -61,20 +61,109 @@ public class PersonaDao {
         }
         return personas;
     }
-    
-    public int insertar(Persona persona){
+
+    public int insertar(Persona persona) {
         Connection coon = null;
         PreparedStatement stmt = null;
-        int registros = 0; 
-        try{
+        int registros = 0;
+        try {
             coon = getConnection();
             stmt = coon.prepareStatement(SQL_INSERT);
             stmt.setString(1, persona.getNombre());
-            stmt.setString(2,persona.getApellidoPaterno());
-        }catch(SQLException ex){
-            
+            stmt.setString(2, persona.getApellidoPaterno());
+            stmt.setString(3, persona.getApellidoMaterno());
+            stmt.setString(4, persona.getEmail());
+            stmt.setString(5, persona.getTelefono1());
+            stmt.setString(6, persona.getTelefono2());
+            stmt.setInt(7, persona.getEdad());
+            stmt.setString(8, persona.getCurp());
+            stmt.setString(9, persona.getRFC());
+            stmt.setString(10, persona.getSexo());
+            stmt.setInt(11, persona.getCodigoPostal());
+            stmt.setString(12, persona.getEstado());
+            stmt.setString(13, persona.getMunicipio());
+            stmt.setString(14, persona.getColonia());
+            stmt.setString(15, persona.getCalle());
+            stmt.setInt(16, persona.getNumCasa());
+
+            registros = stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                Conexion.close(stmt);
+                Conexion.close(coon);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
         }
-        return 0; 
+        return registros;
     }
-    
+
+    public int actualizar(Persona persona) {
+        Connection coon = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+
+        try {
+            coon = Conexion.getConnection();
+            stmt = coon.prepareStatement(SQL_UPDATE);
+            stmt.setString(1, persona.getNombre());
+            stmt.setString(2, persona.getApellidoPaterno());
+            stmt.setString(3, persona.getApellidoMaterno());
+            stmt.setString(4, persona.getEmail());
+            stmt.setString(5, persona.getTelefono1());
+            stmt.setString(6, persona.getTelefono2());
+            stmt.setInt(7, persona.getEdad());
+            stmt.setString(8, persona.getCurp());
+            stmt.setString(9, persona.getRFC());
+            stmt.setString(10, persona.getSexo());
+            stmt.setInt(11, persona.getCodigoPostal());
+            stmt.setString(12, persona.getEstado());
+            stmt.setString(13, persona.getMunicipio());
+            stmt.setString(14, persona.getColonia());
+            stmt.setString(15, persona.getCalle());
+            stmt.setInt(16, persona.getNumCasa());
+            stmt.setInt(17, persona.getIdPersona());
+
+            registros = stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                Conexion.close(stmt);
+                Conexion.close(coon);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+
+    public int eliminar(Persona persona) {
+        Connection coon = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        
+        try {
+            coon = Conexion.getConnection();
+            stmt = coon.prepareStatement(SQL_DELETE);
+            stmt.setInt(1, persona.getIdPersona());
+            stmt.executeUpdate(); 
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                Conexion.close(stmt);
+                Conexion.close(coon);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros; 
+    }
+
 }

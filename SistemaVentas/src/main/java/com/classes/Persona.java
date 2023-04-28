@@ -19,6 +19,10 @@ public class Persona {
     private String colonia;
     private String calle;
     private int numCasa;
+    
+    public Persona(int idPersona){
+        this.idPersona = idPersona; 
+    }
 
     public Persona(int idPersona, String nombre, String apellidoPaterno, String apellidoMaterno, String email, String telefono1, String telefono2, int edad, String curp, String RFC, String sexo, int codigoPostal, String estado, String municipio, String colonia, String calle, int numCasa) {
         this.idPersona = idPersona;

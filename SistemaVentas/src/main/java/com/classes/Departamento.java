@@ -1,18 +1,27 @@
 package com.classes;
 
 public class Departamento {
-    private String departamento; 
+    private int idDepartamento;
+    private String nombre; 
     
-    public Departamento(String departamento){
-        this.departamento = departamento; 
+    public Departamento(String nombre){
+        this.nombre = nombre; 
     }
 
+    public int getidDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setidDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
+    }
+    
     public String getDepartamento() {
-        return departamento;
+        return nombre;
     }
 
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
+    public void setDepartamento(String nombre) {
+        this.nombre = nombre;
     }
     
     

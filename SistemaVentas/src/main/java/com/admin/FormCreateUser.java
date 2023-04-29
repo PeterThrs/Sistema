@@ -1,9 +1,12 @@
 package com.admin;
 
+import com.classes.Rol;
 import com.classes.Roles;
+import com.conexion.RolDAO;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
 import java.awt.Dimension;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
 public class FormCreateUser extends javax.swing.JDialog {
@@ -67,9 +70,11 @@ public class FormCreateUser extends javax.swing.JDialog {
 
     private void modeloComboBox() {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
-        dcbm.addElement(Roles.administrador);
-        dcbm.addElement(Roles.cajero);
-        dcbm.addElement(Roles.contador);
+        List<Rol> roles = RolDAO.seleccionar();
+        roles.forEach(rol ->
+        {
+            dcbm.addElement(rol.getNombre());
+        });
         this.cbRol.setModel(dcbm);
         this.cbRol.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasNegro); 
         this.cbRol.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris); 

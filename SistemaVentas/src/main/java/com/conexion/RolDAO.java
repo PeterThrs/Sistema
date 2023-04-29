@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class RolDAO {
     private static final String SQL_SELECT = "SELECT * from rol";
     
-    public List<Rol> seleccionar() {
+    public static List<Rol> seleccionar() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;

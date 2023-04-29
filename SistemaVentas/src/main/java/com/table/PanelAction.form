@@ -19,7 +19,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="edit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="delete" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="view" min="-2" max="-2" attributes="0"/>
@@ -45,7 +45,7 @@
     <Component class="com.table.ActionButton" name="edit">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\juanj\OneDrive\Documentos\NetBeansProjects\tabla\src\main\resources\img\edit.png"/>
+          <Image iconType="3" name="/img/edit.png"/>
         </Property>
       </Properties>
     </Component>
@@ -65,9 +65,6 @@
           <Image iconType="3" name="/img/delete.png"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import com.admin.PrincipalAdmin;
-import com.conexion.PersonaDao;
+import com.conexion.PersonaDAO;
 
 public class Login extends javax.swing.JFrame {
 
@@ -36,9 +36,9 @@ public class Login extends javax.swing.JFrame {
         this.repaint(); 
         
         
-        PersonaDao pd = new PersonaDao();
-        System.out.println("Tratando de realizar la conexcion a la base de datos");
-        pd.seleccionar();
+//        PersonaDao pd = new PersonaDao();
+//        System.out.println("Tratando de realizar la conexcion a la base de datos");
+//        pd.seleccionar();
 
     }
     

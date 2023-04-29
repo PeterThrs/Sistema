@@ -4,6 +4,7 @@
  */
 package com.conexion;
 
+import com.classes.Persona;
 import com.classes.Usuario;
 import static com.conexion.Conexion.close;
 import static com.conexion.Conexion.getConnection;
@@ -14,13 +15,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDao {
-    private static final String SQL_SELECT = "SELECT idUsuario, nombreUsuario, contrasenia, idPersona, idRol FROM usuario";
+public class UsuarioDAO {
+    private static final String SQL_SELECT = "SELECT idUsuario, nomUsuario, contrasenia, idPersona, idRol FROM usuario";
     private static final String SQL_INSERT = "INSERT INTO usuario (nombreUsuario, contrasenia, idPersona, idRol) values (?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE usuario SET nombreUsuario=?, contrasenia=?, idPersona=?, idRol=? WHERE idUsuario=?";
-    private static final String SQL_DELETE = "DELETE FROM persona WHERE idUsuario = ?";
-
-    public List<Usuario> seleccionar() {
+    private static final String SQL_DELETE = "DELETE FROM usuario WHERE idUsuario = ?";
+    private static final String SQL_SELECT_WHERE = "SELECT * FROM usuario WHERE idUsuario = ?";
+    
+    public static List<Usuario> seleccionar() {
         Connection coon = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -34,7 +36,7 @@ public class UsuarioDao {
 
             while (rs.next()) {
                 int idUsuario = rs.getInt("idUsuario");
-                String nombreUsuario = rs.getString("nombreUsuario");
+                String nombreUsuario = rs.getString("nomUsuario");
                 String contrasenia = rs.getString("contrasenia");
                 int idPersona = rs.getInt("idPersona");
                 int idRol = rs.getInt("idRol");
@@ -134,5 +136,51 @@ public class UsuarioDao {
             }
         }
         return registros; 
+    }
+    private static Persona persona(int id){
+        List<Usuario> usuarios = UsuarioDAO.seleccionar();
+        usuarios.forEach(usuario ->
+        {
+           
+        });
+        return null;
+    }
+    
+    public static Usuario seleccionIndividual(Usuario usuario) {
+        Connection coon = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try
+        {
+            coon = Conexion.getConnection();
+            stmt = coon.prepareStatement(SQL_SELECT_WHERE);
+            stmt.setInt(1, usuario.getIdUsuario());
+            rs = stmt.executeQuery();
+
+            if(rs.next())
+            {
+                int idUsuario = rs.getInt("idUsuario");
+                String nomUsuario = rs.getString("nomUsuario");
+                String contrasenia = rs.getString("contrasenia");
+                int idPersona = rs.getInt("idPersona");
+                int idRol = rs.getInt("idRol");
+                return new Usuario(idUsuario, nomUsuario, contrasenia, idPersona, idRol);
+            }
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace(System.out);
+        } finally
+        {
+            try
+            {
+                Conexion.close(stmt);
+                Conexion.close(coon);
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return null;
     }
 }

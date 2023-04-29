@@ -24,19 +24,24 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     int x, y;
 
-    /**
-     * Creates new form Principal
-     */
-
     public PrincipalAdmin() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
-        this.btnAdminUser.setSelected(true);
+        //this.btnAdminUser.setSelected(true);       
 
-        //Animacion.bajar(PNuevo.getY(), PNuevo.getY()+PNuevo.getHeight()*5, 1, 10, PNuevo);
-        //Animacion.bajar(subpanelProductos.getY(), subpanelProductos.getY()+subpanelProductos.getHeight()*5, 1, 10, subpanelProductos);
         new CambiaPanel(pnlPrincipal, new PanelHomeAdmi());
+        desactivarBotonesIniciar();
+    }
+
+    public void desactivarBotonesIniciar() {
+        this.btnHome.setColorNormal(new Color(239, 238, 244));
+        this.btnHome.setColorHover(new Color(204, 204, 204));
+        this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+        this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+        this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+        this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
     }
 
     /**
@@ -367,7 +372,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jCTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jCTextField1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jCTextField1.setPhColor(new java.awt.Color(255, 255, 255));
-        jCTextField1.setPlaceholder("SEARCH");
+        jCTextField1.setPlaceholder("Buscar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -498,13 +503,25 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
 
-                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
-                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
 
                 this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
@@ -515,15 +532,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             } else
             {
-                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
-                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
             }
         } catch (Exception e)
         {
             System.err.println(e);
         }
-        
+
     }//GEN-LAST:event_btnAdminUserActionPerformed
 
     private void btnAdminUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminUserMousePressed
@@ -552,7 +569,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnInfoEmpresa.setColorNormal(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
-            
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -560,6 +581,14 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
 
                 this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
@@ -663,19 +692,31 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         try
         {
             new CambiaPanel(pnlPrincipal, new com.admin.PanelProducto());
-            if (this.btnInfoEmpresa.isSelected())
+            if (this.btnAdminProductos.isSelected())
             {
-                this.btnInfoEmpresa.setColorNormal(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorNormal(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
 
-                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
-                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
 
                 this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
@@ -686,9 +727,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             } else
             {
-                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
-                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
             }
         } catch (Exception e)
         {
@@ -718,6 +759,14 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         {
             if (this.btnCerrarSesion.isSelected())
             {
+                this.btnCerrarSesion.setColorNormal(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -726,6 +775,14 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
 
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
                 this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
@@ -733,11 +790,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
-
-                this.btnCerrarSesion.setColorNormal(new Color(204, 204, 204));
-                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
-                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-
             } else
             {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
@@ -745,7 +797,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             }
             this.dispose();
-            Login log=new Login();
+            Login log = new Login();
             log.setVisible(true);
         } catch (Exception e)
         {
@@ -793,6 +845,14 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             new CambiaPanel(pnlPrincipal, new com.admin.pnlFeeBack());
             if (this.btnConfiguracion.isSelected())
             {
+                this.btnConfiguracion.setColorNormal(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -801,13 +861,17 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
 
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
                 this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
-
-                this.btnConfiguracion.setColorNormal(new Color(204, 204, 204));
-                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
-                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
 
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
@@ -854,7 +918,46 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnListarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProductosActionPerformed
         try
         {
-            
+            new CambiaPanel(pnlPrincipal, new com.admin.ListProductsPanel());
+            if (this.btnListarProductos.isSelected())
+            {
+                this.btnListarProductos.setColorNormal(new Color(204, 204, 204));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+
+                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+            } else
+            {
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+            }
         } catch (Exception e)
         {
             System.err.println(e);
@@ -881,13 +984,46 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarUsuariosActionPerformed
         try
         {
-            this.btnHome.setSelected(false);
-            this.btnAdminUser.setSelected(false);
-            this.btnListarUsuarios.setSelected(true);
-            this.btnAdminProductos.setSelected(false);
-            this.btnInfoEmpresa.setSelected(false);
-            this.btnConfiguracion.setSelected(false);
-            this.btnCerrarSesion.setSelected(false);
+            new CambiaPanel(pnlPrincipal, new com.admin.ListUsersPanel());
+            if (this.btnListarUsuarios.isSelected())
+            {
+                this.btnListarUsuarios.setColorNormal(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+
+                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+            } else
+            {
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+            }
         } catch (Exception e)
         {
             System.err.println(e);
@@ -915,6 +1051,46 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         try
         {
             new CambiaPanel(pnlPrincipal, new PanelHomeAdmi());
+
+            if (this.btnHome.isSelected())
+            {
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+
+                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(204, 204, 204));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+            } else
+            {
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+            }
         } catch (Exception e)
         {
             System.err.println(e);

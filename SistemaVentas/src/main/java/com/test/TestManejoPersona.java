@@ -1,14 +1,14 @@
 package com.test;
 
 import com.classes.Persona;
-import com.conexion.PersonaDao;
+import com.conexion.PersonaDAO;
 import java.util.List;
 
 public class TestManejoPersona {
 
     public static void main(String[] args) {
-        PersonaDao pd = new PersonaDao();
-        mostrarValores(pd);
+        //PersonaDAO pd = new PersonaDAO();
+        //mostrarValores(pd);
 
         //insertar persona
 //        Persona p1 = new Persona("Marcos", "Doe", "Sul", "mdoe@gmail.com", "9511234323", "1233421234", 20, "HOPE123423HOCPRDA3", "ASDFQW13AS", "M", 68000, "Oaxaca", "Oaxaca", "Oaxaca", "Oaxaca", 130);
@@ -23,14 +23,14 @@ public class TestManejoPersona {
 //        mostrarValores(pd);
 
         //eliminar Persona 
-        Persona p4 = new Persona(4);
-        int registros = pd.eliminar(p4);
-        System.out.println("registros = " + registros);
-        mostrarValores(pd);
-        
+        Persona p4 = new Persona(1);
+        Persona p5 = new PersonaDAO().seleccionIndividual(p4);
+        //int registros = pd.eliminar(p4);
+        System.out.println("encontramos a "+p5);
+        //mostrarValores(pd);   
     }
 
-    public static void mostrarValores(PersonaDao pd) {
+    public static void mostrarValores(PersonaDAO pd) {
         List<Persona> personas = pd.seleccionar();
         imprimir(personas);
     }

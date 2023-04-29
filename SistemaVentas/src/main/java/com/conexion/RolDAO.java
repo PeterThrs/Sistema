@@ -1,5 +1,6 @@
 package com.conexion;
 
+import com.classes.Persona;
 import com.classes.Rol;
 import static com.conexion.Conexion.close;
 import static com.conexion.Conexion.getConnection;
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
 
 public class RolDAO {
     private static final String SQL_SELECT = "SELECT * from rol";
+    private static final String SQL_SELECT_WHERE = "SELECT * FROM rol WHERE idRol = ?";
     
     public static List<Rol> seleccionar() {
         Connection conn = null;
@@ -53,5 +55,40 @@ public class RolDAO {
             }
         }
         return roles;
+    }
+    
+    public static Rol seleccionIndividual(Rol rol) {
+        Connection coon = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try
+        {
+            coon = Conexion.getConnection();
+            stmt = coon.prepareStatement(SQL_SELECT_WHERE);
+            stmt.setInt(1, rol.getIdRol());
+            rs = stmt.executeQuery();
+
+            if(rs.next())
+            {
+                int idRol = rs.getInt("idRol");
+                String nombre = rs.getString("nombre");
+                return new Rol(idRol, nombre);
+            }
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace(System.out);
+        } finally
+        {
+            try
+            {
+                Conexion.close(stmt);
+                Conexion.close(coon);
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return null;
     }
 }

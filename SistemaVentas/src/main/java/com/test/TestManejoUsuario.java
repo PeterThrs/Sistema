@@ -5,11 +5,11 @@
 package com.test;
 
 import com.classes.Usuario;
-import com.conexion.UsuarioDao;
+import com.conexion.UsuarioDAO;
 import java.util.List;
 
 public class TestManejoUsuario {
-      UsuarioDao ud = new UsuarioDao();
+      UsuarioDAO ud = new UsuarioDAO();
         //mostrarValores(ud);
 
         //insertar usuario
@@ -30,7 +30,7 @@ public class TestManejoUsuario {
         //System.out.println("registros = " + registros);
         //mostrarValores(ud);
 
-    public static void mostrarValores(UsuarioDao ud) {
+    public static void mostrarValores(UsuarioDAO ud) {
         List<Usuario> usuarios = ud.seleccionar();
         imprimir(usuarios);
     }

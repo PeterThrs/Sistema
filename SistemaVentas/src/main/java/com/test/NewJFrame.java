@@ -1,46 +1,55 @@
-package com.table;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package com.test;
 
+import com.table.TableActionCellEditor;
+import com.table.TableActionCellRender;
+import com.table.TableActionEvent;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author juanj
+ */
+public class NewJFrame extends javax.swing.JFrame {
 
-public class UserTable extends javax.swing.JFrame {
-
-    /**
-     * Creates new form test
-     */
-    public UserTable() {
+    DefaultTableModel model;
+    
+    public NewJFrame() {
         initComponents();
-
-        TableActionEvent event = new TableActionEvent() {
-            @Override
-            public void onEdit(int row) {
-                System.out.println("Edit row : " + row);
-            }
-
-            @Override
-            public void onDelete(int row) {
-                if (table.isEditing())
-                {
-                    table.getCellEditor().stopCellEditing();
+        model = (DefaultTableModel) table.getModel();
+        try
+        {
+            TableActionEvent event = new TableActionEvent() {
+                @Override
+                public void onEdit(int row) {
+                    System.out.println("Edit roooooooooooow : " + row);
                 }
-                DefaultTableModel model = (DefaultTableModel) table.getModel();
-                model.removeRow(row);
-            }
 
-            @Override
-            public void onView(int row) {
-                System.out.println("View row : " + row);
-            }
-        };
-        table.getColumnModel().getColumn(3).setCellRenderer(new TableActionCellRender());
-        table.getColumnModel().getColumn(3).setCellEditor(new TableActionCellEditor(event));
+                @Override
+                public void onDelete(int row) {
+                    if (table.isEditing())
+                    {
+                        table.getCellEditor().stopCellEditing();
+                    }
+                    
+                    model.removeRow(row);
+                }
 
-        //Método para cambia el ancho de las filas de las tablas
-        table.getColumnModel().getColumn(0).setPreferredWidth(450);
-        table.getColumnModel().getColumn(1).setPreferredWidth(450);
-        table.getColumnModel().getColumn(2).setPreferredWidth(450);
-        //Método para ponerlo en pantalla completa
-        this.setExtendedState(MAXIMIZED_BOTH);
+                @Override
+                public void onView(int row) {
+                    System.out.println("View row : " + row);
+                }
+            };
+
+            table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
+            table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
+        } catch (Exception e)
+        {
+            e.printStackTrace(System.out);
+        }
     }
 
     /**
@@ -59,18 +68,16 @@ public class UserTable extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Tel", "Action"
+                "ID", "Nombre", "Apellido P", "Apellido M", "Rol", "Teléfono", "Correo e.", "Opciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -85,18 +92,14 @@ public class UserTable extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -120,24 +123,23 @@ public class UserTable extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(UserTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(UserTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(UserTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(UserTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserTable().setVisible(true);
+                new NewJFrame().setVisible(true);
             }
         });
     }

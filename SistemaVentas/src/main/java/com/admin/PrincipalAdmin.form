@@ -544,7 +544,7 @@
                 <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="placeholder" type="java.lang.String" value="SEARCH"/>
+                <Property name="placeholder" type="java.lang.String" value="Buscar"/>
               </Properties>
             </Component>
           </SubComponents>

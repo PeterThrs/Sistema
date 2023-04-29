@@ -4,11 +4,8 @@
  */
 package com.table;
 
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,19 +18,6 @@ public class PanelAction extends javax.swing.JPanel {
      */
     public PanelAction() {
         initComponents();
-        ImageIcon wallpaperDelete = new ImageIcon("src/main/resources/images/icono/delete.png");
-        //Icon iconoDelete = new ImageIcon(wallpaperDelete.getImage().getScaledInstance(delete.getWidth(), delete.getHeight(), Image.SCALE_DEFAULT)); 
-        
-        ImageIcon wallpaperEdit = new ImageIcon("src/main/resources/images/icono/edit.png");
-        //Icon iconoEdit = new ImageIcon(wallpaperEdit.getImage().getScaledInstance(edit.getWidth(), edit.getHeight(), Image.SCALE_DEFAULT)); 
-        
-        ImageIcon wallpaperView = new ImageIcon("src/main/resources/images/icono/view.png");
-        //Icon iconoView = new ImageIcon(wallpaperView.getImage().getScaledInstance(view.getWidth(), view.getHeight(), Image.SCALE_DEFAULT)); 
-        
-        //this.delete.setIcon(new ImageIcon(wallpaperDelete.getImage().getScaledInstance(delete.getWidth(), delete.getHeight(), Image.SCALE_DEFAULT)));
-        //this.edit.setIcon(new ImageIcon(wallpaperEdit.getImage().getScaledInstance(edit.getWidth(), edit.getHeight(), Image.SCALE_DEFAULT)));
-        //this.view.setIcon(new ImageIcon(wallpaperView.getImage().getScaledInstance(view.getWidth(), view.getHeight(), Image.SCALE_DEFAULT))); 
-        //this.repaint(); 
     }
     public void initEvent(TableActionEvent event,int row){
         edit.addActionListener(new ActionListener() {
@@ -48,6 +32,12 @@ public class PanelAction extends javax.swing.JPanel {
                 event.onDelete(row);
             }
         });
+        view.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                event.onView(row);
+            }
+        });
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,7 +49,24 @@ public class PanelAction extends javax.swing.JPanel {
     private void initComponents() {
 
         edit = new com.table.ActionButton();
+        view = new com.table.ActionButton();
         delete = new com.table.ActionButton();
+
+        edit.setIcon(new javax.swing.ImageIcon("C:\\Users\\juanj\\OneDrive\\Documentos\\NetBeansProjects\\tabla\\src\\main\\resources\\img\\edit.png")); // NOI18N
+
+        view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/view.png"))); // NOI18N
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
+
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -68,24 +75,36 @@ public class PanelAction extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.table.ActionButton delete;
     private com.table.ActionButton edit;
+    private com.table.ActionButton view;
     // End of variables declaration//GEN-END:variables
 }

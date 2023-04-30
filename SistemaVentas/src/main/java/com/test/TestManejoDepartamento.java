@@ -5,7 +5,7 @@
 package com.test;
 
 import com.classes.Departamento;
-import com.conexion.DepartamentoDao;
+import com.conexion.DepartamentoDAO;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class TestManejoDepartamento {
     public static void main(String[] args){
-        DepartamentoDao departamentoDao = new DepartamentoDao();
+        DepartamentoDAO departamentoDao = new DepartamentoDAO();
         
 //        Insertando objeto de tipo Departamento
 //        Departamento departamentoNew = new Departamento("RRHH",8);
@@ -26,7 +26,7 @@ public class TestManejoDepartamento {
         
         //Eliminar un registro
         Departamento departamentoDel = new Departamento("");
-        DepartamentoDao.eliminar(departamentoDel);
+        DepartamentoDAO.eliminar(departamentoDel);
         
         //Listado Departamentos
         List<Departamento> departamentos = departamentoDao.seleccionar();

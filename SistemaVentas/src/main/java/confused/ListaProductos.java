@@ -51,11 +51,11 @@ public class ListaProductos extends javax.swing.JFrame {
         table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
         table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
     }
-    private void registrar(Producto p, DefaultTableModel model){
+    /*private void registrar(Producto p, DefaultTableModel model){
         model.addRow(new Object[]{
             p.getCodigo(),p.getNombre(),p.getPrecio(),p.getArea(),p.getMarca(),p.getCantidad()
         });
-    }
+    }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,7 +164,7 @@ public class ListaProductos extends javax.swing.JFrame {
         String area=table.getValueAt(fila, 3).toString();
         String marca=table.getValueAt(fila, 4).toString();
         double cantidad=Double.parseDouble(table.getValueAt(fila, 5).toString());
-        Producto producto=new Producto(codigo, nombre, precio, area, marca, cantidad);
+        //Producto producto=new Producto(codigo, nombre, precio, area, marca, cantidad);
 
         //EditarProducto actualizar=new EditarProducto(this, true,producto);
         //actualizar.setVisible(true);
@@ -174,10 +174,10 @@ public class ListaProductos extends javax.swing.JFrame {
     private void nuevosDatos(Producto p,int fila){
         table.setValueAt(p.getCodigo(),fila, 0);
         table.setValueAt(p.getNombre(),fila, 1);
-        table.setValueAt(p.getPrecio(),fila, 2);
+        /*table.setValueAt(p.getPrecio(),fila, 2);
         table.setValueAt(p.getArea(),fila, 3);
         table.setValueAt(p.getMarca(),fila, 4);
-        table.setValueAt(p.getCantidad(),fila, 5);
+        table.setValueAt(p.getCantidad(),fila, 5);*/
     }
     /**
      * @param args the command line arguments

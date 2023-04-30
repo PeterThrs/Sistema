@@ -130,7 +130,7 @@ public class FormProduct extends javax.swing.JDialog {
     }
 
     private void listDesplegable() {
-        DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
+        /*DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
         dcbm.addElement(DatosFalsos.p1.getDepartamento().getDepartamento());
 
         dcbm.addElement(DatosFalsos.p2.getDepartamento().getDepartamento());
@@ -138,7 +138,7 @@ public class FormProduct extends javax.swing.JDialog {
         dcbm.addElement(DatosFalsos.p4.getDepartamento().getDepartamento());
         this.cbDepartment.setModel(dcbm);
         this.cbDepartment.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasNegro); 
-        this.cbDepartment.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris); 
+        this.cbDepartment.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris); */
     }
 
     private void confSpinner() {

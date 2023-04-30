@@ -87,7 +87,7 @@ public class PanelProducto extends javax.swing.JPanel {
         agregarRadioBotones();
         estadoTfTotal();
         checkBoxEventItemListener();
-        listDesplegable();
+        //listDesplegable();
         confSpinner();
     }
 
@@ -130,7 +130,7 @@ public class PanelProducto extends javax.swing.JPanel {
         }
     }
 
-    private void listDesplegable() {
+    /*private void listDesplegable() {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
         dcbm.addElement(DatosFalsos.p1.getDepartamento().getDepartamento());
 
@@ -140,7 +140,7 @@ public class PanelProducto extends javax.swing.JPanel {
         this.cbDepartment.setModel(dcbm);
         this.cbDepartment.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasNegro); 
         this.cbDepartment.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris); 
-    }
+    }*/
 
     private void confSpinner() {
         SpinnerNumberModel snm = new SpinnerNumberModel(0, 0, 300, 10);

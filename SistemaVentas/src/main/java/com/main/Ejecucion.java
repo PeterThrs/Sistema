@@ -1,10 +1,16 @@
 package com.main;
 
 import com.classes.Sesion;
+import javax.swing.SwingUtilities;
 
 public class Ejecucion {
     public static void main(String[] args) {
-        Login login =new Login();
-        login.setVisible(true);
+        Runnable runApplication = new Runnable() {
+            public void run() {
+                Login login = new Login();
+                login.getClass();
+            }
+        };
+        SwingUtilities.invokeLater(runApplication);
     }
 }

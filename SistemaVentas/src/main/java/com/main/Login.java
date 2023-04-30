@@ -15,86 +15,80 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import com.admin.PrincipalAdmin;
 import com.conexion.PersonaDAO;
+import javax.swing.SwingUtilities;
 
 public class Login extends javax.swing.JFrame {
 
-    int xMouse,yMouse;
-    public FondoPanel fondo=new FondoPanel();
+    int xMouse, yMouse;
+    public FondoPanel fondo = new FondoPanel();
+
     public Login() {
         initComponents();
         agregarEstilos();
-        
+
         this.setIconImage(Sesion.app.getIcono());
-        
-        ImageIcon wallpaper = new ImageIcon("src/main/resources/images/User.png"); 
-        Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(image.getWidth(), image.getHeight(), Image.SCALE_DEFAULT)); 
-        
+
+        ImageIcon wallpaper = new ImageIcon("src/main/resources/images/User.png");
+        Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(image.getWidth(), image.getHeight(), Image.SCALE_DEFAULT));
+
         iconUser.setIcon(new Configuracion().setIconoEtiqueta("/user.png", iconUser));
         iconPassword.setIcon(new Configuracion().setIconoEtiqueta("/password icon.png", iconPassword));
         jLogo.setIcon(new Configuracion().setIconoEtiqueta("/logo.png", jLogo));
         this.image.setIcon(icono);
-        this.repaint(); 
-        
-        
-//        PersonaDao pd = new PersonaDao();
-//        System.out.println("Tratando de realizar la conexcion a la base de datos");
-//        pd.seleccionar();
+        this.repaint();
 
+        setVisible(true);
     }
-    
+
     private void agregarEstilos() {
         //configuracion de la ventana 
         Configuracion.styles(this);
         this.setExtendedState(this.NORMAL);
-        
+
         //configuracion al JPanel
-         Configuracion.background(CodigoColor.cFondoGris, this.PanelDerecho, this.header); 
-         //Configuracion.background(CodigoColor.cFondoGris); 
-        
+        Configuracion.background(CodigoColor.cFondoGris, this.PanelDerecho, this.header);
+        //Configuracion.background(CodigoColor.cFondoGris); 
+
         //configuracion JLabel
         Configuracion.titulo(this.jLabel2, this.jlTitulo);
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitulo, this.jLabel2);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlTitulo);
-        
-        Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabel3, this.jLabel4, 
+
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.jLabel3, this.jLabel4,
                 this.jLabel5, this.jlPassword, this.jlUser);
-        Configuracion.robotoItalic14(this.jLabel3, this.jLabel4, 
+        Configuracion.robotoItalic14(this.jLabel3, this.jLabel4,
                 this.jLabel5, this.jlPassword, this.jlUser);
-        Configuracion.foreground(CodigoColor.cLetrasNegro,this.jLabel3, this.jLabel4, 
+        Configuracion.foreground(CodigoColor.cLetrasNegro, this.jLabel3, this.jLabel4,
                 this.jLabel5, this.jlPassword, this.jlUser);
-        Configuracion.foreground(CodigoColor.cLetrasBlanco,this.jLabel3, this.jLabel4, 
+        Configuracion.foreground(CodigoColor.cLetrasBlanco, this.jLabel3, this.jLabel4,
                 this.jLabel5);
-        
+
         //configuraicon JTextField
         Configuracion.robotoPlain12(this.cPassword, this.cUser);
         Configuracion.withoutBorde(this.cPassword, this.cUser);
-        Configuracion.background(CodigoColor.cFondoGris,this.cUser, this.cPassword); 
-        Configuracion.foreground(CodigoColor.cLetrasTextField,this.cUser, this.cPassword);
-        
+        Configuracion.background(CodigoColor.cFondoGris, this.cUser, this.cPassword);
+        Configuracion.foreground(CodigoColor.cLetrasTextField, this.cUser, this.cPassword);
+
         //configuracion JSeparator
         Configuracion.foreground(CodigoColor.cSeparatorRed, this.jSeparator1, this.jSeparator2);
-        
-        
+
         //configuracion JButton
         Configuracion.robotoItalic14(this.jIngresar);
         Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.jIngresar);
         Configuracion.background(CodigoColor.cFondoBtnAzul, this.jIngresar);
-        
-        //configuracion JSpinner
-        
 
+        //configuracion JSpinner
     }
-    
-    public void Cerrar () {
+
+    public void Cerrar() {
         this.dispose();
     }
-    
+
     /*@Override
     public Image getIconImage(){
         Image retValue = Toolkit.getDefaultToolkit().getImage("src/main/resources/images/icono/austronauta.png");
         return retValue;
     }*/
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -416,31 +410,54 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_headerMouseDragged
 
     private void cPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cPasswordKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
 
             jIngresar.setBackground(Color.RED);
 
-            try {
+            try
+            {
                 String user = cUser.getText();
                 String password = String.valueOf(cPassword.getPassword());
                 boolean correcto = Sesion.validar(user, password);
 
-                if (correcto) {
-                    if (user.equals(Sesion.seguridad.getUserAdmin())) {
-                        PrincipalAdmin pa = new PrincipalAdmin();
-                        pa.setVisible(true);
-                    } else if (user.equals(Sesion.seguridad.getUserCount())) {
-                        VentanaContador ic = new VentanaContador();
-                        ic.setVisible(true);
-                    }else {
-                        VentanaCajero vc = new VentanaCajero();
-                        vc.setVisible(true);
+                if (correcto)
+                {
+                    if (user.equals(Sesion.seguridad.getUserAdmin()))
+                    {
+                        Runnable runApplication = new Runnable() {
+                            public void run() {
+                                PrincipalAdmin pa = new PrincipalAdmin();
+                                pa.getClass();
+                            }
+                        };
+                        SwingUtilities.invokeLater(runApplication);
+                    } else if (user.equals(Sesion.seguridad.getUserCount()))
+                    {
+                        Runnable runApplication = new Runnable() {
+                            public void run() {
+                                VentanaContador ic = new VentanaContador();
+                                ic.getClass();
+                            }
+                        };
+                        SwingUtilities.invokeLater(runApplication);
+                    } else
+                    {
+                        Runnable runApplication = new Runnable() {
+                            public void run() {
+                                VentanaCajero vc = new VentanaCajero();
+                                vc.getClass();
+                            }
+                        };
+                        SwingUtilities.invokeLater(runApplication);
                     }
                     this.dispose();
-                }else {
+                } else
+                {
                     JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
                 }
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
 
             }
 
@@ -454,12 +471,14 @@ public class Login extends javax.swing.JFrame {
     private void cPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cPasswordMousePressed
         // TODO add your handling code here:
 
-        if(String.valueOf(cPassword.getPassword()).equals("")) {
+        if (String.valueOf(cPassword.getPassword()).equals(""))
+        {
             cPassword.setText("");
             cPassword.setForeground(Color.black);
         }
 
-        if(cUser.getText().isEmpty()) {
+        if (cUser.getText().isEmpty())
+        {
             cUser.setText("");
             cUser.setForeground(Color.gray);
         }
@@ -470,12 +489,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_cUserActionPerformed
 
     private void cUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cUserMousePressed
-        if(cUser.getText().equals("")) {
+        if (cUser.getText().equals(""))
+        {
             cUser.setText("");
             cUser.setForeground(Color.black);
         }
 
-        if(String.valueOf(cPassword.getPassword()).isEmpty()) {
+        if (String.valueOf(cPassword.getPassword()).isEmpty())
+        {
             cPassword.setText("");
             cPassword.setForeground(Color.gray);
         }
@@ -486,45 +507,53 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jIngresarKeyReleased
 
     private void jIngresarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIngresarKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
             jIngresar.setBackground(Color.red);
         }
     }//GEN-LAST:event_jIngresarKeyPressed
 
     private void jIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngresarActionPerformed
-        try {
+        try
+        {
             String user = cUser.getText();
             String password = String.valueOf(cPassword.getPassword());
             boolean correcto = Sesion.validar(user, password);
 
-            if (correcto) {
-                if (user.equals(Sesion.seguridad.getUserAdmin())) {
+            if (correcto)
+            {
+                if (user.equals(Sesion.seguridad.getUserAdmin()))
+                {
                     PrincipalAdmin principalAdmin = new PrincipalAdmin();
                     principalAdmin.setVisible(true);
-                } else if (user.equals(Sesion.seguridad.getUserCount())) {
+                } else if (user.equals(Sesion.seguridad.getUserCount()))
+                {
                     VentanaContador ic = new VentanaContador();
                     ic.setVisible(true);
-                }else {
+                } else
+                {
                     VentanaCajero vc = new VentanaCajero();
                     vc.setVisible(true);
                 }
                 this.dispose();
-            }else {
+            } else
+            {
                 JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
             }
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
 
         }
     }//GEN-LAST:event_jIngresarActionPerformed
 
     private void jIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIngresarMouseExited
         // TODO add your handling code here:
-        jIngresar.setBackground(new Color (0,134,190));
+        jIngresar.setBackground(new Color(0, 134, 190));
     }//GEN-LAST:event_jIngresarMouseExited
 
     private void jIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIngresarMouseEntered
         // TODO add your handling code here:
-        jIngresar.setBackground(new Color (0,156,223));
+        jIngresar.setBackground(new Color(0, 156, 223));
     }//GEN-LAST:event_jIngresarMouseEntered
 
     private void jIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIngresarMouseClicked
@@ -533,7 +562,7 @@ public class Login extends javax.swing.JFrame {
 
     private void closeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMousePressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_closeMousePressed
 
     private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
@@ -551,31 +580,39 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void cUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cUserKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
 
             jIngresar.setBackground(Color.RED);
 
-            try {
+            try
+            {
                 String user = cUser.getText();
                 String password = String.valueOf(cPassword.getPassword());
                 boolean correcto = Sesion.validar(user, password);
 
-                if (correcto) {
-                    if (user.equals(Sesion.seguridad.getUserAdmin())) {
+                if (correcto)
+                {
+                    if (user.equals(Sesion.seguridad.getUserAdmin()))
+                    {
                         PrincipalAdmin pa = new PrincipalAdmin();
                         pa.setVisible(true);
-                    } else if (user.equals(Sesion.seguridad.getUserCount())) {
+                    } else if (user.equals(Sesion.seguridad.getUserCount()))
+                    {
                         VentanaContador ic = new VentanaContador();
                         ic.setVisible(true);
-                    }else {
+                    } else
+                    {
                         VentanaCajero vc = new VentanaCajero();
                         vc.setVisible(true);
                     }
                     this.dispose();
-                }else {
+                } else
+                {
                     JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
                 }
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
 
             }
 
@@ -604,12 +641,14 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JLabel jlUser;
     // End of variables declaration//GEN-END:variables
-    class FondoPanel extends JPanel{
+    class FondoPanel extends JPanel {
+
         private Image imagen;
+
         @Override
-        public void paint(Graphics g){
-            imagen=new ImageIcon("src/main/resources/imagenes/juan/f.jpg").getImage();
-            g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
+        public void paint(Graphics g) {
+            imagen = new ImageIcon("src/main/resources/imagenes/juan/f.jpg").getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
             super.paint(g);
         }

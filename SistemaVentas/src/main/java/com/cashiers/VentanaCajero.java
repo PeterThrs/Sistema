@@ -15,6 +15,7 @@ public class VentanaCajero extends javax.swing.JFrame {
         AgregarConfiguración ();
         //Configuracion.styles(this);
         setIconImage(new ImageIcon(getClass().getResource("/images/ventass.png")).getImage());
+        setVisible(true);
     }
     
     private void AgregarConfiguración () {

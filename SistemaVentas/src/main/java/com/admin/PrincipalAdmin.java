@@ -28,10 +28,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
-        //this.btnAdminUser.setSelected(true);       
-
         new CambiaPanel(pnlPrincipal, new PanelHomeAdmi());
         desactivarBotonesIniciar();
+        setVisible(true);
     }
 
     public void desactivarBotonesIniciar() {

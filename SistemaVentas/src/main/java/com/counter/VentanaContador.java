@@ -37,6 +37,7 @@ public class VentanaContador extends javax.swing.JFrame {
         //Animacion.bajar(subpanelProductos.getY(), subpanelProductos.getY()+subpanelProductos.getHeight()*5, 1, 10, subpanelProductos);
         
         new CambiaPanel(pnlPrincipal, new pnlHomeContador());
+        setVisible(true);
     }
 
     /**

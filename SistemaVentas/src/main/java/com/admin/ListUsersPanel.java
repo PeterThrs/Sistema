@@ -29,42 +29,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
         model = (DefaultTableModel) table.getModel();
         anchoFilas();
         registrar();
-        try
-        {
-            TableActionEvent event = new TableActionEvent() {
-                @Override
-                public void onEdit(int row) {
-                    System.out.println("Edit roooooooooooow : " + row);
-                }
-
-                @Override
-                public void onDelete(int row) {
-                    if (table.isEditing())
-                    {
-                        table.getCellEditor().stopCellEditing();
-                    }
-                    int fila=table.getSelectedRow();
-                    int idUsuario=Integer.parseInt(table.getValueAt(fila, 0).toString());
-                    Usuario usuario = UsuarioDAO.seleccionIndividual(new Usuario(idUsuario));
-                    UsuarioDAO.eliminar(new Usuario(usuario.getIdUsuario()));
-                    PersonaDAO.eliminar(new Persona(usuario.getIdPersona()));
-                    //PersonaDAO.eliminar(new Persona)
-                    model.removeRow(row);
-                }
-
-                @Override
-                public void onView(int row) {
-                    System.out.println("View row : " + row);
-                }
-            };
-
-            table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
-            table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
-        } catch (Exception e)
-        {
-            e.printStackTrace(System.out);
-        }
-        //formatTable();
+        formatTable();
     }
 
     private void registrar() {
@@ -81,13 +46,45 @@ public class ListUsersPanel extends javax.swing.JPanel {
                 usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
             });
         });
-        /* model.addRow(new Object[]{
-            p.getId(),p.getNomUsuario(),p.getNombre(),p.getApellidoPaterno(),p.getApellidoMaterno(),p.getNumTelefono(),p.getCorreoElectronico(),p.getNacionalidad(),p.getCalle()
-        });*/
     }
 
     public void formatTable() {
+        try
+        {
+            TableActionEvent event = new TableActionEvent() {
+                @Override
+                public void onEdit(int row) {
+                    System.out.println("Edit roooooooooooow : " + row);
+                }
 
+                @Override
+                public void onDelete(int row) {
+                    if (table.isEditing())
+                    {
+                        table.getCellEditor().stopCellEditing();
+                    }
+                    int fila = table.getSelectedRow();
+                    int idUsuario = Integer.parseInt(table.getValueAt(fila, 0).toString());
+                    
+                    Usuario usuario = UsuarioDAO.seleccionIndividual(new Usuario(idUsuario));
+                    UsuarioDAO.eliminar(new Usuario(usuario.getIdUsuario()));
+                    PersonaDAO.eliminar(new Persona(usuario.getIdPersona()));
+                    
+                    model.removeRow(row);
+                }
+
+                @Override
+                public void onView(int row) {
+                    System.out.println("View row : " + row);
+                }
+            };
+
+            table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
+            table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
+        } catch (Exception e)
+        {
+            e.printStackTrace(System.out);
+        }
     }
 
     public void anchoFilas() {

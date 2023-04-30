@@ -1,11 +1,21 @@
 package com.classes;
 
 public class Departamento {
+
     private int idDepartamento;
-    private String nombre; 
-    
-    public Departamento(String nombre){
-        this.nombre = nombre; 
+    private String nombre;
+
+    public Departamento(int idDepartamento, String nombre) {
+        this.idDepartamento = idDepartamento;
+        this.nombre = nombre;
+    }
+
+    public Departamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
+    }
+
+    public Departamento(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getidDepartamento() {
@@ -15,7 +25,7 @@ public class Departamento {
     public void setidDepartamento(int idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
-    
+
     public String getDepartamento() {
         return nombre;
     }
@@ -23,6 +33,5 @@ public class Departamento {
     public void setDepartamento(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
 }

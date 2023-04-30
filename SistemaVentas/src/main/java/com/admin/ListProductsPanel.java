@@ -4,9 +4,14 @@
  */
 package com.admin;
 
+import com.classes.Departamento;
+import com.classes.Producto;
+import com.conexion.DepartamentoDAO;
+import com.conexion.ProductoDAO;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,16 +20,32 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListProductsPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ListProductsPanel
-     */
+    DefaultTableModel model;
+
     public ListProductsPanel() {
         initComponents();
-        formatTable();
+        model = (DefaultTableModel) table.getModel();
         anchoFilas();
+        registrar();
+        formatTable();
     }
-    
-    public void formatTable(){
+
+    private void registrar() {
+        List<Producto> productos = ProductoDAO.seleccionar();
+        productos.forEach(producto ->
+        {
+            Producto p = ProductoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
+            Departamento dep = DepartamentoDAO.seleccionIndividual(new Departamento(p.getIdDepartamento()));
+            System.out.println(p);
+            System.out.println(dep);
+            model.addRow(new Object[]
+            {
+                producto.getCodigo(), producto.getNombre(), producto.getPrecioCosto(), producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
+            });
+        });
+    }
+
+    public void formatTable() {
         TableActionEvent event = new TableActionEvent() {
             @Override
             public void onEdit(int row) {
@@ -37,7 +58,10 @@ public class ListProductsPanel extends javax.swing.JPanel {
                 {
                     table.getCellEditor().stopCellEditing();
                 }
-                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                int fila = table.getSelectedRow();
+                String codigo = table.getValueAt(fila, 0).toString();
+
+                ProductoDAO.eliminar(new Producto(codigo));
                 model.removeRow(row);
             }
 
@@ -49,14 +73,15 @@ public class ListProductsPanel extends javax.swing.JPanel {
         table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
         table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
     }
-    
-    public void anchoFilas(){
-        table.getColumnModel().getColumn(0).setPreferredWidth(15);
-        for (int i = 1; i < table.getColumnCount()-1; i++)
+
+    public void anchoFilas() {
+        table.getColumnModel().getColumn(0).setPreferredWidth(30);
+        for (int i = 1; i < table.getColumnCount() - 1; i++)
         {
-            table.getColumnModel().getColumn(i).setPreferredWidth(200);
+            table.getColumnModel().getColumn(i).setPreferredWidth(150);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,14 +96,14 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre", "Precio", "Mayoreo", "Cantidad en inventario", "Departamento", "Opciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

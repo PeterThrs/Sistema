@@ -11,29 +11,49 @@ import com.classes.Departamento;
  * @author juanj
  */
 public class Producto {
-    private long codigo;
-    private String nombre;
-    private double precio;
-    private String area;
-    private String marca;
-    private double cantidad;
 
-    private Departamento departamento; //del pedro
-    
-    public Producto(long codigo, String nombre, double precio, String area, String marca, double cantidad) {
+    private String codigo;
+    private String nombre;
+    private String descripcion;
+    private double precioCosto;
+    private double ganancia;
+    private double mayoreo;
+    private int ocupaInventario;
+    private double cantidad;
+    private int idDepartamento;
+
+    public Producto(String codigo, String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, double cantidad, int idDepartamento) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.precio = precio;
-        this.area = area;
-        this.marca = marca;
+        this.descripcion = descripcion;
+        this.precioCosto = precioCosto;
+        this.ganancia = ganancia;
+        this.mayoreo = mayoreo;
+        this.ocupaInventario = ocupaInventario;
         this.cantidad = cantidad;
+        this.idDepartamento = idDepartamento;
     }
 
-    public long getCodigo() {
+    public Producto(String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, double cantidad, int idDepartamento) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precioCosto = precioCosto;
+        this.ganancia = ganancia;
+        this.mayoreo = mayoreo;
+        this.ocupaInventario = ocupaInventario;
+        this.cantidad = cantidad;
+        this.idDepartamento = idDepartamento;
+    }
+
+    public Producto(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(long codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -45,28 +65,44 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
-        return precio;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getArea() {
-        return area;
+    public double getPrecioCosto() {
+        return precioCosto;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setPrecioCosto(double precioCosto) {
+        this.precioCosto = precioCosto;
     }
 
-    public String getMarca() {
-        return marca;
+    public double getGanancia() {
+        return ganancia;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setGanancia(double ganancia) {
+        this.ganancia = ganancia;
+    }
+
+    public double getMayoreo() {
+        return mayoreo;
+    }
+
+    public void setMayoreo(double mayoreo) {
+        this.mayoreo = mayoreo;
+    }
+
+    public int getOcupaInventario() {
+        return ocupaInventario;
+    }
+
+    public void setOcupaInventario(int ocupaInventario) {
+        this.ocupaInventario = ocupaInventario;
     }
 
     public double getCantidad() {
@@ -76,17 +112,13 @@ public class Producto {
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
-    //Del pedro
-    public Producto(Departamento departamento){
-        this.departamento = departamento; 
+
+    public int getIdDepartamento() {
+        return idDepartamento;
     }
 
-    public Departamento getDepartamento() {
-        return departamento;
+    public void setIdDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
 
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
-    }
-    
 }

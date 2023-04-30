@@ -14,11 +14,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartamentoDao {
+public class DepartamentoDAO {
     private static final String SQL_SELECT = "SELECT idDepartamento, nombre FROM departamento";
     private static final String SQL_INSERT = "INSERT INTO departamento(idDepartamento, nombre) VALUES(?, ?)";
     private static final String SQL_UPDATE = "UPDATE departamento SET idDepartamento = ?, nombre = ?";
     private static final String SQL_DELETE = "DELETE FROM departamento WHERE idDepartamento = ?";
+    private static final String SQL_SELECT_WHERE = "SELECT * FROM departamento WHERE idDepartamento = ?";
     
     public List<Departamento> seleccionar() {
         Connection conn = null;
@@ -139,5 +140,41 @@ public class DepartamentoDao {
             }
         }
         return registros;
+    }
+    
+    public static Departamento seleccionIndividual(Departamento departamento) {
+        Connection coon = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try
+        {
+            coon = Conexion.getConnection();
+            stmt = coon.prepareStatement(SQL_SELECT_WHERE);
+            stmt.setInt(1, departamento.getidDepartamento());
+            rs = stmt.executeQuery();
+
+            if (rs.next())
+            {
+                int idDepartamento = rs.getInt("idDepartamento");
+                String nombre = rs.getString("nombre");
+
+                return new Departamento(idDepartamento, nombre);
+            }
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace(System.out);
+        } finally
+        {
+            try
+            {
+                Conexion.close(stmt);
+                Conexion.close(coon);
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return null;
     }
 }

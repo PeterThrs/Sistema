@@ -137,14 +137,6 @@ public class UsuarioDAO {
         }
         return registros; 
     }
-    private static Persona persona(int id){
-        List<Usuario> usuarios = UsuarioDAO.seleccionar();
-        usuarios.forEach(usuario ->
-        {
-           
-        });
-        return null;
-    }
     
     public static Usuario seleccionIndividual(Usuario usuario) {
         Connection coon = null;

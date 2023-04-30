@@ -8,7 +8,10 @@ import com.settings.Configuracion;
 import java.awt.Dimension;
 import javax.swing.ButtonGroup;
 import com.classes.DatosFalsos;
+import com.classes.Departamento;
+import com.conexion.DepartamentoDAO;
 import com.settings.CodigoColor;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerNumberModel;
 /**
@@ -87,7 +90,7 @@ public class PanelProducto extends javax.swing.JPanel {
         agregarRadioBotones();
         estadoTfTotal();
         checkBoxEventItemListener();
-        //listDesplegable();
+        listDesplegable();
         confSpinner();
     }
 
@@ -130,17 +133,21 @@ public class PanelProducto extends javax.swing.JPanel {
         }
     }
 
-    /*private void listDesplegable() {
+    private void listDesplegable() {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
-        dcbm.addElement(DatosFalsos.p1.getDepartamento().getDepartamento());
+        /*dcbm.addElement(DatosFalsos.p1.getDepartamento().getDepartamento());
 
         dcbm.addElement(DatosFalsos.p2.getDepartamento().getDepartamento());
         dcbm.addElement(DatosFalsos.p3.getDepartamento().getDepartamento());
-        dcbm.addElement(DatosFalsos.p4.getDepartamento().getDepartamento());
+        dcbm.addElement(DatosFalsos.p4.getDepartamento().getDepartamento());*/
+        List<Departamento> departamentos = DepartamentoDAO.seleccionar();
+        departamentos.forEach(departamento ->{
+            dcbm.addElement(departamento.getDepartamento());
+        });
         this.cbDepartment.setModel(dcbm);
         this.cbDepartment.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasNegro); 
         this.cbDepartment.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris); 
-    }*/
+    }
 
     private void confSpinner() {
         SpinnerNumberModel snm = new SpinnerNumberModel(0, 0, 300, 10);

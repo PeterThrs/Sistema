@@ -21,7 +21,7 @@ public class DepartamentoDAO {
     private static final String SQL_DELETE = "DELETE FROM departamento WHERE idDepartamento = ?";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM departamento WHERE idDepartamento = ?";
     
-    public List<Departamento> seleccionar() {
+    public static List<Departamento> seleccionar() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;

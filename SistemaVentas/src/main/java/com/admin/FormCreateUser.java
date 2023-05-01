@@ -30,8 +30,8 @@ public class FormCreateUser extends javax.swing.JDialog {
             //Configuracion JLabels
             Configuracion.robotoItalic14(this.jlTitle);
             Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
-            Configuracion.robotoItalic14(this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol,
-                    this.jlUser, this.jlId);
+            Configuracion.robotoItalic14(this.jlIndication, this.jlConfirm, 
+                    this.jlPassword, this.jlRol,this.jlUser, this.jlId);
             Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlIndication, this.jlConfirm, this.jlPassword, this.jlRol,
                     this.jlUser, this.jlId);
 
@@ -274,11 +274,11 @@ public class FormCreateUser extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
         );
 
         pack();

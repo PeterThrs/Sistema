@@ -20,6 +20,8 @@ public class Persona {
     private String calle;
     private int numCasa;
     
+    public Persona(){}
+    
     public Persona(int idPersona){
         this.idPersona = idPersona; 
     }

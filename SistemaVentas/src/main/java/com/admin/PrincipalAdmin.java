@@ -495,7 +495,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnAdminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminUserActionPerformed
         try
         {
-            new CambiaPanel(pnlPrincipal, new com.admin.PanelUser());
+            new CambiaPanel(pnlPrincipal, new com.admin.PanelUserNew());
             if (this.btnAdminUser.isSelected())
             {
                 this.btnAdminUser.setColorNormal(new Color(204, 204, 204));

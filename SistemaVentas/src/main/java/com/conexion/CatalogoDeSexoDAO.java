@@ -8,6 +8,6 @@ package com.conexion;
  *
  * @author corte
  */
-public class CatalogoDeSexoDao {
+public class CatalogoDeSexoDAO {
     
 }

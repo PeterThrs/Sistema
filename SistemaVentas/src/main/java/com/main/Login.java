@@ -14,13 +14,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import com.admin.PrincipalAdmin;
+import com.classes.Usuario;
 import com.conexion.PersonaDao;
+import com.conexion.UsuarioDao;
+import java.util.List;
 import javax.swing.SwingUtilities;
 
 public class Login extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     public FondoPanel fondo = new FondoPanel();
+    Runnable runApplication;
 
     public Login() {
         initComponents();
@@ -513,38 +517,76 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jIngresarKeyPressed
 
+    private void loggear() {
+        String user = cUser.getText();
+        String password = String.valueOf(cPassword.getPassword());
+        Usuario usuario = buscar(user, password);
+
+        if (usuario != null)
+        {
+            int idRol = usuario.getIdRol();
+            switch (idRol)
+            {
+                case 1:
+                    runApplication = new Runnable() {
+                        public void run() {
+                            VentanaCajero cajero = new VentanaCajero();
+                            cajero.getClass();
+                        }
+                    };
+                    SwingUtilities.invokeLater(runApplication);
+                    break;
+                case 2:
+                    runApplication = new Runnable() {
+                        public void run() {
+                            VentanaContador contador = new VentanaContador();
+                            contador.getClass();
+                        }
+                    };
+                    SwingUtilities.invokeLater(runApplication);
+                    break;
+                case 3:
+                    runApplication = new Runnable() {
+                        public void run() {
+                            PrincipalAdmin principalAdmin = new PrincipalAdmin();
+                            principalAdmin.getClass();
+                        }
+                    };
+                    SwingUtilities.invokeLater(runApplication);
+                    break;
+            }
+            this.dispose();
+        } else
+        {
+            JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
+        }
+    }
+
     private void jIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngresarActionPerformed
         try
         {
-            String user = cUser.getText();
-            String password = String.valueOf(cPassword.getPassword());
-            boolean correcto = Sesion.validar(user, password);
-
-            if (correcto)
-            {
-                if (user.equals(Sesion.seguridad.getUserAdmin()))
-                {
-                    PrincipalAdmin principalAdmin = new PrincipalAdmin();
-                    principalAdmin.setVisible(true);
-                } else if (user.equals(Sesion.seguridad.getUserCount()))
-                {
-                    VentanaContador ic = new VentanaContador();
-                    ic.setVisible(true);
-                } else
-                {
-                    VentanaCajero vc = new VentanaCajero();
-                    vc.setVisible(true);
-                }
-                this.dispose();
-            } else
-            {
-                JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
-            }
+            loggear();
         } catch (Exception ex)
         {
 
         }
     }//GEN-LAST:event_jIngresarActionPerformed
+
+    private Usuario buscar(String user, String password) {
+        List<Usuario> usuarios = UsuarioDao.seleccionar();
+        Usuario userLogin = null;
+        boolean verificarNombre, verificarPassword;
+        for (Usuario usuario : usuarios)
+        {
+            if (usuario.getNomUsuario().equals(user) && usuario.getNomUsuario().equals(password))
+            {
+                userLogin = usuario;
+                break;
+            }
+        }
+        //userLogin = (usuario.getNomUsuario().equals(user)) ? usuario : null;
+        return userLogin;
+    }
 
     private void jIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIngresarMouseExited
         // TODO add your handling code here:
@@ -582,35 +624,10 @@ public class Login extends javax.swing.JFrame {
     private void cUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cUserKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
-
             jIngresar.setBackground(Color.RED);
-
             try
             {
-                String user = cUser.getText();
-                String password = String.valueOf(cPassword.getPassword());
-                boolean correcto = Sesion.validar(user, password);
-
-                if (correcto)
-                {
-                    if (user.equals(Sesion.seguridad.getUserAdmin()))
-                    {
-                        PrincipalAdmin pa = new PrincipalAdmin();
-                        pa.setVisible(true);
-                    } else if (user.equals(Sesion.seguridad.getUserCount()))
-                    {
-                        VentanaContador ic = new VentanaContador();
-                        ic.setVisible(true);
-                    } else
-                    {
-                        VentanaCajero vc = new VentanaCajero();
-                        vc.setVisible(true);
-                    }
-                    this.dispose();
-                } else
-                {
-                    JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
-                }
+                loggear();
             } catch (Exception ex)
             {
 

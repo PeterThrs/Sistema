@@ -14,6 +14,8 @@ public class Producto {
     private int ocupaInventario;
     private double cantidad;
     private int idDepartamento;
+    
+    public Producto(){}; 
 
     public Producto(int ocupaInventario) {
         this.codigo = codigo;
@@ -125,5 +127,12 @@ public class Producto {
     public void setIdDepartamento(int idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precioCosto=" + precioCosto + ", ganancia=" + ganancia + ", mayoreo=" + mayoreo + ", ocupaInventario=" + ocupaInventario + ", cantidad=" + cantidad + ", idDepartamento=" + idDepartamento + '}';
+    }
+    
+    
 
 }

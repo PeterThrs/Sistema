@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author corte
  */
-public class ProductoDAO {
+public class ProductoDao {
 
     private static final String SQL_SELECT = "SELECT codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento FROM producto";
     private static final String SQL_INSERT = "INSERT INTO producto (codigo,nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento) values (?,?,?,?,?,?,?,?)";

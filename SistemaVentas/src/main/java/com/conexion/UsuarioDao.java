@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDAO {
+public class UsuarioDao {
     private static final String SQL_SELECT = "SELECT idUsuario, nomUsuario, contrasenia, idPersona, idRol FROM usuario";
     private static final String SQL_INSERT = "INSERT INTO usuario (nombreUsuario, contrasenia, idPersona, idRol) values (?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE usuario SET nombreUsuario=?, contrasenia=?, idPersona=?, idRol=? WHERE idUsuario=?";

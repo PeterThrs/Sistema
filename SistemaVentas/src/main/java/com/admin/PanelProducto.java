@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import javax.swing.ButtonGroup;
 import com.classes.DatosFalsos;
 import com.classes.Departamento;
-import com.conexion.DepartamentoDAO;
+import com.conexion.DepartamentoDao;
 import com.settings.CodigoColor;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -140,7 +140,7 @@ public class PanelProducto extends javax.swing.JPanel {
         dcbm.addElement(DatosFalsos.p2.getDepartamento().getDepartamento());
         dcbm.addElement(DatosFalsos.p3.getDepartamento().getDepartamento());
         dcbm.addElement(DatosFalsos.p4.getDepartamento().getDepartamento());*/
-        List<Departamento> departamentos = DepartamentoDAO.seleccionar();
+        List<Departamento> departamentos = DepartamentoDao.seleccionar();
         departamentos.forEach(departamento ->{
             dcbm.addElement(departamento.getDepartamento());
         });

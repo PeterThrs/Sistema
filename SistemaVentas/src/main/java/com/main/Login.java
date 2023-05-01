@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import com.admin.PrincipalAdmin;
-import com.conexion.PersonaDAO;
+import com.conexion.PersonaDao;
 import javax.swing.SwingUtilities;
 
 public class Login extends javax.swing.JFrame {

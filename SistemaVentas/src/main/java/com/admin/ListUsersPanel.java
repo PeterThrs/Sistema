@@ -7,9 +7,9 @@ package com.admin;
 import com.classes.Persona;
 import com.classes.Rol;
 import com.classes.Usuario;
-import com.conexion.PersonaDAO;
+import com.conexion.PersonaDao;
 import com.conexion.RolDAO;
-import com.conexion.UsuarioDAO;
+import com.conexion.UsuarioDao;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
@@ -33,10 +33,10 @@ public class ListUsersPanel extends javax.swing.JPanel {
     }
 
     private void registrar() {
-        List<Usuario> usuarios = UsuarioDAO.seleccionar();
+        List<Usuario> usuarios = UsuarioDao.seleccionar();
         usuarios.forEach(usuario ->
         {
-            Persona p = PersonaDAO.seleccionIndividual(new Persona(usuario.getIdPersona()));
+            Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
             Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
             System.out.println(usuario);
             System.out.println(p);
@@ -66,9 +66,9 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     int fila = table.getSelectedRow();
                     int idUsuario = Integer.parseInt(table.getValueAt(fila, 0).toString());
                     
-                    Usuario usuario = UsuarioDAO.seleccionIndividual(new Usuario(idUsuario));
-                    UsuarioDAO.eliminar(new Usuario(usuario.getIdUsuario()));
-                    PersonaDAO.eliminar(new Persona(usuario.getIdPersona()));
+                    Usuario usuario = UsuarioDao.seleccionIndividual(new Usuario(idUsuario));
+                    UsuarioDao.eliminar(new Usuario(usuario.getIdUsuario()));
+                    PersonaDao.eliminar(new Persona(usuario.getIdPersona()));
                     
                     model.removeRow(row);
                 }

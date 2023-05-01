@@ -1,7 +1,7 @@
 package com.test;
 
 import com.classes.Persona;
-import com.conexion.PersonaDAO;
+import com.conexion.PersonaDao;
 import java.util.List;
 
 public class TestManejoPersona {
@@ -24,13 +24,13 @@ public class TestManejoPersona {
 
         //eliminar Persona 
         Persona p4 = new Persona(1);
-        Persona p5 = new PersonaDAO().seleccionIndividual(p4);
+        Persona p5 = new PersonaDao().seleccionIndividual(p4);
         //int registros = pd.eliminar(p4);
         System.out.println("encontramos a "+p5);
         //mostrarValores(pd);   
     }
 
-    public static void mostrarValores(PersonaDAO pd) {
+    public static void mostrarValores(PersonaDao pd) {
         List<Persona> personas = pd.seleccionar();
         imprimir(personas);
     }

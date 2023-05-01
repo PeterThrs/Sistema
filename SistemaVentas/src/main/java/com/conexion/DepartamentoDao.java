@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartamentoDAO {
+public class DepartamentoDao {
     private static final String SQL_SELECT = "SELECT idDepartamento, nombre FROM departamento";
     private static final String SQL_INSERT = "INSERT INTO departamento(idDepartamento, nombre) VALUES(?, ?)";
     private static final String SQL_UPDATE = "UPDATE departamento SET idDepartamento = ?, nombre = ?";

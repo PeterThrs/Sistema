@@ -5,7 +5,7 @@ import com.classes.Persona;
 import java.sql.*;
 import java.util.*;
 
-public class PersonaDAO {
+public class PersonaDao {
 
     private static final String SQL_SELECT = "SELECT idPersona, nombre, apellidoP, apellidoM, email, telefono1, telefono2, edad, curp, rfc, sexo, codigoPostal, estado, municipio, colonia, calle, numCasa FROM persona";
     private static final String SQL_INSERT = "INSERT INTO persona (nombre, apellidoP, apellidoM, email, telefono1, telefono2, edad, curp, rfc, sexo, codigoPostal, estado, municipio, colonia, calle, numCasa) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

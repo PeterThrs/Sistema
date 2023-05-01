@@ -37,6 +37,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Paco"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="4" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="18" weightX="0.0" weightY="0.0"/>
@@ -184,6 +187,12 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfLastNameP">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Martinez"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfLastNamePActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="6" gridY="4" gridWidth="3" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="15" weightX="0.0" weightY="0.0"/>
@@ -191,6 +200,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfLastNameM">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Martinez"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="6" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="1" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="18" weightX="0.0" weightY="0.0"/>
@@ -198,6 +210,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="pmartinez@gmail.com"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="6" gridY="6" gridWidth="3" gridHeight="1" fill="2" ipadX="0" ipadY="1" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="15" weightX="0.0" weightY="0.0"/>
@@ -205,6 +220,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfPhone1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="+52-9511911329"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="8" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="1" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="18" weightX="0.0" weightY="0.0"/>
@@ -212,6 +230,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfPhone2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="+521-8889991212"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="6" gridY="8" gridWidth="3" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="15" weightX="0.0" weightY="0.0"/>
@@ -219,6 +240,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfMun">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Oaxaca de Juarez"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="6" gridY="16" gridWidth="3" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="15" weightX="0.0" weightY="0.0"/>
@@ -226,6 +250,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCol">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Estado de Oaxaca"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="16" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="18" weightX="0.0" weightY="0.0"/>
@@ -233,6 +260,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfStreet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Av. Independencia"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="6" gridY="18" gridWidth="3" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="0.0" weightY="0.0"/>
@@ -240,6 +270,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfHouseNumber">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="120"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="18" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="18" weightX="0.0" weightY="0.0"/>
@@ -267,6 +300,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfRfc">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="HCOEPARUI1010"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="12" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="15" weightX="0.0" weightY="0.0"/>
@@ -274,6 +310,12 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCurp">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LOHP030617HOCPRDA3"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCurpActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="6" gridY="10" gridWidth="3" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="15" weightX="0.0" weightY="0.0"/>
@@ -281,6 +323,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfPostalCode">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="68000"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="14" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="15" weightX="0.0" weightY="0.0"/>
@@ -482,6 +527,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Thrs"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="22" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -499,6 +547,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JPasswordField" name="tfPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Password1@"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="24" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -516,6 +567,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JPasswordField" name="tfConfirm">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Password1@"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="6" gridY="24" gridWidth="3" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -581,6 +635,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEdad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="20"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="1" gridY="10" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="20" anchor="15" weightX="0.0" weightY="0.0"/>
@@ -598,6 +655,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="tfState">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Oaxaca"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
           <GridBagConstraints gridX="6" gridY="14" gridWidth="3" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="15" weightX="0.0" weightY="0.0"/>

@@ -1,13 +1,13 @@
 package com.test;
 
 import com.classes.Tienda;
-import com.conexion.TiendaDao;
+import com.conexion.TiendaDAO;
 import java.util.List;
 
 
 public class TestManejoTiendas {
     public static void main(String[] args){
-        TiendaDao tiendaDAO = new TiendaDao();
+        TiendaDAO tiendaDAO = new TiendaDAO();
         
 //        Insertando un nuevo objeto de tipo Tienda
 //        Tienda tiendaNueva = new Tienda("Oxxo","Slogan de prueba","9951064922","9951064922","juanjolr6@gmail.com","Mision de prueba","Vision de prueba",70770,"Chiapas","Santiago Astata","Av. Independencia","Calle Yucatan",8);
@@ -19,7 +19,7 @@ public class TestManejoTiendas {
         
         //Eliminar un registro
         Tienda tiendaEliminar = new Tienda(3);
-        TiendaDao.eliminar(tiendaEliminar);
+        TiendaDAO.eliminar(tiendaEliminar);
         
         //Listado Tiendas
         List<Tienda> tiendas = tiendaDAO.seleccionar();

@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.classes;
 
 import com.classes.Departamento;
 
-/**
- *
- * @author juanj
- */
 public class Producto {
 
     private String codigo;
@@ -22,7 +15,7 @@ public class Producto {
     private double cantidad;
     private int idDepartamento;
 
-    public Producto(String codigo, String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, double cantidad, int idDepartamento) {
+    public Producto(int ocupaInventario) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;

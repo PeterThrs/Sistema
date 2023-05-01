@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.conexion;
 
 import com.classes.Producto;
@@ -18,6 +15,7 @@ import java.util.List;
  *
  * @author corte
  */
+
 public class ProductoDAO {
 
     private static final String SQL_SELECT = "SELECT codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento FROM producto";
@@ -51,7 +49,7 @@ public class ProductoDAO {
                 double cantidad = rs.getDouble("cantidad");
                 int idDepartamento = rs.getInt("idDepartamento");
 
-                productos.add(new Producto(codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento));
+                productos.add(new Producto(ocupaInventario));
             }
 
         } catch (SQLException ex)
@@ -201,7 +199,7 @@ public class ProductoDAO {
                 double cantidad = rs.getDouble("cantidad");
                 int idDepartamento = rs.getInt("idDepartamento");
 
-                return new Producto(codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento);
+                return new Producto(ocupaInventario);
             }
         } catch (SQLException ex)
         {

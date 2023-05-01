@@ -5,6 +5,7 @@ import com.classes.Rol;
 import com.classes.Usuario;
 import com.conexion.PersonaDao;
 import com.conexion.RolDAO;
+import com.conexion.UsuarioDao;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
 import java.util.List;
@@ -40,11 +41,11 @@ public class PanelUserNew extends javax.swing.JPanel {
         //demas datos
         Configuracion.robotoPlain14(this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
                 this.jlLastNameP, this.jlMun, this.jlName, this.jlPhone1, this.jlPhone2, this.jlPostalCode,
-                this.jlRfc, this.jlSex, this.jlStreet, this.jlRol, this.jlUser, this.jlPassword, this.jlSubtitulo, 
+                this.jlRfc, this.jlSex, this.jlStreet, this.jlRol, this.jlUser, this.jlPassword, this.jlSubtitulo,
                 this.jlSecondApart, this.jlConfirm, this.jlState);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
                 this.jlLastNameP, this.jlMun, this.jlName, this.jlPhone1, this.jlPhone2, this.jlPostalCode,
-                this.jlRfc, this.jlSex, this.jlStreet, this.jlRol, this.jlUser, this.jlPassword, this.jlSubtitulo, 
+                this.jlRfc, this.jlSex, this.jlStreet, this.jlRol, this.jlUser, this.jlPassword, this.jlSubtitulo,
                 this.jlSecondApart, this.jlConfirm, this.jlState);
 
         //configuraciones de los JTextField
@@ -99,15 +100,17 @@ public class PanelUserNew extends javax.swing.JPanel {
         estadoBtnUpdate();
         modeloComboBox();
         checkBoxItemListened();
-        accionBtnCreate(); 
+        accionBtnCreate();
     }
 
     private void agregarRadioBotones() {
-        try {
+        try
+        {
             groupRadioBtn = new ButtonGroup();
             groupRadioBtn.add(this.rbMan);
             groupRadioBtn.add(this.rbWoman);
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
 
         }
     }
@@ -120,18 +123,22 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     private void estadoBtnUpdate() {
-        try {
+        try
+        {
             System.out.println(this.update);
-            if (this.update) {
+            if (this.update)
+            {
                 this.btnUpdate.setEnabled(true);
-            } else {
+            } else
+            {
                 this.btnUpdate.setEnabled(false);
             }
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
 
         }
     }
-    
+
     private void modeloComboBox() {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
         List<Rol> roles = RolDAO.seleccionar();
@@ -140,17 +147,20 @@ public class PanelUserNew extends javax.swing.JPanel {
             dcbm.addElement(rol.getNombre());
         });
         this.cbRol.setModel(dcbm);
-        this.cbRol.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasNegro); 
-        this.cbRol.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris); 
+        this.cbRol.getEditor().getEditorComponent().setForeground(CodigoColor.cLetrasNegro);
+        this.cbRol.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbRol);
         Configuracion.background(CodigoColor.cFondoGris, this.cbRol);
     }
 
     private void checkBoxItemListened() {
-        this.cbSendEmail.addItemListener(e -> {
-            if (this.cbSendEmail.isSelected()) {
+        this.cbSendEmail.addItemListener(e ->
+        {
+            if (this.cbSendEmail.isSelected())
+            {
                 System.out.println("Enviamos un mensaje al correo del usuario");
-            } else {
+            } else
+            {
                 System.out.println("No se envia nada al email del usuario");
             }
         });
@@ -163,114 +173,118 @@ public class PanelUserNew extends javax.swing.JPanel {
     public void setUpdate(Boolean update) {
         this.update = update;
     }
-    
-    public void recuperarDatos(){
-        Persona persona = new Persona(); 
-        PersonaDao personaDao = new PersonaDao(); 
+
+    public void recuperarDatos() {
+        Persona persona = new Persona();
+        PersonaDao personaDao = new PersonaDao();
         Usuario usuario = new Usuario();
-        
-        String nombre, aPaterno, aMaterno, email, telefono1, telefono2, curp, rfc, sexo, estado, municipio, colonia, calle; 
-        int idPersona, edad, codigoPostal, numCasa; 
-        
+
+        String nombre, aPaterno, aMaterno, email, telefono1, telefono2, curp, rfc, sexo, estado, municipio, colonia, calle;
+        int idPersona, edad, codigoPostal, numCasa;
+
         nombre = this.tfName.getText();
         aPaterno = this.tfLastNameP.getText();
         aMaterno = this.tfLastNameM.getText();
-        email = this.tfEmail.getText(); 
-        telefono1 = this.tfPhone1.getText(); 
-        telefono2 = this.tfPhone2.getText(); 
+        email = this.tfEmail.getText();
+        telefono1 = this.tfPhone1.getText();
+        telefono2 = this.tfPhone2.getText();
         System.out.println("this.tfEdad.getText() = " + this.tfEdad.getText());
         edad = parse(this.tfEdad.getText());
         curp = this.tfCurp.getText();
-        rfc = this.tfRfc.getText(); 
-        sexo = recuperarSexo(); 
+        rfc = this.tfRfc.getText();
+        sexo = recuperarSexo();
         codigoPostal = parse(this.tfPostalCode.getText());
         estado = this.tfState.getText();
         municipio = this.tfMun.getText();
         colonia = this.tfCol.getText();
         calle = this.tfStreet.getText();
         numCasa = parse(tfHouseNumber.getText());
-        
-        if(validarCadena(nombre) && validarCadena(aPaterno)
+
+        if (validarCadena(nombre) && validarCadena(aPaterno)
                 && validarCadena(aMaterno) && validarEmail(email)
                 && validarTelefono(telefono1) && validarTelefono(telefono2)
                 && validarEdad(edad) && validarCadena(curp) && validarCadena(rfc)
                 && validarCadena(sexo) && validarCodPosta(codigoPostal)
                 && validarCadena(estado) && validarCadena(municipio)
                 && validarCadena(colonia) && validarCadena(calle)
-                && validarNumCasa(numCasa)){
+                && validarNumCasa(numCasa))
+        {
             JOptionPane.showMessageDialog(null, "Todo esta correcto");
             persona.setNombre(nombre);
             persona.setApellidoPaterno(aPaterno);
             persona.setApellidoMaterno(aMaterno);
-            persona.setEmail(email); 
-            persona.setTelefono1(telefono1); 
-            persona.setTelefono2(telefono2); 
-            persona.setEdad(edad); 
+            persona.setEmail(email);
+            persona.setTelefono1(telefono1);
+            persona.setTelefono2(telefono2);
+            persona.setEdad(edad);
             persona.setCurp(curp);
             persona.setRFC(rfc);
-            persona.setSexo(sexo); 
+            persona.setSexo(sexo);
             persona.setCodigoPostal(codigoPostal);
             persona.setEstado(estado);
-            persona.setMunicipio(municipio); 
+            persona.setMunicipio(municipio);
             persona.setColonia(colonia);
             persona.setCalle(calle);
             persona.setNumCasa(numCasa);
-            
+
             personaDao.insertar(persona);
-            JOptionPane.showMessageDialog(null, "Insercion exitosa"); 
-        }else {
-            
-           JOptionPane.showMessageDialog(null, "Faltan campos por completar"); 
+            JOptionPane.showMessageDialog(null, "Insercion exitosa");
+        } else
+        {
+
+            JOptionPane.showMessageDialog(null, "Faltan campos por completar");
         }
-        
-        
+
     }
-    
-    public boolean validarNumCasa(int num){
-        return num > 0; 
+
+    public boolean validarNumCasa(int num) {
+        return num > 0;
     }
-    
-    public boolean validarEmail(String email){
-       String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-       return email.matches(regex); 
+
+    public boolean validarEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        return email.matches(regex);
     }
-    
-    public String recuperarSexo(){
-        return (this.rbMan.isSelected())?"H": (this.rbWoman.isSelected())? "M": "";
+
+    public String recuperarSexo() {
+        return (this.rbMan.isSelected()) ? "H" : (this.rbWoman.isSelected()) ? "M" : "";
     }
-    
-    public int parse(String n){
-        int num = 0; 
-        try {
+
+    public int parse(String n) {
+        int num = 0;
+        try
+        {
             num = Integer.parseInt(n);
-        }catch(Exception ex){
+        } catch (Exception ex)
+        {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Solo se aceptan numeros");
         }
-        return num; 
+        return num;
     }
-    
-    public boolean validarCadena(String c){
+
+    public boolean validarCadena(String c) {
         return !c.isEmpty();
     }
-    
-    public boolean validarTelefono(String t){
+
+    public boolean validarTelefono(String t) {
         //forma correcta de un numero = +52-9511911329
         String regex = "^\\+\\d{1,3}-\\d{10}$";
-        return t.matches(regex); 
+        return t.matches(regex);
     }
-    
-    public boolean validarEdad(int edad){
-        return edad >= 18; 
+
+    public boolean validarEdad(int edad) {
+        return edad >= 18;
     }
-    
-    public boolean validarCodPosta(int codPostal){
-        return codPostal >= 0; 
+
+    public boolean validarCodPosta(int codPostal) {
+        return codPostal >= 0;
     }
-    
-    public void accionBtnCreate(){
-        btnCreate.addActionListener( e  -> {
-            recuperarDatos(); 
+
+    public void accionBtnCreate() {
+        btnCreate.addActionListener(e ->
+        {
+            recuperarDatos();
         });
     }
 
@@ -656,6 +670,11 @@ public class PanelUserNew extends javax.swing.JPanel {
         add(btnCreate, gridBagConstraints);
 
         btnUpdate.setText("Modificar");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 28;
@@ -939,8 +958,20 @@ public class PanelUserNew extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-
+        try
+        {
+            String sexo = (rbMan.isSelected()) ? "1" : "0";
+            PersonaDao.insertar(new Persona(tfName.getText(), tfLastNameP.getText(), tfLastNameM.getText(), tfEmail.getText(), tfPhone1.getText(), tfPhone2.getText(), Integer.parseInt(tfEdad.getText()), tfCurp.getText(), tfRfc.getText(), sexo, Integer.parseInt(tfPostalCode.getText()), tfState.getText(), tfMun.getText(), tfCol.getText(), tfStreet.getText(), Integer.parseInt(tfHouseNumber.getText())));
+            UsuarioDao.insertar(new Usuario(tfUser.getText(), tfPassword.getText(), PersonaDao.traerUltimo().getIdPersona(), (cbRol.getSelectedIndex()) + 1));
+        } catch (Exception e)
+        {
+            e.printStackTrace(System.out);
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

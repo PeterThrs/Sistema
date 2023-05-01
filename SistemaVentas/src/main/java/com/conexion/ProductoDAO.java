@@ -49,7 +49,7 @@ public class ProductoDAO {
                 double cantidad = rs.getDouble("cantidad");
                 int idDepartamento = rs.getInt("idDepartamento");
 
-                productos.add(new Producto(ocupaInventario));
+                productos.add(new Producto(codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento));
             }
 
         } catch (SQLException ex)
@@ -199,7 +199,7 @@ public class ProductoDAO {
                 double cantidad = rs.getDouble("cantidad");
                 int idDepartamento = rs.getInt("idDepartamento");
 
-                return new Producto(ocupaInventario);
+                return new Producto(codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento);
             }
         } catch (SQLException ex)
         {

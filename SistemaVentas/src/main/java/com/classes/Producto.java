@@ -38,6 +38,18 @@ public class Producto {
         this.idDepartamento = idDepartamento;
     }
 
+    public Producto(String codigo, String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, double cantidad, int idDepartamento) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precioCosto = precioCosto;
+        this.ganancia = ganancia;
+        this.mayoreo = mayoreo;
+        this.ocupaInventario = ocupaInventario;
+        this.cantidad = cantidad;
+        this.idDepartamento = idDepartamento;
+    }
+    
     public Producto(String codigo) {
         this.codigo = codigo;
     }

@@ -6,7 +6,7 @@ package com.admin;
 
 import com.classes.Departamento;
 import com.classes.Producto;
-import com.conexion.DepartamentoDao;
+import com.conexion.DepartamentoDAO;
 import com.conexion.ProductoDAO     ;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
@@ -32,10 +32,13 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
     private void registrar() {
         List<Producto> productos = ProductoDAO.seleccionar();
+        System.out.println(productos.size());
         productos.forEach(producto ->
         {
+            //System.out.println("Producto de la lista "+producto.getNombre()+"id "+producto.getIdDepartamento());
             Producto p = ProductoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
-            Departamento dep = DepartamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
+            System.out.println("id de p "+p.getIdDepartamento());
+            Departamento dep = DepartamentoDAO.seleccionIndividual(new Departamento(p.getIdDepartamento()));
             System.out.println(p);
             System.out.println(dep);
             model.addRow(new Object[]

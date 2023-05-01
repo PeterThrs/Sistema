@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartamentoDao {
+public class DepartamentoDAO {
     private static final String SQL_SELECT = "SELECT idDepartamento, nombre FROM departamento";
     private static final String SQL_INSERT = "INSERT INTO departamento(idDepartamento, nombre) VALUES(?, ?)";
     private static final String SQL_UPDATE = "UPDATE departamento SET idDepartamento = ?, nombre = ?";
@@ -36,11 +36,11 @@ public class DepartamentoDao {
             
             while (rs.next())
             {
-                //int idDepartamento = rs.getInt("idDepartamento"); // en el contructor solo esta el nombre, o departamento q cambie a nombre
+                int idDepartamento = rs.getInt("idDepartamento"); // en el contructor solo esta el nombre, o departamento q cambie a nombre
                 // comentare en el caso de que lo vayan a usar o no.
                 String nombre = rs.getString("nombre");
                 
-                departamento = new Departamento(nombre);
+                departamento = new Departamento(idDepartamento, nombre);
                 departamentos.add(departamento);
             }
          } catch (SQLException ex) {
@@ -146,7 +146,7 @@ public class DepartamentoDao {
         Connection coon = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+        System.out.println("id departamento "+departamento.getidDepartamento());
         try
         {
             coon = Conexion.getConnection();

@@ -23,11 +23,14 @@ public class TestManejoPersona {
 //        mostrarValores(pd);
 
         //eliminar Persona 
-        Persona p4 = new Persona(1);
-        Persona p5 = new PersonaDao().seleccionIndividual(p4);
-        //int registros = pd.eliminar(p4);
-        System.out.println("encontramos a "+p5);
-        //mostrarValores(pd);   
+//        Persona p4 = new Persona(1);
+//        Persona p5 = new PersonaDao().seleccionIndividual(p4);
+//        //int registros = pd.eliminar(p4);
+//        System.out.println("encontramos a "+p5);
+//        //mostrarValores(pd);   
+
+         Persona p = PersonaDao.traerUltimo();
+         System.out.println("el ultimo es "+p.getIdPersona());
     }
 
     public static void mostrarValores(PersonaDao pd) {

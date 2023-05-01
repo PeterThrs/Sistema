@@ -13,7 +13,8 @@ public class PersonaDao {
     private static final String SQL_UPDATE = "UPDATE persona SET nombre=?, apellidoP=?, apellidoM=?, email=?, telefono1=?, telefono2=?, edad=?, curp=?, rfc=?, sexo=?, codigoPostal=?, estado=?, municipio=?, colonia=?, calle=?, numCasa=? WHERE idPersona=?";
     private static final String SQL_DELETE = "DELETE FROM persona WHERE idPersona = ?";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM persona WHERE idPersona = ?";
-
+    private static final String SQL_SELECT_LAST = "SELECT * FROM persona ORDER BY idPersona DESC LIMIT 1;";
+    
     public static List<Persona> seleccionar() {
         Connection coon = null;
         PreparedStatement stmt = null;
@@ -224,6 +225,41 @@ public class PersonaDao {
                 return new Persona(idPersona, nombre, apellidoP, apellidoM, email, telfono1,
                         telefono2, edad, curp, rfc, sexo, codigoPostal, estado, municipio,
                         colonia, calle, numCasa);
+            }
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace(System.out);
+        } finally
+        {
+            try
+            {
+                Conexion.close(stmt);
+                Conexion.close(coon);
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return null;
+    }
+    
+    public static Persona traerUltimo() {
+        Connection coon = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try
+        {
+            coon = Conexion.getConnection();
+            stmt = coon.prepareStatement(SQL_SELECT_LAST);
+            //stmt.setInt(1, persona.getIdPersona());
+            rs = stmt.executeQuery();
+
+            if(rs.next())
+            {
+                System.out.println("sii");
+                int idPersona = rs.getInt("idPersona");
+                return new Persona(idPersona);
             }
         } catch (SQLException ex)
         {

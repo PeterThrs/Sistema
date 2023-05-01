@@ -6,6 +6,7 @@ import com.classes.CatalogoDeSexo;
 import java.sql.*;
 import java.util.*;
 
+
 public class CatalogoDeSexoDAO {
 
     private static final String SQL_SELECT = "SELECT id_cat_sexo,tipo FROM persona";

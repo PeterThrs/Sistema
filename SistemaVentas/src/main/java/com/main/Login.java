@@ -575,7 +575,7 @@ public class Login extends javax.swing.JFrame {
     private Usuario buscar(String user, String password) {
         List<Usuario> usuarios = UsuarioDao.seleccionar();
         Usuario userLogin = null;
-        boolean verificarNombre, verificarPassword;
+        //boolean verificarNombre, verificarPassword;
         for (Usuario usuario : usuarios)
         {
             if (usuario.getNomUsuario().equals(user) && usuario.getNomUsuario().equals(password))

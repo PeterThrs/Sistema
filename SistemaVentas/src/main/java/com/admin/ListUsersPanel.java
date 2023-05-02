@@ -39,8 +39,8 @@ public class ListUsersPanel extends javax.swing.JPanel {
             Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
             Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
             System.out.println(usuario);
-            System.out.println(p);
-            System.out.println(r);
+            //System.out.println(p);
+            //System.out.println(r);
             model.addRow(new Object[]
             {
                 usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()

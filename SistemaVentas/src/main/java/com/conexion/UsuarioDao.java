@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDao {
-    private static final String SQL_SELECT = "SELECT idUsuario, nomUsuario, contrasenia, idPersona, idRol FROM usuario";
+    private static final String SQL_SELECT = "SELECT idUsuario, nombreUsuario, contrasenia, idPersona, idRol FROM usuario";
     private static final String SQL_INSERT = "INSERT INTO usuario (nombreUsuario, contrasenia, idPersona, idRol) values (?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE usuario SET nombreUsuario=?, contrasenia=?, idPersona=?, idRol=? WHERE idUsuario=?";
     private static final String SQL_DELETE = "DELETE FROM usuario WHERE idUsuario = ?";
@@ -36,7 +36,7 @@ public class UsuarioDao {
 
             while (rs.next()) {
                 int idUsuario = rs.getInt("idUsuario");
-                String nombreUsuario = rs.getString("nomUsuario");
+                String nombreUsuario = rs.getString("nombreUsuario");
                 String contrasenia = rs.getString("contrasenia");
                 int idPersona = rs.getInt("idPersona");
                 int idRol = rs.getInt("idRol");

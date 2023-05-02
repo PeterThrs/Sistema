@@ -6,8 +6,8 @@ package com.admin;
 
 import com.classes.Departamento;
 import com.classes.Producto;
-import com.conexion.DepartamentoDAO;
-import com.conexion.ProductoDAO     ;
+import com.conexion.DepartamentoDao;
+import com.conexion.ProductoDao     ;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
@@ -31,14 +31,14 @@ public class ListProductsPanel extends javax.swing.JPanel {
     }
 
     private void registrar() {
-        List<Producto> productos = ProductoDAO.seleccionar();
+        List<Producto> productos = ProductoDao.seleccionar();
         System.out.println(productos.size());
         productos.forEach(producto ->
         {
             //System.out.println("Producto de la lista "+producto.getNombre()+"id "+producto.getIdDepartamento());
-            Producto p = ProductoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
+            Producto p = ProductoDao.seleccionIndividual(new Producto(producto.getCodigo()));
             System.out.println("id de p "+p.getIdDepartamento());
-            Departamento dep = DepartamentoDAO.seleccionIndividual(new Departamento(p.getIdDepartamento()));
+            Departamento dep = DepartamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
             System.out.println(p);
             System.out.println(dep);
             model.addRow(new Object[]
@@ -64,7 +64,7 @@ public class ListProductsPanel extends javax.swing.JPanel {
                 int fila = table.getSelectedRow();
                 String codigo = table.getValueAt(fila, 0).toString();
 
-                ProductoDAO.eliminar(new Producto(codigo));
+                ProductoDao.eliminar(new Producto(codigo));
                 model.removeRow(row);
             }
 

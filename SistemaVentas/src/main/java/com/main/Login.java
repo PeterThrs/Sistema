@@ -414,54 +414,47 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_headerMouseDragged
 
     private void cPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cPasswordKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-        {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
             jIngresar.setBackground(Color.RED);
 
-            try
-            {
-                String user = cUser.getText();
-                String password = String.valueOf(cPassword.getPassword());
-                boolean correcto = Sesion.validar(user, password);
-
-                if (correcto)
-                {
-                    if (user.equals(Sesion.seguridad.getUserAdmin()))
-                    {
-                        Runnable runApplication = new Runnable() {
-                            public void run() {
-                                PrincipalAdmin pa = new PrincipalAdmin();
-                                pa.getClass();
-                            }
-                        };
-                        SwingUtilities.invokeLater(runApplication);
-                    } else if (user.equals(Sesion.seguridad.getUserCount()))
-                    {
-                        Runnable runApplication = new Runnable() {
-                            public void run() {
-                                VentanaContador ic = new VentanaContador();
-                                ic.getClass();
-                            }
-                        };
-                        SwingUtilities.invokeLater(runApplication);
-                    } else
-                    {
-                        Runnable runApplication = new Runnable() {
-                            public void run() {
-                                VentanaCajero vc = new VentanaCajero();
-                                vc.getClass();
-                            }
-                        };
-                        SwingUtilities.invokeLater(runApplication);
-                    }
-                    this.dispose();
-                } else
-                {
-                    JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
-                }
-            } catch (Exception ex)
-            {
+            try {
+                loggear();
+//                String user = cUser.getText();
+//                String password = String.valueOf(cPassword.getPassword());
+//                boolean correcto = Sesion.validar(user, password);
+//
+//                if (correcto) {
+//                    if (user.equals(Sesion.seguridad.getUserAdmin())) {
+//                        Runnable runApplication = new Runnable() {
+//                            public void run() {
+//                                PrincipalAdmin pa = new PrincipalAdmin();
+//                                pa.getClass();
+//                            }
+//                        };
+//                        SwingUtilities.invokeLater(runApplication);
+//                    } else if (user.equals(Sesion.seguridad.getUserCount())) {
+//                        Runnable runApplication = new Runnable() {
+//                            public void run() {
+//                                VentanaContador ic = new VentanaContador();
+//                                ic.getClass();
+//                            }
+//                        };
+//                        SwingUtilities.invokeLater(runApplication);
+//                    } else {
+//                        Runnable runApplication = new Runnable() {
+//                            public void run() {
+//                                VentanaCajero vc = new VentanaCajero();
+//                                vc.getClass();
+//                            }
+//                        };
+//                        SwingUtilities.invokeLater(runApplication);
+//                    }
+//                    this.dispose();
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
+//                }
+            } catch (Exception ex) {
 
             }
 
@@ -475,14 +468,12 @@ public class Login extends javax.swing.JFrame {
     private void cPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cPasswordMousePressed
         // TODO add your handling code here:
 
-        if (String.valueOf(cPassword.getPassword()).equals(""))
-        {
+        if (String.valueOf(cPassword.getPassword()).equals("")) {
             cPassword.setText("");
             cPassword.setForeground(Color.black);
         }
 
-        if (cUser.getText().isEmpty())
-        {
+        if (cUser.getText().isEmpty()) {
             cUser.setText("");
             cUser.setForeground(Color.gray);
         }
@@ -493,14 +484,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_cUserActionPerformed
 
     private void cUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cUserMousePressed
-        if (cUser.getText().equals(""))
-        {
+        if (cUser.getText().equals("")) {
             cUser.setText("");
             cUser.setForeground(Color.black);
         }
 
-        if (String.valueOf(cPassword.getPassword()).isEmpty())
-        {
+        if (String.valueOf(cPassword.getPassword()).isEmpty()) {
             cPassword.setText("");
             cPassword.setForeground(Color.gray);
         }
@@ -511,8 +500,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jIngresarKeyReleased
 
     private void jIngresarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIngresarKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-        {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jIngresar.setBackground(Color.red);
         }
     }//GEN-LAST:event_jIngresarKeyPressed
@@ -522,11 +510,9 @@ public class Login extends javax.swing.JFrame {
         String password = String.valueOf(cPassword.getPassword());
         Usuario usuario = buscar(user, password);
 
-        if (usuario != null)
-        {
+        if (usuario != null) {
             int idRol = usuario.getIdRol();
-            switch (idRol)
-            {
+            switch (idRol) {
                 case 1:
                     runApplication = new Runnable() {
                         public void run() {
@@ -556,18 +542,15 @@ public class Login extends javax.swing.JFrame {
                     break;
             }
             this.dispose();
-        } else
-        {
+        } else {
             JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
         }
     }
 
     private void jIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIngresarActionPerformed
-        try
-        {
+        try {
             loggear();
-        } catch (Exception ex)
-        {
+        } catch (Exception ex) {
 
         }
     }//GEN-LAST:event_jIngresarActionPerformed
@@ -575,11 +558,8 @@ public class Login extends javax.swing.JFrame {
     private Usuario buscar(String user, String password) {
         List<Usuario> usuarios = UsuarioDao.seleccionar();
         Usuario userLogin = null;
-        //boolean verificarNombre, verificarPassword;
-        for (Usuario usuario : usuarios)
-        {
-            if (usuario.getNomUsuario().equals(user) && usuario.getNomUsuario().equals(password))
-            {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNomUsuario().equals(user) && usuario.getContrasenia().equals(password)) {
                 userLogin = usuario;
                 break;
             }
@@ -622,14 +602,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void cUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cUserKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-        {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jIngresar.setBackground(Color.RED);
-            try
-            {
+            try {
                 loggear();
-            } catch (Exception ex)
-            {
+            } catch (Exception ex) {
 
             }
 

@@ -103,7 +103,6 @@ public class ProductoDao {
         try {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_UPDATE);
-
             stmt.setString(1, producto.getNombre());
             stmt.setString(2, producto.getDescripcion());
             stmt.setDouble(3, producto.getPrecioCosto());
@@ -112,6 +111,7 @@ public class ProductoDao {
             stmt.setInt(6, producto.getOcupaInventario());
             stmt.setDouble(7, producto.getCantidad());
             stmt.setInt(8, producto.getIdDepartamento());
+            stmt.setString(9, producto.getCodigo());
 
             registros = stmt.executeUpdate();
 

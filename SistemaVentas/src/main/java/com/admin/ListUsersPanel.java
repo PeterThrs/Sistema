@@ -16,10 +16,6 @@ import com.table.TableActionEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author juanj
- */
 public class ListUsersPanel extends javax.swing.JPanel {
 
     DefaultTableModel model;

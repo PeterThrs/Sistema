@@ -11,7 +11,7 @@ import javax.swing.ButtonGroup;
 import com.classes.Departamento;
 import com.classes.Producto;
 import com.conexion.DepartamentoDao;
-import com.conexion.ProductoDao;
+import com.conexion.ProductoDAO;
 import com.settings.CodigoColor;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -19,17 +19,13 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author RojeruSan
- */
 public class PanelProducto extends javax.swing.JPanel {
 
     private ButtonGroup groupRadioBtn;
 
     private DepartamentoDao departamentoDao = new DepartamentoDao();
     private Producto producto = new Producto();
-    private ProductoDao productoDao = new ProductoDao();
+    private ProductoDAO productoDao = new ProductoDAO();
 
     private String codigo, nombre, descripcion;
     private Double precioCosto, ganancia, mayoreo, cantidad;

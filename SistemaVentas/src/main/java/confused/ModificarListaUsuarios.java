@@ -15,10 +15,6 @@ import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
 
-/**
- *
- * @author juanj
- */
 public class ModificarListaUsuarios extends javax.swing.JFrame {
     
     /**

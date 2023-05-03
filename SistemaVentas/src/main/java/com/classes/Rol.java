@@ -4,10 +4,6 @@
  */
 package com.classes;
 
-/**
- *
- * @author juanj
- */
 public class Rol {
     private int idRol;
     private String nombre;

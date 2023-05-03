@@ -4,10 +4,6 @@
  */
 package com.classes;
 
-/**
- *
- * @author juanj
- */
 public class Tienda {
     private int idTienda;
     private String nombre;

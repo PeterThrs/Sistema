@@ -15,10 +15,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Peter (Thrs)
- */
 public class PanelUserNew extends javax.swing.JPanel {
 
     private Boolean update;

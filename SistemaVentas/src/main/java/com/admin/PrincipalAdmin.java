@@ -16,10 +16,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
 import com.main.Login;
 
-/**
- *
- * @author RojeruSan
- */
 public class PrincipalAdmin extends javax.swing.JFrame {
 
     int x, y;

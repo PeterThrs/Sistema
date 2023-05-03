@@ -5,10 +5,6 @@
  */
 package com.counter;
 
-/**
- *
- * @author RojeruSan
- */
 public class pnlHomeContador extends javax.swing.JPanel {
 
     /**

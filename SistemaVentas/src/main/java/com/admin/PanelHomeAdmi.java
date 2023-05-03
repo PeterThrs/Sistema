@@ -8,10 +8,6 @@ package com.admin;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
 
-/**
- *
- * @author RojeruSan
- */
 public class PanelHomeAdmi extends javax.swing.JPanel {
 
     /**

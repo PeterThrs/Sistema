@@ -11,7 +11,7 @@ import javax.swing.ButtonGroup;
 import com.classes.Departamento;
 import com.classes.Producto;
 import com.conexion.DepartamentoDao;
-import com.conexion.ProductoDAO;
+import com.conexion.ProductoDao;
 import com.settings.CodigoColor;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -21,22 +21,61 @@ import javax.swing.JOptionPane;
 
 public class PanelProducto extends javax.swing.JPanel {
 
-    private ButtonGroup groupRadioBtn;
-
-    private DepartamentoDao departamentoDao = new DepartamentoDao();
-    private Producto producto = new Producto();
-    private ProductoDAO productoDao = new ProductoDAO();
+    private DepartamentoDao departamentoDao;
+    private Producto producto;
+    private ProductoDao productoDao;
 
     private String codigo, nombre, descripcion;
     private Double precioCosto, ganancia, mayoreo, cantidad;
     private int idDepartamento;
     private int ocuparInventario;
 
+    //Estado de la ventana
+    private boolean VentanaEditar;
+    private boolean ventanaAgregar;
+
     public PanelProducto() {
+
+        this.departamentoDao = new DepartamentoDao();
+        this.producto = new Producto();
+        this.productoDao = new ProductoDao();
+        this.VentanaEditar = false;
+        this.ventanaAgregar = true;
+
         initComponents();
         configuracion();
         agregarEstilos();
+        revisarEstado();
+        precioVenta();
 
+    }
+
+    //la ventana se ocupara para editar la informacion
+    public PanelProducto(Producto producto) {
+        this.producto = producto;
+        this.departamentoDao = new DepartamentoDao();
+        this.productoDao = new ProductoDao();
+
+        this.VentanaEditar = true;
+        this.ventanaAgregar = false;
+        initComponents();
+        configuracion();
+        agregarEstilos();
+        revisarEstado();
+        cargarDatos();
+        precioVenta();
+        eventoActualizar();
+        eventoEliminar();
+    }
+
+    private void revisarEstado() {
+        if (this.ventanaAgregar) {
+            this.btnUpdate.setEnabled(false);
+            this.btnCancel.setEnabled(false);
+        } else {
+            this.btnCreate.setEnabled(false);
+            this.tfBarCode.setEnabled(false);
+        }
     }
 
     private void agregarEstilos() {
@@ -69,7 +108,7 @@ public class PanelProducto extends javax.swing.JPanel {
 
         //configuracion JSeparator
         Configuracion.foreground(CodigoColor.cSeparatorRed, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
-                this.linea8, this.linea9, this.linea10, this.linea11);
+                this.linea8, this.linea9, this.linea10, this.linea11, this.linea12);
 
         //configuracion JButton
         Configuracion.robotoPlain14(this.btnCancel, this.btnCreate, this.btnUpdate);
@@ -82,13 +121,11 @@ public class PanelProducto extends javax.swing.JPanel {
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbDepartment);
         Configuracion.background(CodigoColor.cFondoGris, this.cbDepartment);
 
-        //configuracion JRadioButton
         //configuracion JCheckBox
         Configuracion.robotoPlain14(this.cbInventory);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbInventory);
         Configuracion.background(CodigoColor.cFondoGris, this.cbInventory);
-
-        //configuracion JSpinner
+        
     }
 
     private void configuracion() {
@@ -96,7 +133,37 @@ public class PanelProducto extends javax.swing.JPanel {
         checkBoxEventItemListener();
         listDesplegable();
         eventoGanancia();
-        actionBtnCreate();
+        eventoInsertar();
+    }
+
+    private void cargarDatos() {
+        this.tfBarCode.setText(producto.getCodigo());
+        this.tfName.setText(producto.getNombre());
+        this.tfDescription.setText(producto.getDescripcion());
+        this.tfPriceCost.setText(String.valueOf(producto.getPrecioCosto()));
+        this.tfGanancia.setText(String.valueOf(producto.getGanancia()));
+        this.tfWholePrice.setText(String.valueOf(producto.getMayoreo()));
+        this.cbDepartment.setSelectedIndex(producto.getIdDepartamento() - 1);
+        boolean inventario = (producto.getOcupaInventario() == 1) ? true : false;
+        this.cbInventory.setSelected(inventario);
+        if (inventario) {
+            this.tfTotal.setText(String.valueOf(producto.getCantidad()));
+        }
+
+    }
+
+    private void limpiarForm() {
+        this.tfBarCode.setText("");
+        this.tfName.setText("");
+        this.tfDescription.setText("");
+        this.tfPriceCost.setText("");
+        this.tfGanancia.setText("");
+        this.tfWholePrice.setText("");
+        this.cbDepartment.setSelectedIndex(1);
+        this.cbInventory.setSelected(false);
+        this.tfTotal.setText("");
+        this.tfSalePrice.setText("");
+
     }
 
     private void estadoTfTotal() {
@@ -141,22 +208,26 @@ public class PanelProducto extends javax.swing.JPanel {
     }
 
     //calcular el precio
+    private void precioVenta() {
+        if (!tfGanancia.getText().isEmpty()) {
+            try {
+                double ganancia = Double.parseDouble(this.tfGanancia.getText());
+                validarCadena(this.tfPriceCost.getText());
+                double precioCosto = Double.parseDouble(this.tfPriceCost.getText());
+                double venta = precioCosto + (precioCosto * (ganancia / 100));
+                this.tfSalePrice.setText(String.valueOf(venta));
+
+            } catch (NumberFormatException ex) {
+
+            } catch (Exception ex) {
+
+            }
+        }
+    }
+
     private void eventoGanancia() {
         this.tfGanancia.addActionListener(e -> {
-            if (!tfGanancia.getText().isEmpty()) {
-                try {
-                    double ganancia = Double.parseDouble(this.tfGanancia.getText());
-                    validarCadena(this.tfPriceCost.getText());
-                    double precioCosto = Double.parseDouble(this.tfPriceCost.getText());
-                    double venta = precioCosto + (precioCosto * (ganancia / 100));
-                    this.tfSalePrice.setText(String.valueOf(venta));
-
-                } catch (NumberFormatException ex) {
-
-                } catch (Exception ex) {
-
-                }
-            }
+            precioVenta();
         });
 
         this.tfGanancia.addFocusListener(new FocusListener() {
@@ -169,22 +240,7 @@ public class PanelProducto extends javax.swing.JPanel {
             public void focusLost(FocusEvent e) {
                 // El componente ha perdido el foco
                 System.out.println("Se ha salido del JTextField");
-
-                if (!tfGanancia.getText().isEmpty()) {
-                    try {
-                        double ganancia = Double.parseDouble(tfGanancia.getText());
-                        validarCadena(tfPriceCost.getText());
-                        double precioCosto = Double.parseDouble(tfPriceCost.getText());
-                        double venta = precioCosto + (precioCosto * (ganancia / 100));
-                        tfSalePrice.setText(String.valueOf(venta));
-
-                    } catch (NumberFormatException ex) {
-
-                    } catch (Exception ex) {
-
-                    }
-                }
-
+                precioVenta();
             }
         });
     }
@@ -208,7 +264,7 @@ public class PanelProducto extends javax.swing.JPanel {
         throw new Exception("No puede haber numero negativo");
     }
 
-    private void recuperarCampos() throws NumberFormatException, Exception{
+    private void recuperarCampos() throws NumberFormatException, Exception {
         this.codigo = this.tfBarCode.getText();
         this.nombre = this.tfName.getText();
         this.descripcion = this.tfDescription.getText();
@@ -220,14 +276,14 @@ public class PanelProducto extends javax.swing.JPanel {
         this.ocuparInventario = recuperarInventario(); //falta modificar
         if (ocuparInventario == 1) {
             this.cantidad = Double.parseDouble(this.tfTotal.getText());
-            validarNegativo(this.cantidad); 
+            validarNegativo(this.cantidad);
         }
     }
 
     private void validarForm() throws NumberFormatException, Exception {
         if (validarCadena(this.codigo) && validarCadena(this.nombre)
                 && validarCadena(this.descripcion) && validarNegativo(this.precioCosto)
-                && validarNegativo(this.ganancia) && validarNegativo(this.mayoreo) ) {
+                && validarNegativo(this.ganancia) && validarNegativo(this.mayoreo)) {
             producto.setCodigo(this.codigo);
             producto.setNombre(this.nombre);
             producto.setPrecioCosto(this.precioCosto);
@@ -236,19 +292,21 @@ public class PanelProducto extends javax.swing.JPanel {
             producto.setDescripcion(descripcion);
             producto.setIdDepartamento(idDepartamento);
             producto.setOcupaInventario(ocuparInventario);
-            if(cantidad > 0){
+            if (cantidad > 0) {
                 producto.setCantidad(this.cantidad);
             }
 
         }
     }
 
-    private void actionBtnCreate() {
+    //insertar informacion a la tabla
+    private void eventoInsertar() {
         this.btnCreate.addActionListener(e -> {
             try {
                 recuperarCampos();
                 validarForm();
                 int reg = productoDao.insertar(producto);
+                System.out.println("reg = " + reg);
                 if (reg > 0) {
                     JOptionPane.showMessageDialog(null, "Se ha insertado los datos correctamente");
                 }
@@ -261,11 +319,45 @@ public class PanelProducto extends javax.swing.JPanel {
 
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    //Actualizar informacion
+    private void eventoActualizar() {
+        this.btnUpdate.addActionListener(e -> {
+            System.out.println("Evento para actualizar la informacion");
+            try {
+                recuperarCampos();
+                validarForm();
+                int reg = productoDao.actualizar(producto);
+                if (reg > 0) {
+                    JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente");
+                }
+            } catch (NumberFormatException ex) {
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        });
+    }
+
+    //eliminar informacion
+    private void eventoEliminar() {
+        this.btnCancel.addActionListener(e -> {
+            System.out.println("Evento para eliminar el objeto de la BD");
+            try {
+                recuperarCampos();
+                validarForm();
+                int reg = productoDao.eliminar(producto);
+                if (reg > 0) {
+                    JOptionPane.showMessageDialog(null, "Se ha elinado el producto de la BD de datos");
+                }
+                limpiarForm();
+            } catch (NumberFormatException ex) {
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        });
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -304,6 +396,7 @@ public class PanelProducto extends javax.swing.JPanel {
         linea10 = new javax.swing.JSeparator();
         tfGanancia = new javax.swing.JTextField();
         linea11 = new javax.swing.JSeparator();
+        linea12 = new javax.swing.JSeparator();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -420,10 +513,9 @@ public class PanelProducto extends javax.swing.JPanel {
 
         cbInventory.setText("Este producto Utiliza Inventario");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(cbInventory, gridBagConstraints);
 
@@ -450,24 +542,26 @@ public class PanelProducto extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 22;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 10, 10, 10);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 35, 24, 35);
         add(btnCancel, gridBagConstraints);
 
         btnCreate.setText("Registrar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 22;
-        gridBagConstraints.insets = new java.awt.Insets(22, 10, 10, 10);
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(24, 46, 24, 46);
         add(btnCreate, gridBagConstraints);
 
         btnUpdate.setText("Actualizar");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 22;
-        gridBagConstraints.insets = new java.awt.Insets(22, 10, 10, 10);
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(24, 46, 24, 46);
         add(btnUpdate, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -478,7 +572,7 @@ public class PanelProducto extends javax.swing.JPanel {
         add(linea1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -493,6 +587,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         add(linea4, gridBagConstraints);
@@ -516,7 +611,6 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         add(linea8, gridBagConstraints);
 
         jlTitle.setText("Producto");
@@ -553,7 +647,7 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(linea10, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -565,11 +659,18 @@ public class PanelProducto extends javax.swing.JPanel {
         add(tfGanancia, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         add(linea11, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        add(linea12, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -596,6 +697,7 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JSeparator linea1;
     private javax.swing.JSeparator linea10;
     private javax.swing.JSeparator linea11;
+    private javax.swing.JSeparator linea12;
     private javax.swing.JSeparator linea2;
     private javax.swing.JSeparator linea3;
     private javax.swing.JSeparator linea4;

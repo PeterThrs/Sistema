@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductoDAO {
+public class ProductoDao {
 
     private static final String SQL_SELECT = "SELECT codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento FROM producto";
     private static final String SQL_INSERT = "INSERT INTO producto (codigo,nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento) values (?,?,?,?,?,?,?,?,?)";
@@ -99,7 +99,6 @@ public class ProductoDAO {
         try {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_UPDATE);
-
             stmt.setString(1, producto.getNombre());
             stmt.setString(2, producto.getDescripcion());
             stmt.setDouble(3, producto.getPrecioCosto());
@@ -108,6 +107,7 @@ public class ProductoDAO {
             stmt.setInt(6, producto.getOcupaInventario());
             stmt.setDouble(7, producto.getCantidad());
             stmt.setInt(8, producto.getIdDepartamento());
+            stmt.setString(9, producto.getCodigo());
 
             registros = stmt.executeUpdate();
 

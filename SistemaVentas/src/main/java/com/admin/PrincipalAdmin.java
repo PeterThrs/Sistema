@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
 import com.main.Login;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PrincipalAdmin extends javax.swing.JFrame {
@@ -64,7 +65,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jCTextField1 = new com.librery.JCTextField();
+        buscar = new com.librery.JCTextField();
         pnlCentro = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlPrincipal = new javax.swing.JPanel();
@@ -102,8 +103,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         btnInfoEmpresa.setBackground(new java.awt.Color(239, 238, 244));
         btnInfoEmpresa.setForeground(new java.awt.Color(128, 128, 131));
-        btnInfoEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion-del-cambio.png"))); // NOI18N
-        btnInfoEmpresa.setText("Datos de la Empresa");
+        btnInfoEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/George/Datos de la empresa.png"))); // NOI18N
+        btnInfoEmpresa.setText("  Datos de la Empresa");
         btnInfoEmpresa.setColorHover(new java.awt.Color(204, 204, 204));
         btnInfoEmpresa.setColorNormal(new java.awt.Color(239, 238, 244));
         btnInfoEmpresa.setColorPressed(new java.awt.Color(204, 204, 204));
@@ -126,7 +127,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         btnAdminProductos.setBackground(new java.awt.Color(239, 238, 244));
         btnAdminProductos.setForeground(new java.awt.Color(128, 128, 131));
-        btnAdminProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion-de-productos.png"))); // NOI18N
+        btnAdminProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/George/AP (2).png"))); // NOI18N
         btnAdminProductos.setText("Administrar Productos");
         btnAdminProductos.setColorHover(new java.awt.Color(204, 204, 204));
         btnAdminProductos.setColorNormal(new java.awt.Color(239, 238, 244));
@@ -164,7 +165,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         btnConfiguracion.setBackground(new java.awt.Color(239, 238, 244));
         btnConfiguracion.setForeground(new java.awt.Color(128, 128, 131));
         btnConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuracion.png"))); // NOI18N
-        btnConfiguracion.setText("Configuración");
+        btnConfiguracion.setText("  Configuración");
         btnConfiguracion.setColorHover(new java.awt.Color(204, 204, 204));
         btnConfiguracion.setColorNormal(new java.awt.Color(239, 238, 244));
         btnConfiguracion.setColorPressed(new java.awt.Color(204, 204, 204));
@@ -188,7 +189,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         btnCerrarSesion.setBackground(new java.awt.Color(239, 238, 244));
         btnCerrarSesion.setForeground(new java.awt.Color(128, 128, 131));
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
-        btnCerrarSesion.setText("Cerrar Sesión");
+        btnCerrarSesion.setText("  Cerrar Sesión");
         btnCerrarSesion.setColorHover(new java.awt.Color(204, 204, 204));
         btnCerrarSesion.setColorNormal(new java.awt.Color(239, 238, 244));
         btnCerrarSesion.setColorPressed(new java.awt.Color(204, 204, 204));
@@ -211,8 +212,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         btnListarProductos.setBackground(new java.awt.Color(239, 238, 244));
         btnListarProductos.setForeground(new java.awt.Color(128, 128, 131));
-        btnListarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion-de-productos.png"))); // NOI18N
-        btnListarProductos.setText("Listar Productos");
+        btnListarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/George/Administrar productos.png"))); // NOI18N
+        btnListarProductos.setText(" Listar Productos");
         btnListarProductos.setColorHover(new java.awt.Color(204, 204, 204));
         btnListarProductos.setColorNormal(new java.awt.Color(239, 238, 244));
         btnListarProductos.setColorPressed(new java.awt.Color(204, 204, 204));
@@ -235,8 +236,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         btnListarUsuarios.setBackground(new java.awt.Color(239, 238, 244));
         btnListarUsuarios.setForeground(new java.awt.Color(128, 128, 131));
-        btnListarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gestion-de-productos.png"))); // NOI18N
-        btnListarUsuarios.setText("Listar Usuarios");
+        btnListarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/George/Listar usuarios.png"))); // NOI18N
+        btnListarUsuarios.setText(" Listar Usuarios");
         btnListarUsuarios.setColorHover(new java.awt.Color(204, 204, 204));
         btnListarUsuarios.setColorNormal(new java.awt.Color(239, 238, 244));
         btnListarUsuarios.setColorPressed(new java.awt.Color(204, 204, 204));
@@ -285,45 +286,49 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlMenuLayout.createSequentialGroup()
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlMenuLayout.createSequentialGroup()
+                        .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnListarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMenuLayout.createSequentialGroup()
+                        .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuLayout.createSequentialGroup()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMenuLayout.createSequentialGroup()
-                        .addGap(346, 346, 346)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlMenuLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnListarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMenuLayout.createSequentialGroup()
+                        .addGap(346, 346, 346)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -363,12 +368,22 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Sistema Ventas");
 
-        jCTextField1.setBackground(new java.awt.Color(38, 86, 186));
-        jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jCTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jCTextField1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jCTextField1.setPhColor(new java.awt.Color(255, 255, 255));
-        jCTextField1.setPlaceholder("Buscar");
+        buscar.setBackground(new java.awt.Color(38, 86, 186));
+        buscar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        buscar.setPhColor(new java.awt.Color(255, 255, 255));
+        buscar.setPlaceholder("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+        buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscarKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -380,7 +395,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 492, Short.MAX_VALUE)
-                .addComponent(jCTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -389,7 +404,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -419,7 +434,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         );
         pnlCentroLayout.setVerticalGroup(
             pnlCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1086,6 +1101,18 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnHomeActionPerformed
 
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null," -> ESTA OPCIÓN ESTA EN PROCESO DE MANTENIMIENTO.");
+            
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void buscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyPressed
+        // TODO add your handling code here:
+     
+                       
+    }//GEN-LAST:event_buscarKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1135,8 +1162,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private com.librery.RSButtonMetro btnInfoEmpresa;
     private com.librery.RSButtonMetro btnListarProductos;
     private com.librery.RSButtonMetro btnListarUsuarios;
+    private com.librery.JCTextField buscar;
     private javax.swing.JButton jButton1;
-    private com.librery.JCTextField jCTextField1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

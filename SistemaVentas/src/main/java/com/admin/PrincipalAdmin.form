@@ -65,21 +65,28 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnInfoEmpresa" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnConfiguracion" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnAdminUser" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnAdminProductos" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnCerrarSesion" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnListarUsuarios" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="btnListarProductos" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnListarProductos" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Component id="btnInfoEmpresa" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="jPanel5" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnListarUsuarios" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Component id="btnAdminUser" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Component id="btnHome" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Component id="btnConfiguracion" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Component id="btnCerrarSesion" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Component id="btnAdminProductos" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jPanel5" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="btnHome" min="-2" pref="258" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -87,30 +94,30 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
-                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnHome" min="-2" pref="68" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnAdminUser" min="-2" pref="68" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnAdminProductos" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnListarUsuarios" min="-2" pref="74" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnListarProductos" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnInfoEmpresa" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnConfiguracion" min="-2" pref="64" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnCerrarSesion" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
+                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -161,9 +168,9 @@
                   <Color blue="83" green="80" red="80" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/gestion-del-cambio.png"/>
+                  <Image iconType="3" name="/imagenes/George/Datos de la empresa.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Datos de la Empresa"/>
+                <Property name="text" type="java.lang.String" value="  Datos de la Empresa"/>
                 <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
@@ -200,7 +207,7 @@
                   <Color blue="83" green="80" red="80" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/gestion-de-productos.png"/>
+                  <Image iconType="3" name="/imagenes/George/AP (2).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Administrar Productos"/>
                 <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -261,7 +268,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/configuracion.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Configuraci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="  Configuraci&#xf3;n"/>
                 <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
@@ -300,7 +307,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/cerrar-sesion.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="  Cerrar Sesi&#xf3;n"/>
                 <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
@@ -337,9 +344,9 @@
                   <Color blue="83" green="80" red="80" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/gestion-de-productos.png"/>
+                  <Image iconType="3" name="/imagenes/George/Administrar productos.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Listar Productos"/>
+                <Property name="text" type="java.lang.String" value=" Listar Productos"/>
                 <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
@@ -376,9 +383,9 @@
                   <Color blue="83" green="80" red="80" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/gestion-de-productos.png"/>
+                  <Image iconType="3" name="/imagenes/George/Listar usuarios.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Listar Usuarios"/>
+                <Property name="text" type="java.lang.String" value=" Listar Usuarios"/>
                 <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
@@ -472,7 +479,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="492" max="32767" attributes="0"/>
-                      <Component id="jCTextField1" min="-2" pref="281" max="-2" attributes="0"/>
+                      <Component id="buscar" min="-2" pref="281" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -483,7 +490,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jCTextField1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="buscar" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -523,7 +530,7 @@
                 <Property name="text" type="java.lang.String" value="Sistema Ventas"/>
               </Properties>
             </Component>
-            <Component class="com.librery.JCTextField" name="jCTextField1">
+            <Component class="com.librery.JCTextField" name="buscar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ba" green="56" red="26" type="rgb"/>
@@ -546,6 +553,10 @@
                 </Property>
                 <Property name="placeholder" type="java.lang.String" value="Buscar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buscarKeyPressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -569,7 +580,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="656" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="683" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

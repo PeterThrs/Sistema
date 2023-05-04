@@ -8,7 +8,7 @@ import com.classes.Persona;
 import com.classes.Rol;
 import com.classes.Usuario;
 import com.conexion.PersonaDao;
-import com.conexion.RolDAO;
+import com.conexion.RolDao;
 import com.conexion.UsuarioDao;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
@@ -20,13 +20,16 @@ public class ListUsersPanel extends javax.swing.JPanel {
 
     private DefaultTableModel model;
     private List<Usuario> usuarios;
-    private Usuario usuario; 
+    private Usuario usuario;
     private Persona persona;
-    private PrincipalAdmin principalAdmin; 
+    private PrincipalAdmin principalAdmin;
+    private UsuarioDao usuarioDao;
 
-    public ListUsersPanel() {
+    public ListUsersPanel(PrincipalAdmin principalAdmin) {
+        usuarioDao = new UsuarioDao();
         initComponents();
         this.model = (DefaultTableModel) table.getModel();
+        this.principalAdmin = principalAdmin;
         anchoFilas();
         registrar();
         formatTable();
@@ -36,7 +39,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
         this.usuarios = UsuarioDao.seleccionar();
         usuarios.forEach(usuario -> {
             Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
-            Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
+            Rol r = RolDao.seleccionIndividual(new Rol(usuario.getIdRol()));
             model.addRow(new Object[]{
                 usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
             });
@@ -49,18 +52,23 @@ public class ListUsersPanel extends javax.swing.JPanel {
                 @Override
                 public void onEdit(int row) {
                     System.out.println("Edit roooooooooooow : " + row);
-                    
-                    int idUsuario = (int) table.getValueAt(row, 0); 
-                    
+
+                    int idUsuario = (int) table.getValueAt(row, 0);
+
                     usuario = usuarios.stream().filter(e -> (e.getIdUsuario() == idUsuario)).findFirst().get();
-                    
+
                     persona = new Persona(usuario.getIdPersona());
-                    
+
                     PersonaDao personaDao = new PersonaDao();
                     persona = personaDao.seleccionIndividual(persona);
-                    
+
+                    //RolDAO rolDao = new RolDao(); 
+                    //Rol rol = rolDao.seleccionIndividual(new Rol(usuario.getIdRol()));
+                    System.out.println("Imprimiendo desde la clase Listar Usuarios");
+                    System.out.println("usuario = " + usuario);
+                    System.out.println("persona = " + persona);
                     principalAdmin.cambiarPanelExterno(new PanelUserNew(usuario, persona));
-                    
+
                 }
 
                 @Override
@@ -71,8 +79,8 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     int fila = table.getSelectedRow();
                     int idUsuario = Integer.parseInt(table.getValueAt(fila, 0).toString());
 
-                    Usuario usuario = UsuarioDao.seleccionIndividual(new Usuario(idUsuario));
-                    UsuarioDao.eliminar(new Usuario(usuario.getIdUsuario()));
+                    Usuario usuario = usuarioDao.seleccionIndividual(new Usuario(idUsuario));
+                    UsuarioDao.eliminar(usuario);
                     PersonaDao.eliminar(new Persona(usuario.getIdPersona()));
 
                     model.removeRow(row);

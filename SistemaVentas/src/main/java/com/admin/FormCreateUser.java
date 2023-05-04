@@ -2,7 +2,7 @@ package com.admin;
 
 import com.classes.Rol;
 import com.classes.Roles;
-import com.conexion.RolDAO;
+import com.conexion.RolDao;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
 import java.awt.Dimension;
@@ -70,7 +70,7 @@ public class FormCreateUser extends javax.swing.JDialog {
 
     private void modeloComboBox() {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
-        List<Rol> roles = RolDAO.seleccionar();
+        List<Rol> roles = RolDao.seleccionar();
         roles.forEach(rol ->
         {
             dcbm.addElement(rol.getNombre());

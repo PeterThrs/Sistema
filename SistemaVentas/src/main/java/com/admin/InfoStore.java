@@ -5,7 +5,7 @@
 package com.admin;
 
 import com.classes.Tienda;
-import com.conexion.TiendaDAO;
+import com.conexion.TiendaDao;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -26,7 +26,7 @@ public class InfoStore extends javax.swing.JPanel {
     public InfoStore() {
         initComponents();
 
-        tienda = TiendaDAO.traerUltimo();
+        tienda = TiendaDao.traerUltimo();
 
         ImageIcon iFondo = new ImageIcon("src/main/resources/tienda.png");
         ImageIcon iDimAux = new ImageIcon(

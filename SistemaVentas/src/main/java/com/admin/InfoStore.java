@@ -9,6 +9,8 @@ import com.conexion.TiendaDAO;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -103,16 +105,57 @@ public class InfoStore extends javax.swing.JPanel {
         slogan.setOpaque(true);
         slogan.setHorizontalAlignment(JLabel.CENTER);
 
-        this.add(icon);
-        this.add(facebookIcon);
-        this.add(phone1Icon);
-        this.add(phone2Icon);
-        this.add(nombre);
-        this.add(slogan);
-        this.add(phone1);
-        this.add(phone2);
-        this.add(gmailIcon);
-        this.add(gmail);
+        
+        
+        GridBagLayout gbl = new GridBagLayout(); 
+        
+        this.setLayout(gbl);
+        
+        GridBagConstraints gbc = new GridBagConstraints(); 
+        
+        gbc.gridx = 0; 
+        gbc.gridy = 0; 
+        gbc.gridwidth = 5; 
+        this.add(icon, gbc);
+        
+        gbc.gridx = 3; 
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        this.add(facebookIcon, gbc);
+        gbc.gridx = 0; 
+        gbc.gridy = 9;
+        gbc.gridwidth = 1;
+        this.add(phone1Icon, gbc);
+        gbc.gridx = 1; 
+        gbc.gridy = 9;
+        gbc.gridwidth = 1;
+        this.add(phone2Icon, gbc);
+        gbc.gridx = 3; 
+        gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        this.add(nombre, gbc);
+        gbc.gridx = 3; 
+        gbc.gridy = 5;
+        gbc.gridwidth = 1;
+        this.add(slogan, gbc);
+        gbc.gridx = 3; 
+        gbc.gridy = 6;
+        gbc.gridwidth = 1;
+        this.add(phone1, gbc);
+        gbc.gridx = 3; 
+        gbc.gridy = 7;
+        gbc.gridwidth = 1;
+        this.add(phone2, gbc);
+        gbc.gridx = 3; 
+        gbc.gridy = 8;
+        gbc.gridwidth = 1;
+        this.add(gmailIcon, gbc);
+        gbc.gridx = 3; 
+        gbc.gridy = 9;
+        gbc.gridwidth = 1;
+        this.add(gmail, gbc);
+        
+        
     }
 
     public static String seleccionar(String texto) {

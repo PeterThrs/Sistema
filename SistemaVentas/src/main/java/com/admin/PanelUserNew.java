@@ -29,11 +29,21 @@ public class PanelUserNew extends javax.swing.JPanel {
     private PersonaDao personaDao = new PersonaDao();
     private Usuario usuario = new Usuario();
     private UsuarioDao usuarioDao = new UsuarioDao();
+    
+    //
+    private boolean actualizar; 
 
     public PanelUserNew() {
         initComponents();
         agregarEstilos();
         configuracion();
+        this.actualizar = false; 
+    }
+    
+    public PanelUserNew(Usuario usuario, Persona persona){
+        this.usuario = usuario; 
+        this.persona = persona; 
+        this.actualizar = true; 
     }
 
     private void agregarEstilos() {
@@ -334,6 +344,26 @@ public class PanelUserNew extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
 
+        });
+    }
+    
+    //cargar datos en la bd(){
+    public void cargarDatos(){
+        //cargamos los datos de la persona
+        this.tfName.setText(this.persona.getNombre());
+        this.tfLastNameM.setText(this.persona.getApellidoMaterno()); 
+        this.tfLastNameP.setText(this.persona.getApellidoPaterno()); 
+        this.tfEmail.setText(this.persona.getEmail());
+        this.tfPhone1.setText(this.persona.getTelefono1());
+        this.tfPhone2.setText(this.persona.getTelefono2());
+        this.tfEdad.setText(String.valueOf(this.persona.getEdad()));
+        this.tfCurp.setText(this.persona.getCurp());
+        
+    }
+    
+    public void accionBtnActualizar(){
+        this.btnUpdate.addActionListener(e -> {
+            
         });
     }
 

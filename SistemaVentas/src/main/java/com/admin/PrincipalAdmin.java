@@ -15,11 +15,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
 import com.main.Login;
+import javax.swing.JPanel;
 
-/**
- *
- * @author RojeruSan
- */
 public class PrincipalAdmin extends javax.swing.JFrame {
 
     int x, y;
@@ -448,8 +445,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void userAction() {
-        if (this.btnAdminUser.isSelected())
-        {
+        if (this.btnAdminUser.isSelected()) {
             this.btnAdminUser.setColorNormal(new Color(204, 204, 204));
             this.btnAdminUser.setColorHover(new Color(204, 204, 204));
             this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -469,8 +465,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
             this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
             this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-        } else
-        {
+        } else {
             this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
             this.btnAdminUser.setColorHover(new Color(204, 204, 204));
             this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -492,12 +487,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
            Animacion.bajar(980-PNuevo.getHeight(), 980, 0, 10, PNuevo);
         }*/
     }
-    private void btnAdminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminUserActionPerformed
-        try
-        {
-            new CambiaPanel(pnlPrincipal, new com.admin.PanelUserNew());
-            if (this.btnAdminUser.isSelected())
-            {
+    
+    public void cambiarPanelExterno(JPanel panel){
+        try {
+            new CambiaPanel(pnlPrincipal, panel);
+            if (this.btnAdminUser.isSelected()) {
                 this.btnAdminUser.setColorNormal(new Color(204, 204, 204));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -529,22 +523,66 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else
-            {
+            } else {
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+    
+    
+    
+    private void btnAdminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminUserActionPerformed
+        try {
+            new CambiaPanel(pnlPrincipal, new com.admin.PanelUserNew());
+            if (this.btnAdminUser.isSelected()) {
+                this.btnAdminUser.setColorNormal(new Color(204, 204, 204));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+
+                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+            } else {
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+            }
+        } catch (Exception e) {
             System.err.println(e);
         }
 
     }//GEN-LAST:event_btnAdminUserActionPerformed
 
     private void btnAdminUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminUserMousePressed
-        try
-        {
+        try {
             this.btnAdminUser.setSelected(true);
             this.btnHome.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
@@ -553,8 +591,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnInfoEmpresa.setSelected(false);
             this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnAdminUserMousePressed
@@ -596,21 +633,18 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else
-            {
+            } else {
                 this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnInfoEmpresaActionPerformed
 
     private void btnInfoEmpresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoEmpresaMousePressed
-        try
-        {
+        try {
             this.btnHome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
@@ -619,15 +653,13 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnInfoEmpresa.setSelected(true);
             this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnInfoEmpresaMousePressed
 
     private void btnAdminProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminProductosMousePressed
-        try
-        {
+        try {
             this.btnHome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
@@ -636,14 +668,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnInfoEmpresa.setSelected(false);
             this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnAdminProductosMousePressed
     private void adminAction() {
-        if (this.btnAdminProductos.isSelected())
-        {
+        if (this.btnAdminProductos.isSelected()) {
             this.btnAdminProductos.setColorNormal(new Color(204, 204, 204));
             this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
             this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
@@ -664,8 +694,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
             this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
 
-        } else
-        {
+        } else {
             this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
             this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
             this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
@@ -688,11 +717,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         } */
     }
     private void btnAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminProductosActionPerformed
-        try
-        {
+        try {
             new CambiaPanel(pnlPrincipal, new com.admin.PanelProducto());
-            if (this.btnAdminProductos.isSelected())
-            {
+            if (this.btnAdminProductos.isSelected()) {
                 this.btnAdminProductos.setColorNormal(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
@@ -724,40 +751,32 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else
-            {
+            } else {
                 this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnAdminProductosActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try
-        {
+        try {
             int posicion = pnlMenu.getX();
-            if (posicion > -1)
-            {
+            if (posicion > -1) {
                 Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
-            } else
-            {
+            } else {
                 Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        try
-        {
-            if (this.btnCerrarSesion.isSelected())
-            {
+        try {
+            if (this.btnCerrarSesion.isSelected()) {
                 this.btnCerrarSesion.setColorNormal(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
@@ -789,8 +808,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
-            } else
-            {
+            } else {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
@@ -798,15 +816,13 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.dispose();
             Login log = new Login();
             log.setVisible(true);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnCerrarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMousePressed
-        try
-        {
+        try {
             this.btnHome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
@@ -815,15 +831,13 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnInfoEmpresa.setSelected(false);
             this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(true);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnCerrarSesionMousePressed
 
     private void btnConfiguracionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfiguracionMousePressed
-        try
-        {
+        try {
             this.btnHome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
@@ -832,18 +846,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnInfoEmpresa.setSelected(false);
             this.btnConfiguracion.setSelected(true);
             this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnConfiguracionMousePressed
 
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
-        try
-        {
+        try {
             new CambiaPanel(pnlPrincipal, new com.admin.pnlFeeBack());
-            if (this.btnConfiguracion.isSelected())
-            {
+            if (this.btnConfiguracion.isSelected()) {
                 this.btnConfiguracion.setColorNormal(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
@@ -875,14 +886,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else
-            {
+            } else {
                 this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnConfiguracionActionPerformed
@@ -898,8 +907,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void btnListarProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarProductosMousePressed
-        try
-        {
+        try {
             this.btnHome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
@@ -908,18 +916,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnInfoEmpresa.setSelected(false);
             this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnListarProductosMousePressed
 
     private void btnListarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProductosActionPerformed
-        try
-        {
-            new CambiaPanel(pnlPrincipal, new com.admin.ListProductsPanel());
-            if (this.btnListarProductos.isSelected())
-            {
+        try {
+            new CambiaPanel(pnlPrincipal, new com.admin.ListProductsPanel(this));
+            if (this.btnListarProductos.isSelected()) {
                 this.btnListarProductos.setColorNormal(new Color(204, 204, 204));
                 this.btnListarProductos.setColorHover(new Color(204, 204, 204));
                 this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
@@ -951,21 +956,18 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else
-            {
+            } else {
                 this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
                 this.btnListarProductos.setColorHover(new Color(204, 204, 204));
                 this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnListarProductosActionPerformed
 
     private void btnListarUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarUsuariosMousePressed
-        try
-        {
+        try {
             this.btnHome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(true);
@@ -974,18 +976,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnInfoEmpresa.setSelected(false);
             this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnListarUsuariosMousePressed
 
     private void btnListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarUsuariosActionPerformed
-        try
-        {
+        try {
             new CambiaPanel(pnlPrincipal, new com.admin.ListUsersPanel());
-            if (this.btnListarUsuarios.isSelected())
-            {
+            if (this.btnListarUsuarios.isSelected()) {
                 this.btnListarUsuarios.setColorNormal(new Color(204, 204, 204));
                 this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
                 this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
@@ -1017,21 +1016,18 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else
-            {
+            } else {
                 this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
                 this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
                 this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnListarUsuariosActionPerformed
 
     private void btnHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMousePressed
-        try
-        {
+        try {
             this.btnHome.setSelected(true);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
@@ -1040,18 +1036,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnInfoEmpresa.setSelected(false);
             this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnHomeMousePressed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        try
-        {
-            new CambiaPanel(pnlPrincipal, new com.admin.InfoStore());
-            if (this.btnHome.isSelected())
-            {
+        try {
+            new CambiaPanel(pnlPrincipal, new InfoStore());
+            if (this.btnHome.isSelected()) {
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -1083,14 +1076,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else
-            {
+            } else {
                 this.btnHome.setColorNormal(new Color(239, 238, 244));
                 this.btnHome.setColorHover(new Color(204, 204, 204));
                 this.btnHome.setColorPressed(new Color(204, 204, 204));
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println(e);
         }
     }//GEN-LAST:event_btnHomeActionPerformed
@@ -1104,27 +1095,20 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex)
-        {
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -1132,12 +1116,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try
-                {
+                try {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     new PrincipalAdmin().setVisible(true);
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)
-                {
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(PrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

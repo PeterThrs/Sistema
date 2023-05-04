@@ -10,10 +10,6 @@ import com.settings.CodigoColor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerNumberModel;
 
-/**
- *
- * @author Peter
- */
 public class FormProduct extends javax.swing.JDialog {
 
     private ButtonGroup groupRadioBtn;

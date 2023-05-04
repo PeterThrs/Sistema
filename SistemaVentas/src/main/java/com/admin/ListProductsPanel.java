@@ -7,42 +7,48 @@ package com.admin;
 import com.classes.Departamento;
 import com.classes.Producto;
 import com.conexion.DepartamentoDao;
-import com.conexion.ProductoDao     ;
+import com.conexion.ProductoDAO;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
 import java.util.List;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author juanj
- */
 public class ListProductsPanel extends javax.swing.JPanel {
 
-    DefaultTableModel model;
+    private PrincipalAdmin principalAdmin; 
+    private DefaultTableModel model;
+    private List<Producto> productos; 
+    private ProductoDAO productoDAO;
+    private DepartamentoDao departamentoDao; 
 
-    public ListProductsPanel() {
+    public ListProductsPanel(PrincipalAdmin principalAdmin) {
         initComponents();
-        model = (DefaultTableModel) table.getModel();
+        this.principalAdmin = principalAdmin; 
+        this.model = (DefaultTableModel) table.getModel();
+        this.productoDAO = new ProductoDAO(); 
+        this.departamentoDao = new DepartamentoDao(); 
+        this.productos = productoDAO.seleccionar(); 
+        configuracion();
+    }
+    
+    private void configuracion(){
         anchoFilas();
         registrar();
         formatTable();
     }
 
     private void registrar() {
-        List<Producto> productos = ProductoDao.seleccionar();
-        System.out.println(productos.size());
-        productos.forEach(producto ->
-        {
+        System.out.println(this.productos.size());
+        this.productos.forEach(producto  -> {
             //System.out.println("Producto de la lista "+producto.getNombre()+"id "+producto.getIdDepartamento());
-            Producto p = ProductoDao.seleccionIndividual(new Producto(producto.getCodigo()));
-            System.out.println("id de p "+p.getIdDepartamento());
-            Departamento dep = DepartamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
+            Producto p = productoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
+            System.out.println("id de p " + p.getIdDepartamento());
+            Departamento dep = departamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
             System.out.println(p);
             System.out.println(dep);
-            model.addRow(new Object[]
-            {
+            model.addRow(new Object[]{
                 producto.getCodigo(), producto.getNombre(), producto.getPrecioCosto(), producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
             });
         });
@@ -53,18 +59,22 @@ public class ListProductsPanel extends javax.swing.JPanel {
             @Override
             public void onEdit(int row) {
                 System.out.println("Edit row : " + row);
+                String codigo = (String)table.getValueAt(row, 0); 
+                Producto producto = productos.stream().filter(p -> (p.getCodigo().equals(codigo))).findFirst().get(); 
+                //System.out.println("Mostrando el producto seleccionado");
+                //System.out.println("producto = " + producto);
+                principalAdmin.cambiarPanelExterno(new PanelProducto(producto));
             }
 
             @Override
             public void onDelete(int row) {
-                if (table.isEditing())
-                {
+                if (table.isEditing()) {
                     table.getCellEditor().stopCellEditing();
                 }
                 int fila = table.getSelectedRow();
                 String codigo = table.getValueAt(fila, 0).toString();
 
-                ProductoDao.eliminar(new Producto(codigo));
+                ProductoDAO.eliminar(new Producto(codigo));
                 model.removeRow(row);
             }
 
@@ -79,8 +89,7 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
     public void anchoFilas() {
         table.getColumnModel().getColumn(0).setPreferredWidth(30);
-        for (int i = 1; i < table.getColumnCount() - 1; i++)
-        {
+        for (int i = 1; i < table.getColumnCount() - 1; i++) {
             table.getColumnModel().getColumn(i).setPreferredWidth(150);
         }
     }

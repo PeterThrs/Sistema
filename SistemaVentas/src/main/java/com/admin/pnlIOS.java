@@ -5,10 +5,6 @@
  */
 package com.admin;
 
-/**
- *
- * @author RojeruSan
- */
 public class pnlIOS extends javax.swing.JPanel {
 
     /**

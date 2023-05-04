@@ -9,10 +9,6 @@ import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author juanj
- */
 public class NewJFrame extends javax.swing.JFrame {
 
     DefaultTableModel model;

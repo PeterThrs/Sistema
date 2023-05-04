@@ -4,10 +4,6 @@
  */
 package com.settings;
 
-/**
- *
- * @author Root
- */
 public class FondoPanel {
     
 }

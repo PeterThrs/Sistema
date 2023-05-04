@@ -7,10 +7,6 @@ package com.table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author juanj
- */
 public class PanelAction extends javax.swing.JPanel {
 
     /**

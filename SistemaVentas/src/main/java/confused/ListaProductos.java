@@ -13,10 +13,6 @@ import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
 
-/**
- *
- * @author juanj
- */
 public class ListaProductos extends javax.swing.JFrame {
     
     /**

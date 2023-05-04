@@ -5,10 +5,6 @@
  */
 package com.admin;
 
-/**
- *
- * @author RojeruSan
- */
 import javax.swing.JPanel;
 
 public class CambiaPanel {

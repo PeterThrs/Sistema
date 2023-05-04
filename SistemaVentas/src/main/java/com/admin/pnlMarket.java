@@ -5,10 +5,6 @@
  */
 package com.admin;
 
-/**
- *
- * @author RojeruSan
- */
 public class pnlMarket extends javax.swing.JPanel {
 
     /**

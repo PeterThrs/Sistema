@@ -1,11 +1,6 @@
 
 package com.test;
 
-/**
- *
- * @author corte
- */
-
 import com.classes.CatalogoDeSexo;
 import com.conexion.CatalogoDeSexoDAO;
 import java.util.List;

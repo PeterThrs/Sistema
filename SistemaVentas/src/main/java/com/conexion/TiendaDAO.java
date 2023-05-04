@@ -16,64 +16,65 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TiendaDAO {
-    
+
     private static final String SQL_SELECT = "SELECT * from tienda";
     private static final String SQL_INSERT = "INSERT INTO tienda(nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE tienda SET nombre = ?, slogan = ?, telefono1 = ?, telefono2 = ?, email = ?, mision = ?, vision = ?, codigoPostal = ?, estado = ?, municipio = ?, colonia = ?, calle = ?, numCasa = ? WHERE idTienda = ?";
     private static final String SQL_DELETE = "DELETE FROM tienda WHERE idTienda = ?";
-    
-    public List<Tienda> seleccionar() {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Tienda tienda = null;
-        List<Tienda> tiendas = new ArrayList<>();
-        
-        try
-        {
-            conn = getConnection();
-            stmt = conn.prepareStatement(SQL_SELECT);
-            rs = stmt.executeQuery();
-            
-            while (rs.next())
-            {
-                int idTienda = rs.getInt("idTienda");
-                String nombre = rs.getString("nombre");
-                String slogan = rs.getString("slogan");
-                String telefono1 = rs.getString("telefono1");
-                String telefono2 = rs.getString("telefono2");
-                String email = rs.getString("email");
-                String mision = rs.getString("mision");
-                String vision = rs.getString("vision");
-                int codigoPostal = rs.getInt("codigoPostal");
-                String estado = rs.getString("estado");
-                String municipio = rs.getString("municipio");
-                String colonia = rs.getString("colonia");
-                String calle = rs.getString("calle");
-                int numCasa = rs.getInt("numCasa");
-                
-                tienda = new Tienda(idTienda, nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa);
-                
-                tiendas.add(tienda);
-            }
-        } catch (SQLException ex)
-        {
-            ex.printStackTrace(System.out);
-        } finally
-        {
-            try
-            {
-                close(rs);
-                close(stmt);
-                close(conn);
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(TiendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return tiendas;
-    }
-    
+    private static final String SQL_SELECT_LAST = "SELECT * FROM tienda ORDER BY idTienda DESC LIMIT 1;";
+
+//    public List<Tienda> seleccionar() {
+//        Connection conn = null;
+//        PreparedStatement stmt = null;
+//        ResultSet rs = null;
+//        Tienda tienda = null;
+//        List<Tienda> tiendas = new ArrayList<>();
+//
+//        try
+//        {
+//            conn = getConnection();
+//            stmt = conn.prepareStatement(SQL_SELECT);
+//            rs = stmt.executeQuery();
+//
+//            while (rs.next())
+//            {
+//                int idTienda = rs.getInt("idTienda");
+//                String nombre = rs.getString("nombre");
+//                String slogan = rs.getString("slogan");
+//                String telefono1 = rs.getString("telefono1");
+//                String telefono2 = rs.getString("telefono2");
+//                String email = rs.getString("email");
+//                String mision = rs.getString("mision");
+//                String vision = rs.getString("vision");
+//                int codigoPostal = rs.getInt("codigoPostal");
+//                String estado = rs.getString("estado");
+//                String municipio = rs.getString("municipio");
+//                String colonia = rs.getString("colonia");
+//                String calle = rs.getString("calle");
+//                int numCasa = rs.getInt("numCasa");
+//
+//                tienda = new Tienda(idTienda, nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa);
+//
+//                tiendas.add(tienda);
+//            }
+//        } catch (SQLException ex)
+//        {
+//            ex.printStackTrace(System.out);
+//        } finally
+//        {
+//            try
+//            {
+//                close(rs);
+//                close(stmt);
+//                close(conn);
+//            } catch (SQLException ex)
+//            {
+//                Logger.getLogger(TiendaDAO.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        return tiendas;
+//    }
+
     public static int insertar(Tienda tienda) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -112,7 +113,7 @@ public class TiendaDAO {
         }
         return registros;
     }
-    
+
     public static int actualizar(Tienda tienda) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -152,7 +153,7 @@ public class TiendaDAO {
         }
         return registros;
     }
-    
+
     public static int eliminar(Tienda tienda) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -178,5 +179,52 @@ public class TiendaDAO {
             }
         }
         return registros;
+    }
+
+    public static Tienda traerUltimo() {
+        Connection coon = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try
+        {
+            coon = Conexion.getConnection();
+            stmt = coon.prepareStatement(SQL_SELECT_LAST);
+            rs = stmt.executeQuery();
+
+            if (rs.next())
+            {
+                int idTienda = rs.getInt("idTienda");
+                String nombre = rs.getString("nombre");
+                String slogan = rs.getString("slogan");
+                String telefono1 = rs.getString("telefono1");
+                String telefono2 = rs.getString("telefono2");
+                String email = rs.getString("email");
+                String mision = rs.getString("mision");
+                String vision = rs.getString("vision");
+                int codigoPostal = rs.getInt("codigoPostal");
+                String estado = rs.getString("estado");
+                String municipio = rs.getString("municipio");
+                String colonia = rs.getString("colonia");
+                String calle = rs.getString("calle");
+                int numCasa = rs.getInt("numCasa");
+
+                return new Tienda(nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa);
+            }
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace(System.out);
+        } finally
+        {
+            try
+            {
+                Conexion.close(stmt);
+                Conexion.close(coon);
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return null;
     }
 }

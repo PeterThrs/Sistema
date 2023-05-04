@@ -17,10 +17,6 @@ import com.admin.CambiaPanel;
 import com.main.Login;
 import javax.swing.JPanel;
 
-/**
- *
- * @author RojeruSan
- */
 public class PrincipalAdmin extends javax.swing.JFrame {
 
     int x, y;
@@ -29,7 +25,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
-        new CambiaPanel(pnlPrincipal, new PanelHomeAdmi());
+        new CambiaPanel(pnlPrincipal, new InfoStore());
         desactivarBotonesIniciar();
         setVisible(true);
     }
@@ -601,9 +597,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdminUserMousePressed
 
     private void btnInfoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpresaActionPerformed
-        try {
-            new CambiaPanel(pnlPrincipal, new com.admin.PanelProducto());
-            if (this.btnInfoEmpresa.isSelected()) {
+        try
+        {
+            new CambiaPanel(pnlPrincipal, new com.admin.InfoStore());
+            if (this.btnInfoEmpresa.isSelected())
+            {
                 this.btnInfoEmpresa.setColorNormal(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
@@ -1045,8 +1043,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         try {
-            new CambiaPanel(pnlPrincipal, new PanelHomeAdmi());
-
+            new CambiaPanel(pnlPrincipal, new InfoStore());
             if (this.btnHome.isSelected()) {
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));

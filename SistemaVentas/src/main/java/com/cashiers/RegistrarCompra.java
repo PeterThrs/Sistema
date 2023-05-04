@@ -15,10 +15,6 @@ import static java.awt.image.ImageObserver.HEIGHT;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author corte
- */
 public class RegistrarCompra extends javax.swing.JDialog {
 
     /**

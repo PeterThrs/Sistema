@@ -4,10 +4,6 @@
  */
 package com.classes;
 
-/**
- *
- * @author EdRyz
- */
 public class Usuario {
     private int idUsuario;
     private String nomUsuario;

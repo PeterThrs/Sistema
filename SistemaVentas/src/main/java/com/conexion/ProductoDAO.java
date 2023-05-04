@@ -10,11 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author corte
- */
-public class ProductoDao {
+public class ProductoDAO {
 
     private static final String SQL_SELECT = "SELECT codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento FROM producto";
     private static final String SQL_INSERT = "INSERT INTO producto (codigo,nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento) values (?,?,?,?,?,?,?,?,?)";
@@ -28,7 +24,8 @@ public class ProductoDao {
         ResultSet rs = null;
         Producto producto = null;
         List<Producto> productos = new ArrayList<>();
-
+        List<String> lineas = new ArrayList<String>();
+        
         try {
             coon = getConnection();
             stmt = coon.prepareStatement(SQL_SELECT);

@@ -22,11 +22,11 @@ public class TestManejoTiendas {
         TiendaDAO.eliminar(tiendaEliminar);
         
         //Listado Tiendas
-        List<Tienda> tiendas = tiendaDAO.seleccionar();
-        
-        tiendas.forEach(tienda ->
-        {
-            System.out.println("tienda = "+tienda);
-        });
+//        List<Tienda> tiendas = tiendaDAO.Tr();
+//        
+//        tiendas.forEach(tienda ->
+//        {
+//            System.out.println("tienda = "+tienda);
+//        });
     }
 }

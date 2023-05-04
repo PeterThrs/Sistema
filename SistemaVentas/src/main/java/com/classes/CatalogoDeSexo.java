@@ -1,11 +1,6 @@
 
 package com.classes;
 
-/**
- *
- * @author Jorge Alberto
- */
-
 public class CatalogoDeSexo {
 
 private int id_cat_sexo;    

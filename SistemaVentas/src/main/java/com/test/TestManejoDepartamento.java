@@ -8,10 +8,6 @@ import com.classes.Departamento;
 import com.conexion.DepartamentoDao;
 import java.util.List;
 
-/**
- *
- * @author EdRyz
- */
 public class TestManejoDepartamento {
     public static void main(String[] args){
         DepartamentoDao departamentoDao = new DepartamentoDao();

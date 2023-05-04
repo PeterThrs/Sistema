@@ -28,7 +28,8 @@ public class ProductoDao {
         ResultSet rs = null;
         Producto producto = null;
         List<Producto> productos = new ArrayList<>();
-
+        List<String> lineas = new ArrayList<String>();
+        
         try {
             coon = getConnection();
             stmt = coon.prepareStatement(SQL_SELECT);

@@ -204,7 +204,6 @@ public class PersonaDao {
 
             if(rs.next())
             {
-                System.out.println("sii");
                 int idPersona = rs.getInt("idPersona");
                 String nombre = rs.getString("nombre");
                 String apellidoP = rs.getString("apellidoP");
@@ -252,12 +251,10 @@ public class PersonaDao {
         {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_SELECT_LAST);
-            //stmt.setInt(1, persona.getIdPersona());
             rs = stmt.executeQuery();
 
             if(rs.next())
             {
-                System.out.println("sii");
                 int idPersona = rs.getInt("idPersona");
                 return new Persona(idPersona);
             }

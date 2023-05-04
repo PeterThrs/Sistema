@@ -331,6 +331,7 @@ public class PanelUserNew extends javax.swing.JPanel {
                     int reg = UsuarioDao.insertar(usuario);
 
                     if (reg > 0) {
+                        limpiarForm();
                         JOptionPane.showMessageDialog(null, "Se ha logrado insertar los datos correctamente");
                     }
 
@@ -415,6 +416,7 @@ public class PanelUserNew extends javax.swing.JPanel {
                 int regPersona = personaDao.actualizar(persona);
                 int regUsuario = usuarioDao.actualizar(usuario);
                 if (regPersona > 0 && regUsuario > 0) {
+                    limpiarForm();
                     JOptionPane.showMessageDialog(null, "Se ha logrado insertar los datos correctamente");
                 }
 

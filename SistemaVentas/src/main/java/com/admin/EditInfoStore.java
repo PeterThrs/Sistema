@@ -587,6 +587,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 32;
         gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.ipadx = 137;
         gridBagConstraints.insets = new java.awt.Insets(10, 43, 10, 0);
         add(jlFileSelect, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents

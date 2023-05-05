@@ -8,7 +8,7 @@ import com.classes.Persona;
 import com.classes.Rol;
 import com.classes.Usuario;
 import com.conexion.PersonaDao;
-import com.conexion.RolDao;
+import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
@@ -39,7 +39,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
         this.usuarios = UsuarioDao.seleccionar();
         usuarios.forEach(usuario -> {
             Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
-            Rol r = RolDao.seleccionIndividual(new Rol(usuario.getIdRol()));
+            Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
             model.addRow(new Object[]{
                 usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
             });

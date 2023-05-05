@@ -7,7 +7,7 @@ package com.admin;
 import com.classes.Departamento;
 import com.classes.Producto;
 import com.conexion.DepartamentoDao;
-import com.conexion.ProductoDao;
+import com.conexion.ProductoDAO;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
@@ -19,14 +19,14 @@ public class ListProductsPanel extends javax.swing.JPanel {
     private PrincipalAdmin principalAdmin; 
     private DefaultTableModel model;
     private List<Producto> productos; 
-    private ProductoDao productoDAO;
+    private ProductoDAO productoDAO;
     private DepartamentoDao departamentoDao; 
 
     public ListProductsPanel(PrincipalAdmin principalAdmin) {
         initComponents();
         this.principalAdmin = principalAdmin; 
         this.model = (DefaultTableModel) table.getModel();
-        this.productoDAO = new ProductoDao(); 
+        this.productoDAO = new ProductoDAO(); 
         this.departamentoDao = new DepartamentoDao(); 
         this.productos = productoDAO.seleccionar(); 
         configuracion();
@@ -73,7 +73,7 @@ public class ListProductsPanel extends javax.swing.JPanel {
                 int fila = table.getSelectedRow();
                 String codigo = table.getValueAt(fila, 0).toString();
 
-                ProductoDao.eliminar(new Producto(codigo));
+                ProductoDAO.eliminar(new Producto(codigo));
                 model.removeRow(row);
             }
 

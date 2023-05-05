@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TiendaDao {
+public class TiendaDAO {
 
     private static final String SQL_SELECT = "SELECT * from tienda";
     private static final String SQL_INSERT = "INSERT INTO tienda(nombre, slogan, telefono1, telefono2, email, mision, vision, codigoPostal, estado, municipio, colonia, calle, numCasa) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RolDao {
+public class RolDAO {
     private static final String SQL_SELECT = "SELECT * from rol";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM rol WHERE idRol = ?";
     
@@ -51,7 +51,7 @@ public class RolDao {
                 close(conn);
             } catch (SQLException ex)
             {
-                Logger.getLogger(RolDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return roles;

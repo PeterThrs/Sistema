@@ -131,48 +131,70 @@ public class InfoStore extends javax.swing.JPanel {
         GridBagConstraints gbc = new GridBagConstraints(); 
         
         gbc.gridx = 0; 
-        gbc.gridy = 0; 
-        gbc.gridwidth = 5; 
+        gbc.gridy = 0;
+        gbc.gridwidth = 0;
+        gbc.ipady = 50;
+        this.add(nombre, gbc);
+        
+        gbc.gridx = 0; 
+        gbc.gridy = 1; 
+        gbc.gridwidth = 0; ;
+        gbc.ipady = 50;
         this.add(icon, gbc);
         
-        gbc.gridx = 3; 
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        this.add(facebookIcon, gbc);
         gbc.gridx = 0; 
-        gbc.gridy = 9;
-        gbc.gridwidth = 1;
-        this.add(phone1Icon, gbc);
-        gbc.gridx = 1; 
-        gbc.gridy = 9;
-        gbc.gridwidth = 1;
-        this.add(phone2Icon, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 4;
-        gbc.gridwidth = 1;
-        this.add(nombre, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 5;
-        gbc.gridwidth = 1;
+        gbc.gridy = 2;
+        gbc.gridwidth = 0;
+        gbc.ipady = 50;
         this.add(slogan, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 6;
+        
+        gbc.gridx = 0; 
+        gbc.gridy = 10;
         gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        this.add(phone1Icon, gbc);
+        
+         gbc.gridx = 1; 
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 100;
         this.add(phone1, gbc);
+        
         gbc.gridx = 3; 
-        gbc.gridy = 7;
+        gbc.gridy = 10;
         gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 10;
+        this.add(phone2Icon, gbc);
+        
+        gbc.gridx = 4; 
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 100;
         this.add(phone2, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 8;
+        
+        gbc.gridx = 6; 
+        gbc.gridy = 10;
         gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 10;
         this.add(gmailIcon, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 9;
+        
+        gbc.gridx = 7; 
+        gbc.gridy = 10;
         gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 100;
         this.add(gmail, gbc);
         
-        
+        gbc.gridx = 9; 
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 10;
+        this.add(facebookIcon, gbc);
     }
     
     public static String seleccionar(String texto) {

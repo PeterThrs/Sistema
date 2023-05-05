@@ -217,9 +217,9 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 297;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 1);
         add(tfSlogan, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
@@ -232,8 +232,8 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.ipadx = 297;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         add(tfCorreoE, gridBagConstraints);
@@ -241,7 +241,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 294;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         add(tfVision, gridBagConstraints);
@@ -265,7 +265,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridy = 27;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 298;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         add(tfNumCasa, gridBagConstraints);
@@ -318,7 +318,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 343;
+        gridBagConstraints.ipadx = 340;
         gridBagConstraints.ipady = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 46);
@@ -360,10 +360,9 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 298;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 20);
+        gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 37);
         add(tfName, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
@@ -412,8 +411,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 296;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         add(tfMision, gridBagConstraints);
@@ -431,9 +429,9 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridy = 16;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 297;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 9);
         add(tfCodigoPostal, gridBagConstraints);
 
         jEstado.setText("Estado:");
@@ -449,7 +447,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridy = 18;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 298;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         add(tfEstado, gridBagConstraints);
@@ -467,7 +465,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridy = 21;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 298;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         add(tfMunicipio, gridBagConstraints);
@@ -476,7 +474,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridy = 23;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 298;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         add(tfColonia, gridBagConstraints);
@@ -502,7 +500,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridy = 25;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 270;
+        gridBagConstraints.ipadx = 298;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         add(tfCalle, gridBagConstraints);
@@ -577,10 +575,10 @@ public class EditInfoStore extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 31;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(24, 165, 0, 3);
         add(btnInsertImage, gridBagConstraints);
 
         jlFileSelect.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N

@@ -69,7 +69,7 @@ public class TiendaDAO {
 //                close(conn);
 //            } catch (SQLException ex)
 //            {
-//                Logger.getLogger(TiendaDAO.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(TiendaDao.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 //        }
 //        return tiendas;

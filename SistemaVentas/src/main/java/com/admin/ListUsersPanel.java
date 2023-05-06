@@ -18,54 +18,71 @@ import javax.swing.table.DefaultTableModel;
 
 public class ListUsersPanel extends javax.swing.JPanel {
 
-    DefaultTableModel model;
+    private DefaultTableModel model;
+    private List<Usuario> usuarios;
+    private Usuario usuario;
+    private Persona persona;
+    private PrincipalAdmin principalAdmin;
+    private UsuarioDao usuarioDao;
 
-    public ListUsersPanel() {
+    public ListUsersPanel(PrincipalAdmin principalAdmin) {
+        usuarioDao = new UsuarioDao();
         initComponents();
-        model = (DefaultTableModel) table.getModel();
+        this.model = (DefaultTableModel) table.getModel();
+        this.principalAdmin = principalAdmin;
         anchoFilas();
         registrar();
         formatTable();
     }
 
     private void registrar() {
-        List<Usuario> usuarios = UsuarioDao.seleccionar();
-        usuarios.forEach(usuario ->
-        {
+        this.usuarios = UsuarioDao.seleccionar();
+        usuarios.forEach(usuario -> {
             Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
             Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
-            System.out.println(usuario);
-            //System.out.println(p);
-            //System.out.println(r);
-            model.addRow(new Object[]
-            {
+            model.addRow(new Object[]{
                 usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
             });
         });
     }
 
     public void formatTable() {
-        try
-        {
+        try {
             TableActionEvent event = new TableActionEvent() {
                 @Override
                 public void onEdit(int row) {
                     System.out.println("Edit roooooooooooow : " + row);
+
+                    int idUsuario = (int) table.getValueAt(row, 0);
+
+                    usuario = usuarios.stream().filter(e -> (e.getIdUsuario() == idUsuario)).findFirst().get();
+
+                    persona = new Persona(usuario.getIdPersona());
+
+                    PersonaDao personaDao = new PersonaDao();
+                    persona = personaDao.seleccionIndividual(persona);
+
+                    //RolDAO rolDao = new RolDao(); 
+                    //Rol rol = rolDao.seleccionIndividual(new Rol(usuario.getIdRol()));
+                    System.out.println("Imprimiendo desde la clase Listar Usuarios");
+                    System.out.println("usuario = " + usuario);
+                    System.out.println("persona = " + persona);
+                    principalAdmin.cambiarPanelExterno(new PanelUserNew(usuario, persona));
+
                 }
 
                 @Override
                 public void onDelete(int row) {
-                    if (table.isEditing())
-                    {
+                    if (table.isEditing()) {
                         table.getCellEditor().stopCellEditing();
                     }
                     int fila = table.getSelectedRow();
                     int idUsuario = Integer.parseInt(table.getValueAt(fila, 0).toString());
-                    
-                    Usuario usuario = UsuarioDao.seleccionIndividual(new Usuario(idUsuario));
-                    UsuarioDao.eliminar(new Usuario(usuario.getIdUsuario()));
+
+                    Usuario usuario = usuarioDao.seleccionIndividual(new Usuario(idUsuario));
+                    UsuarioDao.eliminar(usuario);
                     PersonaDao.eliminar(new Persona(usuario.getIdPersona()));
-                    
+
                     model.removeRow(row);
                 }
 
@@ -77,16 +94,14 @@ public class ListUsersPanel extends javax.swing.JPanel {
 
             table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
             table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace(System.out);
         }
     }
 
     public void anchoFilas() {
         table.getColumnModel().getColumn(0).setPreferredWidth(15);
-        for (int i = 1; i < table.getColumnCount() - 1; i++)
-        {
+        for (int i = 1; i < table.getColumnCount() - 1; i++) {
             table.getColumnModel().getColumn(i).setPreferredWidth(160);
         }
     }

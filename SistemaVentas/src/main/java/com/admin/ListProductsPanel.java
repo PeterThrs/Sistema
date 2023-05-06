@@ -12,7 +12,6 @@ import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
 import java.util.List;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 public class ListProductsPanel extends javax.swing.JPanel {

@@ -11,11 +11,11 @@ public class TestManejoTiendas {
         
 //        Insertando un nuevo objeto de tipo Tienda
 //        Tienda tiendaNueva = new Tienda("Oxxo","Slogan de prueba","9951064922","9951064922","juanjolr6@gmail.com","Mision de prueba","Vision de prueba",70770,"Chiapas","Santiago Astata","Av. Independencia","Calle Yucatan",8);
-//        TiendaDAO.insertar(tiendaNueva);
+//        TiendaDao.insertar(tiendaNueva);
         
 //        //Modificar un objeto d etienda existente
 //        Tienda tiendaModificar = new Tienda(3, "Oxxo","Slogan modificadooo","9951064922","9951064922","juanjolr6@gmail.com","Mision de prueba","Vision de prueba",70770,"Chiapas","Santiago Astata","Av. Independencia","Calle Yucatan",8);
-//        TiendaDAO.actualizar(tiendaModificar);
+//        TiendaDao.actualizar(tiendaModificar);
         
         //Eliminar un registro
         Tienda tiendaEliminar = new Tienda(3);

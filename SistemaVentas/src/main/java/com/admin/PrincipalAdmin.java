@@ -418,7 +418,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         gridBagConstraints.weightx = 0.2;
         jPanel1.add(jPanel2, gridBagConstraints);
 
-        pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCentro.setBackground(new java.awt.Color(239, 238, 244));
 
         jScrollPane1.setBorder(null);
 
@@ -430,11 +430,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         pnlCentro.setLayout(pnlCentroLayout);
         pnlCentroLayout.setHorizontalGroup(
             pnlCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
         );
         pnlCentroLayout.setVerticalGroup(
             pnlCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -549,145 +549,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }
     
     
-    
-    private void btnAdminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminUserActionPerformed
-        try {
-            new CambiaPanel(pnlPrincipal, new com.admin.PanelUserNew());
-            if (this.btnAdminUser.isSelected()) {
-                this.btnAdminUser.setColorNormal(new Color(204, 204, 204));
-                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
-                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
-
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
-
-                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
-                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
-
-                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
-                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
-                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
-
-                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
-                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
-
-                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
-                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
-
-                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
-                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
-                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
-
-                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
-                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
-                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else {
-                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
-                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-
-    }//GEN-LAST:event_btnAdminUserActionPerformed
-
-    private void btnAdminUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminUserMousePressed
-        try {
-            this.btnAdminUser.setSelected(true);
-            this.btnHome.setSelected(false);
-            this.btnListarUsuarios.setSelected(false);
-            this.btnListarProductos.setSelected(false);
-            this.btnAdminProductos.setSelected(false);
-            this.btnInfoEmpresa.setSelected(false);
-            this.btnConfiguracion.setSelected(false);
-            this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnAdminUserMousePressed
-
-    private void btnInfoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpresaActionPerformed
-        try
-        {
-            new CambiaPanel(pnlPrincipal, new com.admin.InfoStore());
-            if (this.btnInfoEmpresa.isSelected())
-            {
-                this.btnInfoEmpresa.setColorNormal(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
-
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
-
-                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
-                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
-
-                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
-                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
-
-                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
-                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
-
-                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
-                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
-                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
-
-                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
-                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
-                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
-
-                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
-                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
-                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else {
-                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
-                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnInfoEmpresaActionPerformed
-
-    private void btnInfoEmpresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoEmpresaMousePressed
-        try {
-            this.btnHome.setSelected(false);
-            this.btnAdminUser.setSelected(false);
-            this.btnListarUsuarios.setSelected(false);
-            this.btnListarProductos.setSelected(false);
-            this.btnAdminProductos.setSelected(false);
-            this.btnInfoEmpresa.setSelected(true);
-            this.btnConfiguracion.setSelected(false);
-            this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnInfoEmpresaMousePressed
-
-    private void btnAdminProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminProductosMousePressed
-        try {
-            this.btnHome.setSelected(false);
-            this.btnAdminUser.setSelected(false);
-            this.btnListarUsuarios.setSelected(false);
-            this.btnListarProductos.setSelected(false);
-            this.btnAdminProductos.setSelected(true);
-            this.btnInfoEmpresa.setSelected(false);
-            this.btnConfiguracion.setSelected(false);
-            this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnAdminProductosMousePressed
-    private void adminAction() {
+        private void adminAction() {
         if (this.btnAdminProductos.isSelected()) {
             this.btnAdminProductos.setColorNormal(new Color(204, 204, 204));
             this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
@@ -731,21 +593,52 @@ public class PrincipalAdmin extends javax.swing.JFrame {
            Animacion.bajar(1224-subpanelProductos.getHeight(), 1224, 0, 10, subpanelProductos);
         } */
     }
-    private void btnAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminProductosActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            new CambiaPanel(pnlPrincipal, new com.admin.PanelProducto());
-            if (this.btnAdminProductos.isSelected()) {
-                this.btnAdminProductos.setColorNormal(new Color(204, 204, 204));
-                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
-                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+            int posicion = pnlMenu.getX();
+            if (posicion > -1) {
+                Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
+            } else {
+                Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
 
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        Point mueve = MouseInfo.getPointerInfo().getLocation();
+        this.setLocation(mueve.x - x, mueve.y - y);
+    }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null," -> ESTA OPCIÓN ESTA EN PROCESO DE MANTENIMIENTO.");
+            
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void buscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyPressed
+        // TODO add your handling code here:
+     
+                       
+    }//GEN-LAST:event_buscarKeyPressed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        try {
+            new CambiaPanel(pnlPrincipal, new InfoStore());
+            if (this.btnHome.isSelected()) {
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
 
                 this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
                 this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
@@ -763,31 +656,157 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
 
+                this.btnHome.setColorNormal(new Color(204, 204, 204));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             } else {
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMousePressed
+        try {
+            this.btnHome.setSelected(true);
+            this.btnAdminUser.setSelected(false);
+            this.btnListarUsuarios.setSelected(false);
+            this.btnListarProductos.setSelected(false);
+            this.btnAdminProductos.setSelected(false);
+            this.btnInfoEmpresa.setSelected(false);
+            this.btnConfiguracion.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnHomeMousePressed
+
+    private void btnListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarUsuariosActionPerformed
+        try {
+            new CambiaPanel(pnlPrincipal, new com.admin.ListUsersPanel(this));
+            if (this.btnListarUsuarios.isSelected()) {
+                this.btnListarUsuarios.setColorNormal(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
                 this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnAdminProductosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            int posicion = pnlMenu.getX();
-            if (posicion > -1) {
-                Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+
+                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             } else {
-                Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
             }
         } catch (Exception e) {
             System.err.println(e);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnListarUsuariosActionPerformed
+
+    private void btnListarUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarUsuariosMousePressed
+        try {
+            this.btnHome.setSelected(false);
+            this.btnAdminUser.setSelected(false);
+            this.btnListarUsuarios.setSelected(true);
+            this.btnListarProductos.setSelected(false);
+            this.btnAdminProductos.setSelected(false);
+            this.btnInfoEmpresa.setSelected(false);
+            this.btnConfiguracion.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnListarUsuariosMousePressed
+
+    private void btnListarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProductosActionPerformed
+        try {
+            new CambiaPanel(pnlPrincipal, new com.admin.ListProductsPanel(this));
+            if (this.btnListarProductos.isSelected()) {
+                this.btnListarProductos.setColorNormal(new Color(204, 204, 204));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+
+                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+            } else {
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnListarProductosActionPerformed
+
+    private void btnListarProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarProductosMousePressed
+        try {
+            this.btnHome.setSelected(false);
+            this.btnAdminUser.setSelected(false);
+            this.btnListarUsuarios.setSelected(false);
+            this.btnListarProductos.setSelected(true);
+            this.btnAdminProductos.setSelected(false);
+            this.btnInfoEmpresa.setSelected(false);
+            this.btnConfiguracion.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnListarProductosMousePressed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         try {
@@ -851,21 +870,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCerrarSesionMousePressed
 
-    private void btnConfiguracionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfiguracionMousePressed
-        try {
-            this.btnHome.setSelected(false);
-            this.btnAdminUser.setSelected(false);
-            this.btnListarUsuarios.setSelected(false);
-            this.btnListarProductos.setSelected(false);
-            this.btnAdminProductos.setSelected(false);
-            this.btnInfoEmpresa.setSelected(false);
-            this.btnConfiguracion.setSelected(true);
-            this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnConfiguracionMousePressed
-
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
         try {
             new CambiaPanel(pnlPrincipal, new com.admin.EditInfoStore());
@@ -911,38 +915,28 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConfiguracionActionPerformed
 
-    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
-        x = evt.getX();
-        y = evt.getY();
-    }//GEN-LAST:event_jPanel2MousePressed
-
-    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
-        Point mueve = MouseInfo.getPointerInfo().getLocation();
-        this.setLocation(mueve.x - x, mueve.y - y);
-    }//GEN-LAST:event_jPanel2MouseDragged
-
-    private void btnListarProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarProductosMousePressed
+    private void btnConfiguracionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfiguracionMousePressed
         try {
             this.btnHome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
-            this.btnListarProductos.setSelected(true);
+            this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(false);
             this.btnInfoEmpresa.setSelected(false);
-            this.btnConfiguracion.setSelected(false);
+            this.btnConfiguracion.setSelected(true);
             this.btnCerrarSesion.setSelected(false);
         } catch (Exception e) {
             System.err.println(e);
         }
-    }//GEN-LAST:event_btnListarProductosMousePressed
+    }//GEN-LAST:event_btnConfiguracionMousePressed
 
-    private void btnListarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProductosActionPerformed
+    private void btnAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminProductosActionPerformed
         try {
-            new CambiaPanel(pnlPrincipal, new com.admin.ListProductsPanel(this));
-            if (this.btnListarProductos.isSelected()) {
-                this.btnListarProductos.setColorNormal(new Color(204, 204, 204));
-                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
-                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+            new CambiaPanel(pnlPrincipal, new com.admin.PanelProducto());
+            if (this.btnAdminProductos.isSelected()) {
+                this.btnAdminProductos.setColorNormal(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
 
                 this.btnHome.setColorNormal(new Color(239, 238, 244));
                 this.btnHome.setColorHover(new Color(204, 204, 204));
@@ -952,13 +946,13 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
 
-                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
-                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
-
                 this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
                 this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
                 this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
 
                 this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
@@ -972,20 +966,142 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             } else {
-                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
-                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
             }
         } catch (Exception e) {
             System.err.println(e);
         }
-    }//GEN-LAST:event_btnListarProductosActionPerformed
+    }//GEN-LAST:event_btnAdminProductosActionPerformed
 
-    private void btnListarUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarUsuariosMousePressed
+    private void btnAdminProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminProductosMousePressed
         try {
             this.btnHome.setSelected(false);
             this.btnAdminUser.setSelected(false);
-            this.btnListarUsuarios.setSelected(true);
+            this.btnListarUsuarios.setSelected(false);
+            this.btnListarProductos.setSelected(false);
+            this.btnAdminProductos.setSelected(true);
+            this.btnInfoEmpresa.setSelected(false);
+            this.btnConfiguracion.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnAdminProductosMousePressed
+
+    private void btnInfoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpresaActionPerformed
+        try
+        {
+            new CambiaPanel(pnlPrincipal, new com.admin.InfoStore());
+            if (this.btnInfoEmpresa.isSelected())
+            {
+                this.btnInfoEmpresa.setColorNormal(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+            } else {
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnInfoEmpresaActionPerformed
+
+    private void btnInfoEmpresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoEmpresaMousePressed
+        try {
+            this.btnHome.setSelected(false);
+            this.btnAdminUser.setSelected(false);
+            this.btnListarUsuarios.setSelected(false);
+            this.btnListarProductos.setSelected(false);
+            this.btnAdminProductos.setSelected(false);
+            this.btnInfoEmpresa.setSelected(true);
+            this.btnConfiguracion.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnInfoEmpresaMousePressed
+
+    private void btnAdminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminUserActionPerformed
+        try {
+            new CambiaPanel(pnlPrincipal, new com.admin.PanelUserNew());
+            if (this.btnAdminUser.isSelected()) {
+                this.btnAdminUser.setColorNormal(new Color(204, 204, 204));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+
+                this.btnHome.setColorNormal(new Color(239, 238, 244));
+                this.btnHome.setColorHover(new Color(204, 204, 204));
+                this.btnHome.setColorPressed(new Color(204, 204, 204));
+
+                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
+                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
+                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
+
+                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
+                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
+
+                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
+                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
+
+                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
+                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
+
+                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+            } else {
+                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnAdminUserActionPerformed
+
+    private void btnAdminUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminUserMousePressed
+        try {
+            this.btnAdminUser.setSelected(true);
+            this.btnHome.setSelected(false);
+            this.btnListarUsuarios.setSelected(false);
             this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(false);
             this.btnInfoEmpresa.setSelected(false);
@@ -994,124 +1110,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         } catch (Exception e) {
             System.err.println(e);
         }
-    }//GEN-LAST:event_btnListarUsuariosMousePressed
-
-    private void btnListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarUsuariosActionPerformed
-        try {
-            new CambiaPanel(pnlPrincipal, new com.admin.ListUsersPanel(this));
-            if (this.btnListarUsuarios.isSelected()) {
-                this.btnListarUsuarios.setColorNormal(new Color(204, 204, 204));
-                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
-                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
-
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
-
-                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
-                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
-
-                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
-                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
-
-                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
-                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
-
-                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
-                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
-
-                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
-                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
-                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
-
-                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
-                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
-                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else {
-                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
-                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
-                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnListarUsuariosActionPerformed
-
-    private void btnHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMousePressed
-        try {
-            this.btnHome.setSelected(true);
-            this.btnAdminUser.setSelected(false);
-            this.btnListarUsuarios.setSelected(false);
-            this.btnListarProductos.setSelected(false);
-            this.btnAdminProductos.setSelected(false);
-            this.btnInfoEmpresa.setSelected(false);
-            this.btnConfiguracion.setSelected(false);
-            this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnHomeMousePressed
-
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        try {
-            new CambiaPanel(pnlPrincipal, new InfoStore());
-            if (this.btnHome.isSelected()) {
-                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminUser.setColorHover(new Color(204, 204, 204));
-                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
-
-                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
-                this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
-
-                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
-                this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
-                this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
-
-                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
-                this.btnListarProductos.setColorHover(new Color(204, 204, 204));
-                this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
-
-                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
-                this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
-                this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
-
-                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
-                this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
-                this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
-
-                this.btnHome.setColorNormal(new Color(204, 204, 204));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
-
-                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
-                this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
-                this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
-            } else {
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnHomeActionPerformed
-
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null," -> ESTA OPCIÓN ESTA EN PROCESO DE MANTENIMIENTO.");
-            
-    }//GEN-LAST:event_buscarActionPerformed
-
-    private void buscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyPressed
-        // TODO add your handling code here:
-     
-                       
-    }//GEN-LAST:event_buscarKeyPressed
+    }//GEN-LAST:event_btnAdminUserMousePressed
 
     /**
      * @param args the command line arguments

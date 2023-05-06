@@ -4,34 +4,75 @@
  */
 package com.settings;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 public class Recursos {
-
-    public static ImageIcon mostrarImagen(String rutaImagen) throws IOException {
-        BufferedImage imagen = ImageIO.read(new File(rutaImagen));
-        return new ImageIcon(imagen);
+    static private Recursos servicio;
+    private Cursor cMano;
+    private Font fontTPrincipal, fontTitulo, fontSubtitulo, fontMediana, fontClasica;
+    
+    private Recursos(){
+        this.crearCursores();
+        this.crearFuentes();
+    }
+    
+    public static Recursos getService(){
+        if (servicio == null)
+        {
+            servicio = new Recursos();
+        }
+        return servicio;
+    }
+    
+    private void crearCursores() {
+        cMano = new Cursor(Cursor.HAND_CURSOR);
+    }
+    
+    public Cursor getCMano() {
+        return cMano;
+    }
+    
+    private void crearFuentes() {
+        fontTPrincipal = new Font("Rockwell Extra Bold", Font.PLAIN, 20);
+        fontTitulo = new Font("Rockwell Extra Bold", Font.PLAIN, 40);
+        fontSubtitulo = new Font("Forte", Font.PLAIN, 30);
+        fontMediana = new Font("LuzSans-Book", Font.PLAIN, 15);
+        fontClasica = new Font(null, Font.PLAIN, 20);
+    }
+    
+    public Font getFontTPrincipal() {
+        return fontTPrincipal;
     }
 
-    public static void guardarImagen(String rutaImagen, BufferedImage imagen) throws IOException {
-        File archivoImagen = new File(rutaImagen);
-        ImageIO.write(imagen, "png", archivoImagen);
+    public Font getFontTitulo() {
+        return fontTitulo;
     }
 
+    public Font getFontSubtitulo() {
+        return fontSubtitulo;
+    }
+    
+    public Font getFontMediana() {
+        return fontMediana;
+    }
+    
+    public Font getFontClasica() {
+        return fontClasica;
+    }
+    
     public static String obtenerNombreArchivo(String directorio) {
         File folder = new File(directorio);
         File[] archivos = folder.listFiles();
         return (archivos.length == 1 && archivos[0].isFile()) ? archivos[0].getName() : null;
-        /*if (archivos.length == 1 && archivos[0].isFile())
-        {
-            return archivos[0].getName();
-        } else
-        {
-            return null;
-        }*/
     }
 }

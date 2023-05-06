@@ -32,9 +32,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }
 
     public void desactivarBotonesIniciar() {
-        this.btnHome.setColorNormal(new Color(239, 238, 244));
-        this.btnHome.setColorHover(new Color(204, 204, 204));
-        this.btnHome.setColorPressed(new Color(204, 204, 204));
+        this.btnHoome.setColorNormal(new Color(239, 238, 244));
+        this.btnHoome.setColorHover(new Color(204, 204, 204));
+        this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
         this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
         this.btnAdminUser.setColorHover(new Color(204, 204, 204));
@@ -61,11 +61,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         btnCerrarSesion = new com.librery.RSButtonMetro();
         btnListarProductos = new com.librery.RSButtonMetro();
         btnListarUsuarios = new com.librery.RSButtonMetro();
-        btnHome = new com.librery.RSButtonMetro();
+        btnHoome = new com.librery.RSButtonMetro();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        buscar = new com.librery.JCTextField();
+        buscaar = new com.librery.JCTextField();
         pnlCentro = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlPrincipal = new javax.swing.JPanel();
@@ -258,26 +258,26 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnHome.setForeground(new java.awt.Color(128, 128, 131));
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
-        btnHome.setText("Home");
-        btnHome.setColorHover(new java.awt.Color(204, 204, 204));
-        btnHome.setColorNormal(new java.awt.Color(204, 204, 204));
-        btnHome.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnHome.setColorTextHover(new java.awt.Color(128, 128, 131));
-        btnHome.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        btnHome.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        btnHome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnHome.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnHome.setIconTextGap(25);
-        btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnHoome.setForeground(new java.awt.Color(128, 128, 131));
+        btnHoome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
+        btnHoome.setText("Home");
+        btnHoome.setColorHover(new java.awt.Color(204, 204, 204));
+        btnHoome.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnHoome.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnHoome.setColorTextHover(new java.awt.Color(128, 128, 131));
+        btnHoome.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        btnHoome.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        btnHoome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnHoome.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnHoome.setIconTextGap(25);
+        btnHoome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnHomeMousePressed(evt);
+                btnHoomeMousePressed(evt);
             }
         });
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
+        btnHoome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
+                btnHoomeActionPerformed(evt);
             }
         });
 
@@ -298,7 +298,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                         .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHoome, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -310,7 +310,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMenuLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHoome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -368,20 +368,20 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Sistema Ventas");
 
-        buscar.setBackground(new java.awt.Color(38, 86, 186));
-        buscar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        buscar.setForeground(new java.awt.Color(255, 255, 255));
-        buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        buscar.setPhColor(new java.awt.Color(255, 255, 255));
-        buscar.setPlaceholder("Buscar");
-        buscar.addActionListener(new java.awt.event.ActionListener() {
+        buscaar.setBackground(new java.awt.Color(38, 86, 186));
+        buscaar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        buscaar.setForeground(new java.awt.Color(255, 255, 255));
+        buscaar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        buscaar.setPhColor(new java.awt.Color(255, 255, 255));
+        buscaar.setPlaceholder("Buscar");
+        buscaar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
+                buscaarActionPerformed(evt);
             }
         });
-        buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+        buscaar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                buscarKeyPressed(evt);
+                buscaarKeyPressed(evt);
             }
         });
 
@@ -395,7 +395,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 492, Short.MAX_VALUE)
-                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscaar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -404,7 +404,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscaar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -511,9 +511,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
@@ -616,22 +616,22 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         this.setLocation(mueve.x - x, mueve.y - y);
     }//GEN-LAST:event_jPanel2MouseDragged
 
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null," -> ESTA OPCIÓN ESTA EN PROCESO DE MANTENIMIENTO.");
             
-    }//GEN-LAST:event_buscarActionPerformed
+    }                                      
 
-    private void buscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyPressed
+    private void buscarKeyPressed(java.awt.event.KeyEvent evt) {                                  
         // TODO add your handling code here:
      
                        
-    }//GEN-LAST:event_buscarKeyPressed
+    }                                 
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {                                        
         try {
             new CambiaPanel(pnlPrincipal, new InfoStore());
-            if (this.btnHome.isSelected()) {
+            if (this.btnHoome.isSelected()) {
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -656,26 +656,26 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(204, 204, 204));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(204, 204, 204));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             } else {
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
             }
         } catch (Exception e) {
             System.err.println(e);
         }
-    }//GEN-LAST:event_btnHomeActionPerformed
+    }                                       
 
-    private void btnHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMousePressed
+    private void btnHoomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoomeMousePressed
         try {
-            this.btnHome.setSelected(true);
+            this.btnHoome.setSelected(true);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
             this.btnListarProductos.setSelected(false);
@@ -686,7 +686,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         } catch (Exception e) {
             System.err.println(e);
         }
-    }//GEN-LAST:event_btnHomeMousePressed
+    }//GEN-LAST:event_btnHoomeMousePressed
 
     private void btnListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarUsuariosActionPerformed
         try {
@@ -696,9 +696,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
                 this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
@@ -735,7 +735,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void btnListarUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarUsuariosMousePressed
         try {
-            this.btnHome.setSelected(false);
+            this.btnHoome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(true);
             this.btnListarProductos.setSelected(false);
@@ -756,9 +756,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnListarProductos.setColorHover(new Color(204, 204, 204));
                 this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
@@ -795,7 +795,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void btnListarProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarProductosMousePressed
         try {
-            this.btnHome.setSelected(false);
+            this.btnHoome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
             this.btnListarProductos.setSelected(true);
@@ -815,9 +815,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
@@ -857,7 +857,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void btnCerrarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMousePressed
         try {
-            this.btnHome.setSelected(false);
+            this.btnHoome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
             this.btnListarProductos.setSelected(false);
@@ -878,9 +878,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
@@ -917,7 +917,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void btnConfiguracionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfiguracionMousePressed
         try {
-            this.btnHome.setSelected(false);
+            this.btnHoome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
             this.btnListarProductos.setSelected(false);
@@ -938,9 +938,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
@@ -977,7 +977,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void btnAdminProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminProductosMousePressed
         try {
-            this.btnHome.setSelected(false);
+            this.btnHoome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
             this.btnListarProductos.setSelected(false);
@@ -1000,9 +1000,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
@@ -1039,7 +1039,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void btnInfoEmpresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoEmpresaMousePressed
         try {
-            this.btnHome.setSelected(false);
+            this.btnHoome.setSelected(false);
             this.btnAdminUser.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
             this.btnListarProductos.setSelected(false);
@@ -1060,9 +1060,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
@@ -1097,10 +1097,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAdminUserActionPerformed
 
-    private void btnAdminUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminUserMousePressed
+    private void btnAdminUserMousePressed(java.awt.event.MouseEvent evt) {                                          
         try {
             this.btnAdminUser.setSelected(true);
-            this.btnHome.setSelected(false);
+            this.btnHoome.setSelected(false);
             this.btnListarUsuarios.setSelected(false);
             this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(false);
@@ -1110,12 +1110,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         } catch (Exception e) {
             System.err.println(e);
         }
-    }//GEN-LAST:event_btnHomeMousePressed
+    }                                    
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+    private void btnHoomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoomeActionPerformed
         try {
             new CambiaPanel(pnlPrincipal, new InfoStore());
-            if (this.btnHome.isSelected()) {
+            if (this.btnHoome.isSelected()) {
                 this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
                 this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
@@ -1140,34 +1140,34 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHome.setColorNormal(new Color(204, 204, 204));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(204, 204, 204));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
                 this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             } else {
-                this.btnHome.setColorNormal(new Color(239, 238, 244));
-                this.btnHome.setColorHover(new Color(204, 204, 204));
-                this.btnHome.setColorPressed(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorHover(new Color(204, 204, 204));
+                this.btnHoome.setColorPressed(new Color(204, 204, 204));
             }
         } catch (Exception e) {
             System.err.println(e);
         }
-    }//GEN-LAST:event_btnHomeActionPerformed
+    }//GEN-LAST:event_btnHoomeActionPerformed
 
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+    private void buscaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaarActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null," -> ESTA OPCIÓN ESTA EN PROCESO DE CREACION ._.");
             
-    }//GEN-LAST:event_buscarActionPerformed
+    }//GEN-LAST:event_buscaarActionPerformed
 
-    private void buscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyPressed
+    private void buscaarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscaarKeyPressed
         // TODO add your handling code here:
      
                        
-    }//GEN-LAST:event_buscarKeyPressed
+    }//GEN-LAST:event_buscaarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1214,11 +1214,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private com.librery.RSButtonMetro btnAdminUser;
     private com.librery.RSButtonMetro btnCerrarSesion;
     private com.librery.RSButtonMetro btnConfiguracion;
-    private com.librery.RSButtonMetro btnHome;
+    private com.librery.RSButtonMetro btnHoome;
     private com.librery.RSButtonMetro btnInfoEmpresa;
     private com.librery.RSButtonMetro btnListarProductos;
     private com.librery.RSButtonMetro btnListarUsuarios;
-    private com.librery.JCTextField buscar;
+    private com.librery.JCTextField buscaar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -1103,7 +1103,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null," -> ESTA OPCIÓN ESTA EN PROCESO DE MANTENIMIENTO.");
+        JOptionPane.showMessageDialog(null," -> ESTA OPCIÓN ESTA EN PROCESO DE CREACION ._.");
             
     }//GEN-LAST:event_buscarActionPerformed
 

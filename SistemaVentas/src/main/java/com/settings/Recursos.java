@@ -4,17 +4,9 @@
  */
 package com.settings;
 
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 
 public class Recursos {
     static private Recursos servicio;

@@ -135,7 +135,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
             }
         });
         table.setRowHeight(40);
-        table.setSelectionBackground(new java.awt.Color(20, 169, 98));
+        table.setSelectionBackground(new java.awt.Color(0, 204, 204));
         jScrollPane1.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

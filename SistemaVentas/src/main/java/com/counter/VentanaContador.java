@@ -6,7 +6,6 @@
 package com.counter;
 
 import com.librery.Animacion;
-import com.counter.pnlHomeContador;
 import com.main.Login;
 import java.awt.Color;
 import java.awt.MouseInfo;
@@ -16,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
-
 public class VentanaContador extends javax.swing.JFrame {
 
     int x, y;
@@ -29,13 +27,21 @@ public class VentanaContador extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
         this.btnHome.setSelected(true);
-        //Animacion.bajar(PNuevo.getY(), PNuevo.getY()+PNuevo.getHeight()*5, 1, 10, PNuevo);
-        //Animacion.bajar(subpanelProductos.getY(), subpanelProductos.getY()+subpanelProductos.getHeight()*5, 1, 10, subpanelProductos);
-        
         new CambiaPanel(pnlPrincipal, new pnlHomeContador());
         setVisible(true);
+        desactivarBotonesIniciar();
     }
 
+    public void desactivarBotonesIniciar() {
+        this.btnGrafica.setColorNormal(new Color(239, 238, 244));
+        this.btnGrafica.setColorHover(new Color(204, 204, 204));
+        this.btnGrafica.setColorPressed(new Color(204, 204, 204));
+
+        this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+        this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
+        this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,8 +54,7 @@ public class VentanaContador extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
-        btnVentas = new com.librery.RSButtonMetro();
-        btnInversiones = new com.librery.RSButtonMetro();
+        btnGrafica = new com.librery.RSButtonMetro();
         jPanel5 = new javax.swing.JPanel();
         btnHome = new com.librery.RSButtonMetro();
         btnCerrarSesion = new com.librery.RSButtonMetro();
@@ -57,7 +62,6 @@ public class VentanaContador extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         pnlCentro = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlPrincipal = new javax.swing.JPanel();
 
@@ -69,50 +73,26 @@ public class VentanaContador extends javax.swing.JFrame {
         pnlMenu.setBackground(new java.awt.Color(239, 238, 244));
         pnlMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(239, 238, 244)));
 
-        btnVentas.setForeground(new java.awt.Color(128, 128, 131));
-        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosContador/ventas.png"))); // NOI18N
-        btnVentas.setText("Reporte de Ventas");
-        btnVentas.setColorHover(new java.awt.Color(204, 204, 204));
-        btnVentas.setColorNormal(new java.awt.Color(204, 204, 204));
-        btnVentas.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnVentas.setColorTextHover(new java.awt.Color(128, 128, 131));
-        btnVentas.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        btnVentas.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        btnVentas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnVentas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnVentas.setIconTextGap(25);
-        btnVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGrafica.setForeground(new java.awt.Color(128, 128, 131));
+        btnGrafica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosContador/ventas.png"))); // NOI18N
+        btnGrafica.setText("Historial Financiero");
+        btnGrafica.setColorHover(new java.awt.Color(204, 204, 204));
+        btnGrafica.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnGrafica.setColorPressed(new java.awt.Color(204, 204, 204));
+        btnGrafica.setColorTextHover(new java.awt.Color(128, 128, 131));
+        btnGrafica.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        btnGrafica.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        btnGrafica.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnGrafica.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnGrafica.setIconTextGap(25);
+        btnGrafica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnVentasMousePressed(evt);
+                btnGraficaMousePressed(evt);
             }
         });
-        btnVentas.addActionListener(new java.awt.event.ActionListener() {
+        btnGrafica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVentasActionPerformed(evt);
-            }
-        });
-
-        btnInversiones.setBackground(new java.awt.Color(239, 238, 244));
-        btnInversiones.setForeground(new java.awt.Color(128, 128, 131));
-        btnInversiones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosContador/informe-de-venta.png"))); // NOI18N
-        btnInversiones.setText("Reporte de Inversiones");
-        btnInversiones.setColorHover(new java.awt.Color(204, 204, 204));
-        btnInversiones.setColorNormal(new java.awt.Color(239, 238, 244));
-        btnInversiones.setColorPressed(new java.awt.Color(204, 204, 204));
-        btnInversiones.setColorTextHover(new java.awt.Color(128, 128, 131));
-        btnInversiones.setColorTextNormal(new java.awt.Color(128, 128, 131));
-        btnInversiones.setColorTextPressed(new java.awt.Color(128, 128, 131));
-        btnInversiones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnInversiones.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnInversiones.setIconTextGap(25);
-        btnInversiones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnInversionesMousePressed(evt);
-            }
-        });
-        btnInversiones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInversionesActionPerformed(evt);
+                btnGraficaActionPerformed(evt);
             }
         });
 
@@ -184,8 +164,7 @@ public class VentanaContador extends javax.swing.JFrame {
             .addGroup(pnlMenuLayout.createSequentialGroup()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInversiones, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
@@ -195,10 +174,8 @@ public class VentanaContador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnInversiones, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(165, 165, 165)
+                .addComponent(btnGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(251, 251, 251)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,19 +251,6 @@ public class VentanaContador extends javax.swing.JFrame {
 
         pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 687, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
-        );
-
         jScrollPane1.setBorder(null);
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -297,15 +261,13 @@ public class VentanaContador extends javax.swing.JFrame {
         pnlCentro.setLayout(pnlCentroLayout);
         pnlCentroLayout.setHorizontalGroup(
             pnlCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
         );
         pnlCentroLayout.setVerticalGroup(
             pnlCentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCentroLayout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCentroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -331,88 +293,15 @@ public class VentanaContador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+    private void btnGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficaActionPerformed
         try
         {
-            if(this.btnVentas.isSelected()){
-                this.btnVentas.setColorNormal(new Color(204,204,204));
-                this.btnVentas.setColorHover(new Color(204,204,204));
-                this.btnVentas.setColorPressed(new Color(204,204,204));
+            new CambiaPanel(pnlPrincipal, new pnlGrafica());
+            if(this.btnGrafica.isSelected()){
+                this.btnGrafica.setColorNormal(new Color(204,204,204));
+                this.btnGrafica.setColorHover(new Color(204,204,204));
+                this.btnGrafica.setColorPressed(new Color(204,204,204));
 
-                this.btnHome.setColorNormal(new Color(239,238,244));
-                this.btnHome.setColorHover(new Color(204,204,204));
-                this.btnHome.setColorPressed(new Color(204,204,204));
-            
-                this.btnInversiones.setColorNormal(new Color(239,238,244));
-                this.btnInversiones.setColorHover(new Color(204,204,204));
-                this.btnInversiones.setColorPressed(new Color(204,204,204));
-            
-                this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
-                this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-                this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-            }else{
-                this.btnVentas.setColorNormal(new Color(239,238,244));
-                this.btnVentas.setColorHover(new Color(204,204,204));
-                this.btnVentas.setColorPressed(new Color(204,204,204));
-            }
-            /*if(btnAdminProductos.getY()==96){
-               if(btnInfoEmpresa.getY()!=194){
-                   adminAction();
-               }
-               Animacion.bajar(194-btnAdminProductos.getHeight(), 194, 1, 2, btnAdminProductos);
-               Animacion.bajar(424-btnConfiguracion.getHeight(), 424, 1, 2, btnConfiguracion);
-               Animacion.bajar(324-btnInfoEmpresa.getHeight(),324, 1, 2, btnInfoEmpresa);
-               Animacion.bajar(514-btnCerrarSesion.getHeight(), 514, 1, 2, btnCerrarSesion);
-               Animacion.subir( 100+PNuevo.getHeight(), 100,0, 10, PNuevo);
-            }else{
-               Animacion.subir(96+btnAdminProductos.getHeight(), 96, 0, 2, btnAdminProductos);
-               Animacion.subir(304+btnConfiguracion.getHeight(), 304, 0, 2, btnConfiguracion);
-               Animacion.subir(194+btnInfoEmpresa.getHeight(), 194, 0, 2, btnInfoEmpresa);
-               Animacion.subir(404+btnCerrarSesion.getHeight(), 404, 0, 2, btnCerrarSesion);
-               Animacion.bajar(980-PNuevo.getHeight(), 980, 0, 10, PNuevo);
-            }*/
-        } catch (Exception e)
-        {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnVentasActionPerformed
-
-    private void btnVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMousePressed
-        try
-        {
-            this.btnVentas.setSelected(true);
-            this.btnInversiones.setSelected(false);
-            this.btnHome.setSelected(false);
-            this.btnCerrarSesion.setSelected(false);
-        } catch (Exception e)
-        {
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnVentasMousePressed
-
-    private void btnInversionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInversionesMousePressed
-        try{
-            this.btnInversiones.setSelected(true);
-            this.btnHome.setSelected(false);
-            this.btnVentas.setSelected(false);
-            this.btnCerrarSesion.setSelected(false);
-        }catch(Exception e){
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_btnInversionesMousePressed
-
-    private void btnInversionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInversionesActionPerformed
-        try
-        {
-            if(this.btnInversiones.isSelected()){
-                this.btnInversiones.setColorNormal(new Color(204,204,204));
-                this.btnInversiones.setColorHover(new Color(204,204,204));
-                this.btnInversiones.setColorPressed(new Color(204,204,204));
-
-                this.btnVentas.setColorNormal(new Color(239,238,244));
-                this.btnVentas.setColorHover(new Color(204,204,204));
-                this.btnVentas.setColorPressed(new Color(204,204,204));
-            
                 this.btnHome.setColorNormal(new Color(239,238,244));
                 this.btnHome.setColorHover(new Color(204,204,204));
                 this.btnHome.setColorPressed(new Color(204,204,204));
@@ -420,18 +309,28 @@ public class VentanaContador extends javax.swing.JFrame {
                 this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
                 this.btnCerrarSesion.setColorHover(new Color(204,204,204));
                 this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-            
             }else{
-                this.btnInversiones.setColorNormal(new Color(239,238,244));
-                this.btnInversiones.setColorHover(new Color(204,204,204));
-                this.btnInversiones.setColorHover(new Color(204,204,204));
-                this.btnInversiones.setColorPressed(new Color(204,204,204));
+                this.btnGrafica.setColorNormal(new Color(239,238,244));
+                this.btnGrafica.setColorHover(new Color(204,204,204));
+                this.btnGrafica.setColorPressed(new Color(204,204,204));
             }
         } catch (Exception e)
         {
             System.err.println(e);
         }
-    }//GEN-LAST:event_btnInversionesActionPerformed
+    }//GEN-LAST:event_btnGraficaActionPerformed
+
+    private void btnGraficaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGraficaMousePressed
+        try
+        {
+            this.btnGrafica.setSelected(true);
+            this.btnHome.setSelected(false);
+            this.btnCerrarSesion.setSelected(false);
+        } catch (Exception e)
+        {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnGraficaMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
@@ -452,17 +351,13 @@ public class VentanaContador extends javax.swing.JFrame {
         try
         {
             if(this.btnCerrarSesion.isSelected()){
-                this.btnVentas.setColorNormal(new Color(239,238,244));
-                this.btnVentas.setColorHover(new Color(204,204,204));
-                this.btnVentas.setColorPressed(new Color(204,204,204));
+                this.btnGrafica.setColorNormal(new Color(239,238,244));
+                this.btnGrafica.setColorHover(new Color(204,204,204));
+                this.btnGrafica.setColorPressed(new Color(204,204,204));
                 
                 this.btnHome.setColorNormal(new Color(239,238,244));
                 this.btnHome.setColorHover(new Color(204,204,204));
                 this.btnHome.setColorPressed(new Color(204,204,204));
-            
-                this.btnInversiones.setColorNormal(new Color(239,238,244));
-                this.btnInversiones.setColorHover(new Color(204,204,204));
-                this.btnInversiones.setColorPressed(new Color(204,204,204));
             
                 this.btnCerrarSesion.setColorNormal(new Color(204,204,204));
                 this.btnCerrarSesion.setColorHover(new Color(204,204,204));
@@ -487,8 +382,7 @@ public class VentanaContador extends javax.swing.JFrame {
         {
             this.btnCerrarSesion.setSelected(true);
             this.btnHome.setSelected(false);
-            this.btnVentas.setSelected(false);
-            this.btnInversiones.setSelected(false);
+            this.btnGrafica.setSelected(false);
         } catch (Exception e)
         {
             System.err.println(e);
@@ -509,8 +403,7 @@ public class VentanaContador extends javax.swing.JFrame {
         try
         {
             this.btnHome.setSelected(true);
-            this.btnVentas.setSelected(false);
-            this.btnInversiones.setSelected(false);
+            this.btnGrafica.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
         } catch (Exception e)
         {
@@ -526,13 +419,9 @@ public class VentanaContador extends javax.swing.JFrame {
                 this.btnHome.setColorHover(new Color(204,204,204));
                 this.btnHome.setColorPressed(new Color(204,204,204));
             
-                this.btnVentas.setColorNormal(new Color(239,238,244));
-                this.btnVentas.setColorHover(new Color(204,204,204));
-                this.btnVentas.setColorPressed(new Color(204,204,204));
-            
-                this.btnInversiones.setColorNormal(new Color(239,238,244));
-                this.btnInversiones.setColorHover(new Color(204,204,204));
-                this.btnInversiones.setColorPressed(new Color(204,204,204));
+                this.btnGrafica.setColorNormal(new Color(239,238,244));
+                this.btnGrafica.setColorHover(new Color(204,204,204));
+                this.btnGrafica.setColorPressed(new Color(204,204,204));
             
                 this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
                 this.btnCerrarSesion.setColorHover(new Color(204,204,204));
@@ -591,15 +480,13 @@ public class VentanaContador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.librery.RSButtonMetro btnCerrarSesion;
+    private com.librery.RSButtonMetro btnGrafica;
     private com.librery.RSButtonMetro btnHome;
-    private com.librery.RSButtonMetro btnInversiones;
-    private com.librery.RSButtonMetro btnVentas;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlMenu;

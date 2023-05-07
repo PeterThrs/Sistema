@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
@@ -23,6 +24,7 @@ import javax.swing.border.Border;
  */
 public class ObjGraficosService {
     private JLabel label;
+    private JPanel panel;
     static private ObjGraficosService servicio;
     
     private ObjGraficosService() {
@@ -76,6 +78,16 @@ public class ObjGraficosService {
                 break;
         }
         return label;
+    }
+    
+    public JPanel construirJPanel(int x, int y, int ancho, int alto, Color colorFondo, Border borde) {
+        panel = new JPanel();
+        panel.setSize(ancho, alto);
+        panel.setLocation(x, y);
+        panel.setLayout(null);
+        panel.setBackground(colorFondo);
+        panel.setBorder(borde);
+        return panel;
     }
     
     public static ImageIcon mostrarImagen(String rutaImagen) throws IOException {

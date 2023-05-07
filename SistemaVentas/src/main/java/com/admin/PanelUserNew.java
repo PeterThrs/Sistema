@@ -4,7 +4,7 @@ import com.classes.Persona;
 import com.classes.Rol;
 import com.classes.Usuario;
 import com.conexion.PersonaDao;
-import com.conexion.RolDao;
+import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
@@ -152,7 +152,7 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     private void modeloComboBox() {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
-        List<Rol> roles = RolDao.seleccionar();
+        List<Rol> roles = RolDAO.seleccionar();
         roles.forEach(rol
                 -> {
             dcbm.addElement(rol.getNombre());

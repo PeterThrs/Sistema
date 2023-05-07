@@ -5,188 +5,164 @@
 package com.admin;
 
 import com.classes.Tienda;
-import com.conexion.TiendaDao;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
+import com.conexion.TiendaDAO;
+import com.settings.ObjGraficosService;
+import com.settings.Recursos;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-import java.util.ArrayList;
-import javax.swing.BorderFactory;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 public class InfoStore extends javax.swing.JPanel {
 
-    private JLabel icon, nombre, slogan, facebookIcon, phone1Icon, phone2Icon, phone1, phone2, gmailIcon, gmail;
+    private JLabel jlLogo, jlNombre, jlSlogan, jlFacebookIcon, jlPhone1Icon, jlPhone2Icon, jlPhone1, jlPhone2, jlGmailIcon, jlGmail;
     private Tienda tienda;
+    private ImageIcon imgLogo, imgFacebook, imgPhone, imgGmail, iDimAux;
+    private Recursos recursos;
+    private ObjGraficosService oGraficos;
+    private GridBagLayout gbl;
+    private GridBagConstraints gbc;
 
     public InfoStore() {
         initComponents();
+        instancias();
+        inicializarImagenes();
+        cargarIconos();
+        construirJLabels();
+        colocarEnLayout();
+    }
 
-        tienda = TiendaDao.traerUltimo();
-
-        ImageIcon iFondo = new ImageIcon("src/main/resources/tienda.png");
-        ImageIcon iDimAux = new ImageIcon(
-                iFondo.getImage()
-                        .getScaledInstance(400, 270, Image.SCALE_AREA_AVERAGING)
-        );
-        icon = new JLabel();
-        icon.setSize(400, 270);
-        icon.setLocation(400, 100);
-        icon.setIcon(iDimAux);
-
-        iFondo = new ImageIcon("src/main/resources/img/facebook.png");
-        iDimAux = new ImageIcon(
-                iFondo.getImage()
-                        .getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING)
-        );
-        facebookIcon = new JLabel();
-        facebookIcon.setSize(30, 30);
-        facebookIcon.setLocation(1202, 695);
-        facebookIcon.setIcon(iDimAux);
-
-        iFondo = new ImageIcon("src/main/resources/img/llamada-telefonica.png");
-        iDimAux = new ImageIcon(
-                iFondo.getImage()
-                        .getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING)
-        );
-        phone1Icon = new JLabel();
-        phone1Icon.setSize(30, 30);
-        phone1Icon.setLocation(952, 695);
-        phone1Icon.setIcon(iDimAux);
-
-        iFondo = new ImageIcon("src/main/resources/img/llamada-telefonica.png");
-        iDimAux = new ImageIcon(
-                iFondo.getImage()
-                        .getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING)
-        );
-        phone2Icon = new JLabel();
-        phone2Icon.setSize(30, 30);
-        phone2Icon.setLocation(702, 695);
-        phone2Icon.setIcon(iDimAux);
-
-        iFondo = new ImageIcon("src/main/resources/img/email.png");
-        iDimAux = new ImageIcon(
-                iFondo.getImage()
-                        .getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING)
-        );
-        gmailIcon = new JLabel();
-        gmailIcon.setSize(30, 30);
-        gmailIcon.setLocation(0, 695);
-        gmailIcon.setIcon(iDimAux);
-
-        phone1 = new JLabel("+52 " + tienda.getTelefono2());
-        phone1.setFont(new Font(null, Font.PLAIN, 20));
-        phone1.setBounds(994, 687, 200, 50);
-        phone1.setOpaque(false);
-
-        phone2 = new JLabel("+52 " + tienda.getTelefono1());
-        phone2.setFont(new Font(null, Font.PLAIN, 20));
-        phone2.setBounds(744, 687, 200, 50);
-        phone2.setOpaque(false);
-
-        gmail = new JLabel(tienda.getEmail());
-        gmail.setFont(new Font(null, Font.PLAIN, 20));
-        gmail.setBounds(42, 687, 640, 50);
-        gmail.setOpaque(true);
-
-        nombre = new JLabel(tienda.getNombre());
-        nombre.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 40));
-        nombre.setBounds(0, 0, 1200, 100);
-        nombre.setOpaque(true);
-        nombre.setHorizontalAlignment(SwingConstants.CENTER);
-
-        slogan = new JLabel("<html><center>" + seleccionar(tienda.getSlogan()) + "</center></html>");
-        slogan.setFont(new Font("Forte", Font.PLAIN, 30));
-        slogan.setBounds(250, 400, 700, 200);
-        slogan.setOpaque(true);
-        slogan.setHorizontalAlignment(JLabel.CENTER);
-
-        
-        
-        GridBagLayout gbl = new GridBagLayout(); 
-        
+    public void instancias() {
+        tienda = TiendaDAO.traerUltimo();
+        recursos = Recursos.getService();
+        oGraficos = ObjGraficosService.getService();
+        gbl = new GridBagLayout();
+        gbc = new GridBagConstraints();
         this.setLayout(gbl);
-        
-        GridBagConstraints gbc = new GridBagConstraints(); 
-        
-        gbc.gridx = 0; 
-        gbc.gridy = 0; 
-        gbc.gridwidth = 5; 
-        this.add(icon, gbc);
-        
-        gbc.gridx = 3; 
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        this.add(facebookIcon, gbc);
-        gbc.gridx = 0; 
-        gbc.gridy = 9;
-        gbc.gridwidth = 1;
-        this.add(phone1Icon, gbc);
-        gbc.gridx = 1; 
-        gbc.gridy = 9;
-        gbc.gridwidth = 1;
-        this.add(phone2Icon, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 4;
-        gbc.gridwidth = 1;
-        this.add(nombre, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 5;
-        gbc.gridwidth = 1;
-        this.add(slogan, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 6;
-        gbc.gridwidth = 1;
-        this.add(phone1, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 7;
-        gbc.gridwidth = 1;
-        this.add(phone2, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 8;
-        gbc.gridwidth = 1;
-        this.add(gmailIcon, gbc);
-        gbc.gridx = 3; 
-        gbc.gridy = 9;
-        gbc.gridwidth = 1;
-        this.add(gmail, gbc);
-        
-        
     }
 
-    public static String seleccionar(String texto) {
-        int longitudMaxima = 28;
-
-        java.util.List<String> lineas = new ArrayList<String>();
-        int inicio = 0;
-        int fin = longitudMaxima;
-        while (inicio < texto.length())
+    public void inicializarImagenes() {
+        try
         {
-            if (fin >= texto.length())
-            {
-                fin = texto.length();
-            } else
-            {
-                fin = texto.lastIndexOf(" ", fin);
-            }
-            lineas.add(texto.substring(inicio, fin));
-            inicio = fin + 1;
-            fin = inicio + longitudMaxima;
+            imgLogo = oGraficos.mostrarImagen("src/main/resources/icono/logo.png");
+            System.out.println("Cargamos la imagen exitosamente");
+        } catch (IOException ex)
+        {
+            Logger.getLogger(InfoStore.class.getName()).log(Level.SEVERE, null, ex);
+            imgLogo = new ImageIcon("src/main/resources/tienda.png");
+            System.out.println("Hubo un error al cargar la imagen");
         }
-        return String.join("<br>", lineas);
-        //System.out.println("Texto formateado: " + textoFormateado);
-        //JLabel label = new JLabel("<html>" + textoFormateado + "</html>");
+        imgFacebook = new ImageIcon("src/main/resources/img/facebook.png");
+        imgPhone = new ImageIcon("src/main/resources/img/llamada-telefonica.png");
+        imgGmail = new ImageIcon("src/main/resources/img/email.png");
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    public void cargarIconos() {
+        iDimAux = new ImageIcon(imgLogo.getImage().getScaledInstance(400, 270, Image.SCALE_AREA_AVERAGING));
+        jlLogo = oGraficos.construirJLabel(null, 400, 100, 400, 270, null, iDimAux, null, null, null, null, "z");
+
+        iDimAux = new ImageIcon(imgFacebook.getImage().getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING));
+        jlFacebookIcon = oGraficos.construirJLabel(null, 1202, 695, 30, 30, recursos.getCMano(), iDimAux, null, null, null, null, "z");
+
+        iDimAux = new ImageIcon(imgPhone.getImage().getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING));
+        jlPhone1Icon = oGraficos.construirJLabel(null, 952, 695, 30, 30, null, iDimAux, null, null, null, null, "z");
+
+        iDimAux = new ImageIcon(imgPhone.getImage().getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING));
+        jlPhone2Icon = oGraficos.construirJLabel(null, 702, 695, 30, 30, null, iDimAux, null, null, null, null, "z");
+
+        iDimAux = new ImageIcon(imgGmail.getImage().getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING));
+        jlGmailIcon = oGraficos.construirJLabel(null, 0, 695, 30, 30, null, iDimAux, null, null, null, null, "z");
+    }
+
+    public void construirJLabels() {
+        jlPhone1 = oGraficos.construirJLabel("+52 " + tienda.getTelefono1(), 994, 687, 200, 50, null, null, recursos.getFontClasica(), null, null, null, "z");
+        jlPhone2 = oGraficos.construirJLabel("+52 " + tienda.getTelefono2(), 744, 687, 200, 50, null, null, recursos.getFontClasica(), null, null, null, "z");
+        jlGmail = oGraficos.construirJLabel(tienda.getEmail(), 42, 687, 640, 50, null, null, recursos.getFontClasica(), null, null, null, "z");
+        jlNombre = oGraficos.construirJLabel(tienda.getNombre(), 0, 0, 1200, 100, null, null, recursos.getFontTitulo(), null, null, null, "c");
+        jlSlogan = oGraficos.construirJLabel("<html><center>" + oGraficos.saltosDeLineaJlabel(tienda.getSlogan(),28) + "</center></html>", 250, 400, 700, 200, null, null, recursos.getFontSubtitulo(), null, null, null, "c");
+    }
+
+//    public void colocarEnLayout(JComponent component, int gridX, int gridY, int gridWidth, int gridHeight, int ipadX, int ipadY){
+//        gbc.gridx = gridX; 
+//        gbc.gridy = gridY;
+//        gbc.gridwidth = gridWidth;
+//        gbc.gridheight = gridHeight;
+//        gbc.ipadx = ipadX;
+//        gbc.ipady = ipadY;
+//        this.add(component, gbc);
+//    }
+    public void colocarEnLayout() {
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 0;
+        gbc.ipady = 50;
+        this.add(jlNombre, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 0;;
+        gbc.ipady = 50;
+        this.add(jlLogo, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 0;
+        gbc.ipady = 50;
+        this.add(jlSlogan, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        this.add(jlPhone1Icon, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 100;
+        this.add(jlPhone1, gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 10;
+        this.add(jlPhone2Icon, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 100;
+        this.add(jlPhone2, gbc);
+
+        gbc.gridx = 6;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 10;
+        this.add(jlGmailIcon, gbc);
+
+        gbc.gridx = 7;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 100;
+        this.add(jlGmail, gbc);
+
+        gbc.gridx = 9;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 5;
+        gbc.ipadx = 10;
+        this.add(jlFacebookIcon, gbc);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

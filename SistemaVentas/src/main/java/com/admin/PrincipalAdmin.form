@@ -79,7 +79,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnListarUsuarios" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                                   <Component id="btnAdminUser" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                                  <Component id="btnHome" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Component id="btnHoome" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                                   <Component id="btnConfiguracion" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                                   <Component id="btnCerrarSesion" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                                   <Component id="btnAdminProductos" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
@@ -96,7 +96,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnHome" min="-2" pref="68" max="-2" attributes="0"/>
+                              <Component id="btnHoome" min="-2" pref="68" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnAdminUser" min="-2" pref="68" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -413,7 +413,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarUsuariosActionPerformed"/>
               </Events>
             </Component>
-            <Component class="com.librery.RSButtonMetro" name="btnHome">
+            <Component class="com.librery.RSButtonMetro" name="btnHoome">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="83" green="80" red="80" type="rgb"/>
@@ -445,8 +445,8 @@
                 <Property name="iconTextGap" type="int" value="25"/>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnHomeMousePressed"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHomeActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnHoomeMousePressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHoomeActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -479,7 +479,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="492" max="32767" attributes="0"/>
-                      <Component id="buscar" min="-2" pref="281" max="-2" attributes="0"/>
+                      <Component id="buscaar" min="-2" pref="281" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -490,7 +490,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="buscaar" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -530,7 +530,7 @@
                 <Property name="text" type="java.lang.String" value="Sistema Ventas"/>
               </Properties>
             </Component>
-            <Component class="com.librery.JCTextField" name="buscar">
+            <Component class="com.librery.JCTextField" name="buscaar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ba" green="56" red="26" type="rgb"/>
@@ -554,8 +554,8 @@
                 <Property name="placeholder" type="java.lang.String" value="Buscar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarActionPerformed"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buscarKeyPressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscaarActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buscaarKeyPressed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -563,7 +563,7 @@
         <Container class="javax.swing.JPanel" name="pnlCentro">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="f4" green="ee" red="ef" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -575,12 +575,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="675" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="679" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="683" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

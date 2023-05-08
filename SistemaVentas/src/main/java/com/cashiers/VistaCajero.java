@@ -42,7 +42,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class Ventana extends JFrame {
+public class VistaCajero extends JFrame {
 
     private JPanel panelIzquierdo;
     private JPanel panelDerecho;
@@ -54,7 +54,7 @@ public class Ventana extends JFrame {
     private Color colorPrincipal;
     private JTextField tCodigo;
 
-    public Ventana() {
+    public VistaCajero() {
         // Configuramos la ventana principal
         super("Cajero");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,7 +117,7 @@ public class Ventana extends JFrame {
         try {
             this.jlImagen = new JLabel();
             this.jlImagen.setSize(new Dimension(100, 100));
-            Icon icon = new ImageIcon(new ImageIcon("src/main/resources/imagenes/peter/austronauta.png").getImage().getScaledInstance(jlImagen.getWidth(), jlImagen.getHeight(), Image.SCALE_AREA_AVERAGING));
+            Icon icon = new ImageIcon(new ImageIcon("src/main/resources/imagenes/peter/austronauta.png").getImage().getScaledInstance(200, 200, Image.SCALE_AREA_AVERAGING));
             this.jlImagen.setIcon(icon);
             //this.repaint();
             this.jlImagen.setBackground(Color.MAGENTA);
@@ -295,18 +295,151 @@ public class Ventana extends JFrame {
         tabla.setDefaultRenderer(Object.class, centerRenderer);
 
         // Agregar algunos datos a la tabla para mostrarla con información
-        Object[] fila1 = {"123456789", "Crema para peinarse PANTENE", "$40.00", "2", "$80.00", "5"};
-        model.addRow(fila1);
-        Object[] fila2 = {"123456789", "Crema para peinarse PANTENE", "$40.00", "2", "$80.00", "5"};
-        model.addRow(fila2);
+//        Object[] fila1 = {"123456789", "Crema para peinarse PANTENE", "$40.00", "2", "$80.00", "5"};
+//        model.addRow(fila1);
+//        Object[] fila2 = {"123456789", "Crema para peinarse PANTENE", "$40.00", "2", "$80.00", "5"};
+//        model.addRow(fila2);
 
         //lo agregamos al panel con las ubicaciones
         c = grid(0, 5, 5, 10, 1, 1, GridBagConstraints.BOTH, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, scrollPane, c);
 
     }
+    
+    //getter and Setter para poder recuperar los datos desde el controlador
 
     public static void main(String[] args) {
-        Ventana v = new Ventana();
+        VistaCajero v = new VistaCajero();
     }
+
+    public JPanel getPanelIzquierdo() {
+        return panelIzquierdo;
+    }
+
+    public void setPanelIzquierdo(JPanel panelIzquierdo) {
+        this.panelIzquierdo = panelIzquierdo;
+    }
+
+    public JPanel getPanelDerecho() {
+        return panelDerecho;
+    }
+
+    public void setPanelDerecho(JPanel panelDerecho) {
+        this.panelDerecho = panelDerecho;
+    }
+
+    public GridBagConstraints getC() {
+        return c;
+    }
+
+    public void setC(GridBagConstraints c) {
+        this.c = c;
+    }
+
+    public ImageIcon getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(ImageIcon imagen) {
+        this.imagen = imagen;
+    }
+
+    public JLabel getJlImagen() {
+        return jlImagen;
+    }
+
+    public void setJlImagen(JLabel jlImagen) {
+        this.jlImagen = jlImagen;
+    }
+
+    public JLabel getJlNombreEmpresa() {
+        return jlNombreEmpresa;
+    }
+
+    public void setJlNombreEmpresa(JLabel jlNombreEmpresa) {
+        this.jlNombreEmpresa = jlNombreEmpresa;
+    }
+
+    public JLabel getJlSloga() {
+        return jlSloga;
+    }
+
+    public void setJlSloga(JLabel jlSloga) {
+        this.jlSloga = jlSloga;
+    }
+
+    public JLabel getJlgmail() {
+        return jlgmail;
+    }
+
+    public void setJlgmail(JLabel jlgmail) {
+        this.jlgmail = jlgmail;
+    }
+
+    public JLabel getJlNombreCajero() {
+        return jlNombreCajero;
+    }
+
+    public void setJlNombreCajero(JLabel jlNombreCajero) {
+        this.jlNombreCajero = jlNombreCajero;
+    }
+
+    public JLabel getJlCodigoProducto() {
+        return jlCodigoProducto;
+    }
+
+    public void setJlCodigoProducto(JLabel jlCodigoProducto) {
+        this.jlCodigoProducto = jlCodigoProducto;
+    }
+
+    public JTable getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(JTable tabla) {
+        this.tabla = tabla;
+    }
+
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public void setBtnAgregar(JButton btnAgregar) {
+        this.btnAgregar = btnAgregar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public JButton getBtnCerrarSesion() {
+        return btnCerrarSesion;
+    }
+
+    public void setBtnCerrarSesion(JButton btnCerrarSesion) {
+        this.btnCerrarSesion = btnCerrarSesion;
+    }
+
+    public Color getColorPrincipal() {
+        return colorPrincipal;
+    }
+
+    public void setColorPrincipal(Color colorPrincipal) {
+        this.colorPrincipal = colorPrincipal;
+    }
+
+    public JTextField gettCodigo() {
+        return tCodigo;
+    }
+
+    public void settCodigo(JTextField tCodigo) {
+        this.tCodigo = tCodigo;
+    }
+    
+    
+    
 }

@@ -1,5 +1,11 @@
 package com.cashiers;
 
+/**
+ *
+ * @author Alberto
+ */
+
+
 import com.settings.CodigoColor;
 import com.main.Login;
 import com.settings.Configuracion;

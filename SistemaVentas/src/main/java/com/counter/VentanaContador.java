@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
+import javax.swing.ImageIcon;
 public class VentanaContador extends javax.swing.JFrame {
 
     int x, y;
@@ -24,6 +25,7 @@ public class VentanaContador extends javax.swing.JFrame {
     
     public VentanaContador() {
         initComponents();
+          setIconImage(new ImageIcon(getClass().getResource("/images/950305.png")).getImage());
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
         this.btnHome.setSelected(true);
@@ -333,6 +335,13 @@ public class VentanaContador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGraficaMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        if (pnlMenu.isVisible()){
+            pnlMenu.setVisible(false);
+        }else{
+            pnlMenu.setVisible(true);   
+        }
+        
         try
         {
             int posicion = pnlMenu.getX();

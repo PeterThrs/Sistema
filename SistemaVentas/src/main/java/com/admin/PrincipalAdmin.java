@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
 import com.main.Login;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,6 +25,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     public PrincipalAdmin() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/images/logo.png")).getImage());
+        
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
         new CambiaPanel(pnlPrincipal, new InfoStore());
@@ -594,6 +597,16 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         } */
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        // Pequeño cuerpo de codigo que hara que la ventana se acople al tamaño real.
+        
+        if (pnlMenu.isVisible()){
+            pnlMenu.setVisible(false);
+        }else{
+            pnlMenu.setVisible(true);   
+        }
+        
+        // Este es otro codigo. 
         try {
             int posicion = pnlMenu.getX();
             if (posicion > -1) {
@@ -1159,7 +1172,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void buscaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null," -> ESTA OPCIÓN ESTA EN PROCESO DE CREACION ._.");
+        JOptionPane.showMessageDialog(null," -> Lo siento, por el momento estoy en proceso de desarrollo.");
             
     }//GEN-LAST:event_buscaarActionPerformed
 

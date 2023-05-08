@@ -11,7 +11,7 @@ import javax.swing.ButtonGroup;
 import com.classes.Departamento;
 import com.classes.Producto;
 import com.conexion.DepartamentoDao;
-import com.conexion.ProductoDao;
+import com.conexion.ProductoDAO;
 import com.settings.CodigoColor;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -23,7 +23,7 @@ public class PanelProducto extends javax.swing.JPanel {
 
     private DepartamentoDao departamentoDao;
     private Producto producto;
-    private ProductoDao productoDao;
+    private ProductoDAO productoDao;
 
     private String codigo, nombre, descripcion;
     private Double precioCosto, ganancia, mayoreo, cantidad;
@@ -38,7 +38,7 @@ public class PanelProducto extends javax.swing.JPanel {
 
         this.departamentoDao = new DepartamentoDao();
         this.producto = new Producto();
-        this.productoDao = new ProductoDao();
+        this.productoDao = new ProductoDAO();
         this.VentanaEditar = false;
         this.ventanaAgregar = true;
 
@@ -54,7 +54,7 @@ public class PanelProducto extends javax.swing.JPanel {
     public PanelProducto(Producto producto) {
         this.producto = producto;
         this.departamentoDao = new DepartamentoDao();
-        this.productoDao = new ProductoDao();
+        this.productoDao = new ProductoDAO();
 
         this.VentanaEditar = true;
         this.ventanaAgregar = false;

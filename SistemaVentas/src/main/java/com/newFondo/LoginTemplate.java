@@ -82,13 +82,14 @@ public class LoginTemplate extends JFrame {
 
     public void eventos() {
         cambiarColorJButton(bCerrar);
-        //Evento de cerra la ventana en la x
-        bCerrar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Cerrar la ventana al hacer clic en el JButton
-                System.exit(0);
-            }
-        });
+//        //Evento de cerra la ventana en la x
+//        bCerrar.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                // Cerrar la ventana al hacer clic en el JButton
+//                System.exit(0);
+//            }
+//        });
+        bCerrar.addActionListener( e -> System.exit(0));
         //evento de enter sobre el jtextfield
         tNombreUsuario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

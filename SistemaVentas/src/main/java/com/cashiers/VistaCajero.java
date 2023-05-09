@@ -53,6 +53,7 @@ public class VistaCajero extends JFrame {
     private JButton btnAgregar, btnEliminar, btnCerrarSesion;
     private Color colorPrincipal;
     private JTextField tCodigo;
+    private DefaultTableModel model; 
 
     public VistaCajero() {
         // Configuramos la ventana principal
@@ -74,7 +75,6 @@ public class VistaCajero extends JFrame {
         setLayout(new GridBagLayout());
         // Mostramos la ventana
         componentes();
-        setVisible(true);
     }
 
     private void componentes() {
@@ -266,7 +266,7 @@ public class VistaCajero extends JFrame {
 
         // Configurar los titulos de las columnas
         String[] titulos = {"Codigo", "Descripcion del producto", "Precio Venta", "Cant", "Importe", "Existencia"};
-        DefaultTableModel model = new DefaultTableModel();
+        model = new DefaultTableModel();
         model.setColumnIdentifiers(titulos);
         tabla.setModel(model);
 
@@ -307,10 +307,6 @@ public class VistaCajero extends JFrame {
     }
     
     //getter and Setter para poder recuperar los datos desde el controlador
-
-    public static void main(String[] args) {
-        VistaCajero v = new VistaCajero();
-    }
 
     public JPanel getPanelIzquierdo() {
         return panelIzquierdo;
@@ -438,6 +434,18 @@ public class VistaCajero extends JFrame {
 
     public void settCodigo(JTextField tCodigo) {
         this.tCodigo = tCodigo;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public void setModel(DefaultTableModel model) {
+        this.model = model;
+    }
+    
+    public JFrame getVentana(){
+        return this; 
     }
     
     

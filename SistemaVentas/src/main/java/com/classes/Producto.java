@@ -12,8 +12,15 @@ public class Producto {
     private double ganancia;
     private double mayoreo;
     private int ocupaInventario;
-    private double cantidad;
+    private double stock;
     private int idDepartamento;
+    
+    //atributos para poder manejar el apartado de ventas
+    private int totalVender; 
+    private static int vender; 
+    private double importe; 
+    private double precioFinal; 
+    private int existencia; 
     
     public Producto(){}; 
 
@@ -25,8 +32,14 @@ public class Producto {
         this.ganancia = ganancia;
         this.mayoreo = mayoreo;
         this.ocupaInventario = ocupaInventario;
-        this.cantidad = cantidad;
+        this.stock = stock;
         this.idDepartamento = idDepartamento;
+        
+        this.vender = 0; 
+        this.totalVender = this.vender; 
+        this.importe = 0; 
+        this.precioFinal = 0; 
+        this.existencia = 0; 
     }
 
     public Producto(String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, double cantidad, int idDepartamento) {
@@ -36,7 +49,7 @@ public class Producto {
         this.ganancia = ganancia;
         this.mayoreo = mayoreo;
         this.ocupaInventario = ocupaInventario;
-        this.cantidad = cantidad;
+        this.stock = cantidad;
         this.idDepartamento = idDepartamento;
     }
 
@@ -48,7 +61,7 @@ public class Producto {
         this.ganancia = ganancia;
         this.mayoreo = mayoreo;
         this.ocupaInventario = ocupaInventario;
-        this.cantidad = cantidad;
+        this.stock = cantidad;
         this.idDepartamento = idDepartamento;
     }
     
@@ -113,11 +126,11 @@ public class Producto {
     }
 
     public double getCantidad() {
-        return cantidad;
+        return stock;
     }
 
     public void setCantidad(double cantidad) {
-        this.cantidad = cantidad;
+        this.stock = cantidad;
     }
 
     public int getIdDepartamento() {
@@ -127,10 +140,72 @@ public class Producto {
     public void setIdDepartamento(int idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
+    
+    //para poder manejar el aparatado de ventas
+
+    public int getTotalVender() {
+        return totalVender;
+    }
+
+    public void setTotalVender(int totalVender) {
+        this.totalVender = totalVender;
+    }
+
+    public double getImporte() {
+        return importe;
+    }
+    public double getPrecioFinal() {
+        return precioFinal;
+    }
+    
+    public void aumentarTotalVender(){
+        this.vender++; 
+        this.totalVender = vender; 
+        System.out.println("totalVender = " + totalVender);
+    }
+    
+    public void disminuirTotalVender(){
+        this.vender--; 
+        this.totalVender = vender; 
+        System.out.println("totalVender = " + totalVender);
+    }
+
+    public void actualizar(){
+        calcularPrecioFinal(); 
+        calcularImporte();
+        calcularExistente(); 
+    }
+    
+    public void calcularPrecioFinal(){
+        this.precioFinal = this.getPrecioCosto() + (this.getPrecioCosto() * (this.getGanancia() / 100));
+        System.out.println("precioFinal = " + precioFinal);
+    }
+    
+    public void calcularImporte() {
+        this.importe = this.getPrecioFinal() * this.getTotalVender();
+        System.out.println("importe = " + importe);
+    }
+    
+    public void calcularExistente() {
+      existencia = (int)this.getCantidad() - this.getTotalVender();
+        System.out.println("existencias = " + existencia);
+    }
+
+    public int getExistencia() {
+        return existencia;
+    }
+    
+    public void setVender(int vender){
+        this.vender = vender;
+    }
+    
+    public int getVender(){
+        return this.vender; 
+    }
 
     @Override
     public String toString() {
-        return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precioCosto=" + precioCosto + ", ganancia=" + ganancia + ", mayoreo=" + mayoreo + ", ocupaInventario=" + ocupaInventario + ", cantidad=" + cantidad + ", idDepartamento=" + idDepartamento + '}';
+        return "Producto{" + "cant=" + totalVender + ", importe=" + importe + ", precioFinal=" + precioFinal + ", existencia=" + existencia + '}';
     }
     
     

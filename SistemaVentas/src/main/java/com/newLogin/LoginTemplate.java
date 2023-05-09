@@ -2,41 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.newFondo;
+package com.newLogin;
 
 import com.admin.PrincipalAdmin;
 import com.cashiers.VentanaCajero;
 import com.classes.Usuario;
 import com.conexion.UsuarioDao;
 import com.counter.VentanaContador;
-import static com.settings.CambiarColorJButton.cambiarColorJButton;
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import com.settings.ObjGraficosService;
 import com.settings.Recursos;
 import java.awt.Desktop;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
@@ -44,22 +31,24 @@ import java.awt.event.MouseEvent;
 import static java.awt.image.ImageObserver.HEIGHT;
 import java.net.URI;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 public class LoginTemplate extends JFrame {
 
     private JPanel pDerecha, pIzquierda;
-    private JLabel lTituloApp, /*lEslogan,*/ lTituloLogin, lNotificaciones, lFondo, lSvg1, lLogo, lUsuario, lClave, lFacebook/*, lTwitter, lYoutube*/;
+    private JLabel lTituloApp, /*lEslogan,*/ lTituloLogin,/* lNotificaciones,*/ lFondo, lSvg1, lLogo, lUsuario, lClave, lFacebook/*, lTwitter, lYoutube*/;
     private JTextField tNombreUsuario;
     private JPasswordField tClaveUsuario;
 //    private JComboBox cbTipoUsuario;
     private JButton bEntrar, bCerrar, /*bRegistrarse,*/ bOpcion1, bOpcion2, bOpcion3;
-    private JCheckBox checkSi, checkNo;
-    private ButtonGroup grupo;
+    //private JCheckBox checkSi, checkNo;
+    //private ButtonGroup grupo;
 
     private ImageIcon iFondo, iLogo;
-    private ImageIcon iSvg1, iUsuario2, iClave2, iPunto1, iFacebook1, iTwitter1, iYoutube1, iDimAux;
+    private ImageIcon iSvg1, iUsuario2, iClave2, iPunto1, iFacebook1, /*iTwitter1, iYoutube1,*/ iDimAux;
 
     private ObjGraficosService sObjGraficos;
     private Recursos sRecursos;
@@ -73,7 +62,7 @@ public class LoginTemplate extends JFrame {
         this.crearJPasswordFields();
 //        this.crearJComboBoxes();
         this.crearJButtons();
-        this.crearJCheckBoxes();
+        //this.crearJCheckBoxes();
         this.crearJLabels();
         this.confVentana();
 
@@ -81,7 +70,20 @@ public class LoginTemplate extends JFrame {
     }
 
     public void eventos() {
-        cambiarColorJButton(bCerrar);
+        //cambiarColorJButton(bCerrar);
+        bCerrar.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                // Cambiar el color cuando el puntero del mouse entra en el JButton
+                bCerrar.setBackground(Color.RED);
+                bCerrar.setOpaque(true);
+            }
+
+            public void mouseExited(MouseEvent e) {
+                // Restaurar el color cuando el puntero del mouse sale del JButton
+                bCerrar.setBackground(UIManager.getColor("Button.background"));
+                bCerrar.setOpaque(false);
+            }
+        });
 //        //Evento de cerra la ventana en la x
 //        bCerrar.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
@@ -91,24 +93,27 @@ public class LoginTemplate extends JFrame {
 //        });
         bCerrar.addActionListener( e -> System.exit(0));
         //evento de enter sobre el jtextfield
-        tNombreUsuario.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                bEntrar.doClick();
-            }
-        });
+//        tNombreUsuario.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                bEntrar.doClick();
+//            }
+//        });
+        tNombreUsuario.addActionListener(e -> bEntrar.doClick());
         //El mismo evento de arriba pero con otro jtextfield
-        tClaveUsuario.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                bEntrar.doClick();
-            }
-        });
+//        tClaveUsuario.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                bEntrar.doClick();
+//            }
+//        });
+        tClaveUsuario.addActionListener(e -> bEntrar.doClick());
         //Evento del boton para el login
-        bEntrar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Cerrar la ventana al hacer clic en el JButton
-                loggear();
-            }
-        });
+//        bEntrar.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                // Cerrar la ventana al hacer clic en el JButton
+//                loggear();
+//            }
+//        });
+        bEntrar.addActionListener(e -> loggear());
         //sombrear toda la caja de password
         tClaveUsuario.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {
@@ -252,20 +257,21 @@ public class LoginTemplate extends JFrame {
         iClave2 = new ImageIcon("src/main/resources/newLogin/clave2.png");
         iPunto1 = new ImageIcon("src/main/resources/newLogin/punto1.png");
         iFacebook1 = new ImageIcon("src/main/resources/newLogin/facebook1.png");
-        iTwitter1 = new ImageIcon("src/main/resources/newLogin/twitter1.png");
-        iYoutube1 = new ImageIcon("src/main/resources/newLogin/youtube1.png");
+//        iTwitter1 = new ImageIcon("src/main/resources/newLogin/twitter1.png");
+//        iYoutube1 = new ImageIcon("src/main/resources/newLogin/youtube1.png");
         iSvg1 = new ImageIcon("src/main/resources/newLogin/imagen1.png");
     }
 
     public void crearJButtons() {
+        //bEntrar.setBorder();
         bEntrar = sObjGraficos.construirJButton(
                 "Ingresar",
                 (pDerecha.getWidth() - 250) / 2, 330, 250, 45,
                 sRecursos.getCMano(),
-                null, null,
+                null, sRecursos.getFontTitulo2(),
                 sRecursos.getColorPrincipal(),
                 Color.WHITE,
-                null,
+                sRecursos.getBorderRedondeado(),
                 "c",
                 true
         );
@@ -328,15 +334,15 @@ public class LoginTemplate extends JFrame {
 //                null, null, sRecursos.getFontSubtitulo2(), null, sRecursos.getColorGrisOscuro(),
 //                null, "c");
 //        pDerecha.add(lEslogan);
-        lTituloLogin = sObjGraficos.construirJLabel("Registra tus datos", (pDerecha.getWidth() - 150) / 2, 80, 150, 30,
-                null, null, sRecursos.getFontTitulo2(), null, sRecursos.getColorGrisOscuro(),
+        lTituloLogin = sObjGraficos.construirJLabel("Registra tus datos", (pDerecha.getWidth() - 270) / 2, 80, 250, 30,
+                null, null, sRecursos.getFontTPrincipal(), null, sRecursos.getColorGrisOscuro(),
                 null, "c");
         pDerecha.add(lTituloLogin);
 
-        lNotificaciones = sObjGraficos.construirJLabel("¿Recibir Notificaciones?", (pDerecha.getWidth() - 140) / 2, 400, 140, 20,
-                null, null, sRecursos.getFontSubtitulo2(), null, sRecursos.getColorGrisOscuro(),
-                null, "c");
-        pDerecha.add(lNotificaciones);
+//        lNotificaciones = sObjGraficos.construirJLabel("¿Recibir Notificaciones?", (pDerecha.getWidth() - 140) / 2, 400, 140, 20,
+//                null, null, sRecursos.getFontSubtitulo2(), null, sRecursos.getColorGrisOscuro(),
+//                null, "c");
+//        pDerecha.add(lNotificaciones);
 
         iDimAux = new ImageIcon(
                 iLogo.getImage()
@@ -427,31 +433,27 @@ public class LoginTemplate extends JFrame {
 //        ((JLabel) cbTipoUsuario.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 //        pDerecha.add(cbTipoUsuario);
 //    }
-    public void crearJCheckBoxes() {
-        checkSi = sObjGraficos.construirJCheckBox("Si", (pDerecha.getWidth() - 375) / 2 - 15, 375, 45, 25,
-                sRecursos.getCMano(), null, null);
-        checkSi = new JCheckBox("Si");
-        checkSi.setSize(45, 25);
-        checkSi.setFocusable(false);
-        checkSi.setBackground(Color.WHITE);
-        checkSi.setLocation((pDerecha.getWidth() - checkSi.getWidth()) / 2 - 15, 375);
-        checkSi.setCursor(sRecursos.getCMano());
-        pDerecha.add(checkSi);
-
-        checkNo = new JCheckBox("No");
-        checkNo.setSize(45, 25);
-        checkNo.setFocusable(false);
-        checkNo.setBackground(Color.WHITE);
-        checkNo.setLocation((pDerecha.getWidth() + checkNo.getWidth()) / 2 - 15, 375);
-        checkNo.setCursor(sRecursos.getCMano());
-        pDerecha.add(checkNo);
-
-        grupo = new ButtonGroup();
-        grupo.add(checkSi);
-        grupo.add(checkNo);
-    }
-
-    private void generarFuentes() {
-
-    }
+//    public void crearJCheckBoxes() {
+//        checkSi = sObjGraficos.construirJCheckBox("Si", (pDerecha.getWidth() - 375) / 2 - 15, 375, 45, 25,
+//                sRecursos.getCMano(), null, null);
+//        checkSi = new JCheckBox("Si");
+//        checkSi.setSize(45, 25);
+//        checkSi.setFocusable(false);
+//        checkSi.setBackground(Color.WHITE);
+//        checkSi.setLocation((pDerecha.getWidth() - checkSi.getWidth()) / 2 - 15, 375);
+//        checkSi.setCursor(sRecursos.getCMano());
+//        pDerecha.add(checkSi);
+//
+//        checkNo = new JCheckBox("No");
+//        checkNo.setSize(45, 25);
+//        checkNo.setFocusable(false);
+//        checkNo.setBackground(Color.WHITE);
+//        checkNo.setLocation((pDerecha.getWidth() + checkNo.getWidth()) / 2 - 15, 375);
+//        checkNo.setCursor(sRecursos.getCMano());
+//        pDerecha.add(checkNo);
+//
+//        grupo = new ButtonGroup();
+//        grupo.add(checkSi);
+//        grupo.add(checkNo);
+//    }
 }

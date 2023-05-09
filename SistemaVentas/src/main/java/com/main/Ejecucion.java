@@ -1,7 +1,6 @@
 package com.main;
 
-import com.classes.Sesion;
-import com.newFondo.LoginTemplate;
+import com.newLogin.LoginTemplate;
 import javax.swing.SwingUtilities;
 
 public class Ejecucion {

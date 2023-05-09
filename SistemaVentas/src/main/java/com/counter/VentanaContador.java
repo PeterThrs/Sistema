@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
-import com.newFondo.LoginTemplate;
+import com.newLogin.LoginTemplate;
 import com.settings.Configuracion;
 import javax.swing.ImageIcon;
 public class VentanaContador extends javax.swing.JFrame {

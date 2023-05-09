@@ -15,6 +15,8 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
+import com.newFondo.LoginTemplate;
+import com.settings.Configuracion;
 import javax.swing.ImageIcon;
 public class VentanaContador extends javax.swing.JFrame {
 
@@ -299,23 +301,7 @@ public class VentanaContador extends javax.swing.JFrame {
         try
         {
             new CambiaPanel(pnlPrincipal, new pnlGrafica());
-            if(this.btnGrafica.isSelected()){
-                this.btnGrafica.setColorNormal(new Color(204,204,204));
-                this.btnGrafica.setColorHover(new Color(204,204,204));
-                this.btnGrafica.setColorPressed(new Color(204,204,204));
-
-                this.btnHome.setColorNormal(new Color(239,238,244));
-                this.btnHome.setColorHover(new Color(204,204,204));
-                this.btnHome.setColorPressed(new Color(204,204,204));
-            
-                this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
-                this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-                this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-            }else{
-                this.btnGrafica.setColorNormal(new Color(239,238,244));
-                this.btnGrafica.setColorHover(new Color(204,204,204));
-                this.btnGrafica.setColorPressed(new Color(204,204,204));
-            }
+            Configuracion.colorSelectedBotones(this.btnGrafica, this.btnHome, this.btnCerrarSesion);
         } catch (Exception e)
         {
             System.err.println(e);
@@ -359,26 +345,9 @@ public class VentanaContador extends javax.swing.JFrame {
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         try
         {
-            if(this.btnCerrarSesion.isSelected()){
-                this.btnGrafica.setColorNormal(new Color(239,238,244));
-                this.btnGrafica.setColorHover(new Color(204,204,204));
-                this.btnGrafica.setColorPressed(new Color(204,204,204));
-                
-                this.btnHome.setColorNormal(new Color(239,238,244));
-                this.btnHome.setColorHover(new Color(204,204,204));
-                this.btnHome.setColorPressed(new Color(204,204,204));
-            
-                this.btnCerrarSesion.setColorNormal(new Color(204,204,204));
-                this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-                this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-           
-            }else{
-                this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
-                this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-                this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-            }
+            Configuracion.colorSelectedBotones(this.btnCerrarSesion, this.btnGrafica, this.btnHome);
             this.dispose();
-            Login login = new Login();
+            LoginTemplate login = new LoginTemplate();
             login.setVisible(true);
         } catch (Exception e)
         {
@@ -423,24 +392,8 @@ public class VentanaContador extends javax.swing.JFrame {
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         try
         {
-            if(this.btnHome.isSelected()){
-                this.btnHome.setColorNormal(new Color(204,204,204));
-                this.btnHome.setColorHover(new Color(204,204,204));
-                this.btnHome.setColorPressed(new Color(204,204,204));
-            
-                this.btnGrafica.setColorNormal(new Color(239,238,244));
-                this.btnGrafica.setColorHover(new Color(204,204,204));
-                this.btnGrafica.setColorPressed(new Color(204,204,204));
-            
-                this.btnCerrarSesion.setColorNormal(new Color(239,238,244));
-                this.btnCerrarSesion.setColorHover(new Color(204,204,204));
-                this.btnCerrarSesion.setColorPressed(new Color(204,204,204));
-            }else{
-                this.btnHome.setColorNormal(new Color(239,238,244));
-                this.btnHome.setColorHover(new Color(204,204,204));
-                this.btnHome.setColorPressed(new Color(204,204,204));
-            }
             new CambiaPanel(pnlPrincipal, new pnlHomeContador());
+            Configuracion.colorSelectedBotones(this.btnHome, this.btnGrafica, this.btnCerrarSesion);
         } catch (Exception e)
         {
         }

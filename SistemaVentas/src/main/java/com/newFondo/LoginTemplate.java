@@ -82,13 +82,14 @@ public class LoginTemplate extends JFrame {
 
     public void eventos() {
         cambiarColorJButton(bCerrar);
-        //Evento de cerra la ventana en la x
-        bCerrar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Cerrar la ventana al hacer clic en el JButton
-                System.exit(0);
-            }
-        });
+//        //Evento de cerra la ventana en la x
+//        bCerrar.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                // Cerrar la ventana al hacer clic en el JButton
+//                System.exit(0);
+//            }
+//        });
+        bCerrar.addActionListener( e -> System.exit(0));
         //evento de enter sobre el jtextfield
         tNombreUsuario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -113,6 +114,13 @@ public class LoginTemplate extends JFrame {
             public void focusGained(FocusEvent e) {
                 // Seleccionar todo el contenido del JTextField al hacer clic en él
                 tClaveUsuario.selectAll();
+            }
+        });
+        //sombrear toda la caja de password
+        tNombreUsuario.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+                // Seleccionar todo el contenido del JTextField al hacer clic en él
+                tNombreUsuario.selectAll();
             }
         });
         //abrir Facebook

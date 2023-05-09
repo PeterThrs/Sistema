@@ -12,17 +12,10 @@ public class Conexion {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/sistemadeventas?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
 
     private static final String JDBC_USER = "root";
-<<<<<<< HEAD
+
     private static final String JDBC_PASSWORD = "admin";
     //private static final String JDBC_PASSWORD = "admin";
-    
-    
-=======
-    private static final String JDBC_PASSWORD = "holamundo";
-    //private static final String JDBC_PASSWORD = "holamundo";
    
-
->>>>>>> d3b665e931a682ffad3ecc14eb3a57d1c6509799
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
 

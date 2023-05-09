@@ -566,7 +566,6 @@ public class Login extends javax.swing.JFrame {
                 break;
             }
         }
-        //userLogin = (usuario.getNomUsuario().equals(user)) ? usuario : null;
         return userLogin;
     }
 

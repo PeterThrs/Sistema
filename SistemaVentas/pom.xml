@@ -28,6 +28,7 @@
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>1.5.4</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 </project>

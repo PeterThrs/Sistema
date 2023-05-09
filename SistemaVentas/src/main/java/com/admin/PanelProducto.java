@@ -7,12 +7,12 @@ package com.admin;
 
 import com.settings.Configuracion;
 import java.awt.Dimension;
-import javax.swing.ButtonGroup;
 import com.classes.Departamento;
 import com.classes.Producto;
 import com.conexion.DepartamentoDao;
 import com.conexion.ProductoDAO;
 import com.settings.CodigoColor;
+import com.settings.Validaciones;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.List;
@@ -24,6 +24,7 @@ public class PanelProducto extends javax.swing.JPanel {
     private DepartamentoDao departamentoDao;
     private Producto producto;
     private ProductoDAO productoDao;
+    private Validaciones validar;
 
     private String codigo, nombre, descripcion;
     private Double precioCosto, ganancia, mayoreo, cantidad;
@@ -35,10 +36,8 @@ public class PanelProducto extends javax.swing.JPanel {
     private boolean ventanaAgregar;
 
     public PanelProducto() {
-
-        this.departamentoDao = new DepartamentoDao();
-        this.producto = new Producto();
-        this.productoDao = new ProductoDAO();
+        this.instancias();
+       
         this.VentanaEditar = false;
         this.ventanaAgregar = true;
 
@@ -50,6 +49,13 @@ public class PanelProducto extends javax.swing.JPanel {
 
     }
 
+    public void instancias(){
+        this.departamentoDao = new DepartamentoDao();
+        this.producto = new Producto();
+        this.productoDao = new ProductoDAO();
+        this.validar = Validaciones.getValidacion();
+    }
+    
     //la ventana se ocupara para editar la informacion
     public PanelProducto(Producto producto) {
         this.producto = producto;
@@ -212,7 +218,7 @@ public class PanelProducto extends javax.swing.JPanel {
         if (!tfGanancia.getText().isEmpty()) {
             try {
                 double ganancia = Double.parseDouble(this.tfGanancia.getText());
-                validarCadena(this.tfPriceCost.getText());
+                validar.validarCadena(this.tfPriceCost.getText());
                 double precioCosto = Double.parseDouble(this.tfPriceCost.getText());
                 double venta = precioCosto + (precioCosto * (ganancia / 100));
                 this.tfSalePrice.setText(String.valueOf(venta));
@@ -235,7 +241,6 @@ public class PanelProducto extends javax.swing.JPanel {
             public void focusGained(FocusEvent e) {
                 // El componente ha ganado el foco
             }
-
             @Override
             public void focusLost(FocusEvent e) {
                 // El componente ha perdido el foco
@@ -250,20 +255,6 @@ public class PanelProducto extends javax.swing.JPanel {
         return (this.cbInventory.isSelected()) ? 1 : 0;
     }
 
-    private boolean validarCadena(String c) throws Exception {
-        if (!c.isEmpty()) {
-            return true;
-        }
-        throw new Exception("No puede haber campos vacios");
-    }
-
-    private boolean validarNegativo(Double n) throws Exception {
-        if (n > 0) {
-            return true;
-        }
-        throw new Exception("No puede haber numero negativo");
-    }
-
     private void recuperarCampos() throws NumberFormatException, Exception {
         this.codigo = this.tfBarCode.getText();
         this.nombre = this.tfName.getText();
@@ -276,14 +267,14 @@ public class PanelProducto extends javax.swing.JPanel {
         this.ocuparInventario = recuperarInventario(); //falta modificar
         if (ocuparInventario == 1) {
             this.cantidad = Double.parseDouble(this.tfTotal.getText());
-            validarNegativo(this.cantidad);
+            validar.validarNegativo(this.cantidad);
         }
     }
 
     private void validarForm() throws NumberFormatException, Exception {
-        if (validarCadena(this.codigo) && validarCadena(this.nombre)
-                && validarCadena(this.descripcion) && validarNegativo(this.precioCosto)
-                && validarNegativo(this.ganancia) && validarNegativo(this.mayoreo)) {
+        if (validar.validarCadena(this.codigo) && validar.validarCadena(this.nombre)
+                && validar.validarCadena(this.descripcion) && validar.validarNegativo(this.precioCosto)
+                && validar.validarNegativo(this.ganancia) && validar.validarNegativo(this.mayoreo)) {
             producto.setCodigo(this.codigo);
             producto.setNombre(this.nombre);
             producto.setPrecioCosto(this.precioCosto);
@@ -676,7 +667,6 @@ public class PanelProducto extends javax.swing.JPanel {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
 
     }//GEN-LAST:event_btnCancelActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

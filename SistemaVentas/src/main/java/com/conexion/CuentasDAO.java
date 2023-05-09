@@ -33,7 +33,7 @@ public class CuentasDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<CuentaFinanciera> cuentas = new ArrayList<>();
-
+        
         try
         {
             coon = getConnection();

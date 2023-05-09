@@ -8,9 +8,8 @@ import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
+import com.settings.Validaciones;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -26,21 +25,27 @@ public class PanelUserNew extends javax.swing.JPanel {
     private Usuario usuario;
     private UsuarioDao usuarioDao;
     private ButtonGroup groupRadioBtn;
+    private Validaciones validar;
     //
     private boolean actualizar;
 
     public PanelUserNew() {
         this.actualizar = false;
-        this.persona = new Persona();
-        this.usuario = new Usuario();
-        this.personaDao = new PersonaDao();
-        this.usuarioDao = new UsuarioDao();
+        this.instancias();
         initComponents();
         agregarEstilos();
         configuracion();
 
     }
 
+    public void instancias(){
+        this.persona = new Persona();
+        this.usuario = new Usuario();
+        this.personaDao = new PersonaDao();
+        this.usuarioDao = new UsuarioDao();
+        this.validar = Validaciones.getValidacion();
+    }
+    
     public PanelUserNew(Usuario usuario, Persona persona) {
         this.usuario = usuario;
         this.persona = persona;
@@ -178,15 +183,15 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     public boolean validarFomr() throws NumberFormatException, Exception {
 
-        if (validarCadena(this.nombre) && validarCadena(this.aPaterno)
-                && validarCadena(this.aMaterno) && validarEmail(this.email)
-                && validarTelefono(this.telefono1) && validarTelefono(this.telefono2)
-                && validarEdad(this.edad) && validarCadena(curp) && validarCadena(this.rfc)
-                && validarCadena(this.sexo) && validarCodPostal(this.codigoPostal)
-                && validarCadena(this.estado) && validarCadena(this.municipio)
-                && validarCadena(this.colonia) && validarCadena(this.calle)
-                && validarNumCasa(this.numCasa) && validarCadena(nomUsuario)
-                && validarContrasenia(this.contrasenia) && idRol > 0) {
+        if (validar.validarCadena(this.nombre) && validar.validarCadena(this.aPaterno)
+                && validar.validarCadena(this.aMaterno) && validar.validarEmail(this.email)
+                && validar.validarTelefono(this.telefono1) && validar.validarTelefono(this.telefono2)
+                && validar.validarEdad(this.edad) && validar.validarCadena(curp) && validar.validarCadena(this.rfc)
+                && validar.validarCadena(this.sexo) && validar.validarCodPostal(this.codigoPostal)
+                && validar.validarCadena(this.estado) && validar.validarCadena(this.municipio)
+                && validar.validarCadena(this.colonia) && validar.validarCadena(this.calle)
+                && validar.validarNumCasa(this.numCasa) && validar.validarCadena(nomUsuario)
+                && validar.validarContrasenia(this.contrasenia, this.contrasenia,this.confirmacion) && idRol > 0) {
 
             this.persona.setNombre(this.nombre);
             this.persona.setApellidoPaterno(this.aPaterno);
@@ -242,36 +247,6 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     }
 
-    public boolean validarContrasenia(String pass) throws Exception {
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(pass);
-        if (matcher.matches()) {
-            if (contrasenia.equals(confirmacion)) {
-                return true;
-            } else {
-                throw new Exception("Las contraseñas no coinciden");
-            }
-        }
-        throw new Exception("La contraseña no cumple el formato");
-    }
-
-    public boolean validarNumCasa(int num) throws Exception {
-        if (num > 0) {
-            return true;
-        }
-        throw new Exception("El numero de casa no puede ser negativo");
-
-    }
-
-    public boolean validarEmail(String email) throws Exception {
-        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-        if (email.matches(regex)) {
-            return true;
-        }
-        throw new Exception("Formato de email incorrecto");
-    }
-
     public String recuperarSexo() {
         return (this.rbMan.isSelected()) ? "H" : (this.rbWoman.isSelected()) ? "M" : "";
     }
@@ -279,36 +254,6 @@ public class PanelUserNew extends javax.swing.JPanel {
     public int parse(String n) throws NumberFormatException {
         int num = Integer.parseInt(n);
         return num;
-    }
-
-    public boolean validarCadena(String c) throws Exception {
-        if (!c.isEmpty()) {
-            return true;
-        }
-        throw new Exception("Campos vacios");
-    }
-
-    public boolean validarTelefono(String t) throws Exception {
-        //forma correcta de un numero = +52-9511911329
-        String regex = "^\\+\\d{1,3}-\\d{10}$";
-        if (t.matches(regex)) {
-            return true;
-        }
-        throw new Exception("El telefono no cumple con el formato solicitado");
-    }
-
-    public boolean validarEdad(int edad) throws Exception {
-        if (edad >= 18 && edad <= 70) {
-            return true;
-        }
-        throw new Exception("Edad no admitida");
-    }
-
-    public boolean validarCodPostal(int codPostal) throws Exception {
-        if (codPostal >= 0) {
-            return true;
-        }
-        throw new Exception("El codigo postal no puede ser negativo");
     }
 
     public void accionBtnCreate() {

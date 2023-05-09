@@ -7,11 +7,13 @@ package com.counter;
 import com.classes.CuentaFinanciera;
 import com.conexion.CuentasDAO;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -46,13 +48,21 @@ public class pnlGrafica extends javax.swing.JPanel {
                 true,
                 false
         );
+
+        CategoryPlot plot = grafico_barras.getCategoryPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+        // Configurar las líneas horizontales
+        plot.setRangeGridlinesVisible(true);
+        plot.setRangeGridlinePaint(Color.BLACK); // Establecer color de las líneas horizontales
         
         ChartPanel panel = new ChartPanel(grafico_barras);
+        //panel.setBackground(Color.WHITE);
+        //panel.setBackgroundPaint(Color.WHITE);
         panel.setMouseWheelEnabled(false);
         panel.setPreferredSize(new Dimension(400, 700));
-        
+
         this.setLayout(new BorderLayout());
-        this.add(panel,BorderLayout.NORTH);
+        this.add(panel, BorderLayout.NORTH);
         repaint();
     }
 

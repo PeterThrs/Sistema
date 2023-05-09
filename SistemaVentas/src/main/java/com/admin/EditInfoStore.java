@@ -10,6 +10,7 @@ import com.settings.CodigoColor;
 import com.settings.Configuracion;
 import com.settings.ObjGraficosService;
 import com.settings.Recursos;
+import com.settings.Validaciones;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -31,11 +32,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class EditInfoStore extends javax.swing.JPanel {
 
     private String ruta;
-    private ObjGraficosService oGraficos;
-
+    private ObjGraficosService oGraficos; 
+    private Validaciones validacion;
+    
     public EditInfoStore() {
         initComponents();
         oGraficos = ObjGraficosService.getService();
+        validacion = Validaciones.getValidacion();
         agregarEstilos();
         rellenarDatos();
         jlFileSelect.setText(Recursos.obtenerNombreArchivo("src/main/resources/icono") != null ? "logo.png" : "");
@@ -630,7 +633,7 @@ public class EditInfoStore extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         try
         {
-            if (validarCadena(tfName.getText()) && validarCadena(tfSlogan.getText()) && validarTelefono(tfPhone1.getText()) && validarTelefono(tfPhone2.getText()) && validarEmail(tfCorreoE.getText()) && validarCadena(tfMision.getText()) && validarCadena(tfVision.getText()) && validarCodPostal(Integer.parseInt(tfCodigoPostal.getText())) && validarCadena(tfEstado.getText()) && validarCadena(tfMunicipio.getText()) && validarCadena(tfColonia.getText()) && validarCadena(tfCalle.getText()) && validarNumCasa(Integer.parseInt(tfNumCasa.getText())))
+            if (validacion.validarCadena(tfName.getText()) && validacion.validarCadena(tfSlogan.getText()) && validacion.validarTelefono(tfPhone1.getText()) && validacion.validarTelefono(tfPhone2.getText()) && validacion.validarEmail(tfCorreoE.getText()) && validacion.validarCadena(tfMision.getText()) && validacion.validarCadena(tfVision.getText()) && validacion.validarCodPostal(Integer.parseInt(tfCodigoPostal.getText())) && validacion.validarCadena(tfEstado.getText()) && validacion.validarCadena(tfMunicipio.getText()) && validacion.validarCadena(tfColonia.getText()) && validacion.validarCadena(tfCalle.getText()) && validacion.validarNumCasa(Integer.parseInt(tfNumCasa.getText())))
             {
                 TiendaDAO.insertar(new Tienda(tfName.getText(), tfSlogan.getText(), tfPhone1.getText(), tfPhone2.getText(), tfCorreoE.getText(), tfMision.getText(), tfVision.getText(), Integer.parseInt(tfCodigoPostal.getText()), tfEstado.getText(), tfMunicipio.getText(), tfColonia.getText(), tfCalle.getText(), Integer.parseInt(tfNumCasa.getText())));
             } else
@@ -643,50 +646,6 @@ public class EditInfoStore extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifica tus datos");
         }
     }//GEN-LAST:event_btnCreateActionPerformed
-
-    public boolean validarEmail(String email) throws Exception {
-        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-        if (email.matches(regex))
-        {
-            return true;
-        }
-        throw new Exception("Formato de email incorrecto");
-    }
-
-    public boolean validarCadena(String c) throws Exception {
-        if (!c.isEmpty())
-        {
-            return true;
-        }
-        throw new Exception("Campos vacios");
-    }
-
-    public boolean validarTelefono(String t) throws Exception {
-        //forma correcta de un numero = +52-9511911329
-        String regex = "^\\+\\d{1,3}-\\d{10}$";
-        if (t.matches(regex))
-        {
-            return true;
-        }
-        throw new Exception("El telefono no cumple con el formato solicitado");
-    }
-
-    public boolean validarCodPostal(int codPostal) throws Exception {
-        if (codPostal >= 0)
-        {
-            return true;
-        }
-        throw new Exception("El codigo postal no puede ser negativo");
-    }
-
-    public boolean validarNumCasa(int num) throws Exception {
-        if (num > 0)
-        {
-            return true;
-        }
-        throw new Exception("El numero de casa no puede ser negativo");
-
-    }
 
     private static JFileChooser personalizarVentana() {
         try
@@ -770,7 +729,7 @@ public class EditInfoStore extends javax.swing.JPanel {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         try
         {
-            if (validarCadena(tfName.getText()) && validarCadena(tfSlogan.getText()) && validarTelefono(tfPhone1.getText()) && validarTelefono(tfPhone2.getText()) && validarEmail(tfCorreoE.getText()) && validarCadena(tfMision.getText()) && validarCadena(tfVision.getText()) && validarCodPostal(Integer.parseInt(tfCodigoPostal.getText())) && validarCadena(tfEstado.getText()) && validarCadena(tfMunicipio.getText()) && validarCadena(tfColonia.getText()) && validarCadena(tfCalle.getText()) && validarNumCasa(Integer.parseInt(tfNumCasa.getText())))
+            if (validacion.validarCadena(tfName.getText()) && validacion.validarCadena(tfSlogan.getText()) && validacion.validarTelefono(tfPhone1.getText()) && validacion.validarTelefono(tfPhone2.getText()) && validacion.validarEmail(tfCorreoE.getText()) && validacion.validarCadena(tfMision.getText()) && validacion.validarCadena(tfVision.getText()) && validacion.validarCodPostal(Integer.parseInt(tfCodigoPostal.getText())) && validacion.validarCadena(tfEstado.getText()) && validacion.validarCadena(tfMunicipio.getText()) && validacion.validarCadena(tfColonia.getText()) && validacion.validarCadena(tfCalle.getText()) && validacion.validarNumCasa(Integer.parseInt(tfNumCasa.getText())))
             {
                 TiendaDAO.actualizar(new Tienda(tfName.getText(), tfSlogan.getText(), tfPhone1.getText(), tfPhone2.getText(), tfCorreoE.getText(), tfMision.getText(), tfVision.getText(), Integer.parseInt(tfCodigoPostal.getText()), tfEstado.getText(), tfMunicipio.getText(), tfColonia.getText(), tfCalle.getText(), Integer.parseInt(tfNumCasa.getText())));
             } else

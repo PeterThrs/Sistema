@@ -16,23 +16,23 @@ import javax.swing.table.DefaultTableModel;
 
 public class ListProductsPanel extends javax.swing.JPanel {
 
-    private PrincipalAdmin principalAdmin; 
+    private PrincipalAdmin principalAdmin;
     private DefaultTableModel model;
-    private List<Producto> productos; 
+    private List<Producto> productos;
     private ProductoDAO productoDAO;
-    private DepartamentoDao departamentoDao; 
+    private DepartamentoDao departamentoDao;
 
     public ListProductsPanel(PrincipalAdmin principalAdmin) {
         initComponents();
-        this.principalAdmin = principalAdmin; 
+        this.principalAdmin = principalAdmin;
         this.model = (DefaultTableModel) table.getModel();
-        this.productoDAO = new ProductoDAO(); 
-        this.departamentoDao = new DepartamentoDao(); 
-        this.productos = productoDAO.seleccionar(); 
+        this.productoDAO = new ProductoDAO();
+        this.departamentoDao = new DepartamentoDao();
+        this.productos = productoDAO.seleccionar();
         configuracion();
     }
-    
-    private void configuracion(){
+
+    private void configuracion() {
         anchoFilas();
         registrar();
         formatTable();
@@ -40,14 +40,16 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
     private void registrar() {
         System.out.println(this.productos.size());
-        this.productos.forEach(producto  -> {
+        this.productos.forEach(producto ->
+        {
             //System.out.println("Producto de la lista "+producto.getNombre()+"id "+producto.getIdDepartamento());
             Producto p = productoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
             System.out.println("id de p " + p.getIdDepartamento());
             Departamento dep = departamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
             System.out.println(p);
             System.out.println(dep);
-            model.addRow(new Object[]{
+            model.addRow(new Object[]
+            {
                 producto.getCodigo(), producto.getNombre(), producto.getPrecioCosto(), producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
             });
         });
@@ -58,8 +60,8 @@ public class ListProductsPanel extends javax.swing.JPanel {
             @Override
             public void onEdit(int row) {
                 System.out.println("Edit row : " + row);
-                String codigo = (String)table.getValueAt(row, 0); 
-                Producto producto = productos.stream().filter(p -> (p.getCodigo().equals(codigo))).findFirst().get(); 
+                String codigo = (String) table.getValueAt(row, 0);
+                Producto producto = productos.stream().filter(p -> (p.getCodigo().equals(codigo))).findFirst().get();
                 //System.out.println("Mostrando el producto seleccionado");
                 //System.out.println("producto = " + producto);
                 principalAdmin.cambiarPanelExterno(new PanelProducto(producto));
@@ -67,7 +69,8 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
             @Override
             public void onDelete(int row) {
-                if (table.isEditing()) {
+                if (table.isEditing())
+                {
                     table.getCellEditor().stopCellEditing();
                 }
                 int fila = table.getSelectedRow();
@@ -88,7 +91,8 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
     public void anchoFilas() {
         table.getColumnModel().getColumn(0).setPreferredWidth(30);
-        for (int i = 1; i < table.getColumnCount() - 1; i++) {
+        for (int i = 1; i < table.getColumnCount() - 1; i++)
+        {
             table.getColumnModel().getColumn(i).setPreferredWidth(150);
         }
     }

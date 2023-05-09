@@ -115,6 +115,13 @@ public class LoginTemplate extends JFrame {
                 tClaveUsuario.selectAll();
             }
         });
+        //sombrear toda la caja de usuario
+        tNombreUsuario.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+                // Seleccionar todo el contenido del JTextField al hacer clic en él
+                tNombreUsuario.selectAll();
+            }
+        });
         //abrir Facebook
         lFacebook.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -145,7 +152,6 @@ public class LoginTemplate extends JFrame {
                 lFacebook.repaint();
             }
         });
-
     }
 
     private void loggear() {

@@ -13,10 +13,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class ListProductsPanel extends javax.swing.JPanel {
 
@@ -142,12 +147,12 @@ public class ListProductsPanel extends javax.swing.JPanel {
             subMenu.addSeparator();
         });
         popupMenu.add(subMenu);
-        
+
         for (int i = 0; i < subMenus.size(); i++)
         {
-            eventoSubmenu(subMenus.get(i), i+1);
+            eventoSubmenu(subMenus.get(i), i + 1);
         }
-        
+
         table.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 showPopupMenu(e);
@@ -166,7 +171,7 @@ public class ListProductsPanel extends javax.swing.JPanel {
         });
     }
 
-    public void eventoSubmenu(JMenuItem subMenu, int id){
+    public void eventoSubmenu(JMenuItem subMenu, int id) {
         subMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 model.setRowCount(0);
@@ -174,7 +179,40 @@ public class ListProductsPanel extends javax.swing.JPanel {
             }
         });
     }
-    
+
+    public void buscarEnTabla(String textoABuscar) {
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
+        table.setRowSorter(sorter);
+
+        if (textoABuscar.trim().length() == 0)
+        {
+            sorter.setRowFilter(null);
+        } else
+        {
+            RowFilter<DefaultTableModel, Object> filtro = RowFilter.regexFilter("(?i)" + Pattern.quote(textoABuscar));
+            sorter.setRowFilter(filtro);
+        }
+        if(table.getRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "No se encuentra");
+        }
+    }
+
+//    public void buscarEnTabla2(String textoABuscar, JTable tabla) {
+//        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+//        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
+//        tabla.setRowSorter(sorter);
+//
+//        if (textoABuscar.trim().length() == 0)
+//        {
+//            sorter.setRowFilter(null);
+//        } else
+//        {
+//            RowFilter<DefaultTableModel, Object> filtro = RowFilter.regexFilter("(?i)" + Pattern.quote(textoABuscar));
+//            sorter.setRowFilter(filtro);
+//        }
+//    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

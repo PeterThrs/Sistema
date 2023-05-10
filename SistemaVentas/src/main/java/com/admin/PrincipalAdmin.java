@@ -14,19 +14,30 @@ import com.settings.Configuracion;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class PrincipalAdmin extends javax.swing.JFrame {
 
     int x, y;
-
+    private ListUsersPanel listaUsuarios;
+    private ListProductsPanel listaProductos;
+    
     public PrincipalAdmin() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/images/logo.png")).getImage());
-        
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
+        
         new CambiaPanel(pnlPrincipal, new InfoStore());
         desactivarBotonesIniciar();
+        buscaar.setEnabled(false);
+        listaUsuarios = new ListUsersPanel(this);
+        listaProductos = new ListProductsPanel(this);
+        buscaar.setVisible(false);
+        
         setVisible(true);
     }
 
@@ -505,17 +516,19 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         Configuracion.colorSelectedBotones(this.btnAdminProductos, this.btnAdminUser, this.btnInfoEmpresa, this.btnConfiguracion, this.btnCerrarSesion);
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+
         // Pequeño cuerpo de codigo que hara que la ventana se acople al tamaño real.
-        
-        if (pnlMenu.isVisible()){
+        if (pnlMenu.isVisible())
+        {
             pnlMenu.setVisible(false);
-        }else{
-            pnlMenu.setVisible(true);   
+        } else
+        {
+            pnlMenu.setVisible(true);
         }
-        
+
         // Este es otro codigo. 
-        try {
+        try
+        {
             int posicion = pnlMenu.getX();
             if (posicion > -1)
             {
@@ -620,7 +633,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarUsuariosActionPerformed
         try
         {
-            new CambiaPanel(pnlPrincipal, new com.admin.ListUsersPanel(this));
+            buscaar.setVisible(true);
+            buscaar.setEnabled(true);
+            buscaar.setText("");
+            new CambiaPanel(pnlPrincipal, listaUsuarios);
             Configuracion.colorSelectedBotones(this.btnListarUsuarios, this.btnHoome, this.btnAdminProductos, this.btnAdminUser, this.btnListarProductos, this.btnInfoEmpresa, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
         {
@@ -648,7 +664,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnListarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProductosActionPerformed
         try
         {
-            new CambiaPanel(pnlPrincipal, new com.admin.ListProductsPanel(this));
+            buscaar.setVisible(true);
+            buscaar.setEnabled(true);
+            buscaar.setText("");
+            new CambiaPanel(pnlPrincipal, listaProductos);
             Configuracion.colorSelectedBotones(this.btnListarProductos, this.btnHoome, this.btnAdminUser, this.btnAdminProductos, this.btnListarUsuarios, this.btnInfoEmpresa, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
         {
@@ -676,6 +695,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         try
         {
+            buscaar.setVisible(false);
+            buscaar.setEnabled(false);
             Configuracion.colorSelectedBotones(this.btnCerrarSesion, this.btnHoome, this.btnAdminUser, this.btnAdminProductos, this.btnListarProductos, this.btnListarUsuarios, this.btnInfoEmpresa, this.btnConfiguracion);
             this.dispose();
             LoginTemplate log = new LoginTemplate();
@@ -706,7 +727,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
         try
         {
-            new CambiaPanel(pnlPrincipal, new com.admin.EditInfoStore());
+            buscaar.setVisible(false);
+            buscaar.setEnabled(false);
             Configuracion.colorSelectedBotones(this.btnConfiguracion, this.btnHoome, this.btnAdminUser, this.btnAdminProductos, this.btnListarProductos, this.btnListarUsuarios, this.btnInfoEmpresa, this.btnCerrarSesion);
         } catch (Exception e)
         {
@@ -734,6 +756,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminProductosActionPerformed
         try
         {
+            buscaar.setVisible(false);
+            buscaar.setEnabled(false);
             new CambiaPanel(pnlPrincipal, new com.admin.PanelProducto());
             Configuracion.colorSelectedBotones(this.btnAdminProductos, this.btnHoome, this.btnAdminUser, this.btnListarUsuarios, this.btnListarProductos, this.btnInfoEmpresa, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
@@ -762,6 +786,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnInfoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpresaActionPerformed
         try
         {
+            buscaar.setVisible(false);
+            buscaar.setEnabled(false);
             new CambiaPanel(pnlPrincipal, new com.admin.EditInfoStore());
             Configuracion.colorSelectedBotones(this.btnInfoEmpresa, this.btnHoome, this.btnAdminUser, this.btnAdminProductos, this.btnListarProductos, this.btnListarUsuarios, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
@@ -790,6 +816,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnAdminUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminUserActionPerformed
         try
         {
+            buscaar.setVisible(false);
+            buscaar.setEnabled(false);
             new CambiaPanel(pnlPrincipal, new com.admin.PanelUserNew());
             Configuracion.colorSelectedBotones(this.btnAdminUser, this.btnHoome, this.btnAdminProductos, this.btnListarUsuarios, this.btnListarProductos, this.btnInfoEmpresa, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
@@ -818,6 +846,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnHoomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoomeActionPerformed
         try
         {
+            buscaar.setEnabled(false);
+            buscaar.setVisible(false);
             new CambiaPanel(pnlPrincipal, new InfoStore());
             Configuracion.colorSelectedBotones(this.btnHoome, this.btnAdminUser, this.btnAdminProductos, this.btnListarProductos, this.btnListarUsuarios, this.btnInfoEmpresa, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
@@ -827,9 +857,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoomeActionPerformed
 
     private void buscaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaarActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null," -> Lo siento, por el momento estoy en proceso de desarrollo.");
-            
+        if(btnListarUsuarios.isSelected()){
+            listaUsuarios.buscarEnTabla(buscaar.getText());
+        }
+        else{
+            listaProductos.buscarEnTabla(buscaar.getText());
+        }
     }//GEN-LAST:event_buscaarActionPerformed
 
     private void buscaarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscaarKeyPressed

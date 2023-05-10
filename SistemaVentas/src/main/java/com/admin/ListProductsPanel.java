@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.admin;
 
 import com.classes.Departamento;
@@ -11,45 +7,69 @@ import com.conexion.ProductoDAO;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
 public class ListProductsPanel extends javax.swing.JPanel {
 
-    private PrincipalAdmin principalAdmin; 
+    private PrincipalAdmin principalAdmin;
     private DefaultTableModel model;
-    private List<Producto> productos; 
+    private List<Producto> productos;
     private ProductoDAO productoDAO;
-    private DepartamentoDao departamentoDao; 
+    private DepartamentoDao departamentoDao;
 
     public ListProductsPanel(PrincipalAdmin principalAdmin) {
         initComponents();
-        this.principalAdmin = principalAdmin; 
+        this.principalAdmin = principalAdmin;
         this.model = (DefaultTableModel) table.getModel();
-        this.productoDAO = new ProductoDAO(); 
-        this.departamentoDao = new DepartamentoDao(); 
-        this.productos = productoDAO.seleccionar(); 
+        this.productoDAO = new ProductoDAO();
+        this.departamentoDao = new DepartamentoDao();
+        this.productos = productoDAO.seleccionar();
         configuracion();
+        clicSecundario();
     }
-    
-    private void configuracion(){
+
+    private void configuracion() {
         anchoFilas();
         registrar();
         formatTable();
     }
 
     private void registrar() {
-        System.out.println(this.productos.size());
-        this.productos.forEach(producto  -> {
-            //System.out.println("Producto de la lista "+producto.getNombre()+"id "+producto.getIdDepartamento());
+        this.productos.forEach(producto ->
+        {
             Producto p = productoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
             System.out.println("id de p " + p.getIdDepartamento());
             Departamento dep = departamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
             System.out.println(p);
             System.out.println(dep);
-            model.addRow(new Object[]{
+            model.addRow(new Object[]
+            {
                 producto.getCodigo(), producto.getNombre(), producto.getPrecioCosto(), producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
             });
+        });
+    }
+
+    private void registrarPorFiltro(int id) {
+        this.productos.forEach(producto ->
+        {
+            Producto p = productoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
+            Departamento dep = departamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
+            if (id == dep.getidDepartamento())
+            {
+                model.addRow(new Object[]
+                {
+                    producto.getCodigo(), producto.getNombre(), producto.getPrecioCosto(), producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
+                });
+            }
         });
     }
 
@@ -58,8 +78,8 @@ public class ListProductsPanel extends javax.swing.JPanel {
             @Override
             public void onEdit(int row) {
                 System.out.println("Edit row : " + row);
-                String codigo = (String)table.getValueAt(row, 0); 
-                Producto producto = productos.stream().filter(p -> (p.getCodigo().equals(codigo))).findFirst().get(); 
+                String codigo = (String) table.getValueAt(row, 0);
+                Producto producto = productos.stream().filter(p -> (p.getCodigo().equals(codigo))).findFirst().get();
                 //System.out.println("Mostrando el producto seleccionado");
                 //System.out.println("producto = " + producto);
                 principalAdmin.cambiarPanelExterno(new PanelProducto(producto));
@@ -67,7 +87,8 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
             @Override
             public void onDelete(int row) {
-                if (table.isEditing()) {
+                if (table.isEditing())
+                {
                     table.getCellEditor().stopCellEditing();
                 }
                 int fila = table.getSelectedRow();
@@ -88,16 +109,72 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
     public void anchoFilas() {
         table.getColumnModel().getColumn(0).setPreferredWidth(30);
-        for (int i = 1; i < table.getColumnCount() - 1; i++) {
+        for (int i = 1; i < table.getColumnCount() - 1; i++)
+        {
             table.getColumnModel().getColumn(i).setPreferredWidth(150);
         }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    public void clicSecundario() {
+//        try
+//        {
+//            UIManager.setLookAndFeel(new FlatLightLaf());
+//        } catch (Exception ex)
+//        {
+//            ex.printStackTrace();
+//        }
+        JPopupMenu.setDefaultLightWeightPopupEnabled(false);
+        JPopupMenu popupMenu = new JPopupMenu();
+
+        List<Departamento> departamentos = DepartamentoDao.seleccionar();
+        List<JMenuItem> subMenus = new ArrayList<>();
+
+        JMenu subMenu = new JMenu("Filtrar por");
+
+        departamentos.forEach(departamento ->
+        {
+            subMenus.add(new JMenuItem(departamento.getDepartamento()));
+        });
+
+        subMenus.forEach(submenu ->
+        {
+            subMenu.add(submenu);
+            subMenu.addSeparator();
+        });
+        popupMenu.add(subMenu);
+        
+        for (int i = 0; i < subMenus.size(); i++)
+        {
+            eventoSubmenu(subMenus.get(i), i+1);
+        }
+        
+        table.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                showPopupMenu(e);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                showPopupMenu(e);
+            }
+
+            private void showPopupMenu(MouseEvent e) {
+                if (e.isPopupTrigger())
+                {
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+        });
+    }
+
+    public void eventoSubmenu(JMenuItem subMenu, int id){
+        subMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                model.setRowCount(0);
+                registrarPorFiltro(id);
+            }
+        });
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

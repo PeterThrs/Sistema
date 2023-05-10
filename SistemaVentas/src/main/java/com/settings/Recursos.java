@@ -19,10 +19,14 @@ public class Recursos {
     private Color colorPrincipal, colorGrisOscuro;
     private Cursor cMano;
     private Font fontTPrincipal, fontTitulo, fontSubtitulo, fontMediana, fontClasica, fontTitulo2, fontSubtitulo2;
-    private Border borderInferiorAzul;
+    private Border borderInferiorAzul, bRedondeado;
     private ImageIcon iCerrar;
+    
+    private sGraficosAvanzados sgAvanzados;
 
     private Recursos() {
+        sgAvanzados = sGraficosAvanzados.getService();
+        
         this.crearColores();
         this.crearFuentes();
         this.crearCursores();
@@ -101,8 +105,13 @@ public class Recursos {
 
     private void crearBordes() {
         borderInferiorAzul = BorderFactory.createMatteBorder(0, 0, 2, 0, colorPrincipal);
+        bRedondeado = sgAvanzados.DibujarBordeRedondeado(null, 40, false, false, null);
     }
 
+    public Border getBorderRedondeado() {
+        return bRedondeado;
+    }
+    
     public Border getBorderInferiorAzul() {
         return borderInferiorAzul;
     }

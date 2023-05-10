@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.admin;
 
 import com.librery.Animacion;
@@ -13,10 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import com.admin.CambiaPanel;
 import com.librery.RSButtonMetro;
-import com.main.Login;
-import com.newFondo.LoginTemplate;
+import com.newLogin.LoginTemplate;
 import com.settings.Configuracion;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -769,7 +762,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void btnInfoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpresaActionPerformed
         try
         {
-            new CambiaPanel(pnlPrincipal, new com.admin.InfoStore());
+            new CambiaPanel(pnlPrincipal, new com.admin.EditInfoStore());
             Configuracion.colorSelectedBotones(this.btnInfoEmpresa, this.btnHoome, this.btnAdminUser, this.btnAdminProductos, this.btnListarProductos, this.btnListarUsuarios, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
         {

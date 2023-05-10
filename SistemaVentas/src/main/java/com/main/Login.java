@@ -1,6 +1,6 @@
 package com.main;
 
-import com.cashiers.Ventana;
+//import com.cashiers.Ventana;
 import com.counter.VentanaContador;
 import com.classes.Sesion;
 import com.settings.CodigoColor;
@@ -518,8 +518,8 @@ public class Login extends javax.swing.JFrame {
                 case 1:
                     runApplication = new Runnable() {
                         public void run() {
-                            Ventana cajero = new Ventana();
-                            cajero.getClass();
+                            //Ventana cajero = new Ventana();
+                            //cajero.getClass();
                         }
                     };
                     SwingUtilities.invokeLater(runApplication);

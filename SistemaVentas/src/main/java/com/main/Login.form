@@ -165,7 +165,7 @@
                                   </Group>
                                   <Component id="close" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="26" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">

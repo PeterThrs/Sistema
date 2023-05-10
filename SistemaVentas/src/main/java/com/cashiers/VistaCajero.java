@@ -48,12 +48,11 @@ public class VistaCajero extends JFrame {
     private JPanel panelDerecho;
     private GridBagConstraints c;
     private ImageIcon imagen;
-    private JLabel jlImagen, jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero, jlCodigoProducto;
+    private JLabel jlImagen, jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero, jlCodigoProducto, jlEnunciadoTotal, jlTotal;
     private JTable tabla;
-    private JButton btnAgregar, btnEliminar, btnCerrarSesion;
+    private JButton btnAgregar, btnEliminar, btnCerrarSesion, btnCobrar, btnAumentar, btnDecrementar;
     private Color colorPrincipal;
     private JTextField tCodigo;
-    private DefaultTableModel model; 
 
     public VistaCajero() {
         // Configuramos la ventana principal
@@ -63,6 +62,12 @@ public class VistaCajero extends JFrame {
         this.setMinimumSize(new Dimension(1000, 600));
         this.setLocationRelativeTo(this);
         this.colorPrincipal = new Color(39, 54, 77);
+        this.tabla = new JTable();
+        this.btnCobrar = new JButton("Cobrar");
+        this.btnAumentar = new JButton("+");
+        this.btnDecrementar = new JButton("-");
+        this.jlEnunciadoTotal = new JLabel("Total a pagar: ");
+        this.jlTotal = new JLabel("$0.00");
 
         //configurando ventana al 100%
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -83,6 +88,7 @@ public class VistaCajero extends JFrame {
         etiquetas();
         crearControl();
         crearTabla();
+        controlesInferiores();
     }
 
     private void paneles() {
@@ -129,6 +135,14 @@ public class VistaCajero extends JFrame {
         }
     }
 
+    private void labelConf(JLabel... jl) {
+        Arrays.asList(jl).forEach(j -> {
+            centrarTexto(j);
+            Configuracion.robotoPlain14(j);
+            Configuracion.foreground(Color.WHITE,j);
+        });
+    }
+
     private void etiquetas() {
         this.jlNombreEmpresa = new JLabel();
         this.jlSloga = new JLabel();
@@ -149,10 +163,8 @@ public class VistaCajero extends JFrame {
         jlNombreCajero.setText("Aqui va el nombre del usuario actual");
         c = grid(0, 4, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlNombreCajero, c);
-        centrarTexto(jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero);
-        Configuracion.robotoPlain14(jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero);
-        Configuracion.foreground(Color.WHITE, jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero);
-        this.jlNombreEmpresa.setBackground(Color.RED);
+        
+        labelConf(jlNombreEmpresa, jlSloga,jlgmail, jlNombreCajero); 
 
         //Btn cerrar Sesion
         btnCerrarSesion = new JButton("Cerrar Sesion");
@@ -257,57 +269,73 @@ public class VistaCajero extends JFrame {
         });
     }
 
-    private void crearTabla() {
-        // Crear la tabla con un modelo de datos vacío
-        tabla = new JTable();
+    public void cargarModeloTabla() {
+        if (this.tabla != null) {
+            DefaultTableModel dtm = new DefaultTableModel(); 
+            tabla.setModel(dtm);
+            // Configurar los titulos de las columnas
+            String[] titulos = {"Codigo", "Descripcion del producto", "Precio Venta", "Cant", "Importe", "Existencia"};
+            dtm.setColumnIdentifiers(titulos);
+            // Configurar los tamaños de las columnas
+            int[] tam = {50, 200, 50, 30, 70, 50};
+            for (int i = 0; i < titulos.length; i++) {
+                tabla.getColumnModel().getColumn(i).setPreferredWidth(tam[i]);
+            }
 
+            // Configurar algunos detalles estéticos
+            tabla.setRowHeight(30);
+            tabla.setIntercellSpacing(new Dimension(0, 0));
+            tabla.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+            tabla.getTableHeader().setForeground(Color.WHITE);
+            tabla.getTableHeader().setBackground(new Color(39, 54, 77));
+            tabla.getTableHeader().setOpaque(false);
+            tabla.setFont(new Font("Arial", Font.PLAIN, 14));
+            tabla.setSelectionBackground(new Color(194, 230, 248));
+            // Para quitar el borde de selección de las celdas de la tabla
+            tabla.setFocusable(false);
+            tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+            // Centrar el texto en las celdas de la tabla
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+            tabla.setDefaultRenderer(Object.class, centerRenderer);
+
+        }
+    }
+
+    private void crearTabla() {
         // Agregar la tabla a un JScrollPane para poder desplazarse por ella
         JScrollPane scrollPane = new JScrollPane(tabla);
-
-        // Configurar los titulos de las columnas
-        String[] titulos = {"Codigo", "Descripcion del producto", "Precio Venta", "Cant", "Importe", "Existencia"};
-        model = new DefaultTableModel();
-        model.setColumnIdentifiers(titulos);
-        tabla.setModel(model);
-
-        // Configurar los tamaños de las columnas
-        int[] tam = {50, 200, 50, 30, 70, 50};
-        for (int i = 0; i < titulos.length; i++) {
-            tabla.getColumnModel().getColumn(i).setPreferredWidth(tam[i]);
-        }
-
-        // Configurar algunos detalles estéticos
-        tabla.setRowHeight(30);
-        tabla.setIntercellSpacing(new Dimension(0, 0));
-        tabla.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        tabla.getTableHeader().setForeground(Color.WHITE);
-        tabla.getTableHeader().setBackground(new Color(39, 54, 77));
-        tabla.getTableHeader().setOpaque(false);
-        tabla.setFont(new Font("Arial", Font.PLAIN, 14));
-        tabla.setSelectionBackground(new Color(194, 230, 248));
-        // Para quitar el borde de selección de las celdas de la tabla
-        tabla.setFocusable(false);
-        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        // Centrar el texto en las celdas de la tabla
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        tabla.setDefaultRenderer(Object.class, centerRenderer);
-
-        // Agregar algunos datos a la tabla para mostrarla con información
-//        Object[] fila1 = {"123456789", "Crema para peinarse PANTENE", "$40.00", "2", "$80.00", "5"};
-//        model.addRow(fila1);
-//        Object[] fila2 = {"123456789", "Crema para peinarse PANTENE", "$40.00", "2", "$80.00", "5"};
-//        model.addRow(fila2);
-
+        cargarModeloTabla();
         //lo agregamos al panel con las ubicaciones
-        c = grid(0, 5, 5, 10, 1, 1, GridBagConstraints.BOTH, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        c = grid(0, 5, 6, 10, 1, 1, GridBagConstraints.BOTH, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, scrollPane, c);
 
     }
-    
-    //getter and Setter para poder recuperar los datos desde el controlador
 
+    private void controlesInferiores() {
+        c = grid(4, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, btnAumentar, c);
+
+        c = grid(5, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, btnDecrementar, c);
+
+        c = grid(2, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, btnCobrar, c);
+
+        btnConf(btnAumentar, btnDecrementar, btnCobrar);
+
+        c = grid(0, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, jlEnunciadoTotal, c);
+        c = grid(1, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, jlTotal, c);
+            centrarTexto(jlTotal, jlEnunciadoTotal);
+            Configuracion.robotoBold16(jlTotal, jlEnunciadoTotal);
+            Configuracion.foreground(Color.BLACK, jlTotal, jlEnunciadoTotal);
+
+    }
+
+    //getter and Setter para poder recuperar los datos desde el controlador
     public JPanel getPanelIzquierdo() {
         return panelIzquierdo;
     }
@@ -436,18 +464,50 @@ public class VistaCajero extends JFrame {
         this.tCodigo = tCodigo;
     }
 
-    public DefaultTableModel getModel() {
-        return model;
+    public JFrame getVentana() {
+        return this;
     }
 
-    public void setModel(DefaultTableModel model) {
-        this.model = model;
+    public JLabel getJlEnunciadoTotal() {
+        return jlEnunciadoTotal;
+    }
+
+    public void setJlEnunciadoTotal(JLabel jlEnunciadoTotal) {
+        this.jlEnunciadoTotal = jlEnunciadoTotal;
+    }
+
+    public JLabel getJlTotal() {
+        return jlTotal;
+    }
+
+    public void setJlTotal(JLabel jlTotal) {
+        this.jlTotal = jlTotal;
+    }
+
+    public JButton getBtnCobrar() {
+        return btnCobrar;
+    }
+
+    public void setBtnCobrar(JButton btnCobrar) {
+        this.btnCobrar = btnCobrar;
+    }
+
+    public JButton getBtnAumentar() {
+        return btnAumentar;
+    }
+
+    public void setBtnAumentar(JButton btnAumentar) {
+        this.btnAumentar = btnAumentar;
+    }
+
+    public JButton getBtnDecrementar() {
+        return btnDecrementar;
+    }
+
+    public void setBtnDecrementar(JButton btnDecrementar) {
+        this.btnDecrementar = btnDecrementar;
     }
     
-    public JFrame getVentana(){
-        return this; 
-    }
     
-    
-    
+
 }

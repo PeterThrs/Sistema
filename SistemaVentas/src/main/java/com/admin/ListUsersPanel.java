@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.admin;
 
 import com.classes.Persona;
@@ -10,12 +6,23 @@ import com.classes.Usuario;
 import com.conexion.PersonaDao;
 import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
+import com.formdev.flatlaf.FlatLightLaf;
 import com.settings.Configuracion;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class ListUsersPanel extends javax.swing.JPanel {
 
@@ -34,21 +41,40 @@ public class ListUsersPanel extends javax.swing.JPanel {
         anchoFilas();
         registrar();
         formatTable();
+        clicSecundario();
     }
 
     private void registrar() {
         this.usuarios = UsuarioDao.seleccionar();
-        usuarios.forEach(usuario -> {
+        usuarios.forEach(usuario ->
+        {
             Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
             Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
-            model.addRow(new Object[]{
+            model.addRow(new Object[]
+            {
                 usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
             });
         });
     }
 
+    private void registrarPorFiltro(int id) {
+        this.usuarios.forEach(usuario ->
+        {
+            Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
+            Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
+            if (id == r.getIdRol())
+            {
+                model.addRow(new Object[]
+                {
+                    usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
+                });
+            }
+        });
+    }
+
     public void formatTable() {
-        try {
+        try
+        {
             TableActionEvent event = new TableActionEvent() {
                 @Override
                 public void onEdit(int row) {
@@ -69,13 +95,14 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     System.out.println("usuario = " + usuario);
                     System.out.println("persona = " + persona);
                     principalAdmin.cambiarPanelExterno(new PanelUserNew(usuario, persona));
-                    Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(),principalAdmin.getBtnInfoEmpresa(),principalAdmin.getBtnConfiguracion(),principalAdmin.getBtnCerrarSesion());
+                    Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(), principalAdmin.getBtnInfoEmpresa(), principalAdmin.getBtnConfiguracion(), principalAdmin.getBtnCerrarSesion());
                     principalAdmin.repaint();
                 }
 
                 @Override
                 public void onDelete(int row) {
-                    if (table.isEditing()) {
+                    if (table.isEditing())
+                    {
                         table.getCellEditor().stopCellEditing();
                     }
                     int fila = table.getSelectedRow();
@@ -96,23 +123,80 @@ public class ListUsersPanel extends javax.swing.JPanel {
 
             table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
             table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace(System.out);
         }
     }
 
     public void anchoFilas() {
         table.getColumnModel().getColumn(0).setPreferredWidth(15);
-        for (int i = 1; i < table.getColumnCount() - 1; i++) {
+        for (int i = 1; i < table.getColumnCount() - 1; i++)
+        {
             table.getColumnModel().getColumn(i).setPreferredWidth(160);
         }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    public void clicSecundario() {
+//        try
+//        {
+//            UIManager.setLookAndFeel(new FlatLightLaf());
+//        } catch (Exception ex)
+//        {
+//            ex.printStackTrace();
+//        }
+        JPopupMenu.setDefaultLightWeightPopupEnabled(false);
+        JPopupMenu popupMenu = new JPopupMenu();
+
+        List<Rol> roles = RolDAO.seleccionar();
+        List<JMenuItem> subMenus = new ArrayList<>();
+
+        JMenu subMenu = new JMenu("Filtrar por");
+
+        roles.forEach(rol ->
+        {
+            subMenus.add(new JMenuItem(rol.getNombre()));
+        });
+
+        subMenus.forEach(submenu ->
+        {
+            subMenu.add(submenu);
+            subMenu.addSeparator();
+        });
+        popupMenu.add(subMenu);
+
+        for (int i = 0; i < subMenus.size(); i++)
+        {
+            eventoSubmenu(subMenus.get(i), i + 1);
+        }
+
+        table.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                showPopupMenu(e);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                showPopupMenu(e);
+            }
+
+            private void showPopupMenu(MouseEvent e) {
+                if (e.isPopupTrigger())
+                {
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+        });
+    }
+
+    public void eventoSubmenu(JMenuItem subMenu, int id) {
+        subMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                model.setRowCount(0);
+                registrarPorFiltro(id);
+            }
+        });
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -151,8 +235,6 @@ public class ListUsersPanel extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

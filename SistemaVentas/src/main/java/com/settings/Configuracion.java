@@ -13,7 +13,6 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JSeparator;
 
 public class Configuracion {
 
@@ -51,120 +50,104 @@ public class Configuracion {
 
     //configuraicones para el tipo de titulos general de la aplicacion
     public static <T extends JComponent> void titulo(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Calisto MT", Font.BOLD, 16));
         }
     }
 
     //configuraicones para el tipo de letra general de la aplicacion
     public static <T extends JComponent> void robotoPlain12(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.PLAIN, 12));
         }
     }
 
     public static <T extends JComponent> void robotoPlain14(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.PLAIN, 14));
         }
     }
 
     public static <T extends JComponent> void robotoBold16(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.BOLD, 16));
         }
     }
 
     public static <T extends JComponent> void robotoBold20(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.BOLD, 20));
         }
     }
 
     public static <T extends JComponent> void robotoBold24(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.BOLD, 24));
         }
     }
 
     public static <T extends JComponent> void robotoBold48(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.BOLD, 48));
         }
     }
 
     public static <T extends JComponent> void robotoPlain16(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.PLAIN, 16));
         }
     }
 
     public static <T extends JComponent> void robotoItalic14(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.ITALIC, 14));
         }
     }
 
     //metodos creados por peter. 
     public static <T extends JComponent> void borde(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setBorder(null);
         }
     }
 
     public static <T extends JComponent> void withoutBorde(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setBorder(null);
         }
     }
 
     public static <T extends JComponent> void robotoItalic13(T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setFont(new Font("Roboto", Font.ITALIC, 13));
         }
     }
 
     //Establecer Foreground (letras)
     public static <T extends JComponent> void foreground(Color color, T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setForeground(color);
         }
     }
 
     //Establecer background 
     public static <T extends JComponent> void background(Color color, T... t) {
-        for (int i = 0; i < t.length; i++)
-        {
+        for (int i = 0; i < t.length; i++) {
             t[i].setBackground(color);
         }
     }
 
     public static <T extends RSButtonMetro> void colorSelectedBotones(T btnPrincipal, T... t) {
-        if (btnPrincipal.isSelected())
-        {
+        if (btnPrincipal.isSelected()) {
             btnPrincipal.setColorNormal(new Color(204, 204, 204));
             btnPrincipal.setColorHover(new Color(204, 204, 204));
             btnPrincipal.setColorPressed(new Color(204, 204, 204));
-            Arrays.asList(t).forEach(boton ->{
+            Arrays.asList(t).forEach(boton -> {
                 boton.setColorNormal(new Color(239, 238, 244));
                 boton.setColorHover(new Color(204, 204, 204));
                 boton.setColorPressed(new Color(204, 204, 204));
             });
-        } else
-        {
+        } else {
             btnPrincipal.setColorNormal(new Color(239, 238, 244));
             btnPrincipal.setColorHover(new Color(204, 204, 204));
             btnPrincipal.setColorPressed(new Color(204, 204, 204));

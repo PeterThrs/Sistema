@@ -6,6 +6,7 @@ package com.newLogin;
 
 import com.admin.PrincipalAdmin;
 import com.cashiers.ControladorCajero;
+import com.cashiers.VistaCajero;
 import com.classes.Usuario;
 import com.conexion.UsuarioDao;
 import com.counter.VentanaContador;
@@ -168,7 +169,7 @@ public class LoginTemplate extends JFrame {
                     Runnable runApplication = new Runnable() {
                         public void run() {
                             VistaCajero vc = new VistaCajero();
-                            ControladorCajero cc = new ControladorCajero(vc);
+                            ControladorCajero cc = new ControladorCajero(vc, usuario);
                             vc.getClass();
                             vc.setVisible(true);
                         }

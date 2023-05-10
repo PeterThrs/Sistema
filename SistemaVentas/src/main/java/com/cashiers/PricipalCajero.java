@@ -17,7 +17,7 @@ public class PricipalCajero {
         Runnable runApplication = new Runnable() {
             public void run() {
                 VistaCajero vc = new VistaCajero();
-                ControladorCajero cc = new ControladorCajero(vc);
+                ControladorCajero cc = new ControladorCajero(vc, null);
                 vc.getClass();
                 vc.setVisible(true);
             }

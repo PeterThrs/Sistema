@@ -1,8 +1,10 @@
 package com.cashiers;
 
 import com.classes.Producto;
-import java.sql.Date;
+import com.classes.Tienda;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,12 +16,14 @@ public class Ticket {
     private List<Producto> productos;
     private Date fecha;
     private double total;
+    private double pago;
+    private double cambio;
 
     public Ticket() {
         this.total = 0;
+        this.fecha = new Date();
         this.productos = new ArrayList<>();
     }
-    
 
     public void agregarProducto(Producto producto, int cant) throws Exception {
         boolean v = false;
@@ -35,8 +39,8 @@ public class Ticket {
         } else if (existente(producto)) {
             System.out.println("Modificar Producto");
             producto = recuperarProducto(producto.getCodigo());
-            if (producto.getCantVenta() == 1 && cant < 0 ) {
-                eliminarProducto(producto); 
+            if (producto.getCantVenta() == 1 && cant < 0) {
+                eliminarProducto(producto);
             } else {
                 v = producto.modificarProducto(cant);
                 if (v) {
@@ -102,20 +106,20 @@ public class Ticket {
         if (!productos.isEmpty()) {
             this.total = productos.stream().mapToDouble(Producto::getImporte).sum();
             System.out.println("total = " + total);
-        }else {
-            this.total = 0; 
+        } else {
+            this.total = 0;
         }
     }
 
     public double getTotal() {
         return this.total;
     }
-    
-    public boolean vacio(){
-        return productos.isEmpty(); 
+
+    public boolean vacio() {
+        return productos.isEmpty();
     }
-    
-    public void realizarVenta(){
+
+    public void realizarVenta() {
         System.out.println("Realizamos la resta a los productos que tenemos en el ticket respecto a su stok");
         productos.forEach(p -> {
             System.out.println("p.getCantidad() = " + p.getCantidad());
@@ -123,21 +127,22 @@ public class Ticket {
             p.setCantidad(p.getCantidad() - p.getCantVenta());
         });
     }
-    
-    public Producto getProducto(int pos){
-        if(!productos.isEmpty() && pos >= 0 && pos < productos.size()){
-            return productos.get(pos); 
+
+    public Producto getProducto(int pos) {
+        if (!productos.isEmpty() && pos >= 0 && pos < productos.size()) {
+            return productos.get(pos);
         }
-        return null; 
+        return null;
     }
-    
-    public int getSize(){
-        return productos.size(); 
+
+    public int getSize() {
+        return productos.size();
     }
-    
-    public void imprimirProductos() {
+
+    public String productosEnTicket() {
+        StringBuilder sb = new StringBuilder();
         // Imprimir encabezado de la tabla
-        System.out.println(String.format("%-20s%-20s%-20s", "Descripción", "Cantidad", "Importe"));
+        sb.append(String.format("%-20s%-20s%-20s", "Descripción", "Cantidad", "Importe")).append("\n");
 
         // Imprimir los productos
         for (Producto p : productos) {
@@ -151,13 +156,59 @@ public class Ticket {
             }
 
             // Imprimir fila de la tabla
-            System.out.println(String.format("%-20s%-20s%-20s", descripcion, cantidad, importe));
+            sb.append(String.format("%-20s%-20s%-20s", descripcion, cantidad, importe)).append("\n");
         }
+        return sb.toString();
     }
-    
-    public void imprimirTicket(){
-        System.out.println("----------Ticket de venta----------");
-        imprimirProductos(); 
+
+    public String imprimirTicket(Tienda tienda, double pago) {
+        StringBuilder sb = new StringBuilder();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String fechaFormateada = formatoFecha.format(this.fecha);
+        sb.append("----------Ticket de venta----------").append("\n")
+                .append("Fecha: ").append(fechaFormateada).append("\n")
+                .append("Empresa: ").append(tienda.getNombre()).append("\n")
+                .append("\t").append(tienda.getSlogan()).append("\n")
+                .append("Email: ").append(tienda.getEmail()).append("\n\n")
+                .append("\tLista de Compra").append("\n")
+                .append(productosEnTicket()).append("\n\n")
+                .append("Total a pagar: ").append(this.total).append("\n\n")
+                .append("Pago con: ").append(pago).append("\n")
+                .append("Cambio: ").append(pago-this.total).append("\n\n");
+        
+        return sb.toString(); 
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public double getPago() {
+        return pago;
+    }
+
+    public void setPago(double pago) {
+        this.pago = pago;
+    }
+
+    public double getCambio() {
+        return cambio;
+    }
+
+    public void setCambio(double cambio) {
+        this.cambio = cambio;
     }
 
 }

@@ -8,9 +8,7 @@ package com.cashiers;
  *
  * @author Pedro
  */
-import com.classes.Tienda;
-import com.conexion.TiendaDAO;
-import com.settings.CodigoColor;
+
 import com.settings.Configuracion;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -19,7 +17,6 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -28,9 +25,7 @@ import javax.swing.JPanel;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Rectangle;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -108,7 +103,7 @@ public class VistaCajero extends JFrame {
 
         // Creamos el panel derecho y lo añadimos a la ventana
         panelDerecho = new JPanel();
-        panelDerecho.setBackground(CodigoColor.cFondo);
+        panelDerecho.setBackground(new Color(255,255,255));
         panelDerecho.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         c.gridx = 1;
         c.gridy = 0;
@@ -127,7 +122,7 @@ public class VistaCajero extends JFrame {
             this.jlImagen.setIcon(icon);
             //this.repaint();
             this.jlImagen.setBackground(Color.MAGENTA);
-            c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 100, 10), 0, 0);
+            c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 60, 10), 0, 0);
             centrarTexto(jlImagen);
             this.panelIzquierdo.add(jlImagen, c);
         } catch (Exception ex) {
@@ -135,7 +130,7 @@ public class VistaCajero extends JFrame {
         }
     }
 
-    private void labelConf(JLabel... jl) {
+    public void labelConf(JLabel... jl) {
         Arrays.asList(jl).forEach(j -> {
             centrarTexto(j);
             Configuracion.robotoPlain14(j);
@@ -149,18 +144,16 @@ public class VistaCajero extends JFrame {
         this.jlgmail = new JLabel();
         this.jlNombreCajero = new JLabel();
 
-        TiendaDAO tiendaDao = new TiendaDAO();
-        Tienda tienda = tiendaDao.traerUltimo();
-        jlNombreEmpresa.setText(tienda.getNombre());
+        jlNombreEmpresa.setText("Nombre de la tienda");
         c = grid(0, 1, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlNombreEmpresa, c);
-        jlSloga.setText(tienda.getSlogan());
+        jlSloga.setText("Slogan de la tienda");
         c = grid(0, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlSloga, c);
-        jlgmail.setText(tienda.getEmail());
+        jlgmail.setText("Email de la tienda");
         c = grid(0, 3, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlgmail, c);
-        jlNombreCajero.setText("Aqui va el nombre del usuario actual");
+        jlNombreCajero.setText("Nombre del usuario");
         c = grid(0, 4, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlNombreCajero, c);
         
@@ -172,16 +165,14 @@ public class VistaCajero extends JFrame {
         btnCerrarSesion.setForeground(Color.WHITE);
         btnCerrarSesion.setFocusable(false);
         btnCerrarSesion.setFocusPainted(false);
+        btnCerrarSesion.setBorderPainted(false);
         btnCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
         Configuracion.robotoPlain14(btnCerrarSesion);
         this.repaint();
         c = grid(0, 5, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(50, 10, 10, 10), 0, 0);
         agregarAlPanel(panelIzquierdo, btnCerrarSesion, c);
 
-        //le agregamos la acción de cerrar
-        btnCerrarSesion.addActionListener(e -> {
-            System.exit(0);
-        });
+        
     }
 
     /**
@@ -209,7 +200,7 @@ public class VistaCajero extends JFrame {
      * alto preferido del componente.
      */
     private <T extends JComponent> GridBagConstraints grid(int gridx, int gridy, int gridWidth, int gridHeight,
-            int weightx, int weighty, int fill, int anchor, Insets insets, int ipadx, int ipady) {
+            double weightx, double weighty, int fill, int anchor, Insets insets, int ipadx, int ipady) {
         c = new GridBagConstraints();
         c.gridx = gridx;
         c.gridy = gridy;
@@ -264,8 +255,8 @@ public class VistaCajero extends JFrame {
             e.setForeground(Color.WHITE);
             Configuracion.robotoPlain14(btn);
             e.setFocusable(false);
-            e.setCursor(new Cursor(Cursor.HAND_CURSOR) {
-            });
+            e.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            e.setBorderPainted(false);
         });
     }
 
@@ -320,17 +311,18 @@ public class VistaCajero extends JFrame {
         c = grid(5, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, btnDecrementar, c);
 
-        c = grid(2, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        c = grid(4, 20, 2, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 20, 0);
         agregarAlPanel(panelDerecho, btnCobrar, c);
 
         btnConf(btnAumentar, btnDecrementar, btnCobrar);
 
         c = grid(0, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, jlEnunciadoTotal, c);
-        c = grid(1, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        c = grid(3, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, jlTotal, c);
             centrarTexto(jlTotal, jlEnunciadoTotal);
-            Configuracion.robotoBold16(jlTotal, jlEnunciadoTotal);
+            Configuracion.robotoBold20(jlTotal);
+            Configuracion.robotoBold16(jlEnunciadoTotal);
             Configuracion.foreground(Color.BLACK, jlTotal, jlEnunciadoTotal);
 
     }

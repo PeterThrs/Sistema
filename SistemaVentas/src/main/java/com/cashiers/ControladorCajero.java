@@ -4,14 +4,31 @@
  */
 package com.cashiers;
 
+import com.classes.Persona;
 import com.classes.Producto;
+import com.classes.Tienda;
+import com.classes.Usuario;
+import com.conexion.PersonaDao;
 import com.conexion.ProductoDAO;
+import com.conexion.TiendaDAO;
+import com.newLogin.LoginTemplate;
+import com.settings.CodigoColor;
+import com.settings.Configuracion;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,21 +38,45 @@ import javax.swing.table.DefaultTableModel;
 public class ControladorCajero {
 
     private ProductoDAO productoDao;
+    private TiendaDAO tiendaDao;
+    private Tienda tienda;
     private VistaCajero vistaCajero;
     private List<Producto> productosBD;
     private Ticket ticket;
+    private Usuario usuario;
 
-    public ControladorCajero(VistaCajero vistaCajero) {
+    public ControladorCajero(VistaCajero vistaCajero, Usuario usuario) {
         this.vistaCajero = vistaCajero;
+        this.usuario = usuario;
         this.productoDao = new ProductoDAO();
         this.ticket = new Ticket();
         this.productosBD = productoDao.seleccionar();
+        this.tiendaDao = new TiendaDAO();
         acciones();
+        cargarInformacion();
     }
 
     private void acciones() {
         accionesBotones();
         //eventosTeclado();
+    }
+
+    private void cargarInformacion() {
+        try {
+            tienda = tiendaDao.traerUltimo();
+            if (tienda != null) {
+                vistaCajero.getJlNombreEmpresa().setText(tienda.getNombre());
+                vistaCajero.getJlSloga().setText(tienda.getSlogan());
+                vistaCajero.getJlgmail().setText(tienda.getEmail());
+            }
+            if (usuario != null) {
+                PersonaDao personaDao = new PersonaDao();
+                Persona p = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
+                vistaCajero.getJlNombreCajero().setText("Atiende: \n" + p.getNombre() + " " + p.getApellidoPaterno());
+            }
+        } catch (Exception ex) {
+
+        }
     }
 
     private void actualizarTabla() {
@@ -67,7 +108,13 @@ public class ControladorCajero {
     }
 
     private void actualizarPrecio() {
-        vistaCajero.getJlTotal().setText(String.valueOf(ticket.getTotal()));
+        try {
+            DecimalFormat format = new DecimalFormat("0.00");
+            vistaCajero.getJlTotal().setText("$" + String.valueOf(format.format(ticket.getTotal())));
+        } catch (Exception ex) {
+            ex.printStackTrace(); 
+        }
+
     }
 
     private void accionesBotones() {
@@ -78,7 +125,7 @@ public class ControladorCajero {
                 System.out.println("Entramos a la accion btn agregar");
                 agregarProducto();
                 actualizarPrecio();
-                int pos = ticket.getSize() -1; 
+                int pos = ticket.getSize() - 1;
                 marcarRow(pos);
                 vistaCajero.gettCodigo().setText("");
             } catch (NumberFormatException ex) {
@@ -101,7 +148,7 @@ public class ControladorCajero {
                     ticket.eliminarProducto(new Producto(codigo));
                     actualizarTabla();
                     actualizarPrecio();
-                    ticket.imprimirProductos();
+                    ticket.productosEnTicket();
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -121,7 +168,7 @@ public class ControladorCajero {
                     ticket.agregarProducto(new Producto(codigo), 1);
                     actualizarTabla();
                     actualizarPrecio();
-                    ticket.imprimirProductos();
+                    ticket.productosEnTicket();
                     marcarRow(fila);
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -141,7 +188,7 @@ public class ControladorCajero {
                     ticket.agregarProducto(new Producto(codigo), -1);
                     actualizarTabla();
                     actualizarPrecio();
-                    ticket.imprimirProductos();
+                    ticket.productosEnTicket();
                     marcarRow(fila);
                 } else {
                     JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -162,11 +209,14 @@ public class ControladorCajero {
                         Producto p = ticket.getProducto(i);
                         reg += productoDao.actualizar(p);
                     }
-                    ticket.imprimirTicket();
+                    double pago = Double.parseDouble(JOptionPane.showInputDialog("Cantidad recibida: "));
+                    //faltan validaciones
+                    System.out.println(ticket.imprimirTicket(tienda, pago));
                     limpiarTabla();
                     this.productoDao = new ProductoDAO();
                     this.ticket = new Ticket();
                     this.productosBD = productoDao.seleccionar();
+                    System.out.println("\n\n------------------------Imprimiendo el ticket------------------\n");
                     System.out.println("Imprimimos nuevamente los datos de la bd");
                     productosBD.forEach(System.out::println);
 
@@ -178,6 +228,25 @@ public class ControladorCajero {
                 ex.printStackTrace(System.out);
             }
         });
+        //btnCerrarSesion 
+        vistaCajero.getBtnCerrarSesion().addActionListener(e -> {
+            vistaCajero.setVisible(false);
+            vistaCajero.dispose();
+            Runnable runApplication = new Runnable() {
+                public void run() {
+                    LoginTemplate login = new LoginTemplate();
+                    login.getClass();
+                }
+            };
+            SwingUtilities.invokeLater(runApplication);
+        });
+
+        eventosMouse(new Color(39, 54, 77), new Color(39, 54, 120), vistaCajero.getBtnAgregar());
+        eventosMouse(new Color(39, 54, 77), new Color(39, 54, 120), vistaCajero.getBtnAumentar());
+        eventosMouse(new Color(39, 54, 77), new Color(39, 54, 120), vistaCajero.getBtnCobrar());
+        eventosMouse(new Color(39, 54, 77), new Color(39, 54, 120), vistaCajero.getBtnDecrementar());
+        eventosMouse(new Color(39, 54, 77), new Color(39, 54, 120), vistaCajero.getBtnEliminar());
+        eventosMouse(new Color(138, 0, 0), new Color(200, 0, 0), vistaCajero.getBtnCerrarSesion());
     }
 
     private void eventosTeclado() {
@@ -233,6 +302,48 @@ public class ControladorCajero {
         };
         //vistaCajero.getTabla().addKeyListener(eventoTabla);
 
+    }
+
+    private void eventosMouse(Color ant, Color pos, JButton btn) {
+        //Agregando oyente de raton -  MouseListener
+        MouseListener oyenteRaton = new MouseListener() {
+            Insets margenOriginal; 
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                if (btn.isEnabled()) {
+                    btn.setBackground(pos);
+                    margenOriginal = btn.getMargin(); 
+                    btn.setMargin(new Insets((margenOriginal.top + 1), (margenOriginal.left + 1), (margenOriginal.bottom + 1), (margenOriginal.right + 1)));
+                    btn.revalidate();
+                }
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                if (btn.isEnabled()) {
+                    // regresarColor
+                    btn.setBackground(ant);
+                    btn.setMargin(margenOriginal);
+                    btn.revalidate();
+                }
+            }
+        };
+        btn.addMouseListener(oyenteRaton);
     }
 
     private void marcarRow(int row) {

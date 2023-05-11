@@ -5,15 +5,14 @@
 package com.newLogin;
 
 import com.admin.PrincipalAdmin;
-import com.cashiers.VentanaCajero;
+import com.cashiers.ControladorCajero;
+import com.cashiers.VistaCajero;
 import com.classes.Usuario;
 import com.conexion.UsuarioDao;
 import com.counter.VentanaContador;
 import java.awt.Color;
 import java.awt.Image;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -91,7 +90,7 @@ public class LoginTemplate extends JFrame {
 //                System.exit(0);
 //            }
 //        });
-        bCerrar.addActionListener( e -> System.exit(0));
+        bCerrar.addActionListener(e -> System.exit(0));
         //evento de enter sobre el jtextfield
 //        tNombreUsuario.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
@@ -131,12 +130,10 @@ public class LoginTemplate extends JFrame {
         //abrir Facebook
         lFacebook.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                try
-                {
+                try {
                     // Abrir el enlace a Facebook en el navegador predeterminado
                     Desktop.getDesktop().browse(new URI("https://www.facebook.com/"));
-                } catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
@@ -165,16 +162,16 @@ public class LoginTemplate extends JFrame {
         String password = String.valueOf(tClaveUsuario.getPassword());
         Usuario usuario = buscar(user, password);
 
-        if (usuario != null)
-        {
+        if (usuario != null) {
             int idRol = usuario.getIdRol();
-            switch (idRol)
-            {
+            switch (idRol) {
                 case 1:
-                    runApplication = new Runnable() {
+                    Runnable runApplication = new Runnable() {
                         public void run() {
-                            VentanaCajero cajero = new VentanaCajero();
-                            cajero.getClass();
+                            VistaCajero vc = new VistaCajero();
+                            ControladorCajero cc = new ControladorCajero(vc, usuario);
+                            vc.getClass();
+                            vc.setVisible(true);
                         }
                     };
                     SwingUtilities.invokeLater(runApplication);
@@ -199,8 +196,7 @@ public class LoginTemplate extends JFrame {
                     break;
             }
             this.dispose();
-        } else
-        {
+        } else {
             JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
         }
     }
@@ -208,10 +204,8 @@ public class LoginTemplate extends JFrame {
     private Usuario buscar(String user, String password) {
         List<Usuario> usuarios = UsuarioDao.seleccionar();
         Usuario userLogin = null;
-        for (Usuario usuario : usuarios)
-        {
-            if (usuario.getNomUsuario().equals(user) && usuario.getContrasenia().equals(password))
-            {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNomUsuario().equals(user) && usuario.getContrasenia().equals(password)) {
                 userLogin = usuario;
                 break;
             }
@@ -343,7 +337,6 @@ public class LoginTemplate extends JFrame {
 //                null, null, sRecursos.getFontSubtitulo2(), null, sRecursos.getColorGrisOscuro(),
 //                null, "c");
 //        pDerecha.add(lNotificaciones);
-
         iDimAux = new ImageIcon(
                 iLogo.getImage()
                         .getScaledInstance(40, 40, Image.SCALE_AREA_AVERAGING)

@@ -27,6 +27,7 @@ import javax.swing.border.Border;
  * @author juanj
  */
 public class ObjGraficosService {
+
     private JLabel label;
     private JPanel panel;
     private JTextField textField;
@@ -35,18 +36,17 @@ public class ObjGraficosService {
     private JCheckBox check;
     
     static private ObjGraficosService servicio;
-    
+
     private ObjGraficosService() {
     }
 
     public static ObjGraficosService getService() {
-        if (servicio == null)
-        {
+        if (servicio == null) {
             servicio = new ObjGraficosService();
         }
         return servicio;
     }
-    
+
     public JLabel construirJLabel(
             String texto, int x, int y, int ancho, int alto, Cursor cursor, ImageIcon imagen,
             Font fuente, Color colorFondo, Color colorFuente, Border borde, String direccion
@@ -59,13 +59,11 @@ public class ObjGraficosService {
         label.setCursor(cursor);
         label.setIcon(imagen);
         label.setBorder(borde);
-        if (colorFondo != null)
-        {
+        if (colorFondo != null) {
             label.setOpaque(true);
             label.setBackground(colorFondo);
         }
-        switch (direccion)
-        {
+        switch (direccion) {
             case "c":
                 label.setHorizontalAlignment(SwingConstants.CENTER);
                 break;
@@ -88,7 +86,7 @@ public class ObjGraficosService {
         }
         return label;
     }
-    
+
     public JPanel construirJPanel(int x, int y, int ancho, int alto, Color colorFondo, Border borde) {
         panel = new JPanel();
         panel.setSize(ancho, alto);
@@ -98,7 +96,7 @@ public class ObjGraficosService {
         panel.setBorder(borde);
         return panel;
     }
-    
+
     public static ImageIcon mostrarImagen(String rutaImagen) throws IOException {
         BufferedImage imagen = ImageIO.read(new File(rutaImagen));
         return new ImageIcon(imagen);
@@ -108,18 +106,15 @@ public class ObjGraficosService {
         File archivoImagen = new File(rutaImagen);
         ImageIO.write(imagen, "png", archivoImagen);
     }
-    
+
     public static String saltosDeLineaJlabel(String texto, int longitudMaxima) {
         java.util.List<String> lineas = new ArrayList<String>();
         int inicio = 0;
         int fin = longitudMaxima;
-        while (inicio < texto.length())
-        {
-            if (fin >= texto.length())
-            {
+        while (inicio < texto.length()) {
+            if (fin >= texto.length()) {
                 fin = texto.length();
-            } else
-            {
+            } else {
                 fin = texto.lastIndexOf(" ", fin);
             }
             lineas.add(texto.substring(inicio, fin));

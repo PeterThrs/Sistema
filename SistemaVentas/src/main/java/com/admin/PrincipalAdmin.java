@@ -877,8 +877,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_buscaarActionPerformed
 
     private void buscaarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscaarKeyPressed
-        // TODO add your handling code here:
-
 
     }//GEN-LAST:event_buscaarKeyPressed
 

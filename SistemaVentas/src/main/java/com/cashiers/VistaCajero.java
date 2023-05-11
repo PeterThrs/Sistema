@@ -8,9 +8,7 @@ package com.cashiers;
  *
  * @author Pedro
  */
-import com.classes.Tienda;
-import com.conexion.TiendaDAO;
-import com.settings.CodigoColor;
+
 import com.settings.Configuracion;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -27,7 +25,7 @@ import javax.swing.JPanel;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Rectangle;
-import java.util.Arrays; 
+import java.util.Arrays;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -39,19 +37,19 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class Ventana extends JFrame {
+public class VistaCajero extends JFrame {
 
     private JPanel panelIzquierdo;
     private JPanel panelDerecho;
     private GridBagConstraints c;
     private ImageIcon imagen;
-    private JLabel jlImagen, jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero, jlCodigoProducto;
+    private JLabel jlImagen, jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero, jlCodigoProducto, jlEnunciadoTotal, jlTotal;
     private JTable tabla;
-    private JButton btnAgregar, btnEliminar, btnCerrarSesion;
+    private JButton btnAgregar, btnEliminar, btnCerrarSesion, btnCobrar, btnAumentar, btnDecrementar;
     private Color colorPrincipal;
     private JTextField tCodigo;
 
-    public Ventana() {
+    public VistaCajero() {
         // Configuramos la ventana principal
         super("Cajero");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,6 +57,12 @@ public class Ventana extends JFrame {
         this.setMinimumSize(new Dimension(1000, 600));
         this.setLocationRelativeTo(this);
         this.colorPrincipal = new Color(39, 54, 77);
+        this.tabla = new JTable();
+        this.btnCobrar = new JButton("Cobrar");
+        this.btnAumentar = new JButton("+");
+        this.btnDecrementar = new JButton("-");
+        this.jlEnunciadoTotal = new JLabel("Total a pagar: ");
+        this.jlTotal = new JLabel("$0.00");
 
         //configurando ventana al 100%
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -71,7 +75,6 @@ public class Ventana extends JFrame {
         setLayout(new GridBagLayout());
         // Mostramos la ventana
         componentes();
-        setVisible(true);
     }
 
     private void componentes() {
@@ -80,6 +83,7 @@ public class Ventana extends JFrame {
         etiquetas();
         crearControl();
         crearTabla();
+        controlesInferiores();
     }
 
     private void paneles() {
@@ -99,7 +103,7 @@ public class Ventana extends JFrame {
 
         // Creamos el panel derecho y lo añadimos a la ventana
         panelDerecho = new JPanel();
-        panelDerecho.setBackground(CodigoColor.cFondo);
+        panelDerecho.setBackground(new Color(255,255,255));
         panelDerecho.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         c.gridx = 1;
         c.gridy = 0;
@@ -114,16 +118,24 @@ public class Ventana extends JFrame {
         try {
             this.jlImagen = new JLabel();
             this.jlImagen.setSize(new Dimension(100, 100));
-            Icon icon = new ImageIcon(new ImageIcon("src/main/resources/imagenes/peter/austronauta.png").getImage().getScaledInstance(jlImagen.getWidth(), jlImagen.getHeight(), Image.SCALE_AREA_AVERAGING));
+            Icon icon = new ImageIcon(new ImageIcon("src/main/resources/imagenes/peter/austronauta.png").getImage().getScaledInstance(200, 200, Image.SCALE_AREA_AVERAGING));
             this.jlImagen.setIcon(icon);
             //this.repaint();
             this.jlImagen.setBackground(Color.MAGENTA);
-            c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 100, 10), 0, 0);
+            c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 60, 10), 0, 0);
             centrarTexto(jlImagen);
             this.panelIzquierdo.add(jlImagen, c);
         } catch (Exception ex) {
 
         }
+    }
+
+    public void labelConf(JLabel... jl) {
+        Arrays.asList(jl).forEach(j -> {
+            centrarTexto(j);
+            Configuracion.robotoPlain14(j);
+            Configuracion.foreground(Color.WHITE,j);
+        });
     }
 
     private void etiquetas() {
@@ -132,24 +144,20 @@ public class Ventana extends JFrame {
         this.jlgmail = new JLabel();
         this.jlNombreCajero = new JLabel();
 
-        TiendaDAO tiendaDao = new TiendaDAO();
-        Tienda tienda = tiendaDao.traerUltimo();
-        jlNombreEmpresa.setText(tienda.getNombre());
+        jlNombreEmpresa.setText("Nombre de la tienda");
         c = grid(0, 1, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlNombreEmpresa, c);
-        jlSloga.setText(tienda.getSlogan());
+        jlSloga.setText("Slogan de la tienda");
         c = grid(0, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlSloga, c);
-        jlgmail.setText(tienda.getEmail());
+        jlgmail.setText("Email de la tienda");
         c = grid(0, 3, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlgmail, c);
-        jlNombreCajero.setText("Aqui va el nombre del usuario actual");
+        jlNombreCajero.setText("Nombre del usuario");
         c = grid(0, 4, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlNombreCajero, c);
-        centrarTexto(jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero);
-        Configuracion.robotoPlain14(jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero);
-        Configuracion.foreground(Color.WHITE, jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero);
-        this.jlNombreEmpresa.setBackground(Color.RED);
+        
+        labelConf(jlNombreEmpresa, jlSloga,jlgmail, jlNombreCajero); 
 
         //Btn cerrar Sesion
         btnCerrarSesion = new JButton("Cerrar Sesion");
@@ -157,16 +165,14 @@ public class Ventana extends JFrame {
         btnCerrarSesion.setForeground(Color.WHITE);
         btnCerrarSesion.setFocusable(false);
         btnCerrarSesion.setFocusPainted(false);
+        btnCerrarSesion.setBorderPainted(false);
         btnCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
         Configuracion.robotoPlain14(btnCerrarSesion);
         this.repaint();
         c = grid(0, 5, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(50, 10, 10, 10), 0, 0);
         agregarAlPanel(panelIzquierdo, btnCerrarSesion, c);
 
-        //le agregamos la acción de cerrar
-        btnCerrarSesion.addActionListener(e -> {
-            System.exit(0);
-        });
+        
     }
 
     /**
@@ -194,7 +200,7 @@ public class Ventana extends JFrame {
      * alto preferido del componente.
      */
     private <T extends JComponent> GridBagConstraints grid(int gridx, int gridy, int gridWidth, int gridHeight,
-            int weightx, int weighty, int fill, int anchor, Insets insets, int ipadx, int ipady) {
+            double weightx, double weighty, int fill, int anchor, Insets insets, int ipadx, int ipady) {
         c = new GridBagConstraints();
         c.gridx = gridx;
         c.gridy = gridy;
@@ -249,61 +255,251 @@ public class Ventana extends JFrame {
             e.setForeground(Color.WHITE);
             Configuracion.robotoPlain14(btn);
             e.setFocusable(false);
-            e.setCursor(new Cursor(Cursor.HAND_CURSOR) {
-            });
+            e.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            e.setBorderPainted(false);
         });
     }
 
-    private void crearTabla() {
-        // Crear la tabla con un modelo de datos vacío
-        tabla = new JTable();
+    public void cargarModeloTabla() {
+        if (this.tabla != null) {
+            DefaultTableModel dtm = new DefaultTableModel(); 
+            tabla.setModel(dtm);
+            // Configurar los titulos de las columnas
+            String[] titulos = {"Codigo", "Descripcion del producto", "Precio Venta", "Cant", "Importe", "Existencia"};
+            dtm.setColumnIdentifiers(titulos);
+            // Configurar los tamaños de las columnas
+            int[] tam = {50, 200, 50, 30, 70, 50};
+            for (int i = 0; i < titulos.length; i++) {
+                tabla.getColumnModel().getColumn(i).setPreferredWidth(tam[i]);
+            }
 
+            // Configurar algunos detalles estéticos
+            tabla.setRowHeight(30);
+            tabla.setIntercellSpacing(new Dimension(0, 0));
+            tabla.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+            tabla.getTableHeader().setForeground(Color.WHITE);
+            tabla.getTableHeader().setBackground(new Color(39, 54, 77));
+            tabla.getTableHeader().setOpaque(false);
+            tabla.setFont(new Font("Arial", Font.PLAIN, 14));
+            tabla.setSelectionBackground(new Color(194, 230, 248));
+            // Para quitar el borde de selección de las celdas de la tabla
+            tabla.setFocusable(false);
+            tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+            // Centrar el texto en las celdas de la tabla
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+            tabla.setDefaultRenderer(Object.class, centerRenderer);
+
+        }
+    }
+
+    private void crearTabla() {
         // Agregar la tabla a un JScrollPane para poder desplazarse por ella
         JScrollPane scrollPane = new JScrollPane(tabla);
-
-        // Configurar los titulos de las columnas
-        String[] titulos = {"Codigo", "Descripcion del producto", "Precio Venta", "Cant", "Importe", "Existencia"};
-        DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(titulos);
-        tabla.setModel(model);
-
-        // Configurar los tamaños de las columnas
-        int[] tam = {50, 200, 50, 30, 70, 50};
-        for (int i = 0; i < titulos.length; i++) {
-            tabla.getColumnModel().getColumn(i).setPreferredWidth(tam[i]);
-        }
-
-        // Configurar algunos detalles estéticos
-        tabla.setRowHeight(30);
-        tabla.setIntercellSpacing(new Dimension(0, 0));
-        tabla.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        tabla.getTableHeader().setForeground(Color.WHITE);
-        tabla.getTableHeader().setBackground(new Color(39, 54, 77));
-        tabla.getTableHeader().setOpaque(false);
-        tabla.setFont(new Font("Arial", Font.PLAIN, 14));
-        tabla.setSelectionBackground(new Color(194, 230, 248));
-        // Para quitar el borde de selección de las celdas de la tabla
-        tabla.setFocusable(false);
-        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        // Centrar el texto en las celdas de la tabla
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        tabla.setDefaultRenderer(Object.class, centerRenderer);
-
-        // Agregar algunos datos a la tabla para mostrarla con información
-        Object[] fila1 = {"123456789", "Crema para peinarse PANTENE", "$40.00", "2", "$80.00", "5"};
-        model.addRow(fila1);
-        Object[] fila2 = {"123456789", "Crema para peinarse PANTENE", "$40.00", "2", "$80.00", "5"};
-        model.addRow(fila2);
-
+        cargarModeloTabla();
         //lo agregamos al panel con las ubicaciones
-        c = grid(0, 5, 5, 10, 1, 1, GridBagConstraints.BOTH, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        c = grid(0, 5, 6, 10, 1, 1, GridBagConstraints.BOTH, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, scrollPane, c);
 
     }
 
-    public static void main(String[] args) {
-        Ventana v = new Ventana();
+    private void controlesInferiores() {
+        c = grid(4, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, btnAumentar, c);
+
+        c = grid(5, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, btnDecrementar, c);
+
+        c = grid(4, 20, 2, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 20, 0);
+        agregarAlPanel(panelDerecho, btnCobrar, c);
+
+        btnConf(btnAumentar, btnDecrementar, btnCobrar);
+
+        c = grid(0, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, jlEnunciadoTotal, c);
+        c = grid(3, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        agregarAlPanel(panelDerecho, jlTotal, c);
+            centrarTexto(jlTotal, jlEnunciadoTotal);
+            Configuracion.robotoBold20(jlTotal);
+            Configuracion.robotoBold16(jlEnunciadoTotal);
+            Configuracion.foreground(Color.BLACK, jlTotal, jlEnunciadoTotal);
+
     }
+
+    //getter and Setter para poder recuperar los datos desde el controlador
+    public JPanel getPanelIzquierdo() {
+        return panelIzquierdo;
+    }
+
+    public void setPanelIzquierdo(JPanel panelIzquierdo) {
+        this.panelIzquierdo = panelIzquierdo;
+    }
+
+    public JPanel getPanelDerecho() {
+        return panelDerecho;
+    }
+
+    public void setPanelDerecho(JPanel panelDerecho) {
+        this.panelDerecho = panelDerecho;
+    }
+
+    public GridBagConstraints getC() {
+        return c;
+    }
+
+    public void setC(GridBagConstraints c) {
+        this.c = c;
+    }
+
+    public ImageIcon getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(ImageIcon imagen) {
+        this.imagen = imagen;
+    }
+
+    public JLabel getJlImagen() {
+        return jlImagen;
+    }
+
+    public void setJlImagen(JLabel jlImagen) {
+        this.jlImagen = jlImagen;
+    }
+
+    public JLabel getJlNombreEmpresa() {
+        return jlNombreEmpresa;
+    }
+
+    public void setJlNombreEmpresa(JLabel jlNombreEmpresa) {
+        this.jlNombreEmpresa = jlNombreEmpresa;
+    }
+
+    public JLabel getJlSloga() {
+        return jlSloga;
+    }
+
+    public void setJlSloga(JLabel jlSloga) {
+        this.jlSloga = jlSloga;
+    }
+
+    public JLabel getJlgmail() {
+        return jlgmail;
+    }
+
+    public void setJlgmail(JLabel jlgmail) {
+        this.jlgmail = jlgmail;
+    }
+
+    public JLabel getJlNombreCajero() {
+        return jlNombreCajero;
+    }
+
+    public void setJlNombreCajero(JLabel jlNombreCajero) {
+        this.jlNombreCajero = jlNombreCajero;
+    }
+
+    public JLabel getJlCodigoProducto() {
+        return jlCodigoProducto;
+    }
+
+    public void setJlCodigoProducto(JLabel jlCodigoProducto) {
+        this.jlCodigoProducto = jlCodigoProducto;
+    }
+
+    public JTable getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(JTable tabla) {
+        this.tabla = tabla;
+    }
+
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public void setBtnAgregar(JButton btnAgregar) {
+        this.btnAgregar = btnAgregar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public JButton getBtnCerrarSesion() {
+        return btnCerrarSesion;
+    }
+
+    public void setBtnCerrarSesion(JButton btnCerrarSesion) {
+        this.btnCerrarSesion = btnCerrarSesion;
+    }
+
+    public Color getColorPrincipal() {
+        return colorPrincipal;
+    }
+
+    public void setColorPrincipal(Color colorPrincipal) {
+        this.colorPrincipal = colorPrincipal;
+    }
+
+    public JTextField gettCodigo() {
+        return tCodigo;
+    }
+
+    public void settCodigo(JTextField tCodigo) {
+        this.tCodigo = tCodigo;
+    }
+
+    public JFrame getVentana() {
+        return this;
+    }
+
+    public JLabel getJlEnunciadoTotal() {
+        return jlEnunciadoTotal;
+    }
+
+    public void setJlEnunciadoTotal(JLabel jlEnunciadoTotal) {
+        this.jlEnunciadoTotal = jlEnunciadoTotal;
+    }
+
+    public JLabel getJlTotal() {
+        return jlTotal;
+    }
+
+    public void setJlTotal(JLabel jlTotal) {
+        this.jlTotal = jlTotal;
+    }
+
+    public JButton getBtnCobrar() {
+        return btnCobrar;
+    }
+
+    public void setBtnCobrar(JButton btnCobrar) {
+        this.btnCobrar = btnCobrar;
+    }
+
+    public JButton getBtnAumentar() {
+        return btnAumentar;
+    }
+
+    public void setBtnAumentar(JButton btnAumentar) {
+        this.btnAumentar = btnAumentar;
+    }
+
+    public JButton getBtnDecrementar() {
+        return btnDecrementar;
+    }
+
+    public void setBtnDecrementar(JButton btnDecrementar) {
+        this.btnDecrementar = btnDecrementar;
+    }
+    
+    
+
 }

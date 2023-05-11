@@ -4,6 +4,7 @@ import com.classes.Departamento;
 import com.classes.Producto;
 import com.conexion.DepartamentoDao;
 import com.conexion.ProductoDAO;
+import com.settings.Recursos;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
@@ -30,9 +31,11 @@ public class ListProductsPanel extends javax.swing.JPanel {
     private List<Producto> productos;
     private ProductoDAO productoDAO;
     private DepartamentoDao departamentoDao;
+    private Recursos recursos;
 
     public ListProductsPanel(PrincipalAdmin principalAdmin) {
         initComponents();
+        recursos = Recursos.getService();
         this.principalAdmin = principalAdmin;
         this.model = (DefaultTableModel) table.getModel();
         this.productoDAO = new ProductoDAO();
@@ -48,14 +51,12 @@ public class ListProductsPanel extends javax.swing.JPanel {
         formatTable();
     }
 
-    private void registrar() {
+    public void registrar() {
+        model.setRowCount(0);
         this.productos.forEach(producto ->
         {
             Producto p = productoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
-            System.out.println("id de p " + p.getIdDepartamento());
             Departamento dep = departamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
-            System.out.println(p);
-            System.out.println(dep);
             model.addRow(new Object[]
             {
                 producto.getCodigo(), producto.getNombre(), producto.getPrecioCosto(), producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
@@ -76,6 +77,11 @@ public class ListProductsPanel extends javax.swing.JPanel {
                 });
             }
         });
+        if (table.getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "No hay productos en esta categoria");
+            registrar();
+        }
     }
 
     public void formatTable() {
@@ -140,6 +146,7 @@ public class ListProductsPanel extends javax.swing.JPanel {
         {
             subMenus.add(new JMenuItem(departamento.getDepartamento()));
         });
+        subMenus.add(new JMenuItem("General"));
 
         subMenus.forEach(submenu ->
         {
@@ -148,11 +155,15 @@ public class ListProductsPanel extends javax.swing.JPanel {
         });
         popupMenu.add(subMenu);
 
-        for (int i = 0; i < subMenus.size(); i++)
+        for (int i = 0; i < subMenus.size() - 1; i++)
         {
             eventoSubmenu(subMenus.get(i), i + 1);
         }
-
+        subMenus.get(12).addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                registrar();
+            }
+        });
         table.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 showPopupMenu(e);
@@ -180,38 +191,9 @@ public class ListProductsPanel extends javax.swing.JPanel {
         });
     }
 
-    public void buscarEnTabla(String textoABuscar) {
-        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
-        table.setRowSorter(sorter);
-
-        if (textoABuscar.trim().length() == 0)
-        {
-            sorter.setRowFilter(null);
-        } else
-        {
-            RowFilter<DefaultTableModel, Object> filtro = RowFilter.regexFilter("(?i)" + Pattern.quote(textoABuscar));
-            sorter.setRowFilter(filtro);
-        }
-        if(table.getRowCount() == 0){
-            JOptionPane.showMessageDialog(null, "No se encuentra");
-        }
+    public void buscarENtabla(String texto) {
+        recursos.buscarEnTabla(table, texto);
     }
-
-//    public void buscarEnTabla2(String textoABuscar, JTable tabla) {
-//        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-//        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
-//        tabla.setRowSorter(sorter);
-//
-//        if (textoABuscar.trim().length() == 0)
-//        {
-//            sorter.setRowFilter(null);
-//        } else
-//        {
-//            RowFilter<DefaultTableModel, Object> filtro = RowFilter.regexFilter("(?i)" + Pattern.quote(textoABuscar));
-//            sorter.setRowFilter(filtro);
-//        }
-//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

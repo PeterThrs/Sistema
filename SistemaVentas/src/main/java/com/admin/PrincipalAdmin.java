@@ -24,20 +24,20 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     int x, y;
     private ListUsersPanel listaUsuarios;
     private ListProductsPanel listaProductos;
-    
+
     public PrincipalAdmin() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/images/logo.png")).getImage());
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
-        
+
         new CambiaPanel(pnlPrincipal, new InfoStore());
         desactivarBotonesIniciar();
         buscaar.setEnabled(false);
         listaUsuarios = new ListUsersPanel(this);
         listaProductos = new ListProductsPanel(this);
         buscaar.setVisible(false);
-        
+
         setVisible(true);
     }
 
@@ -637,6 +637,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             buscaar.setEnabled(true);
             buscaar.setText("");
             new CambiaPanel(pnlPrincipal, listaUsuarios);
+            listaUsuarios.registrar();
             Configuracion.colorSelectedBotones(this.btnListarUsuarios, this.btnHoome, this.btnAdminProductos, this.btnAdminUser, this.btnListarProductos, this.btnInfoEmpresa, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
         {
@@ -668,6 +669,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             buscaar.setEnabled(true);
             buscaar.setText("");
             new CambiaPanel(pnlPrincipal, listaProductos);
+            listaProductos.registrar();
             Configuracion.colorSelectedBotones(this.btnListarProductos, this.btnHoome, this.btnAdminUser, this.btnAdminProductos, this.btnListarUsuarios, this.btnInfoEmpresa, this.btnConfiguracion, this.btnCerrarSesion);
         } catch (Exception e)
         {
@@ -857,11 +859,20 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoomeActionPerformed
 
     private void buscaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaarActionPerformed
-        if(btnListarUsuarios.isSelected()){
-            listaUsuarios.buscarEnTabla(buscaar.getText());
-        }
-        else{
-            listaProductos.buscarEnTabla(buscaar.getText());
+        if (btnListarUsuarios.isSelected() && !buscaar.getText().isEmpty())
+        {
+            listaUsuarios.buscarENtabla(buscaar.getText());
+        } else if (btnListarProductos.isSelected() && !buscaar.getText().isEmpty())
+        {
+            listaProductos.buscarENtabla(buscaar.getText());
+        } else if (btnListarProductos.isSelected() && buscaar.getText().isEmpty())
+        {            
+            listaProductos = new ListProductsPanel(this);
+            new CambiaPanel(pnlPrincipal, listaProductos);
+        } else if (btnListarUsuarios.isSelected() && buscaar.getText().isEmpty())
+        {
+            listaUsuarios = new ListUsersPanel(this);
+            new CambiaPanel(pnlPrincipal, listaUsuarios);
         }
     }//GEN-LAST:event_buscaarActionPerformed
 

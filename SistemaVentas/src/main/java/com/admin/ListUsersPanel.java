@@ -8,9 +8,12 @@ import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.settings.Configuracion;
+import com.settings.Recursos;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -22,10 +25,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
 
 public class ListUsersPanel extends javax.swing.JPanel {
@@ -36,9 +42,11 @@ public class ListUsersPanel extends javax.swing.JPanel {
     private Persona persona;
     private PrincipalAdmin principalAdmin;
     private UsuarioDao usuarioDao;
+    private Recursos recursos;
 
     public ListUsersPanel(PrincipalAdmin principalAdmin) {
         usuarioDao = new UsuarioDao();
+        recursos = Recursos.getService();
         initComponents();
         this.model = (DefaultTableModel) table.getModel();
         this.principalAdmin = principalAdmin;
@@ -48,7 +56,8 @@ public class ListUsersPanel extends javax.swing.JPanel {
         clicSecundario();
     }
 
-    private void registrar() {
+    public void registrar() {
+        model.setRowCount(0);
         this.usuarios = UsuarioDao.seleccionar();
         usuarios.forEach(usuario ->
         {
@@ -74,6 +83,11 @@ public class ListUsersPanel extends javax.swing.JPanel {
                 });
             }
         });
+        if (table.getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "No hay productos en esta categoria");
+            registrar();
+        }
     }
 
     public void formatTable() {
@@ -161,6 +175,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
         {
             subMenus.add(new JMenuItem(rol.getNombre()));
         });
+        subMenus.add(new JMenuItem("General"));
 
         subMenus.forEach(submenu ->
         {
@@ -169,10 +184,15 @@ public class ListUsersPanel extends javax.swing.JPanel {
         });
         popupMenu.add(subMenu);
 
-        for (int i = 0; i < subMenus.size(); i++)
+        for (int i = 0; i < subMenus.size() - 1; i++)
         {
             eventoSubmenu(subMenus.get(i), i + 1);
         }
+        subMenus.get(3).addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                registrar();
+            }
+        });
 
         table.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -201,25 +221,10 @@ public class ListUsersPanel extends javax.swing.JPanel {
         });
     }
 
-    public void buscarEnTabla(String textoABuscar) {
-        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
-        table.setRowSorter(sorter);
-
-        if (textoABuscar.trim().length() == 0)
-        {
-            sorter.setRowFilter(null);
-        } else
-        {
-            RowFilter<DefaultTableModel, Object> filtro = RowFilter.regexFilter("(?i)" + Pattern.quote(textoABuscar));
-            sorter.setRowFilter(filtro);
-        }
-        
-        if(table.getRowCount() == 0){
-            JOptionPane.showMessageDialog(null, "No se encuentra");
-        }
+    public void buscarENtabla(String texto){
+        recursos.buscarEnTabla(table, texto);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -5,12 +5,20 @@
 package com.settings;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.io.File;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class Recursos {
 
@@ -128,5 +136,46 @@ public class Recursos {
         File folder = new File(directorio);
         File[] archivos = folder.listFiles();
         return (archivos.length == 1 && archivos[0].isFile()) ? archivos[0].getName() : null;
+    }
+    
+    public static void buscarEnTabla(JTable tabla, String textoABuscar) {
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
+        tabla.setRowSorter(sorter);
+
+        if (textoABuscar.trim().isEmpty())
+        {
+            sorter.setRowFilter(null);
+        } else
+        {
+            RowFilter<DefaultTableModel, Object> filtro = RowFilter.regexFilter("(?i)" + Pattern.quote(textoABuscar));
+            sorter.setRowFilter(filtro);
+        }
+
+        resaltarCoincidencias(tabla, textoABuscar);
+        
+        if (tabla.getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "No se encuentra");
+        }
+    }
+    
+    private static void resaltarCoincidencias(JTable tabla, String textoABuscar) {
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                if (value != null && value.toString().toLowerCase().contains(textoABuscar.toLowerCase()))
+                {
+                    value = resaltarCoincidencias(value.toString(), textoABuscar);
+                }
+                return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            }
+        };
+        tabla.setDefaultRenderer(Object.class, renderer);
+    }
+
+    private static String resaltarCoincidencias(String texto, String textoABuscar) {
+        String resaltado = texto.replaceAll("(?i)" + Pattern.quote(textoABuscar), "<span style='background-color: yellow;'>$0</span>");
+        return "<html>" + resaltado + "</html>";
     }
 }

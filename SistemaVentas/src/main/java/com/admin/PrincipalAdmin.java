@@ -377,7 +377,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 1);
         jPanel1.add(pnlMenu, gridBagConstraints);
 
-        jPanel2.setBackground(new java.awt.Color(38, 86, 186));
+        jPanel2.setBackground(new java.awt.Color(39, 54, 77));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -405,7 +405,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Sistema Ventas");
 
-        buscaar.setBackground(new java.awt.Color(38, 86, 186));
+        buscaar.setBackground(new java.awt.Color(39, 54, 77));
         buscaar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         buscaar.setForeground(new java.awt.Color(255, 255, 255));
         buscaar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -532,10 +532,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             int posicion = pnlMenu.getX();
             if (posicion > -1)
             {
-                Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
+                Animacion.mover_izquierda(0, -264, 0, 2, pnlMenu);
             } else
             {
-                Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
+                Animacion.mover_derecha(-264, 0, 0, 2, pnlMenu);
             }
         } catch (Exception e)
         {

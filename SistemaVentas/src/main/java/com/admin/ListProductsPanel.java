@@ -87,8 +87,6 @@ public class ListProductsPanel extends javax.swing.JPanel {
                 System.out.println("Edit row : " + row);
                 String codigo = (String) table.getValueAt(row, 0);
                 Producto producto = productos.stream().filter(p -> (p.getCodigo().equals(codigo))).findFirst().get();
-                //System.out.println("Mostrando el producto seleccionado");
-                //System.out.println("producto = " + producto);
                 principalAdmin.cambiarPanelExterno(new PanelProducto(producto));
             }
 

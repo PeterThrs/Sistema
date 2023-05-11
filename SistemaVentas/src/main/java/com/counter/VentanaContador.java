@@ -195,7 +195,7 @@ public class VentanaContador extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 1);
         jPanel1.add(pnlMenu, gridBagConstraints);
 
-        jPanel2.setBackground(new java.awt.Color(38, 86, 186));
+        jPanel2.setBackground(new java.awt.Color(39, 54, 77));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {

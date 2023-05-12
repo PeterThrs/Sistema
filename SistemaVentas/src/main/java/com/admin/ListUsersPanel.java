@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.admin;
 
 import com.classes.Persona;
@@ -10,38 +6,77 @@ import com.classes.Usuario;
 import com.conexion.PersonaDao;
 import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
+import com.settings.Configuracion;
+import com.settings.Recursos;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
 public class ListUsersPanel extends javax.swing.JPanel {
 
-    DefaultTableModel model;
+    private DefaultTableModel model;
+    private List<Usuario> usuarios;
+    private Usuario usuario;
+    private Persona persona;
+    private PrincipalAdmin principalAdmin;
+    private UsuarioDao usuarioDao;
+    private Recursos recursos;
 
-    public ListUsersPanel() {
+    public ListUsersPanel(PrincipalAdmin principalAdmin) {
+        usuarioDao = new UsuarioDao();
+        recursos = Recursos.getService();
         initComponents();
-        model = (DefaultTableModel) table.getModel();
+        this.model = (DefaultTableModel) table.getModel();
+        this.principalAdmin = principalAdmin;
         anchoFilas();
         registrar();
         formatTable();
+        clicSecundario();
     }
 
-    private void registrar() {
-        List<Usuario> usuarios = UsuarioDao.seleccionar();
+    public void registrar() {
+        model.setRowCount(0);
+        this.usuarios = UsuarioDao.seleccionar();
         usuarios.forEach(usuario ->
         {
             Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
             Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
-            System.out.println(usuario);
-            //System.out.println(p);
-            //System.out.println(r);
             model.addRow(new Object[]
             {
                 usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
             });
         });
+    }
+
+    private void registrarPorFiltro(int id) {
+        this.usuarios.forEach(usuario ->
+        {
+            Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
+            Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
+            if (id == r.getIdRol())
+            {
+                model.addRow(new Object[]
+                {
+                    usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
+                });
+            }
+        });
+        if (table.getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "No hay productos en esta categoria");
+            registrar();
+        }
     }
 
     public void formatTable() {
@@ -51,6 +86,24 @@ public class ListUsersPanel extends javax.swing.JPanel {
                 @Override
                 public void onEdit(int row) {
                     System.out.println("Edit roooooooooooow : " + row);
+
+                    int idUsuario = (int) table.getValueAt(row, 0);
+
+                    usuario = usuarios.stream().filter(e -> (e.getIdUsuario() == idUsuario)).findFirst().get();
+
+                    persona = new Persona(usuario.getIdPersona());
+
+                    PersonaDao personaDao = new PersonaDao();
+                    persona = personaDao.seleccionIndividual(persona);
+
+                    //RolDAO rolDao = new RolDao(); 
+                    //Rol rol = rolDao.seleccionIndividual(new Rol(usuario.getIdRol()));
+                    System.out.println("Imprimiendo desde la clase Listar Usuarios");
+                    System.out.println("usuario = " + usuario);
+                    System.out.println("persona = " + persona);
+                    principalAdmin.cambiarPanelExterno(new PanelUserNew(usuario, persona));
+                    Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(), principalAdmin.getBtnInfoEmpresa(), principalAdmin.getBtnConfiguracion(), principalAdmin.getBtnCerrarSesion());
+                    principalAdmin.repaint();
                 }
 
                 @Override
@@ -61,11 +114,11 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     }
                     int fila = table.getSelectedRow();
                     int idUsuario = Integer.parseInt(table.getValueAt(fila, 0).toString());
-                    
-                    Usuario usuario = UsuarioDao.seleccionIndividual(new Usuario(idUsuario));
-                    UsuarioDao.eliminar(new Usuario(usuario.getIdUsuario()));
+
+                    Usuario usuario = usuarioDao.seleccionIndividual(new Usuario(idUsuario));
+                    UsuarioDao.eliminar(usuario);
                     PersonaDao.eliminar(new Persona(usuario.getIdPersona()));
-                    
+
                     model.removeRow(row);
                 }
 
@@ -91,11 +144,76 @@ public class ListUsersPanel extends javax.swing.JPanel {
         }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    public void clicSecundario() {
+//        try
+//        {
+//            UIManager.setLookAndFeel(new FlatLightLaf());
+//        } catch (Exception ex)
+//        {
+//            ex.printStackTrace();
+//        }
+        JPopupMenu.setDefaultLightWeightPopupEnabled(false);
+        JPopupMenu popupMenu = new JPopupMenu();
+
+        List<Rol> roles = RolDAO.seleccionar();
+        List<JMenuItem> subMenus = new ArrayList<>();
+
+        JMenu subMenu = new JMenu("Filtrar por");
+
+        roles.forEach(rol ->
+        {
+            subMenus.add(new JMenuItem(rol.getNombre()));
+        });
+        subMenus.add(new JMenuItem("General"));
+
+        subMenus.forEach(submenu ->
+        {
+            subMenu.add(submenu);
+            subMenu.addSeparator();
+        });
+        popupMenu.add(subMenu);
+
+        for (int i = 0; i < subMenus.size() - 1; i++)
+        {
+            eventoSubmenu(subMenus.get(i), i + 1);
+        }
+        subMenus.get(3).addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                registrar();
+            }
+        });
+
+        table.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                showPopupMenu(e);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                showPopupMenu(e);
+            }
+
+            private void showPopupMenu(MouseEvent e) {
+                if (e.isPopupTrigger())
+                {
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+        });
+    }
+
+    public void eventoSubmenu(JMenuItem subMenu, int id) {
+        subMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                model.setRowCount(0);
+                registrarPorFiltro(id);
+            }
+        });
+    }
+
+    public void buscarENtabla(String texto){
+        recursos.buscarEnTabla(table, texto);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -120,7 +238,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
             }
         });
         table.setRowHeight(40);
-        table.setSelectionBackground(new java.awt.Color(20, 169, 98));
+        table.setSelectionBackground(new java.awt.Color(0, 204, 204));
         jScrollPane1.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -134,8 +252,6 @@ public class ListUsersPanel extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

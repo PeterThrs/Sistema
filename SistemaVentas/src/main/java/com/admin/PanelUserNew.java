@@ -8,44 +8,76 @@ import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
+import com.settings.Validaciones;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 public class PanelUserNew extends javax.swing.JPanel {
 
-    private Boolean update;
-    private ButtonGroup groupRadioBtn;
-
-    //datos del form
+    //Datos del Form
     private String nombre, aPaterno, aMaterno, email, telefono1, telefono2, curp, rfc, sexo, estado, municipio, colonia, calle, nomUsuario, contrasenia, confirmacion;
     private int idPersona, edad, codigoPostal, numCasa, idUsuario, idRol;
-
     //atributos para modificar la BD
-    private Persona persona = new Persona();
-    private PersonaDao personaDao = new PersonaDao();
-    private Usuario usuario = new Usuario();
-    private UsuarioDao usuarioDao = new UsuarioDao();
+    private Persona persona;
+    private PersonaDao personaDao;
+    private Usuario usuario;
+    private UsuarioDao usuarioDao;
+    private ButtonGroup groupRadioBtn;
+    private Validaciones validar;
+    //
+    private boolean actualizar;
 
     public PanelUserNew() {
+        this.actualizar = false;
+        this.instancias();
         initComponents();
         agregarEstilos();
         configuracion();
+
+    }
+
+    public void instancias(){
+        this.persona = new Persona();
+        this.usuario = new Usuario();
+        this.personaDao = new PersonaDao();
+        this.usuarioDao = new UsuarioDao();
+        this.validar = Validaciones.getValidacion();
+    }
+    
+    public PanelUserNew(Usuario usuario, Persona persona) {
+        this.usuario = usuario;
+        this.persona = persona;
+        this.actualizar = true;
+        this.personaDao = new PersonaDao();
+        this.usuarioDao = new UsuarioDao();
+
+        initComponents();
+        agregarEstilos();
+        configuracion();
+
+        cargarDatos();
+        accionBtnActualizar();
+        accionBtnEliminar();
+
+    }
+
+    private void configuracion() {
+        agregarRadioBotones();
+        modeloComboBox();
+        checkBoxItemListened();
+        accionBtnCreate();
+        verificarEstado();
     }
 
     private void agregarEstilos() {
-
         //configuraciones del panel
         Configuracion.background(CodigoColor.cFondoGris, this);
 
         //configuraciones de los JLabel
-        //titulo
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
         Configuracion.robotoBold20(this.jlTitle);
-        //demas datos
         Configuracion.robotoPlain14(this.jlAge, this.jlCol, this.jlCurp, this.jlEmail, this.jlHouseNumber, this.jlLastNameM,
                 this.jlLastNameP, this.jlMun, this.jlName, this.jlPhone1, this.jlPhone2, this.jlPostalCode,
                 this.jlRfc, this.jlSex, this.jlStreet, this.jlRol, this.jlUser, this.jlPassword, this.jlSubtitulo,
@@ -75,7 +107,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnCreate, this.btnUpdate);
         this.btnCancel.setBackground(CodigoColor.cFondoBtnAzul);
 
-        //configurciones del JSpinner
         //configuraciones del JRadioButton
         Configuracion.robotoPlain14(this.rbMan, this.rbWoman);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.rbMan, this.rbWoman);
@@ -101,12 +132,16 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     }
 
-    private void configuracion() {
-        agregarRadioBotones();
-        estadoBtnUpdate();
-        modeloComboBox();
-        checkBoxItemListened();
-        accionBtnCreate();
+    private void verificarEstado() {
+        if (this.actualizar) {
+            this.btnCreate.setEnabled(false);
+            this.btnUpdate.setEnabled(true);
+            this.btnCancel.setEnabled(true);
+        } else {
+            this.btnUpdate.setEnabled(false);
+            this.btnCreate.setEnabled(true);
+            this.btnCancel.setEnabled(false);
+        }
     }
 
     private void agregarRadioBotones() {
@@ -115,19 +150,6 @@ public class PanelUserNew extends javax.swing.JPanel {
             groupRadioBtn.add(this.rbMan);
             groupRadioBtn.add(this.rbWoman);
             rbMan.setSelected(true);
-        } catch (Exception ex) {
-
-        }
-    }
-
-    private void estadoBtnUpdate() {
-        try {
-            System.out.println(this.update);
-            if (this.update) {
-                this.btnUpdate.setEnabled(true);
-            } else {
-                this.btnUpdate.setEnabled(false);
-            }
         } catch (Exception ex) {
 
         }
@@ -159,25 +181,17 @@ public class PanelUserNew extends javax.swing.JPanel {
         });
     }
 
-    public Boolean getUpdate() {
-        return update;
-    }
-
-    public void setUpdate(Boolean update) {
-        this.update = update;
-    }
-
     public boolean validarFomr() throws NumberFormatException, Exception {
 
-        if (validarCadena(this.nombre) && validarCadena(this.aPaterno)
-                && validarCadena(this.aMaterno) && validarEmail(this.email)
-                && validarTelefono(this.telefono1) && validarTelefono(this.telefono2)
-                && validarEdad(this.edad) && validarCadena(curp) && validarCadena(this.rfc)
-                && validarCadena(this.sexo) && validarCodPostal(this.codigoPostal)
-                && validarCadena(this.estado) && validarCadena(this.municipio)
-                && validarCadena(this.colonia) && validarCadena(this.calle)
-                && validarNumCasa(this.numCasa) && validarCadena(nomUsuario)
-                && validarContrasenia(this.contrasenia) && idRol > 0) {
+        if (validar.validarCadena(this.nombre) && validar.validarCadena(this.aPaterno)
+                && validar.validarCadena(this.aMaterno) && validar.validarEmail(this.email)
+                && validar.validarTelefono(this.telefono1) && validar.validarTelefono(this.telefono2)
+                && validar.validarEdad(this.edad) && validar.validarCadena(curp) && validar.validarCadena(this.rfc)
+                && validar.validarCadena(this.sexo) && validar.validarCodPostal(this.codigoPostal)
+                && validar.validarCadena(this.estado) && validar.validarCadena(this.municipio)
+                && validar.validarCadena(this.colonia) && validar.validarCadena(this.calle)
+                && validar.validarNumCasa(this.numCasa) && validar.validarCadena(nomUsuario)
+                && validar.validarContrasenia(this.contrasenia, this.contrasenia,this.confirmacion) && idRol > 0) {
 
             this.persona.setNombre(this.nombre);
             this.persona.setApellidoPaterno(this.aPaterno);
@@ -197,7 +211,6 @@ public class PanelUserNew extends javax.swing.JPanel {
             this.persona.setNumCasa(this.numCasa);
 
             this.usuario.setNomUsuario(this.nomUsuario);
-            this.usuario.setIdPersona(this.idPersona);
             this.usuario.setContrasenia(this.contrasenia);
             this.usuario.setIdRol(this.idRol);
 
@@ -234,36 +247,6 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     }
 
-    public boolean validarContrasenia(String pass) throws Exception {
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(pass);
-        if (matcher.matches()) {
-            if (contrasenia.equals(confirmacion)) {
-                return true;
-            } else {
-                throw new Exception("Las contraseñas no coinciden");
-            }
-        }
-        throw new Exception("La contraseña no cumple el formato");
-    }
-
-    public boolean validarNumCasa(int num) throws Exception {
-        if (num > 0) {
-            return true;
-        }
-        throw new Exception("El numero de casa no puede ser negativo");
-
-    }
-
-    public boolean validarEmail(String email) throws Exception {
-        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-        if (email.matches(regex)) {
-            return true;
-        }
-        throw new Exception("Formato de email incorrecto");
-    }
-
     public String recuperarSexo() {
         return (this.rbMan.isSelected()) ? "H" : (this.rbWoman.isSelected()) ? "M" : "";
     }
@@ -271,36 +254,6 @@ public class PanelUserNew extends javax.swing.JPanel {
     public int parse(String n) throws NumberFormatException {
         int num = Integer.parseInt(n);
         return num;
-    }
-
-    public boolean validarCadena(String c) throws Exception {
-        if (!c.isEmpty()) {
-            return true;
-        }
-        throw new Exception("Campos vacios");
-    }
-
-    public boolean validarTelefono(String t) throws Exception {
-        //forma correcta de un numero = +52-9511911329
-        String regex = "^\\+\\d{1,3}-\\d{10}$";
-        if (t.matches(regex)) {
-            return true;
-        }
-        throw new Exception("El telefono no cumple con el formato solicitado");
-    }
-
-    public boolean validarEdad(int edad) throws Exception {
-        if (edad >= 18 && edad <= 70) {
-            return true;
-        }
-        throw new Exception("Edad no admitida");
-    }
-
-    public boolean validarCodPostal(int codPostal) throws Exception {
-        if (codPostal >= 0) {
-            return true;
-        }
-        throw new Exception("El codigo postal no puede ser negativo");
     }
 
     public void accionBtnCreate() {
@@ -323,6 +276,7 @@ public class PanelUserNew extends javax.swing.JPanel {
                     int reg = UsuarioDao.insertar(usuario);
 
                     if (reg > 0) {
+                        limpiarForm();
                         JOptionPane.showMessageDialog(null, "Se ha logrado insertar los datos correctamente");
                     }
 
@@ -335,6 +289,110 @@ public class PanelUserNew extends javax.swing.JPanel {
             }
 
         });
+    }
+
+    //cargar datos de la bd en los campos
+    public void cargarDatos() {
+        //cargamos los datos de la persona
+        this.tfName.setText(this.persona.getNombre());
+        this.tfLastNameM.setText(this.persona.getApellidoMaterno());
+        this.tfLastNameP.setText(this.persona.getApellidoPaterno());
+        this.tfEmail.setText(this.persona.getEmail());
+        this.tfPhone1.setText(this.persona.getTelefono1());
+        this.tfPhone2.setText(this.persona.getTelefono2());
+        this.tfEdad.setText(String.valueOf(this.persona.getEdad()));
+        this.tfCurp.setText(this.persona.getCurp());
+        this.tfRfc.setText(this.persona.getRFC());
+        if (this.persona.getSexo().equals("M")) {
+            this.rbMan.setSelected(true);
+            this.rbWoman.setSelected(false);
+        } else {
+            this.rbMan.setSelected(false);
+            this.rbWoman.setSelected(true);
+        }
+        this.tfPostalCode.setText(String.valueOf(persona.getCodigoPostal()));
+        this.tfState.setText(this.persona.getEstado());
+        this.tfMun.setText(this.persona.getMunicipio());
+        this.tfCol.setText(this.persona.getColonia());
+        this.tfStreet.setText(this.persona.getCalle());
+        this.tfHouseNumber.setText(String.valueOf(this.persona.getNumCasa()));
+
+        //cargamos los datos del usuario
+        this.tfUser.setText(this.usuario.getNomUsuario());
+        this.tfPassword.setText(this.usuario.getContrasenia());
+        this.tfConfirm.setText(this.usuario.getContrasenia());
+        this.cbRol.setSelectedIndex(this.usuario.getIdRol() - 1);
+
+    }
+
+    public void limpiarForm() {
+        //cargamos los datos de la persona
+        this.tfName.setText("");
+        this.tfLastNameM.setText("");
+        this.tfLastNameP.setText("");
+        this.tfEmail.setText("");
+        this.tfPhone1.setText("");
+        this.tfPhone2.setText("");
+        this.tfEdad.setText("");
+        this.tfCurp.setText("");
+        this.tfRfc.setText("");
+        this.rbMan.setSelected(true);
+        this.tfPostalCode.setText("");
+        this.tfState.setText("");
+        this.tfMun.setText("");
+        this.tfCol.setText("");
+        this.tfStreet.setText("");
+        this.tfHouseNumber.setText("");
+
+        //cargamos los datos del usuario
+        this.tfUser.setText("");
+        this.tfPassword.setText("");
+        this.tfConfirm.setText("");
+        this.cbRol.setSelectedIndex(1);
+
+    }
+
+    public void accionBtnActualizar() {
+        this.btnUpdate.addActionListener(e -> {
+            try {
+                recuperarDatos();
+                validarFomr();
+
+                int regPersona = personaDao.actualizar(persona);
+                int regUsuario = usuarioDao.actualizar(usuario);
+                if (regPersona > 0 && regUsuario > 0) {
+                    limpiarForm();
+                    JOptionPane.showMessageDialog(null, "Se ha logrado insertar los datos correctamente");
+                }
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        });
+    }
+
+    public void accionBtnEliminar() {
+        this.btnCancel.addActionListener(e -> {
+            try {
+                recuperarDatos();
+                validarFomr();
+
+                int regPersona = personaDao.eliminar(persona);
+                int regUsuario = usuarioDao.eliminar(usuario);
+                limpiarForm();
+                if (regPersona > 0 && regUsuario > 0) {
+                    JOptionPane.showMessageDialog(null, "Se han eliminado los datos correctamente");
+                }
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        });
+
     }
 
     @SuppressWarnings("unchecked")

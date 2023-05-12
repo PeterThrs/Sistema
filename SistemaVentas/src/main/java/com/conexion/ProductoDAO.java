@@ -22,9 +22,8 @@ public class ProductoDAO {
         Connection coon = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Producto producto = null;
         List<Producto> productos = new ArrayList<>();
-
+        
         try {
             coon = getConnection();
             stmt = coon.prepareStatement(SQL_SELECT);

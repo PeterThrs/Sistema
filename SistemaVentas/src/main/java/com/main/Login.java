@@ -1,6 +1,6 @@
 package com.main;
 
-import com.cashiers.VentanaCajero;
+//import com.cashiers.Ventana;
 import com.counter.VentanaContador;
 import com.classes.Sesion;
 import com.settings.CodigoColor;
@@ -249,7 +249,8 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Un producto de PJEJ Consulting.");
 
-        close.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        close.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        close.setForeground(new java.awt.Color(51, 51, 255));
         close.setText("    X");
         close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -300,8 +301,8 @@ public class Login extends javax.swing.JFrame {
                         .addGap(156, 156, 156))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                         .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(182, 182, 182)
-                        .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148)
+                        .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -328,15 +329,16 @@ public class Login extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(120, Short.MAX_VALUE)
                         .addComponent(jlTitulo)
                         .addGap(54, 54, 54))
                     .addGroup(headerLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)))
+                            .addGroup(headerLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerLayout.createSequentialGroup()
                         .addComponent(jLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,7 +391,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelDerecho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelDerecho, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
         );
 
         pack();
@@ -516,8 +518,8 @@ public class Login extends javax.swing.JFrame {
                 case 1:
                     runApplication = new Runnable() {
                         public void run() {
-                            VentanaCajero cajero = new VentanaCajero();
-                            cajero.getClass();
+                            //Ventana cajero = new Ventana();
+                            //cajero.getClass();
                         }
                     };
                     SwingUtilities.invokeLater(runApplication);
@@ -564,7 +566,6 @@ public class Login extends javax.swing.JFrame {
                 break;
             }
         }
-        //userLogin = (usuario.getNomUsuario().equals(user)) ? usuario : null;
         return userLogin;
     }
 

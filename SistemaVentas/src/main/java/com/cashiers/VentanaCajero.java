@@ -1,5 +1,11 @@
 package com.cashiers;
 
+/**
+ *
+ * @author Alberto
+ */
+
+
 import com.settings.CodigoColor;
 import com.main.Login;
 import com.settings.Configuracion;
@@ -220,6 +226,11 @@ public class VentanaCajero extends javax.swing.JFrame {
         jLabelSubtotal.setText("Subtotal:");
 
         jTextFieldSubtotal.setText("$ ");
+        jTextFieldSubtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSubtotalActionPerformed(evt);
+            }
+        });
 
         jLabelTotal.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelTotal.setText("Total:");
@@ -430,6 +441,10 @@ public class VentanaCajero extends javax.swing.JFrame {
         RegistrarCompra pago = new RegistrarCompra(this, true);
         pago.setVisible(true);
     }//GEN-LAST:event_jButtonRegistroActionPerformed
+
+    private void jTextFieldSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSubtotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSubtotalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

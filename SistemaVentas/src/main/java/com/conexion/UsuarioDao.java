@@ -96,9 +96,9 @@ public class UsuarioDao {
             stmt = coon.prepareStatement(SQL_UPDATE);
             stmt.setString(1, usuario.getNomUsuario());
             stmt.setString(2, usuario.getContrasenia());
-            stmt.setInt(3, usuario.getIdUsuario());
+            stmt.setInt(3, usuario.getIdPersona());
             stmt.setInt(4, usuario.getIdRol());
-            
+            stmt.setInt(5, usuario.getIdUsuario());
             registros = stmt.executeUpdate();
 
         } catch (SQLException ex) {
@@ -123,7 +123,7 @@ public class UsuarioDao {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_DELETE);
             stmt.setInt(1, usuario.getIdUsuario());
-            stmt.executeUpdate(); 
+            registros = stmt.executeUpdate(); 
             
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -153,7 +153,7 @@ public class UsuarioDao {
             if(rs.next())
             {
                 int idUsuario = rs.getInt("idUsuario");
-                String nomUsuario = rs.getString("nomUsuario");
+                String nomUsuario = rs.getString("nombreUsuario");
                 String contrasenia = rs.getString("contrasenia");
                 int idPersona = rs.getInt("idPersona");
                 int idRol = rs.getInt("idRol");

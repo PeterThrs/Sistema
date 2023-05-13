@@ -16,6 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import com.settings.ObjGraficosService;
+import com.settings.PlaceholderUtils;
 import com.settings.Recursos;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -232,10 +233,11 @@ public class LoginTemplate extends JFrame {
     }
 
     public void crearJTextFields() {
-        tNombreUsuario = sObjGraficos.construirJTextField("Nombre Usuario", (pDerecha.getWidth() - 260) / 2, 150, 260, 40,
+        tNombreUsuario = sObjGraficos.construirJTextField(null, (pDerecha.getWidth() - 260) / 2, 150, 260, 40,
                 sRecursos.getFontTitulo2(), Color.WHITE, sRecursos.getColorPrincipal(), sRecursos.getColorGrisOscuro(),
                 sRecursos.getBorderInferiorAzul(), "c");
-        tNombreUsuario.selectAll();
+        PlaceholderUtils.setPlaceholder(tNombreUsuario, "Nombre de usuario");
+        //tNombreUsuario.selectAll();
         pDerecha.add(tNombreUsuario);
     }
 
@@ -405,6 +407,7 @@ public class LoginTemplate extends JFrame {
         tClaveUsuario = sObjGraficos.construirJPasswordField("Clave Usuario", (pDerecha.getWidth() - 260) / 2, 240, 260, 40,
                 null, null, sRecursos.getColorPrincipal(), sRecursos.getColorGrisOscuro(),
                 sRecursos.getBorderInferiorAzul(), "c");
+        PlaceholderUtils.setPlaceholder(tClaveUsuario, "Ingresar contraseña");
         pDerecha.add(tClaveUsuario);
     }
 

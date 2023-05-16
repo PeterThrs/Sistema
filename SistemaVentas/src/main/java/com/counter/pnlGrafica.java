@@ -24,14 +24,23 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @author juanj
  */
 public class pnlGrafica extends javax.swing.JPanel {
-
+    private GridBagLayout gbl;
+    private GridBagConstraints gbc;
+    private List<CuentaFinanciera> cuentas;
+    
     public pnlGrafica() {
         initComponents();
-        cuentas();
+        gbl = new GridBagLayout();
+        gbc = new GridBagConstraints();
+        this.setLayout(gbl);
+        cuentasPorDía();
+        cuentasPorSemana();
+        cuentasPorMes();
+        cuentasPorAño();
     }
 
-    public void cuentas() {
-        List<CuentaFinanciera> cuentas = CuentasDAO.seleccionar();
+    public void cuentasPorDía() {
+        cuentas = CuentasDAO.seleccionar();
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
         cuentas.forEach(cuenta ->
         {
@@ -59,13 +68,137 @@ public class pnlGrafica extends javax.swing.JPanel {
 
         ChartPanel panel = new ChartPanel(grafico_barras);
         panel.setMouseWheelEnabled(false);
-        panel.setPreferredSize(new Dimension(900, 700));
+        panel.setPreferredSize(new Dimension(500, 200));
 
-        this.setLayout(new GridBagLayout());
-        this.add(panel);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        //gbc.gridheight = 5;
+        gbc.ipadx = 100;
+        this.add(panel,gbc);
+        repaint();
+    }
+    
+    public void cuentasPorSemana() {
+        cuentas = CuentasDAO.seleccionar();
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        cuentas.forEach(cuenta ->
+        {
+            datos.setValue(cuenta.getGanancia(), "Ganancia", cuenta.getFecha());
+            datos.setValue(cuenta.getPerdida(), "Perdida", cuenta.getFecha());
+            datos.setValue(cuenta.getInversion(), "Inversion", cuenta.getFecha());
+        }
+        );
+        JFreeChart grafico_barras = ChartFactory.createBarChart(
+                "Reporte de finanzas",
+                "Fecha",
+                "$$$",
+                datos,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+
+        CategoryPlot plot = grafico_barras.getCategoryPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+        // Configurar las líneas horizontales
+        plot.setRangeGridlinesVisible(true);
+        plot.setRangeGridlinePaint(Color.BLACK); // Establecer color de las líneas horizontales
+
+        ChartPanel panel = new ChartPanel(grafico_barras);
+        panel.setMouseWheelEnabled(false);
+        panel.setPreferredSize(new Dimension(500, 200));
+
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        //gbc.gridheight = 5;
+        gbc.ipadx = 100;
+        this.add(panel,gbc);
         repaint();
     }
 
+    public void cuentasPorMes() {
+        cuentas = CuentasDAO.seleccionar();
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        cuentas.forEach(cuenta ->
+        {
+            datos.setValue(cuenta.getGanancia(), "Ganancia", cuenta.getFecha());
+            datos.setValue(cuenta.getPerdida(), "Perdida", cuenta.getFecha());
+            datos.setValue(cuenta.getInversion(), "Inversion", cuenta.getFecha());
+        }
+        );
+        JFreeChart grafico_barras = ChartFactory.createBarChart(
+                "Reporte de finanzas",
+                "Fecha",
+                "$$$",
+                datos,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+
+        CategoryPlot plot = grafico_barras.getCategoryPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+        // Configurar las líneas horizontales
+        plot.setRangeGridlinesVisible(true);
+        plot.setRangeGridlinePaint(Color.BLACK); // Establecer color de las líneas horizontales
+
+        ChartPanel panel = new ChartPanel(grafico_barras);
+        panel.setMouseWheelEnabled(false);
+        panel.setPreferredSize(new Dimension(500, 200));
+
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        //gbc.gridheight = 5;
+        gbc.ipadx = 100;
+        this.add(panel,gbc);
+        repaint();
+    }
+    
+    public void cuentasPorAño() {
+        cuentas = CuentasDAO.seleccionar();
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        cuentas.forEach(cuenta ->
+        {
+            datos.setValue(cuenta.getGanancia(), "Ganancia", cuenta.getFecha());
+            datos.setValue(cuenta.getPerdida(), "Perdida", cuenta.getFecha());
+            datos.setValue(cuenta.getInversion(), "Inversion", cuenta.getFecha());
+        }
+        );
+        JFreeChart grafico_barras = ChartFactory.createBarChart(
+                "Reporte de finanzas",
+                "Fecha",
+                "$$$",
+                datos,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+
+        CategoryPlot plot = grafico_barras.getCategoryPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+        // Configurar las líneas horizontales
+        plot.setRangeGridlinesVisible(true);
+        plot.setRangeGridlinePaint(Color.BLACK); // Establecer color de las líneas horizontales
+
+        ChartPanel panel = new ChartPanel(grafico_barras);
+        panel.setMouseWheelEnabled(false);
+        panel.setPreferredSize(new Dimension(500, 200));
+
+        gbc.gridx = 2;
+        gbc.gridy = 10;
+        gbc.gridwidth = 1;
+        //gbc.gridheight = 5;
+        gbc.ipadx = 100;
+        this.add(panel,gbc);
+        repaint();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -81,7 +214,6 @@ public class pnlGrafica extends javax.swing.JPanel {
             .addGap(0, 401, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

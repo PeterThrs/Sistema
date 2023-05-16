@@ -10,10 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TiendaDAO {
 
@@ -129,13 +125,14 @@ public class TiendaDAO {
             stmt.setString(5, tienda.getEmail());
             stmt.setString(6, tienda.getMision());
             stmt.setString(7, tienda.getVision());
-            stmt.setString(8, String.valueOf(tienda.getCodigoPostal()));
+            stmt.setInt(8, tienda.getCodigoPostal());
             stmt.setString(9, tienda.getEstado());
             stmt.setString(10, tienda.getMunicipio());
             stmt.setString(11, tienda.getColonia());
             stmt.setString(12, tienda.getCalle());
-            stmt.setString(13, String.valueOf(tienda.getNumCasa()));
+            stmt.setInt(13, tienda.getNumCasa());
             stmt.setInt(14, tienda.getIdTienda());
+            
             registros = stmt.executeUpdate();
         } catch (SQLException ex)
         {

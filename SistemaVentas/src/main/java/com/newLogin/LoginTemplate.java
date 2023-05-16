@@ -127,10 +127,12 @@ public class LoginTemplate extends JFrame {
         //abrir Facebook
         lFacebook.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                try {
+                try
+                {
                     // Abrir el enlace a Facebook en el navegador predeterminado
                     Desktop.getDesktop().browse(new URI("https://www.facebook.com/"));
-                } catch (Exception ex) {
+                } catch (Exception ex)
+                {
                     ex.printStackTrace();
                 }
             }
@@ -157,57 +159,100 @@ public class LoginTemplate extends JFrame {
     private void loggear() {
         String user = tNombreUsuario.getText();
         String password = String.valueOf(tClaveUsuario.getPassword());
-        Usuario usuario = buscar(user, password);
-
-        if (usuario != null) {
-            int idRol = usuario.getIdRol();
-            switch (idRol) {
-                case 1:
-                    Runnable runApplication = new Runnable() {
-                        public void run() {
-                            VistaCajero vc = new VistaCajero();
-                            ControladorCajero cc = new ControladorCajero(vc, usuario);
-                            vc.getClass();
-                            vc.setVisible(true);
-                        }
-                    };
-                    SwingUtilities.invokeLater(runApplication);
-                    break;
-                case 2:
-                    runApplication = new Runnable() {
-                        public void run() {
-                            VentanaContador contador = new VentanaContador();
-                            contador.getClass();
-                        }
-                    };
-                    SwingUtilities.invokeLater(runApplication);
-                    break;
-                case 3:
-                    runApplication = new Runnable() {
-                        public void run() {
-                            PrincipalAdmin principalAdmin = new PrincipalAdmin();
-                            principalAdmin.getClass();
-                        }
-                    };
-                    SwingUtilities.invokeLater(runApplication);
-                    break;
+        if (user.equals("Nombre de usuario") && password.equals("Ingresar contraseña"))
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre de usuario y contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (user.isEmpty() && password.equals("Ingresar contraseña"))
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre de usuario y contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (user.equals("Nombre de usuario") && password.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese su nombre de usuario y contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!user.isEmpty() && password.equals("Ingresar contraseña"))
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese su contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (user.equals("Nombre de usuario") && !password.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Ingresado su nombre de usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        } else
+        {
+            Usuario usuario = buscar(user, password);
+            if (usuario != null)
+            {
+                int idRol = usuario.getIdRol();
+                switch (idRol)
+                {
+                    case 1:
+                        Runnable runApplication = new Runnable() {
+                            public void run() {
+                                VistaCajero vc = new VistaCajero();
+                                ControladorCajero cc = new ControladorCajero(vc, usuario);
+                                vc.getClass();
+                                vc.setVisible(true);
+                            }
+                        };
+                        SwingUtilities.invokeLater(runApplication);
+                        break;
+                    case 2:
+                        runApplication = new Runnable() {
+                            public void run() {
+                                VentanaContador contador = new VentanaContador();
+                                contador.getClass();
+                            }
+                        };
+                        SwingUtilities.invokeLater(runApplication);
+                        break;
+                    case 3:
+                        runApplication = new Runnable() {
+                            public void run() {
+                                PrincipalAdmin principalAdmin = new PrincipalAdmin();
+                                principalAdmin.getClass();
+                            }
+                        };
+                        SwingUtilities.invokeLater(runApplication);
+                        break;
+                }
+                this.dispose();
             }
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "El usuario o contraseña son incorrectos", "Error", HEIGHT);
         }
     }
 
     private Usuario buscar(String user, String password) {
         List<Usuario> usuarios = UsuarioDao.seleccionar();
-        Usuario userLogin = null;
-        for (Usuario usuario : usuarios) {
-            if (usuario.getNomUsuario().equals(user) && usuario.getContrasenia().equals(password)) {
-                userLogin = usuario;
-                break;
+        Usuario user1 = buscarNombre(user, usuarios), user2 = buscarPasword(password, usuarios);
+        if (user1 == null && user2 == null)
+        {
+            JOptionPane.showMessageDialog(this, "Nombre y contraseña del usuario incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (user1 == null && user2 != null){
+            JOptionPane.showMessageDialog(this, "Nombre de usuario incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (user1 != null && user2 == null){
+            JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+        } else{
+            return user1;
+        }
+        return null;
+    }
+
+    private Usuario buscarNombre(String user, List<Usuario> usuarios) {
+        for (Usuario usuario : usuarios)
+        {
+            if (usuario.getNomUsuario().equals(user))
+            {
+                return usuario;
             }
         }
-        return userLogin;
+        return null;
+    }
+
+    private Usuario buscarPasword(String password, List<Usuario> usuarios) {
+        for (Usuario usuario : usuarios)
+        {
+            if (usuario.getContrasenia().equals(password))
+            {
+                return usuario;
+            }
+        }
+        return null;
     }
 
     public void obtenerServicios() {

@@ -127,7 +127,11 @@ public class ControladorCajero {
             actualizarPrecio();
             int pos = ticket.getSize() - 1;
             marcarRow(pos);
+            
             vistaCajero.gettCodigo().setText("");
+            vistaCajero.getPanelDerecho().requestFocusInWindow();
+            vistaCajero.gettCodigo().setSelectionStart(0); 
+            vistaCajero.gettCodigo().setSelectionEnd(0); 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -291,7 +295,7 @@ public class ControladorCajero {
                             agregar();
 
                     }
-                    
+
                     if (e.isControlDown() && keyCode == KeyEvent.VK_ENTER) {
                         cobrar();
                     }

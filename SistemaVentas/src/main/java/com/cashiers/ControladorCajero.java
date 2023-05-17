@@ -20,6 +20,7 @@ import java.awt.Insets;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.DecimalFormat;
@@ -52,13 +53,14 @@ public class ControladorCajero {
         this.ticket = new Ticket();
         this.productosBD = productoDao.seleccionar();
         this.tiendaDao = new TiendaDAO();
-        acciones();
         cargarInformacion();
+        acciones();
     }
 
     private void acciones() {
         accionesBotones();
-        //eventosTeclado();
+        eventosTeclado();
+        eventosMouse();
     }
 
     private void cargarInformacion() {
@@ -112,121 +114,141 @@ public class ControladorCajero {
             DecimalFormat format = new DecimalFormat("0.00");
             vistaCajero.getJlTotal().setText("$" + String.valueOf(format.format(ticket.getTotal())));
         } catch (Exception ex) {
-            ex.printStackTrace(); 
+            ex.printStackTrace();
         }
 
+    }
+
+    private void agregar() {
+        try {
+            System.out.println("\n\n------------------------Opcion de Agregar------------------");
+            System.out.println("Entramos a la accion btn agregar");
+            agregarProducto();
+            actualizarPrecio();
+            int pos = ticket.getSize() - 1;
+            marcarRow(pos);
+            vistaCajero.gettCodigo().setText("");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            //ex.printStackTrace(System.out);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+
+    private void eliminar() {
+        try {
+            System.out.println("\n\n------------------------Opcion de eliminar------------------");
+            String codigo = "";
+            int fila = vistaCajero.getTabla().getSelectedRow();
+            if (fila != -1) {
+                codigo = (String) ((DefaultTableModel) vistaCajero.getTabla().getModel()).getValueAt(fila, 0);
+                ticket.eliminarProducto(new Producto(codigo));
+                actualizarTabla();
+                actualizarPrecio();
+                ticket.productosEnTicket();
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void aumentar() {
+        try {
+            System.out.println("\n\n------------------------Opcion de Aumentar------------------");
+            String codigo = "";
+            int fila = vistaCajero.getTabla().getSelectedRow();
+            if (fila != -1) {
+                codigo = (String) ((DefaultTableModel) vistaCajero.getTabla().getModel()).getValueAt(fila, 0);
+                System.out.println("codigo = " + codigo);
+                ticket.agregarProducto(new Producto(codigo), 1);
+                actualizarTabla();
+                actualizarPrecio();
+                ticket.productosEnTicket();
+                marcarRow(fila);
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void decrementar() {
+        try {
+            System.out.println("\n\n------------------------Opcion de Decrementar------------------");
+            String codigo = "";
+            int fila = vistaCajero.getTabla().getSelectedRow();
+            if (fila != -1) {
+                codigo = (String) ((DefaultTableModel) vistaCajero.getTabla().getModel()).getValueAt(fila, 0);
+                ticket.agregarProducto(new Producto(codigo), -1);
+                actualizarTabla();
+                actualizarPrecio();
+                ticket.productosEnTicket();
+                marcarRow(fila);
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void cobrar() {
+        try {
+            System.out.println("\n\n------------------------Opcion de Cobrar------------------");
+            int reg = 0;
+            if (!ticket.vacio()) {
+                //actualizar los datos en cada producto
+                ticket.realizarVenta();
+                for (int i = 0; i < ticket.getSize(); i++) {
+                    Producto p = ticket.getProducto(i);
+                    reg += productoDao.actualizar(p);
+                }
+                double pago = Double.parseDouble(JOptionPane.showInputDialog("Cantidad recibida: "));
+                //faltan validaciones
+                System.out.println(ticket.imprimirTicket(tienda, pago));
+                limpiarTabla();
+                this.productoDao = new ProductoDAO();
+                this.ticket = new Ticket();
+                this.productosBD = productoDao.seleccionar();
+                System.out.println("\n\n------------------------Imprimiendo el ticket------------------\n");
+                System.out.println("Imprimimos nuevamente los datos de la bd");
+                productosBD.forEach(System.out::println);
+
+                JOptionPane.showMessageDialog(null, "La venta se realizo exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay productos Seleccionados", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+        }
     }
 
     private void accionesBotones() {
         //btn Agregar
         vistaCajero.getBtnAgregar().addActionListener(e -> {
-            try {
-                System.out.println("\n\n------------------------Opcion de Agregar------------------");
-                System.out.println("Entramos a la accion btn agregar");
-                agregarProducto();
-                actualizarPrecio();
-                int pos = ticket.getSize() - 1;
-                marcarRow(pos);
-                vistaCajero.gettCodigo().setText("");
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                ex.printStackTrace();
-            } catch (Exception ex) {
-                //ex.printStackTrace(System.out);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                ex.printStackTrace();
-            }
+            agregar();
         });
         //btn Eliminar
         vistaCajero.getBtnEliminar().addActionListener(e -> {
-            try {
-                System.out.println("\n\n------------------------Opcion de eliminar------------------");
-                String codigo = "";
-                int fila = vistaCajero.getTabla().getSelectedRow();
-                if (fila != -1) {
-                    codigo = (String) ((DefaultTableModel) vistaCajero.getTabla().getModel()).getValueAt(fila, 0);
-                    ticket.eliminarProducto(new Producto(codigo));
-                    actualizarTabla();
-                    actualizarPrecio();
-                    ticket.productosEnTicket();
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            eliminar();
         });
         //btnAumentar
         vistaCajero.getBtnAumentar().addActionListener(e -> {
-            try {
-                System.out.println("\n\n------------------------Opcion de Aumentar------------------");
-                String codigo = "";
-                int fila = vistaCajero.getTabla().getSelectedRow();
-                if (fila != -1) {
-                    codigo = (String) ((DefaultTableModel) vistaCajero.getTabla().getModel()).getValueAt(fila, 0);
-                    System.out.println("codigo = " + codigo);
-                    ticket.agregarProducto(new Producto(codigo), 1);
-                    actualizarTabla();
-                    actualizarPrecio();
-                    ticket.productosEnTicket();
-                    marcarRow(fila);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            aumentar();
         });
         //btnDecrecer
         vistaCajero.getBtnDecrementar().addActionListener(e -> {
-            try {
-                System.out.println("\n\n------------------------Opcion de Decrementar------------------");
-                String codigo = "";
-                int fila = vistaCajero.getTabla().getSelectedRow();
-                if (fila != -1) {
-                    codigo = (String) ((DefaultTableModel) vistaCajero.getTabla().getModel()).getValueAt(fila, 0);
-                    ticket.agregarProducto(new Producto(codigo), -1);
-                    actualizarTabla();
-                    actualizarPrecio();
-                    ticket.productosEnTicket();
-                    marcarRow(fila);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            decrementar();
         });
         //btnVender
         vistaCajero.getBtnCobrar().addActionListener(e -> {
-            try {
-                System.out.println("\n\n------------------------Opcion de Cobrar------------------");
-                int reg = 0;
-                if (!ticket.vacio()) {
-                    //actualizar los datos en cada producto
-                    ticket.realizarVenta();
-                    for (int i = 0; i < ticket.getSize(); i++) {
-                        Producto p = ticket.getProducto(i);
-                        reg += productoDao.actualizar(p);
-                    }
-                    double pago = Double.parseDouble(JOptionPane.showInputDialog("Cantidad recibida: "));
-                    //faltan validaciones
-                    System.out.println(ticket.imprimirTicket(tienda, pago));
-                    limpiarTabla();
-                    this.productoDao = new ProductoDAO();
-                    this.ticket = new Ticket();
-                    this.productosBD = productoDao.seleccionar();
-                    System.out.println("\n\n------------------------Imprimiendo el ticket------------------\n");
-                    System.out.println("Imprimimos nuevamente los datos de la bd");
-                    productosBD.forEach(System.out::println);
-
-                    JOptionPane.showMessageDialog(null, "La venta se realizo exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay productos Seleccionados", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace(System.out);
-            }
+            cobrar();
         });
         //btnCerrarSesion 
         vistaCajero.getBtnCerrarSesion().addActionListener(e -> {
@@ -251,7 +273,7 @@ public class ControladorCajero {
 
     private void eventosTeclado() {
 
-        KeyListener eventoJText = new KeyListener() {
+        KeyListener eventoCodigo = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
@@ -262,15 +284,24 @@ public class ControladorCajero {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                /* try {
+                try {
                     int keyCode = e.getKeyCode();
                     switch (keyCode) {
+                        case KeyEvent.VK_ENTER ->
+                            agregar();
+
+                    }
+                    
+                    if (e.isControlDown() && keyCode == KeyEvent.VK_ENTER) {
+                        cobrar();
+                    }
+
                 } catch (Exception ex) {
 
-                }*/
+                }
             }
         };
-        //vistaCajero.gettCodigo().addKeyListener(eventoJText);
+        vistaCajero.gettCodigo().addKeyListener(eventoCodigo);
 
         KeyListener eventoTabla = new KeyListener() {
             @Override
@@ -283,31 +314,65 @@ public class ControladorCajero {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                /*try {
+                try {
                     int keyCode = e.getKeyCode();
                     switch (keyCode) {
                         case KeyEvent.VK_DELETE ->
                             eliminar();
-                        case KeyEvent.VK_ADD -> {
-                        }
-                        case KeyEvent.VK_SUBTRACT -> {
-                        }
+                        case KeyEvent.VK_ADD ->
+                            aumentar();
+                        case KeyEvent.VK_SUBTRACT ->
+                            decrementar();
 
                     }
                 } catch (Exception ex) {
 
-                }*/
+                }
             }
 
         };
-        //vistaCajero.getTabla().addKeyListener(eventoTabla);
+        vistaCajero.getTabla().addKeyListener(eventoTabla);
+        vistaCajero.getPanelDerecho().addKeyListener(eventoTabla);
+        vistaCajero.getPanelIzquierdo().addKeyListener(eventoTabla);
+
+    }
+
+    private void eventosMouse() {
+        vistaCajero.getPanelIzquierdo().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                vistaCajero.getPanelIzquierdo().requestFocusInWindow(); // Solicitar el foco para el JPanel
+                vistaCajero.gettCodigo().setSelectionStart(0); // Establecer el inicio de la selección en 0
+                vistaCajero.gettCodigo().setSelectionEnd(0); // Establecer el final de la selección en 0 (deseleccionar)
+            }
+        });
+
+        vistaCajero.getPanelDerecho().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                vistaCajero.getPanelDerecho().requestFocusInWindow(); // Solicitar el foco para el JPanel
+                vistaCajero.gettCodigo().setSelectionStart(0); // Establecer el inicio de la selección en 0
+                vistaCajero.gettCodigo().setSelectionEnd(0); // Establecer el final de la selección en 0 (deseleccionar)
+            }
+        });
+
+        vistaCajero.getTabla().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                vistaCajero.getTabla().setFocusable(true);
+                vistaCajero.getTabla().requestFocusInWindow(); // Solicitar el foco para el JPanel
+                vistaCajero.gettCodigo().setSelectionStart(0); // Establecer el inicio de la selección en 0
+                vistaCajero.gettCodigo().setSelectionEnd(0); // Establecer el final de la selección en 0 (deseleccionar)
+            }
+        });
 
     }
 
     private void eventosMouse(Color ant, Color pos, JButton btn) {
         //Agregando oyente de raton -  MouseListener
         MouseListener oyenteRaton = new MouseListener() {
-            Insets margenOriginal; 
+            Insets margenOriginal;
+
             @Override
             public void mouseClicked(MouseEvent e) {
 
@@ -327,7 +392,7 @@ public class ControladorCajero {
             public void mouseEntered(MouseEvent e) {
                 if (btn.isEnabled()) {
                     btn.setBackground(pos);
-                    margenOriginal = btn.getMargin(); 
+                    margenOriginal = btn.getMargin();
                     btn.setMargin(new Insets((margenOriginal.top + 1), (margenOriginal.left + 1), (margenOriginal.bottom + 1), (margenOriginal.right + 1)));
                     btn.revalidate();
                 }

@@ -110,6 +110,7 @@ public class VistaCajero extends JFrame {
         c.weightx = 0.80;
         c.weighty = 1;
         panelDerecho.setLayout(new GridBagLayout());
+        panelDerecho.setFocusable(true); 
         c.fill = GridBagConstraints.BOTH;
         add(panelDerecho, c);
     }

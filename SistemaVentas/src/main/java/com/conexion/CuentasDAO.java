@@ -1,19 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.conexion;
 
 import com.classes.CuentaFinanciera;
-import com.classes.Persona;
 import static com.conexion.Conexion.close;
 import static com.conexion.Conexion.getConnection;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -206,5 +204,58 @@ public class CuentasDAO {
             }
         }
         return null;
+    }
+    
+    public List<Double> obtenerGananciasPorSemana(Connection connection) throws SQLException {
+        List<Double> gananciasPorSemana = new ArrayList<>();
+
+        // Obtener la fecha mínima y máxima de la base de datos
+        String fechaMinimaQuery = "SELECT MIN(fecha) FROM ganancias";
+        String fechaMaximaQuery = "SELECT MAX(fecha) FROM ganancias";
+        Date fechaMinima = obtenerFecha(connection, fechaMinimaQuery);
+        Date fechaMaxima = obtenerFecha(connection, fechaMaximaQuery);
+
+        // Obtener las ganancias por semana
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fechaMinima);
+
+        while (calendar.getTime().before(fechaMaxima)) {
+            Date fechaInicio = (Date) calendar.getTime();
+            calendar.add(Calendar.DAY_OF_WEEK, 6); // Avanzar al final de la semana
+            Date fechaFin = (Date) calendar.getTime();
+
+            String gananciasQuery = "SELECT SUM(ganancia) FROM ganancias WHERE fecha >= ? AND fecha <= ?";
+            double gananciaSemana = obtenerGananciaSemana(connection, gananciasQuery, fechaInicio, fechaFin);
+            gananciasPorSemana.add(gananciaSemana);
+
+            calendar.add(Calendar.DAY_OF_WEEK, 1); // Avanzar al inicio de la siguiente semana
+        }
+
+        return gananciasPorSemana;
+    }
+
+    private Date obtenerFecha(Connection connection, String query) throws SQLException {
+        Date fecha = null;
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                fecha = resultSet.getDate(1);
+            }
+        }
+        return fecha;
+    }
+
+    private double obtenerGananciaSemana(Connection connection, String query, Date fechaInicio, Date fechaFin)
+            throws SQLException {
+        double gananciaSemana = 0;
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setDate(1, new java.sql.Date(fechaInicio.getTime()));
+            statement.setDate(2, new java.sql.Date(fechaFin.getTime()));
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                gananciaSemana = resultSet.getDouble(1);
+            }
+        }
+        return gananciaSemana;
     }
 }

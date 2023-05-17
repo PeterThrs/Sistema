@@ -1,16 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.counter;
 
 import com.classes.CuentaFinanciera;
 import com.conexion.CuentasDAO;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.ArrayList;
 import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -24,10 +20,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @author juanj
  */
 public class pnlGrafica extends javax.swing.JPanel {
+
     private GridBagLayout gbl;
     private GridBagConstraints gbc;
     private List<CuentaFinanciera> cuentas;
-    
+
     public pnlGrafica() {
         initComponents();
         gbl = new GridBagLayout();
@@ -50,7 +47,7 @@ public class pnlGrafica extends javax.swing.JPanel {
         }
         );
         JFreeChart grafico_barras = ChartFactory.createBarChart(
-                "Reporte de finanzas",
+                "Reporte de finanzas por día",
                 "Fecha",
                 "$$$",
                 datos,
@@ -75,13 +72,26 @@ public class pnlGrafica extends javax.swing.JPanel {
         gbc.gridwidth = 1;
         //gbc.gridheight = 5;
         gbc.ipadx = 100;
-        this.add(panel,gbc);
+        gbc.ipady = 100;
+        this.add(panel, gbc);
         repaint();
     }
-    
+
     public void cuentasPorSemana() {
         cuentas = CuentasDAO.seleccionar();
+        List<CuentaFinanciera> cuentasSemana = new ArrayList<>();
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        cuentas.forEach(cuenta ->
+        {
+            if(cuentasSemana.size()==0){
+                cuentasSemana.add(cuenta);
+            } else{
+                
+            }
+            datos.setValue(cuenta.getGanancia(), "Ganancia", cuenta.getFecha());
+            datos.setValue(cuenta.getPerdida(), "Perdida", cuenta.getFecha());
+            datos.setValue(cuenta.getInversion(), "Inversion", cuenta.getFecha());
+        });
         cuentas.forEach(cuenta ->
         {
             datos.setValue(cuenta.getGanancia(), "Ganancia", cuenta.getFecha());
@@ -90,7 +100,7 @@ public class pnlGrafica extends javax.swing.JPanel {
         }
         );
         JFreeChart grafico_barras = ChartFactory.createBarChart(
-                "Reporte de finanzas",
+                "Reporte de finanzas por semana",
                 "Fecha",
                 "$$$",
                 datos,
@@ -115,7 +125,8 @@ public class pnlGrafica extends javax.swing.JPanel {
         gbc.gridwidth = 1;
         //gbc.gridheight = 5;
         gbc.ipadx = 100;
-        this.add(panel,gbc);
+        gbc.ipady = 100;
+        this.add(panel, gbc);
         repaint();
     }
 
@@ -130,7 +141,7 @@ public class pnlGrafica extends javax.swing.JPanel {
         }
         );
         JFreeChart grafico_barras = ChartFactory.createBarChart(
-                "Reporte de finanzas",
+                "Reporte de finanzas por mes",
                 "Fecha",
                 "$$$",
                 datos,
@@ -151,14 +162,15 @@ public class pnlGrafica extends javax.swing.JPanel {
         panel.setPreferredSize(new Dimension(500, 200));
 
         gbc.gridx = 0;
-        gbc.gridy = 10;
+        gbc.gridy = 20;
         gbc.gridwidth = 1;
         //gbc.gridheight = 5;
         gbc.ipadx = 100;
-        this.add(panel,gbc);
+        gbc.ipady = 100;
+        this.add(panel, gbc);
         repaint();
     }
-    
+
     public void cuentasPorAño() {
         cuentas = CuentasDAO.seleccionar();
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
@@ -170,7 +182,7 @@ public class pnlGrafica extends javax.swing.JPanel {
         }
         );
         JFreeChart grafico_barras = ChartFactory.createBarChart(
-                "Reporte de finanzas",
+                "Reporte de finanzas por año",
                 "Fecha",
                 "$$$",
                 datos,
@@ -191,14 +203,15 @@ public class pnlGrafica extends javax.swing.JPanel {
         panel.setPreferredSize(new Dimension(500, 200));
 
         gbc.gridx = 2;
-        gbc.gridy = 10;
+        gbc.gridy = 20;
         gbc.gridwidth = 1;
         //gbc.gridheight = 5;
         gbc.ipadx = 100;
-        this.add(panel,gbc);
+        gbc.ipady = 100;
+        this.add(panel, gbc);
         repaint();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

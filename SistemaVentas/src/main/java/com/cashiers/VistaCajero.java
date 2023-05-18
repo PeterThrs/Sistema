@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cashiers;
-
-/**
- *
- * @author Pedro
- */
 
 import com.settings.Configuracion;
 import java.awt.Color;
@@ -34,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.ToolTipManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,8 +51,11 @@ public class VistaCajero extends JFrame {
         this.colorPrincipal = new Color(39, 54, 77);
         this.tabla = new JTable();
         this.btnCobrar = new JButton("Cobrar");
+        this.btnCobrar.setToolTipText("Cobrar");
         this.btnAumentar = new JButton("+");
+        this.getBtnAumentar().setToolTipText("Aumentar producto");
         this.btnDecrementar = new JButton("-");
+        this.btnDecrementar.setToolTipText("Decrementar producto");
         this.jlEnunciadoTotal = new JLabel("Total a pagar: ");
         this.jlTotal = new JLabel("$0.00");
 
@@ -75,6 +70,7 @@ public class VistaCajero extends JFrame {
         setLayout(new GridBagLayout());
         // Mostramos la ventana
         componentes();
+        ToolTipManager.sharedInstance().setInitialDelay(0);
     }
 
     private void componentes() {
@@ -242,9 +238,12 @@ public class VistaCajero extends JFrame {
         btnAgregar = new JButton("Agregar");
         c = grid(2, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, btnAgregar, c);
+        btnAgregar.setToolTipText("Agregar");
+        
         btnEliminar = new JButton("Eliminar");
         c = grid(3, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, btnEliminar, c);
+        btnEliminar.setToolTipText("Eliminar");
 
         btnConf(btnAgregar, btnEliminar);
 
@@ -500,7 +499,4 @@ public class VistaCajero extends JFrame {
     public void setBtnDecrementar(JButton btnDecrementar) {
         this.btnDecrementar = btnDecrementar;
     }
-    
-    
-
 }

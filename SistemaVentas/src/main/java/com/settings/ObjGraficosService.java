@@ -1,5 +1,6 @@
 package com.settings;
 
+import com.admin.EditInfoStore;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -7,15 +8,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 
 /**
@@ -223,5 +229,17 @@ public class ObjGraficosService {
         check.setFont(fuente);
         check.setForeground(colorFuente);
         return check;
+    }
+    
+    public static JFileChooser personalizarVentana() {
+        try
+        {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)
+        {
+            Logger.getLogger(EditInfoStore.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JFileChooser chooser = new JFileChooser();
+        return chooser;
     }
 }

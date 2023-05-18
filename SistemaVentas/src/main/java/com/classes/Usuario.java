@@ -4,8 +4,12 @@
  */
 package com.classes;
 
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
+
 public class Usuario {
     private int idUsuario;
+    private InputStream imagen;
     private String nomUsuario;
     private String contrasenia;
     private int idPersona;
@@ -18,19 +22,29 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(String nombreUsuario, String contrasenia, int idPersona, int idRol) {//No necesitamos la llave primaria para hacer un registro
+    public Usuario(InputStream imagen, String nombreUsuario, String contrasenia, int idPersona, int idRol) {//No necesitamos la llave primaria para hacer un registro
+        this.imagen = imagen;
         this.nomUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.idPersona = idPersona;
         this.idRol = idRol;
     }
     
-    public Usuario(int idUsuario, String nombreUsuario, String contrasenia, int idPersona, int idRol) {//PAra el caso de la modificación
+    public Usuario(int idUsuario, InputStream imagen, String nombreUsuario, String contrasenia, int idPersona, int idRol) {//PAra el caso de la modificación
         this.idUsuario = idUsuario;
+        this.imagen = imagen;
         this.nomUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.idPersona = idPersona;
         this.idRol = idRol;
+    }
+
+    public InputStream getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(InputStream imagen) {
+        this.imagen = imagen;
     }
 
     public int getIdUsuario() {

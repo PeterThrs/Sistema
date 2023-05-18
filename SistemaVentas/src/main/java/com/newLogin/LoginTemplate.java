@@ -283,6 +283,7 @@ public class LoginTemplate extends JFrame {
                 sRecursos.getBorderInferiorAzul(), "c");
         PlaceholderUtils.setPlaceholder(tNombreUsuario, "Nombre de usuario");
         //tNombreUsuario.selectAll();
+        tNombreUsuario.setToolTipText("Ingresar nombre de usuario");
         pDerecha.add(tNombreUsuario);
     }
 
@@ -312,6 +313,7 @@ public class LoginTemplate extends JFrame {
                 "c",
                 true
         );
+        bEntrar.setToolTipText("Ingresar");
         pDerecha.add(bEntrar);
 
         iDimAux = new ImageIcon(
@@ -327,6 +329,7 @@ public class LoginTemplate extends JFrame {
                 "c",
                 false
         );
+        bCerrar.setToolTipText("Cerrar");
         pDerecha.add(bCerrar);
 
 //        bRegistrarse = sObjGraficos.construirJButton("Registrarse",
@@ -402,6 +405,7 @@ public class LoginTemplate extends JFrame {
         );
         lFacebook = sObjGraficos.construirJLabel(null, 20, 460, 30, 30,
                 sRecursos.getCMano(), iDimAux, null, null, null, null, "a");
+        lFacebook.setToolTipText("Soporte");
         pIzquierda.add(lFacebook);
 
 //        iDimAux = new ImageIcon(
@@ -453,6 +457,7 @@ public class LoginTemplate extends JFrame {
                 null, null, sRecursos.getColorPrincipal(), sRecursos.getColorGrisOscuro(),
                 sRecursos.getBorderInferiorAzul(), "c");
         PlaceholderUtils.setPlaceholder(tClaveUsuario, "Ingresar contraseña");
+        tClaveUsuario.setToolTipText("Ingresar contraseña");
         pDerecha.add(tClaveUsuario);
     }
 

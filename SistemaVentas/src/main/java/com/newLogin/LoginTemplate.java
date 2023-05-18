@@ -405,7 +405,7 @@ public class LoginTemplate extends JFrame {
         );
         lFacebook = sObjGraficos.construirJLabel(null, 20, 460, 30, 30,
                 sRecursos.getCMano(), iDimAux, null, null, null, null, "a");
-        lFacebook.setToolTipText("Página de los creadores del programa");
+        lFacebook.setToolTipText("Soporte");
         pIzquierda.add(lFacebook);
 
 //        iDimAux = new ImageIcon(

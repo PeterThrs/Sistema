@@ -90,7 +90,7 @@ public class PanelProducto extends javax.swing.JPanel {
         this.setSize(new Dimension(650, 600));
 
         //configuracion al JPanel
-        Configuracion.background(CodigoColor.cFondoGris, this);
+        Configuracion.background(CodigoColor.cFondoBlanco, this);
 
         //configuracion JLabel
         //titulo
@@ -389,6 +389,7 @@ public class PanelProducto extends javax.swing.JPanel {
         linea11 = new javax.swing.JSeparator();
         linea12 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
         jlBarCode.setText("Codigo de Producto:");

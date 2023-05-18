@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.admin;
 
 import com.classes.Tienda;
@@ -51,8 +47,8 @@ public class EditInfoStore extends javax.swing.JPanel {
         {
             tfName.setText(tienda.getNombre());
             tfSlogan.setText(tienda.getSlogan());
-            tfPhone1.setText(tienda.getTelefono1());
-            tfPhone2.setText(tienda.getTelefono2());
+            tfPhone1.setText("+52-"+tienda.getTelefono1());
+            tfPhone2.setText("+52-"+tienda.getTelefono2());
             tfCorreoE.setText(tienda.getEmail());
             tfMision.setText(tienda.getMision());
             tfVision.setText(tienda.getVision());
@@ -74,7 +70,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         this.setSize(new Dimension(650, 600));
 
         //configuracion al JPanel
-        Configuracion.background(CodigoColor.cFondoGris, this);
+        Configuracion.background(CodigoColor.cFondoBlanco, this);
 
         //titulo
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
@@ -731,14 +727,15 @@ public class EditInfoStore extends javax.swing.JPanel {
         {
             if (validacion.validarCadena(tfName.getText()) && validacion.validarCadena(tfSlogan.getText()) && validacion.validarTelefono(tfPhone1.getText()) && validacion.validarTelefono(tfPhone2.getText()) && validacion.validarEmail(tfCorreoE.getText()) && validacion.validarCadena(tfMision.getText()) && validacion.validarCadena(tfVision.getText()) && validacion.validarCodPostal(Integer.parseInt(tfCodigoPostal.getText())) && validacion.validarCadena(tfEstado.getText()) && validacion.validarCadena(tfMunicipio.getText()) && validacion.validarCadena(tfColonia.getText()) && validacion.validarCadena(tfCalle.getText()) && validacion.validarNumCasa(Integer.parseInt(tfNumCasa.getText())))
             {
-                TiendaDAO.actualizar(new Tienda(tfName.getText(), tfSlogan.getText(), tfPhone1.getText(), tfPhone2.getText(), tfCorreoE.getText(), tfMision.getText(), tfVision.getText(), Integer.parseInt(tfCodigoPostal.getText()), tfEstado.getText(), tfMunicipio.getText(), tfColonia.getText(), tfCalle.getText(), Integer.parseInt(tfNumCasa.getText())));
+                TiendaDAO.actualizar(new Tienda(1,tfName.getText(), tfSlogan.getText(), tfPhone1.getText(), tfPhone2.getText(), tfCorreoE.getText(), tfMision.getText(), tfVision.getText(), Integer.parseInt(tfCodigoPostal.getText()), tfEstado.getText(), tfMunicipio.getText(), tfColonia.getText(), tfCalle.getText(), Integer.parseInt(tfNumCasa.getText())));
+                JOptionPane.showMessageDialog(null, "Se actualizaron los datos de la tienda correctamente!");
             } else
             {
                 JOptionPane.showMessageDialog(null, "Verifica tus datos");
             }
         } catch (Exception ex)
         {
-            Logger.getLogger(EditInfoStore.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(EditInfoStore.class.getName()).log(Level.SEVERE, null, ex.getMessage());
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifica tus datos");
         }
     }//GEN-LAST:event_btnUpdateActionPerformed

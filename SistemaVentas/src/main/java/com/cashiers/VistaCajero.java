@@ -61,7 +61,7 @@ public class VistaCajero extends JFrame {
         this.btnCobrar = new JButton("Cobrar");
         this.btnAumentar = new JButton("+");
         this.btnDecrementar = new JButton("-");
-        this.jlEnunciadoTotal = new JLabel("Total a pagar: ");
+        this.jlEnunciadoTotal = new JLabel("Total a Pagar: ");
         this.jlTotal = new JLabel("$0.00");
 
         //configurando ventana al 100%
@@ -110,6 +110,7 @@ public class VistaCajero extends JFrame {
         c.weightx = 0.80;
         c.weighty = 1;
         panelDerecho.setLayout(new GridBagLayout());
+        panelDerecho.setFocusable(true); 
         c.fill = GridBagConstraints.BOTH;
         add(panelDerecho, c);
     }
@@ -144,16 +145,16 @@ public class VistaCajero extends JFrame {
         this.jlgmail = new JLabel();
         this.jlNombreCajero = new JLabel();
 
-        jlNombreEmpresa.setText("Nombre de la tienda");
+        jlNombreEmpresa.setText("Nombre de la Tienda");
         c = grid(0, 1, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlNombreEmpresa, c);
-        jlSloga.setText("Slogan de la tienda");
+        jlSloga.setText("Slogan de la Tienda");
         c = grid(0, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlSloga, c);
-        jlgmail.setText("Email de la tienda");
+        jlgmail.setText("Email de la Tienda");
         c = grid(0, 3, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlgmail, c);
-        jlNombreCajero.setText("Nombre del usuario");
+        jlNombreCajero.setText("Nombre del Usuario");
         c = grid(0, 4, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
         agregarAlPanel(panelIzquierdo, jlNombreCajero, c);
         
@@ -265,7 +266,7 @@ public class VistaCajero extends JFrame {
             DefaultTableModel dtm = new DefaultTableModel(); 
             tabla.setModel(dtm);
             // Configurar los titulos de las columnas
-            String[] titulos = {"Codigo", "Descripcion del producto", "Precio Venta", "Cant", "Importe", "Existencia"};
+            String[] titulos = {"Codigo", "Descripcion del Producto", "Precio Venta", "Cant", "Importe", "Existencia"};
             dtm.setColumnIdentifiers(titulos);
             // Configurar los tamaños de las columnas
             int[] tam = {50, 200, 50, 30, 70, 50};

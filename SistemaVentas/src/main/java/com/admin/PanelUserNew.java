@@ -73,7 +73,7 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     private void agregarEstilos() {
         //configuraciones del panel
-        Configuracion.background(CodigoColor.cFondoGris, this);
+        Configuracion.background(CodigoColor.cFondoBlanco, this);
 
         //configuraciones de los JLabel
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
@@ -470,6 +470,7 @@ public class PanelUserNew extends javax.swing.JPanel {
         tfState = new javax.swing.JTextField();
         linea21 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
         jlTitle.setText("Usuario");

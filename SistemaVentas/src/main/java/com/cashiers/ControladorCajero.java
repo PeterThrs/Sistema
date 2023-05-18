@@ -95,8 +95,15 @@ public class ControladorCajero {
         vistaCajero.getTabla().repaint();
     }
 
+    private String validarCadena(String cadena) throws Exception {
+        if (!cadena.isEmpty()) {
+            return cadena;
+        }
+        throw new Exception("Campo vacio");
+    }
+
     private void agregarProducto() throws NumberFormatException, Exception {
-        String codigoProducto = vistaCajero.gettCodigo().getText();
+        String codigoProducto = validarCadena(vistaCajero.gettCodigo().getText());
         System.out.println("codigoProducto = " + codigoProducto);
         //recuperamos el producto
         Producto producto = productosBD.stream().filter(p -> (p.getCodigo().equals(codigoProducto))).findFirst().orElse(null);
@@ -127,11 +134,6 @@ public class ControladorCajero {
             actualizarPrecio();
             int pos = ticket.getSize() - 1;
             marcarRow(pos);
-            
-            vistaCajero.gettCodigo().setText("");
-            vistaCajero.getPanelDerecho().requestFocusInWindow();
-            vistaCajero.gettCodigo().setSelectionStart(0); 
-            vistaCajero.gettCodigo().setSelectionEnd(0); 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -139,6 +141,11 @@ public class ControladorCajero {
             //ex.printStackTrace(System.out);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
+        } finally {
+            vistaCajero.gettCodigo().setText("");
+            vistaCajero.getPanelDerecho().requestFocusInWindow();
+            vistaCajero.gettCodigo().setSelectionStart(0);
+            vistaCajero.gettCodigo().setSelectionEnd(0);
         }
     }
 
@@ -153,8 +160,7 @@ public class ControladorCajero {
                 actualizarTabla();
                 actualizarPrecio();
                 ticket.productosEnTicket();
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+                marcarRow(fila);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -174,8 +180,6 @@ public class ControladorCajero {
                 actualizarPrecio();
                 ticket.productosEnTicket();
                 marcarRow(fila);
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -194,8 +198,6 @@ public class ControladorCajero {
                 actualizarPrecio();
                 ticket.productosEnTicket();
                 marcarRow(fila);
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -226,7 +228,7 @@ public class ControladorCajero {
 
                 JOptionPane.showMessageDialog(null, "La venta se realizo exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "No hay productos Seleccionados", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No hay productos en ticket", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
@@ -296,10 +298,6 @@ public class ControladorCajero {
 
                     }
 
-                    if (e.isControlDown() && keyCode == KeyEvent.VK_ENTER) {
-                        cobrar();
-                    }
-
                 } catch (Exception ex) {
 
                 }
@@ -327,7 +325,24 @@ public class ControladorCajero {
                             aumentar();
                         case KeyEvent.VK_SUBTRACT ->
                             decrementar();
+                        case KeyEvent.VK_UP -> {
+                            int fila = vistaCajero.getTabla().getSelectedRow(); 
+                            if(fila != -1){
+                                marcarRow(fila -1);
+                            }
+                        }
+                        case KeyEvent.VK_DOWN -> {
+                            int fila = vistaCajero.getTabla().getSelectedRow(); 
+                            if(fila != -1){
+                                marcarRow(fila +1);
+                            }
+                        }
+                        case KeyEvent.VK_BACK_SPACE -> eliminar();
 
+                    }
+
+                    if (e.isControlDown() && keyCode == KeyEvent.VK_ENTER) {
+                        cobrar();
                     }
                 } catch (Exception ex) {
 
@@ -417,8 +432,10 @@ public class ControladorCajero {
 
     private void marcarRow(int row) {
         try {
-            if (!ticket.vacio()) {
+            if (!ticket.vacio() && ticket.getSize() > row && row >= 0) {
                 vistaCajero.getTabla().setRowSelectionInterval(row, row);
+            } else if(!ticket.vacio() && row >= ticket.getSize()){
+                vistaCajero.getTabla().setRowSelectionInterval(ticket.getSize() -1, ticket.getSize() -1);
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.out);

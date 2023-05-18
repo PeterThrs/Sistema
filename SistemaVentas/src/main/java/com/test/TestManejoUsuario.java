@@ -4,12 +4,15 @@
  */
 package com.test;
 
-import com.classes.Usuario;
-import com.conexion.UsuarioDao;
+import com.conexion.Conexion;
+import com.conexion.CuentasDAO;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TestManejoUsuario {
-      UsuarioDao ud = new UsuarioDao();
+      //UsuarioDao ud = new UsuarioDao();
         //mostrarValores(ud);
 
         //insertar usuario
@@ -18,21 +21,25 @@ public class TestManejoUsuario {
 //        System.out.println("registros = " + registros);
 //        mostrarValores(ud);
 
-        //modificar usuario
-//        Usuario u3 = new Usuario(5,"Adriel", "admin", "01", "contador", "Que numero va??");
-//        int registros = ud.actualizar(u3);
-//        System.out.println("registros = " + registros);
-//        mostrarValores(ud);
+        
 
-        //eliminar usuario
-        Usuario u4 = new Usuario(4);
-        //int registros = ud.eliminar(u4);
-        //System.out.println("registros = " + registros);
-        //mostrarValores(ud);
-
-    public static void mostrarValores(UsuarioDao ud) {
-        List<Usuario> usuarios = ud.seleccionar();
-        imprimir(usuarios);
+    public static void main(String args[]) {
+        try
+        {
+            //        List<Usuario> usuarios = ud.seleccionar();
+//        imprimir(usuarios);
+            
+            List<Double> gananciasPorSemana = CuentasDAO.obtenerValoresPorSemana("ganancia");
+            //List<Double> gananciasPorSemana = CuentasDAO.obtenerGananciasUltimas7Semanas(Conexion.getConnection());
+            //System.out.println("Fuera "+fechaMinima+" "+fechaMaxima);
+            gananciasPorSemana.forEach(ganancia -> {
+                System.out.println(ganancia);
+            });
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(TestManejoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public static <T extends List> void imprimir(T t) {

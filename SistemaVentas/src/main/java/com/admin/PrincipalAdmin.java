@@ -11,11 +11,13 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.librery.RSButtonMetro;
 import com.newLogin.LoginTemplate;
 import com.settings.Configuracion;
+import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
+import javax.swing.ToolTipManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -37,10 +39,19 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         listaUsuarios = new ListUsersPanel(this);
         listaProductos = new ListProductsPanel(this);
         buscaar.setVisible(false);
-
+        
+        toolTip();
+        ToolTipManager.sharedInstance().setInitialDelay(0);
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
         setVisible(true);
     }
 
+    public void toolTip(){
+        buscaar.setToolTipText("Buscar");
+        jButton1.setToolTipText("Deslizar");
+    }
+    
     public RSButtonMetro getBtnAdminProductos() {
         return btnAdminProductos;
     }

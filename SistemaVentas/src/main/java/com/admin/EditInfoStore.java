@@ -74,7 +74,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         this.setSize(new Dimension(650, 600));
 
         //configuracion al JPanel
-        Configuracion.background(CodigoColor.cFondoGris, this);
+        Configuracion.background(CodigoColor.cFondoBlanco, this);
 
         //titulo
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);

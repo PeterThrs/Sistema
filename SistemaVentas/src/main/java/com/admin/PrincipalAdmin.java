@@ -74,11 +74,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }
 
     public void desactivarBotonesIniciar() {
-        this.btnHoome.setColorNormal(new Color(239, 238, 244));
+        this.btnHoome.setColorNormal(new Color(255,255,255));
         this.btnHoome.setColorHover(new Color(204, 204, 204));
         this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
-        this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+        this.btnAdminUser.setColorNormal(new Color(255,255,255));
         this.btnAdminUser.setColorHover(new Color(204, 204, 204));
         this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
     }
@@ -93,7 +93,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         btnAdminUser = new com.librery.RSButtonMetro();
         btnInfoEmpresa = new com.librery.RSButtonMetro();
         btnAdminProductos = new com.librery.RSButtonMetro();
-        jPanel5 = new javax.swing.JPanel();
         btnConfiguracion = new com.librery.RSButtonMetro();
         btnCerrarSesion = new com.librery.RSButtonMetro();
         btnListarProductos = new com.librery.RSButtonMetro();
@@ -112,14 +111,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        pnlMenu.setBackground(new java.awt.Color(239, 238, 244));
+        pnlMenu.setBackground(new java.awt.Color(255, 255, 255));
         pnlMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(239, 238, 244)));
 
+        btnAdminUser.setBackground(new java.awt.Color(255, 255, 255));
         btnAdminUser.setForeground(new java.awt.Color(128, 128, 131));
         btnAdminUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administracion.png"))); // NOI18N
         btnAdminUser.setText("Administrar Usuarios");
         btnAdminUser.setColorHover(new java.awt.Color(204, 204, 204));
-        btnAdminUser.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnAdminUser.setColorNormal(new java.awt.Color(255, 255, 255));
         btnAdminUser.setColorPressed(new java.awt.Color(204, 204, 204));
         btnAdminUser.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnAdminUser.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -138,12 +138,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnInfoEmpresa.setBackground(new java.awt.Color(239, 238, 244));
+        btnInfoEmpresa.setBackground(new java.awt.Color(255, 255, 255));
         btnInfoEmpresa.setForeground(new java.awt.Color(128, 128, 131));
         btnInfoEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/George/Datos de la empresa.png"))); // NOI18N
         btnInfoEmpresa.setText("  Datos de la Empresa");
         btnInfoEmpresa.setColorHover(new java.awt.Color(204, 204, 204));
-        btnInfoEmpresa.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnInfoEmpresa.setColorNormal(new java.awt.Color(255, 255, 255));
         btnInfoEmpresa.setColorPressed(new java.awt.Color(204, 204, 204));
         btnInfoEmpresa.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnInfoEmpresa.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -162,12 +162,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnAdminProductos.setBackground(new java.awt.Color(239, 238, 244));
+        btnAdminProductos.setBackground(new java.awt.Color(255, 255, 255));
         btnAdminProductos.setForeground(new java.awt.Color(128, 128, 131));
         btnAdminProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/George/AP (2).png"))); // NOI18N
         btnAdminProductos.setText("Administrar Productos");
         btnAdminProductos.setColorHover(new java.awt.Color(204, 204, 204));
-        btnAdminProductos.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnAdminProductos.setColorNormal(new java.awt.Color(255, 255, 255));
         btnAdminProductos.setColorPressed(new java.awt.Color(204, 204, 204));
         btnAdminProductos.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnAdminProductos.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -186,25 +186,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        jPanel5.setBackground(new java.awt.Color(239, 238, 244));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
-        );
-
-        btnConfiguracion.setBackground(new java.awt.Color(239, 238, 244));
+        btnConfiguracion.setBackground(new java.awt.Color(255, 255, 255));
         btnConfiguracion.setForeground(new java.awt.Color(128, 128, 131));
         btnConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuracion.png"))); // NOI18N
         btnConfiguracion.setText("  Configuración");
         btnConfiguracion.setColorHover(new java.awt.Color(204, 204, 204));
-        btnConfiguracion.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnConfiguracion.setColorNormal(new java.awt.Color(255, 255, 255));
         btnConfiguracion.setColorPressed(new java.awt.Color(204, 204, 204));
         btnConfiguracion.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnConfiguracion.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -223,12 +210,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnCerrarSesion.setBackground(new java.awt.Color(239, 238, 244));
+        btnCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setForeground(new java.awt.Color(128, 128, 131));
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         btnCerrarSesion.setText("  Cerrar Sesión");
         btnCerrarSesion.setColorHover(new java.awt.Color(204, 204, 204));
-        btnCerrarSesion.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnCerrarSesion.setColorNormal(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setColorPressed(new java.awt.Color(204, 204, 204));
         btnCerrarSesion.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnCerrarSesion.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -247,12 +234,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnListarProductos.setBackground(new java.awt.Color(239, 238, 244));
+        btnListarProductos.setBackground(new java.awt.Color(255, 255, 255));
         btnListarProductos.setForeground(new java.awt.Color(128, 128, 131));
         btnListarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/George/Administrar productos.png"))); // NOI18N
         btnListarProductos.setText(" Listar Productos");
         btnListarProductos.setColorHover(new java.awt.Color(204, 204, 204));
-        btnListarProductos.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnListarProductos.setColorNormal(new java.awt.Color(255, 255, 255));
         btnListarProductos.setColorPressed(new java.awt.Color(204, 204, 204));
         btnListarProductos.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnListarProductos.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -271,12 +258,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnListarUsuarios.setBackground(new java.awt.Color(239, 238, 244));
+        btnListarUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         btnListarUsuarios.setForeground(new java.awt.Color(128, 128, 131));
         btnListarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/George/Listar usuarios.png"))); // NOI18N
         btnListarUsuarios.setText(" Listar Usuarios");
         btnListarUsuarios.setColorHover(new java.awt.Color(204, 204, 204));
-        btnListarUsuarios.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnListarUsuarios.setColorNormal(new java.awt.Color(255, 255, 255));
         btnListarUsuarios.setColorPressed(new java.awt.Color(204, 204, 204));
         btnListarUsuarios.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnListarUsuarios.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -295,11 +282,10 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnHoome.setForeground(new java.awt.Color(128, 128, 131));
         btnHoome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
         btnHoome.setText("Home");
         btnHoome.setColorHover(new java.awt.Color(204, 204, 204));
-        btnHoome.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnHoome.setColorNormal(new java.awt.Color(255, 255, 255));
         btnHoome.setColorPressed(new java.awt.Color(204, 204, 204));
         btnHoome.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnHoome.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -329,8 +315,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                         .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnListarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlMenuLayout.createSequentialGroup()
                         .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,32 +324,27 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                             .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(18, Short.MAX_VALUE))))
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuLayout.createSequentialGroup()
-                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMenuLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnHoome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnListarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlMenuLayout.createSequentialGroup()
-                        .addGap(346, 346, 346)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(btnHoome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAdminUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnListarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInfoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
@@ -455,7 +435,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         gridBagConstraints.weightx = 0.2;
         jPanel1.add(jPanel2, gridBagConstraints);
 
-        pnlCentro.setBackground(new java.awt.Color(239, 238, 244));
+        pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane1.setBorder(null);
 
@@ -570,40 +550,40 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             new CambiaPanel(pnlPrincipal, new InfoStore());
             if (this.btnHoome.isSelected())
             {
-                this.btnAdminUser.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminUser.setColorNormal(new Color(255,255,255));
                 this.btnAdminUser.setColorHover(new Color(204, 204, 204));
-                this.btnAdminUser.setColorPressed(new Color(204, 204, 204));
+                this.btnAdminUser.setColorPressed(new Color(239, 238, 244));
 
-                this.btnAdminProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnAdminProductos.setColorNormal(new Color(255,255,255));
                 this.btnAdminProductos.setColorHover(new Color(204, 204, 204));
                 this.btnAdminProductos.setColorPressed(new Color(204, 204, 204));
 
-                this.btnListarUsuarios.setColorNormal(new Color(239, 238, 244));
+                this.btnListarUsuarios.setColorNormal(new Color(255,255,255));
                 this.btnListarUsuarios.setColorHover(new Color(204, 204, 204));
                 this.btnListarUsuarios.setColorPressed(new Color(204, 204, 204));
 
-                this.btnListarProductos.setColorNormal(new Color(239, 238, 244));
+                this.btnListarProductos.setColorNormal(new Color(255,255,255));
                 this.btnListarProductos.setColorHover(new Color(204, 204, 204));
                 this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
 
-                this.btnInfoEmpresa.setColorNormal(new Color(239, 238, 244));
+                this.btnInfoEmpresa.setColorNormal(new Color(2255,255,255));
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
 
-                this.btnConfiguracion.setColorNormal(new Color(239, 238, 244));
+                this.btnConfiguracion.setColorNormal(new Color(255,255,255));
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHoome.setColorNormal(new Color(204, 204, 204));
+                this.btnHoome.setColorNormal(new Color(255,255,255));
                 this.btnHoome.setColorHover(new Color(204, 204, 204));
                 this.btnHoome.setColorPressed(new Color(204, 204, 204));
 
-                this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+                this.btnCerrarSesion.setColorNormal(new Color(255,255,255));
                 this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
                 this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
             } else
             {
-                this.btnHoome.setColorNormal(new Color(239, 238, 244));
+                this.btnHoome.setColorNormal(new Color(255,255,255));
                 this.btnHoome.setColorHover(new Color(204, 204, 204));
                 this.btnHoome.setColorPressed(new Color(204, 204, 204));
             }
@@ -935,7 +915,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlMenu;

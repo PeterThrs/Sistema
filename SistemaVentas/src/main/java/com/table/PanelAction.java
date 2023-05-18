@@ -6,6 +6,7 @@ package com.table;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ToolTipManager;
 
 public class PanelAction extends javax.swing.JPanel {
 
@@ -14,6 +15,13 @@ public class PanelAction extends javax.swing.JPanel {
      */
     public PanelAction() {
         initComponents();
+        toolTips();
+        ToolTipManager.sharedInstance().setInitialDelay(0);
+    }
+    public void toolTips(){
+        edit.setToolTipText("Editar");
+        delete.setToolTipText("Eliminar");
+        view.setToolTipText("Información completa");
     }
     public void initEvent(TableActionEvent event,int row){
         edit.addActionListener(new ActionListener() {

@@ -90,7 +90,7 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     private void agregarEstilos() {
         //configuraciones del panel
-        Configuracion.background(CodigoColor.cFondoGris, this);
+        Configuracion.background(CodigoColor.cFondoBlanco, this);
 
         //configuraciones de los JLabel
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
@@ -518,6 +518,7 @@ public class PanelUserNew extends javax.swing.JPanel {
         btnInsertImage = new javax.swing.JButton();
         jlFileSelect = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
         jlTitle.setText("Usuario");

@@ -2,7 +2,6 @@ package com.admin;
 
 import com.classes.Persona;
 import com.classes.Rol;
-import javax.imageio.ImageIO;
 import com.classes.Usuario;
 import com.conexion.PersonaDao;
 import com.conexion.RolDAO;
@@ -12,12 +11,12 @@ import com.settings.Configuracion;
 import com.settings.ObjGraficosService;
 import static com.settings.ObjGraficosService.personalizarVentana;
 import com.settings.Validaciones;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
@@ -30,7 +29,7 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     //Datos del Form
     private String nombre, aPaterno, aMaterno, email, telefono1, telefono2, curp, rfc, sexo, estado, municipio, colonia, calle, nomUsuario, contrasenia, confirmacion;
-    private int idPersona, edad, codigoPostal, numCasa, idUsuario, idRol;
+    private int idPersona, edad, codigoPostal, numCasa, idUsuario, idRol, longitudBytes;
     //atributos para modificar la BD
     private Persona persona;
     private PersonaDao personaDao;
@@ -40,20 +39,20 @@ public class PanelUserNew extends javax.swing.JPanel {
     private Validaciones validar;
     private String ruta;
     private boolean actualizar;
-    private ObjGraficosService oGraficos; 
+    private ObjGraficosService oGraficos;
     private Validaciones validacion;
-    private InputStream img;
+    private FileInputStream archivoo;
 
     public PanelUserNew() {
         this.actualizar = false;
-        this.instancias();
+        instancias();
         initComponents();
         agregarEstilos();
         configuracion();
 
     }
 
-    public void instancias(){
+    public void instancias() {
         this.persona = new Persona();
         this.usuario = new Usuario();
         this.personaDao = new PersonaDao();
@@ -61,9 +60,9 @@ public class PanelUserNew extends javax.swing.JPanel {
         this.validar = Validaciones.getValidacion();
         this.oGraficos = ObjGraficosService.getService();
         this.validacion = Validaciones.getValidacion();
-        this.img = null;
+        this.archivoo = null;
     }
-    
+
     public PanelUserNew(Usuario usuario, Persona persona) {
         this.usuario = usuario;
         this.persona = persona;
@@ -120,9 +119,9 @@ public class PanelUserNew extends javax.swing.JPanel {
                 this.tfStreet, this.tfConfirm, this.tfPassword, this.tfUser, this.tfEdad, this.tfState);
 
         //configuraciones de los botones
-        Configuracion.robotoPlain14(this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.robotoPlain14(this.btnCancel, this.btnCreate, this.btnUpdate, this.btnInsertImage);
+        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnCancel, this.btnCreate, this.btnUpdate, this.btnInsertImage);
+        Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnCreate, this.btnUpdate, this.btnInsertImage);
         this.btnCancel.setBackground(CodigoColor.cFondoBtnAzul);
 
         //configuraciones del JRadioButton
@@ -151,11 +150,13 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     private void verificarEstado() {
-        if (this.actualizar) {
+        if (this.actualizar)
+        {
             this.btnCreate.setEnabled(false);
             this.btnUpdate.setEnabled(true);
             this.btnCancel.setEnabled(true);
-        } else {
+        } else
+        {
             this.btnUpdate.setEnabled(false);
             this.btnCreate.setEnabled(true);
             this.btnCancel.setEnabled(false);
@@ -163,12 +164,14 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     private void agregarRadioBotones() {
-        try {
+        try
+        {
             groupRadioBtn = new ButtonGroup();
             groupRadioBtn.add(this.rbMan);
             groupRadioBtn.add(this.rbWoman);
             rbMan.setSelected(true);
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
 
         }
     }
@@ -177,7 +180,8 @@ public class PanelUserNew extends javax.swing.JPanel {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
         List<Rol> roles = RolDAO.seleccionar();
         roles.forEach(rol
-                -> {
+                ->
+        {
             dcbm.addElement(rol.getNombre());
         });
         this.cbRol.setModel(dcbm);
@@ -190,10 +194,13 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     private void checkBoxItemListened() {
         this.cbSendEmail.addItemListener(e
-                -> {
-            if (this.cbSendEmail.isSelected()) {
+                ->
+        {
+            if (this.cbSendEmail.isSelected())
+            {
                 System.out.println("Enviamos un mensaje al correo del usuario");
-            } else {
+            } else
+            {
                 System.out.println("No se envia nada al email del usuario");
             }
         });
@@ -209,7 +216,8 @@ public class PanelUserNew extends javax.swing.JPanel {
                 && validar.validarCadena(this.estado) && validar.validarCadena(this.municipio)
                 && validar.validarCadena(this.colonia) && validar.validarCadena(this.calle)
                 && validar.validarNumCasa(this.numCasa) && validar.validarCadena(nomUsuario)
-                && validar.validarContrasenia(this.contrasenia, this.contrasenia,this.confirmacion) && idRol > 0 && img != null) {
+                && validar.validarContrasenia(this.contrasenia, this.contrasenia, this.confirmacion) && idRol > 0 && archivoo!=null)
+        {
 
             this.persona.setNombre(this.nombre);
             this.persona.setApellidoPaterno(this.aPaterno);
@@ -228,12 +236,13 @@ public class PanelUserNew extends javax.swing.JPanel {
             this.persona.setCalle(this.calle);
             this.persona.setNumCasa(this.numCasa);
 
-            this.usuario.setImagen(img);
+            this.usuario.setImagen(archivoo);
             this.usuario.setNomUsuario(this.nomUsuario);
             this.usuario.setContrasenia(this.contrasenia);
             this.usuario.setIdRol(this.idRol);
 
-        } else {
+        } else
+        {
             JOptionPane.showMessageDialog(null, "Faltan campos por completar");
         }
         return false;
@@ -258,7 +267,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         this.calle = this.tfStreet.getText();
         this.numCasa = parse(tfHouseNumber.getText());
 
-        
         //datos de usuario
         this.nomUsuario = this.tfUser.getText();
         this.contrasenia = String.valueOf(this.tfPassword.getPassword());
@@ -277,15 +285,18 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     public void accionBtnCreate() {
-        btnCreate.addActionListener(e -> {
-            try {
+        btnCreate.addActionListener(e ->
+        {
+            try
+            {
 
                 recuperarDatos();
                 validarFomr();
                 //insertamos primero la persona
                 int registro = personaDao.insertar(persona);
 
-                if (registro > 0) {
+                if (registro > 0)
+                {
                     //recuperamos el idPersona
                     List<Persona> lista = this.personaDao.seleccionar();
                     persona = lista.get(lista.size() - 1);
@@ -293,18 +304,21 @@ public class PanelUserNew extends javax.swing.JPanel {
 
                     usuario.setIdPersona(idPersona);
 
-                    int reg = UsuarioDao.insertar(usuario);
+                    int reg = UsuarioDao.insertar(usuario, longitudBytes);
 
-                    if (reg > 0) {
+                    if (reg > 0)
+                    {
                         limpiarForm();
                         JOptionPane.showMessageDialog(null, "Se ha logrado insertar los datos correctamente");
                     }
 
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
 
@@ -323,10 +337,12 @@ public class PanelUserNew extends javax.swing.JPanel {
         this.tfEdad.setText(String.valueOf(this.persona.getEdad()));
         this.tfCurp.setText(this.persona.getCurp());
         this.tfRfc.setText(this.persona.getRFC());
-        if (this.persona.getSexo().equals("M")) {
+        if (this.persona.getSexo().equals("M"))
+        {
             this.rbMan.setSelected(true);
             this.rbWoman.setSelected(false);
-        } else {
+        } else
+        {
             this.rbMan.setSelected(false);
             this.rbWoman.setSelected(true);
         }
@@ -373,42 +389,52 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     public void accionBtnActualizar() {
-        this.btnUpdate.addActionListener(e -> {
-            try {
+        this.btnUpdate.addActionListener(e ->
+        {
+            try
+            {
                 recuperarDatos();
                 validarFomr();
 
                 int regPersona = personaDao.actualizar(persona);
-                int regUsuario = usuarioDao.actualizar(usuario);
-                if (regPersona > 0 && regUsuario > 0) {
+                int regUsuario = usuarioDao.actualizar(usuario,longitudBytes);
+                if (regPersona > 0 && regUsuario > 0)
+                {
                     limpiarForm();
                     JOptionPane.showMessageDialog(null, "Se ha logrado insertar los datos correctamente");
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
     }
 
     public void accionBtnEliminar() {
-        this.btnCancel.addActionListener(e -> {
-            try {
+        this.btnCancel.addActionListener(e ->
+        {
+            try
+            {
                 recuperarDatos();
                 validarFomr();
 
                 int regPersona = personaDao.eliminar(persona);
                 int regUsuario = usuarioDao.eliminar(usuario);
                 limpiarForm();
-                if (regPersona > 0 && regUsuario > 0) {
+                if (regPersona > 0 && regUsuario > 0)
+                {
                     JOptionPane.showMessageDialog(null, "Se han eliminado los datos correctamente");
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
@@ -1127,7 +1153,7 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         add(linea21, gridBagConstraints);
 
-        btnInsertImage.setText("Insertar logo");
+        btnInsertImage.setText("Insertar foto");
         btnInsertImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInsertImageActionPerformed(evt);
@@ -1182,33 +1208,21 @@ public class PanelUserNew extends javax.swing.JPanel {
         int result = chooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION)
         {
-            //se obtiene el archivo seleccionado
             File file = chooser.getSelectedFile();
             if (file.getName().endsWith(".png") || file.getName().endsWith(".jpg"))
             {
+                try
+                {
+                    //se obtiene el archivo seleccionado
+                    archivoo = new FileInputStream(chooser.getSelectedFile());
+                    this.longitudBytes = (int) chooser.getSelectedFile().length();
+                } catch (FileNotFoundException ex)
+                {
+                    Logger.getLogger(PanelUserNew.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 //obtenemos ruta absoluta
                 ruta = file.getPath().replace('\\', '/');
                 System.out.println("Archivo Seleccionado: " + ruta);
-
-                File archivo = new File(ruta);
-                try 
-                {
-                    img = new FileInputStream(archivo);
-                } catch (Exception e)
-                {
-                    e.printStackTrace(System.out);
-                }
-//                BufferedImage imagen;
-//                try
-//                {
-//                    imagen = ImageIO.read(new File(ruta));
-//                    oGraficos.guardarImagen("src/main/resources/icono/logo.png", imagen);
-//                    System.out.println("La imagen fue creada exitosamente");
-//                } catch (IOException ex)
-//                {
-//                    //Logger.getLogger(PanelUserNew.class.getName()).log(Level.SEVERE, null, ex);
-//                    System.out.println("Ocurrio un error al intentar crear la imagen");
-//                }
                 this.jlFileSelect.setText(file.getName());
             } else
             {
@@ -1216,16 +1230,6 @@ public class PanelUserNew extends javax.swing.JPanel {
             }
         }
         regresarEstiloOriginal();
-        /*JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Selecciona una imagen");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-        int resultado = fileChooser.showOpenDialog(null);
-        if (resultado == JFileChooser.APPROVE_OPTION)
-        {
-            File archivoSeleccionado = fileChooser.getSelectedFile();
-            // Aquí puedes hacer algo con el archivo seleccionado
-        }*/
     }//GEN-LAST:event_btnInsertImageActionPerformed
 
     private static void regresarEstiloOriginal() {
@@ -1245,7 +1249,7 @@ public class PanelUserNew extends javax.swing.JPanel {
         }
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;

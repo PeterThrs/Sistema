@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -103,7 +104,7 @@ public class ObjGraficosService {
         BufferedImage imagen = ImageIO.read(new File(rutaImagen));
         return new ImageIcon(imagen);
     }
-
+   
     public static void guardarImagen(String rutaImagen, BufferedImage imagen) throws IOException {
         File archivoImagen = new File(rutaImagen);
         ImageIO.write(imagen, "png", archivoImagen);

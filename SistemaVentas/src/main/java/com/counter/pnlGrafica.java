@@ -14,10 +14,6 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-/**
- *
- * @author juanj
- */
 public class pnlGrafica extends javax.swing.JPanel {
 
     private GridBagLayout gbl;
@@ -38,7 +34,6 @@ public class pnlGrafica extends javax.swing.JPanel {
     public void cuentasPorDía() {
         cuentas = CuentasDAO.seleccionar();
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
-        System.out.println("es aqui");
         int n = cuentas.size();
         for (int i = 0; i < 7;)
         {
@@ -54,7 +49,6 @@ public class pnlGrafica extends javax.swing.JPanel {
             }
         }
 
-        System.out.println("pero ya no sale");
         JFreeChart grafico_barras = ChartFactory.createBarChart(
                 "Reporte de finanzas por día",
                 "Fecha",

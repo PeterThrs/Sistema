@@ -577,7 +577,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnListarProductos.setColorHover(new Color(204, 204, 204));
                 this.btnListarProductos.setColorPressed(new Color(204, 204, 204));
 
-                this.btnInfoEmpresa.setColorNormal(new Color(2255,255,255));
+                this.btnInfoEmpresa.setColorNormal(new Color(255,255,255));
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
 
@@ -585,7 +585,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
                 this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
 
-                this.btnHoome.setColorNormal(new Color(255,255,255));
+                this.btnHoome.setColorNormal(new Color(204,204,204));
                 this.btnHoome.setColorHover(new Color(204, 204, 204));
                 this.btnHoome.setColorPressed(new Color(204, 204, 204));
 

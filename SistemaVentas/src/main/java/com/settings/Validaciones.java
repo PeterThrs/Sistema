@@ -12,6 +12,7 @@ public class Validaciones {
     static private Validaciones validacion;
 
     public Validaciones() {
+        //validacion = getValidacion();
     }
     
     public static Validaciones getValidacion() {
@@ -73,7 +74,7 @@ public class Validaciones {
         throw new Exception("No puede haber numero negativo");
     }
     
-    public boolean validarContrasenia(String pass,String contrasenia, String confirmacion) throws Exception {
+    public static boolean validarContrasenia(String pass,String contrasenia, String confirmacion) throws Exception {
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(pass);
@@ -87,7 +88,7 @@ public class Validaciones {
         throw new Exception("La contraseña no cumple el formato");
     }
     
-    public boolean validarEdad(int edad) throws Exception {
+    public static boolean validarEdad(int edad) throws Exception {
         if (edad >= 18 && edad <= 70) {
             return true;
         }

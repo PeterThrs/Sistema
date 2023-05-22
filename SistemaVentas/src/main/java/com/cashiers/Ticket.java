@@ -28,7 +28,7 @@ public class Ticket {
     public void agregarProducto(Producto producto, int cant) throws Exception {
         boolean v = false;
         if (producto == null) {
-            throw new Exception("Producto nulo");
+            throw new Exception("Producto Nulo");
         } else if (!existente(producto)) {
             System.out.println("Agregar Nuevo Producto");
             v = producto.modificarProducto(cant);
@@ -105,7 +105,7 @@ public class Ticket {
     public void calcularTotal() {
         if (!productos.isEmpty()) {
             this.total = productos.stream().mapToDouble(Producto::getImporte).sum();
-            System.out.println("total = " + total);
+            System.out.println("Total = " + total);
         } else {
             this.total = 0;
         }

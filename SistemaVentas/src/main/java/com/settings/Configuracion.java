@@ -143,12 +143,12 @@ public class Configuracion {
             btnPrincipal.setColorHover(new Color(204, 204, 204));
             btnPrincipal.setColorPressed(new Color(204, 204, 204));
             Arrays.asList(t).forEach(boton -> {
-                boton.setColorNormal(new Color(239, 238, 244));
+                boton.setColorNormal(new Color(255, 255, 255));
                 boton.setColorHover(new Color(204, 204, 204));
                 boton.setColorPressed(new Color(204, 204, 204));
             });
         } else {
-            btnPrincipal.setColorNormal(new Color(239, 238, 244));
+            btnPrincipal.setColorNormal(new Color(255, 255, 255));
             btnPrincipal.setColorHover(new Color(204, 204, 204));
             btnPrincipal.setColorPressed(new Color(204, 204, 204));
         }

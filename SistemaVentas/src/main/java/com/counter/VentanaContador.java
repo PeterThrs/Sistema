@@ -15,25 +15,30 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
+import com.admin.InfoStore;
 import com.newLogin.LoginTemplate;
 import com.settings.Configuracion;
+import java.awt.Cursor;
 import javax.swing.ImageIcon;
+import javax.swing.ToolTipManager;
+
 public class VentanaContador extends javax.swing.JFrame {
 
     int x, y;
-    /**
-     * Creates new form Principal
-     */
-    
+
     public VentanaContador() {
         initComponents();
-          setIconImage(new ImageIcon(getClass().getResource("/images/950305.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/images/950305.png")).getImage());
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
         this.btnHome.setSelected(true);
-        new CambiaPanel(pnlPrincipal, new pnlHomeContador());
+        new CambiaPanel(pnlPrincipal, new InfoStore());
         setVisible(true);
         desactivarBotonesIniciar();
+        
+        jButton1.setToolTipText("Deslizar");
+        ToolTipManager.sharedInstance().setInitialDelay(0);
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     public void desactivarBotonesIniciar() {
@@ -45,7 +50,7 @@ public class VentanaContador extends javax.swing.JFrame {
         this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
         this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -321,19 +326,23 @@ public class VentanaContador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGraficaMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        if (pnlMenu.isVisible()){
+
+        if (pnlMenu.isVisible())
+        {
             pnlMenu.setVisible(false);
-        }else{
-            pnlMenu.setVisible(true);   
+        } else
+        {
+            pnlMenu.setVisible(true);
         }
-        
+
         try
         {
             int posicion = pnlMenu.getX();
-            if(posicion > -1){
+            if (posicion > -1)
+            {
                 Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
-            }else{
+            } else
+            {
                 Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
             }
         } catch (Exception e)
@@ -392,7 +401,7 @@ public class VentanaContador extends javax.swing.JFrame {
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         try
         {
-            new CambiaPanel(pnlPrincipal, new pnlHomeContador());
+            new CambiaPanel(pnlPrincipal, new InfoStore());
             Configuracion.colorSelectedBotones(this.btnHome, this.btnGrafica, this.btnCerrarSesion);
         } catch (Exception e)
         {
@@ -408,20 +417,27 @@ public class VentanaContador extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(VentanaContador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(VentanaContador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(VentanaContador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(VentanaContador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -430,10 +446,12 @@ public class VentanaContador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
+                try
+                {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     new VentanaContador().setVisible(true);
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)
+                {
                     Logger.getLogger(VentanaContador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

@@ -5,6 +5,7 @@ import com.conexion.TiendaDAO;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
 import com.settings.ObjGraficosService;
+import static com.settings.ObjGraficosService.personalizarVentana;
 import com.settings.Recursos;
 import com.settings.Validaciones;
 import java.awt.Dimension;
@@ -645,18 +646,6 @@ public class EditInfoStore extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifica tus datos");
         }
     }//GEN-LAST:event_btnCreateActionPerformed
-
-    private static JFileChooser personalizarVentana() {
-        try
-        {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)
-        {
-            Logger.getLogger(EditInfoStore.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JFileChooser chooser = new JFileChooser();
-        return chooser;
-    }
 
     private static void regresarEstiloOriginal() {
         try

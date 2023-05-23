@@ -104,7 +104,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     System.out.println("usuario = " + usuario);
                     System.out.println("persona = " + persona);
                     principalAdmin.cambiarPanelExterno(new PanelUserNew(usuario, persona));
-                    Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(), principalAdmin.getBtnInfoEmpresa(), principalAdmin.getBtnConfiguracion(), principalAdmin.getBtnCerrarSesion());
+                    Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(), principalAdmin.getBtnInfoEmpresa(), principalAdmin.getBtnCerrarSesion());
                     principalAdmin.repaint();
                 }
 

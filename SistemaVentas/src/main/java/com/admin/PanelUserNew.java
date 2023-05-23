@@ -49,7 +49,8 @@ public class PanelUserNew extends javax.swing.JPanel {
         initComponents();
         agregarEstilos();
         configuracion();
-
+        btnCancel.setVisible(false);
+        btnUpdate.setVisible(false);
     }
 
     public void instancias() {
@@ -216,7 +217,7 @@ public class PanelUserNew extends javax.swing.JPanel {
                 && validar.validarCadena(this.estado) && validar.validarCadena(this.municipio)
                 && validar.validarCadena(this.colonia) && validar.validarCadena(this.calle)
                 && validar.validarNumCasa(this.numCasa) && validar.validarCadena(nomUsuario)
-                && validar.validarContrasenia(this.contrasenia, this.contrasenia, this.confirmacion) && idRol > 0 && archivoo!=null)
+                && validar.validarContrasenia(this.contrasenia, this.contrasenia, this.confirmacion) && idRol > 0 && archivoo != null)
         {
 
             this.persona.setNombre(this.nombre);
@@ -397,7 +398,7 @@ public class PanelUserNew extends javax.swing.JPanel {
                 validarFomr();
 
                 int regPersona = personaDao.actualizar(persona);
-                int regUsuario = usuarioDao.actualizar(usuario,longitudBytes);
+                int regUsuario = usuarioDao.actualizar(usuario, longitudBytes);
                 if (regPersona > 0 && regUsuario > 0)
                 {
                     limpiarForm();
@@ -539,8 +540,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(4, 5, 0, 5);
         add(jlName, gridBagConstraints);
-
-        tfName.setText("Paco");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -688,7 +687,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
         add(jlPostalCode, gridBagConstraints);
 
-        tfLastNameP.setText("Martinez");
         tfLastNameP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfLastNamePActionPerformed(evt);
@@ -702,8 +700,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfLastNameP, gridBagConstraints);
-
-        tfLastNameM.setText("Martinez");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -713,8 +709,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 20);
         add(tfLastNameM, gridBagConstraints);
-
-        tfEmail.setText("pmartinez@gmail.com");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 6;
@@ -724,8 +718,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfEmail, gridBagConstraints);
-
-        tfPhone1.setText("+52-9511911329");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -735,8 +727,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 20);
         add(tfPhone1, gridBagConstraints);
-
-        tfPhone2.setText("+521-8889991212");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 8;
@@ -745,8 +735,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfPhone2, gridBagConstraints);
-
-        tfMun.setText("Oaxaca de Juarez");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 16;
@@ -755,8 +743,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfMun, gridBagConstraints);
-
-        tfCol.setText("Estado de Oaxaca");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 16;
@@ -765,8 +751,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 20);
         add(tfCol, gridBagConstraints);
-
-        tfStreet.setText("Av. Independencia");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 18;
@@ -775,8 +759,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfStreet, gridBagConstraints);
-
-        tfHouseNumber.setText("120");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 18;
@@ -797,8 +779,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 12;
         add(rbWoman, gridBagConstraints);
-
-        tfRfc.setText("HCOEPARUI1010");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 12;
@@ -808,7 +788,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 20);
         add(tfRfc, gridBagConstraints);
 
-        tfCurp.setText("LOHP030617HOCPRDA3");
         tfCurp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfCurpActionPerformed(evt);
@@ -822,8 +801,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfCurp, gridBagConstraints);
-
-        tfPostalCode.setText("68000");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 14;
@@ -1021,8 +998,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
         add(jlUser, gridBagConstraints);
-
-        tfUser.setText("Thrs");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 22;
@@ -1038,8 +1013,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LAST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
         add(jlPassword, gridBagConstraints);
-
-        tfPassword.setText("Password1@");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 24;
@@ -1055,8 +1028,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LAST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 0, 0);
         add(jlConfirm, gridBagConstraints);
-
-        tfConfirm.setText("Password1@");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 24;
@@ -1117,8 +1088,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         add(linea20, gridBagConstraints);
-
-        tfEdad.setText("20");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 10;
@@ -1135,8 +1104,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LAST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 0, 5);
         add(jlState, gridBagConstraints);
-
-        tfState.setText("Oaxaca");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 14;

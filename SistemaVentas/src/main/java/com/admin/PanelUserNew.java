@@ -49,7 +49,8 @@ public class PanelUserNew extends javax.swing.JPanel {
         initComponents();
         agregarEstilos();
         configuracion();
-
+        btnCancel.setVisible(false);
+        btnUpdate.setVisible(false);
     }
 
     public void instancias() {
@@ -216,7 +217,7 @@ public class PanelUserNew extends javax.swing.JPanel {
                 && validar.validarCadena(this.estado) && validar.validarCadena(this.municipio)
                 && validar.validarCadena(this.colonia) && validar.validarCadena(this.calle)
                 && validar.validarNumCasa(this.numCasa) && validar.validarCadena(nomUsuario)
-                && validar.validarContrasenia(this.contrasenia, this.contrasenia, this.confirmacion) && idRol > 0 && archivoo!=null)
+                && validar.validarContrasenia(this.contrasenia, this.contrasenia, this.confirmacion) && idRol > 0 && archivoo != null)
         {
 
             this.persona.setNombre(this.nombre);
@@ -397,7 +398,7 @@ public class PanelUserNew extends javax.swing.JPanel {
                 validarFomr();
 
                 int regPersona = personaDao.actualizar(persona);
-                int regUsuario = usuarioDao.actualizar(usuario,longitudBytes);
+                int regUsuario = usuarioDao.actualizar(usuario, longitudBytes);
                 if (regPersona > 0 && regUsuario > 0)
                 {
                     limpiarForm();
@@ -539,12 +540,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(4, 5, 0, 5);
         add(jlName, gridBagConstraints);
-
-        tfName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNameActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -740,12 +735,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfPhone2, gridBagConstraints);
-
-        tfMun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfMunActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 16;

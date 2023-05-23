@@ -64,10 +64,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         return btnCerrarSesion;
     }
 
-    //public RSButtonMetro getBtnConfiguracion() {
-      //  return btnConfiguracion;
-    //}
-
     public RSButtonMetro getBtnHoome() {
         return btnHoome;
     }
@@ -553,10 +549,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 this.btnInfoEmpresa.setColorHover(new Color(204, 204, 204));
                 this.btnInfoEmpresa.setColorPressed(new Color(204, 204, 204));
 
-                //this.btnConfiguracion.setColorNormal(new Color(255,255,255));
-                //this.btnConfiguracion.setColorHover(new Color(204, 204, 204));
-                //this.btnConfiguracion.setColorPressed(new Color(204, 204, 204));
-
                 this.btnHoome.setColorNormal(new Color(204,204,204));
                 this.btnHoome.setColorHover(new Color(204, 204, 204));
                 this.btnHoome.setColorPressed(new Color(204, 204, 204));
@@ -585,7 +577,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(false);
             this.btnInfoEmpresa.setSelected(false);
-            //this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
         } catch (Exception e)
         {
@@ -601,7 +592,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             buscaar.setText("");
             new CambiaPanel(pnlPrincipal, listaUsuarios);
             listaUsuarios.registrar();
-            Configuracion.colorSelectedBotones(this.btnListarUsuarios, this.btnHoome, this.btnAdminProductos, this.btnAdminUser, this.btnListarProductos, this.btnInfoEmpresa, this.btnCerrarSesion);
+            Configuracion.colorSelectedBotones(this.btnListarUsuarios, this.btnHoome, this.btnAdminProductos, this.btnAdminUser, this.btnListarProductos, this.btnInfoEmpresa,this.btnCerrarSesion);
         } catch (Exception e)
         {
             System.err.println(e);
@@ -617,7 +608,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(false);
             this.btnInfoEmpresa.setSelected(false);
-            //this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
         } catch (Exception e)
         {
@@ -649,7 +639,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnListarProductos.setSelected(true);
             this.btnAdminProductos.setSelected(false);
             this.btnInfoEmpresa.setSelected(false);
-            //this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
         } catch (Exception e)
         {
@@ -681,7 +670,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(false);
             this.btnInfoEmpresa.setSelected(false);
-            //this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(true);
         } catch (Exception e)
         {
@@ -711,7 +699,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(true);
             this.btnInfoEmpresa.setSelected(false);
-            //this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
         } catch (Exception e)
         {
@@ -741,7 +728,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(false);
             this.btnInfoEmpresa.setSelected(true);
-            //this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
         } catch (Exception e)
         {
@@ -771,7 +757,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             this.btnListarProductos.setSelected(false);
             this.btnAdminProductos.setSelected(false);
             this.btnInfoEmpresa.setSelected(false);
-            //this.btnConfiguracion.setSelected(false);
             this.btnCerrarSesion.setSelected(false);
         } catch (Exception e)
         {

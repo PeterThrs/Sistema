@@ -8,17 +8,28 @@ import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
+import com.settings.ObjGraficosService;
+import static com.settings.ObjGraficosService.personalizarVentana;
 import com.settings.Validaciones;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class PanelUserNew extends javax.swing.JPanel {
 
     //Datos del Form
     private String nombre, aPaterno, aMaterno, email, telefono1, telefono2, curp, rfc, sexo, estado, municipio, colonia, calle, nomUsuario, contrasenia, confirmacion;
-    private int idPersona, edad, codigoPostal, numCasa, idUsuario, idRol;
+    private int idPersona, edad, codigoPostal, numCasa, idUsuario, idRol, longitudBytes;
     //atributos para modificar la BD
     private Persona persona;
     private PersonaDao personaDao;
@@ -26,26 +37,33 @@ public class PanelUserNew extends javax.swing.JPanel {
     private UsuarioDao usuarioDao;
     private ButtonGroup groupRadioBtn;
     private Validaciones validar;
-    //
+    private String ruta;
     private boolean actualizar;
+    private ObjGraficosService oGraficos;
+    private Validaciones validacion;
+    private FileInputStream archivoo;
 
     public PanelUserNew() {
         this.actualizar = false;
-        this.instancias();
+        instancias();
         initComponents();
         agregarEstilos();
         configuracion();
-
+        btnCancel.setVisible(false);
+        btnUpdate.setVisible(false);
     }
 
-    public void instancias(){
+    public void instancias() {
         this.persona = new Persona();
         this.usuario = new Usuario();
         this.personaDao = new PersonaDao();
         this.usuarioDao = new UsuarioDao();
         this.validar = Validaciones.getValidacion();
+        this.oGraficos = ObjGraficosService.getService();
+        this.validacion = Validaciones.getValidacion();
+        this.archivoo = null;
     }
-    
+
     public PanelUserNew(Usuario usuario, Persona persona) {
         this.usuario = usuario;
         this.persona = persona;
@@ -73,7 +91,7 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     private void agregarEstilos() {
         //configuraciones del panel
-        Configuracion.background(CodigoColor.cFondoGris, this);
+        Configuracion.background(CodigoColor.cFondoBlanco, this);
 
         //configuraciones de los JLabel
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
@@ -102,9 +120,9 @@ public class PanelUserNew extends javax.swing.JPanel {
                 this.tfStreet, this.tfConfirm, this.tfPassword, this.tfUser, this.tfEdad, this.tfState);
 
         //configuraciones de los botones
-        Configuracion.robotoPlain14(this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnCancel, this.btnCreate, this.btnUpdate);
-        Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnCreate, this.btnUpdate);
+        Configuracion.robotoPlain14(this.btnCancel, this.btnCreate, this.btnUpdate, this.btnInsertImage);
+        Configuracion.foreground(CodigoColor.cLetrasBtnBlanco, this.btnCancel, this.btnCreate, this.btnUpdate, this.btnInsertImage);
+        Configuracion.background(CodigoColor.cFondoBtnAzul, this.btnCancel, this.btnCreate, this.btnUpdate, this.btnInsertImage);
         this.btnCancel.setBackground(CodigoColor.cFondoBtnAzul);
 
         //configuraciones del JRadioButton
@@ -133,11 +151,13 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     private void verificarEstado() {
-        if (this.actualizar) {
+        if (this.actualizar)
+        {
             this.btnCreate.setEnabled(false);
             this.btnUpdate.setEnabled(true);
             this.btnCancel.setEnabled(true);
-        } else {
+        } else
+        {
             this.btnUpdate.setEnabled(false);
             this.btnCreate.setEnabled(true);
             this.btnCancel.setEnabled(false);
@@ -145,12 +165,14 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     private void agregarRadioBotones() {
-        try {
+        try
+        {
             groupRadioBtn = new ButtonGroup();
             groupRadioBtn.add(this.rbMan);
             groupRadioBtn.add(this.rbWoman);
             rbMan.setSelected(true);
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
 
         }
     }
@@ -159,7 +181,8 @@ public class PanelUserNew extends javax.swing.JPanel {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
         List<Rol> roles = RolDAO.seleccionar();
         roles.forEach(rol
-                -> {
+                ->
+        {
             dcbm.addElement(rol.getNombre());
         });
         this.cbRol.setModel(dcbm);
@@ -172,10 +195,13 @@ public class PanelUserNew extends javax.swing.JPanel {
 
     private void checkBoxItemListened() {
         this.cbSendEmail.addItemListener(e
-                -> {
-            if (this.cbSendEmail.isSelected()) {
+                ->
+        {
+            if (this.cbSendEmail.isSelected())
+            {
                 System.out.println("Enviamos un mensaje al correo del usuario");
-            } else {
+            } else
+            {
                 System.out.println("No se envia nada al email del usuario");
             }
         });
@@ -191,7 +217,8 @@ public class PanelUserNew extends javax.swing.JPanel {
                 && validar.validarCadena(this.estado) && validar.validarCadena(this.municipio)
                 && validar.validarCadena(this.colonia) && validar.validarCadena(this.calle)
                 && validar.validarNumCasa(this.numCasa) && validar.validarCadena(nomUsuario)
-                && validar.validarContrasenia(this.contrasenia, this.contrasenia,this.confirmacion) && idRol > 0) {
+                && validar.validarContrasenia(this.contrasenia, this.contrasenia, this.confirmacion) && idRol > 0 && archivoo != null)
+        {
 
             this.persona.setNombre(this.nombre);
             this.persona.setApellidoPaterno(this.aPaterno);
@@ -210,11 +237,13 @@ public class PanelUserNew extends javax.swing.JPanel {
             this.persona.setCalle(this.calle);
             this.persona.setNumCasa(this.numCasa);
 
+            this.usuario.setImagen(archivoo);
             this.usuario.setNomUsuario(this.nomUsuario);
             this.usuario.setContrasenia(this.contrasenia);
             this.usuario.setIdRol(this.idRol);
 
-        } else {
+        } else
+        {
             JOptionPane.showMessageDialog(null, "Faltan campos por completar");
         }
         return false;
@@ -257,15 +286,18 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     public void accionBtnCreate() {
-        btnCreate.addActionListener(e -> {
-            try {
+        btnCreate.addActionListener(e ->
+        {
+            try
+            {
 
                 recuperarDatos();
                 validarFomr();
                 //insertamos primero la persona
                 int registro = personaDao.insertar(persona);
 
-                if (registro > 0) {
+                if (registro > 0)
+                {
                     //recuperamos el idPersona
                     List<Persona> lista = this.personaDao.seleccionar();
                     persona = lista.get(lista.size() - 1);
@@ -273,18 +305,21 @@ public class PanelUserNew extends javax.swing.JPanel {
 
                     usuario.setIdPersona(idPersona);
 
-                    int reg = UsuarioDao.insertar(usuario);
+                    int reg = UsuarioDao.insertar(usuario, longitudBytes);
 
-                    if (reg > 0) {
+                    if (reg > 0)
+                    {
                         limpiarForm();
                         JOptionPane.showMessageDialog(null, "Se ha logrado insertar los datos correctamente");
                     }
 
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
 
@@ -303,10 +338,12 @@ public class PanelUserNew extends javax.swing.JPanel {
         this.tfEdad.setText(String.valueOf(this.persona.getEdad()));
         this.tfCurp.setText(this.persona.getCurp());
         this.tfRfc.setText(this.persona.getRFC());
-        if (this.persona.getSexo().equals("M")) {
+        if (this.persona.getSexo().equals("M"))
+        {
             this.rbMan.setSelected(true);
             this.rbWoman.setSelected(false);
-        } else {
+        } else
+        {
             this.rbMan.setSelected(false);
             this.rbWoman.setSelected(true);
         }
@@ -353,42 +390,52 @@ public class PanelUserNew extends javax.swing.JPanel {
     }
 
     public void accionBtnActualizar() {
-        this.btnUpdate.addActionListener(e -> {
-            try {
+        this.btnUpdate.addActionListener(e ->
+        {
+            try
+            {
                 recuperarDatos();
                 validarFomr();
 
                 int regPersona = personaDao.actualizar(persona);
-                int regUsuario = usuarioDao.actualizar(usuario);
-                if (regPersona > 0 && regUsuario > 0) {
+                int regUsuario = usuarioDao.actualizar(usuario, longitudBytes);
+                if (regPersona > 0 && regUsuario > 0)
+                {
                     limpiarForm();
                     JOptionPane.showMessageDialog(null, "Se ha logrado insertar los datos correctamente");
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
     }
 
     public void accionBtnEliminar() {
-        this.btnCancel.addActionListener(e -> {
-            try {
+        this.btnCancel.addActionListener(e ->
+        {
+            try
+            {
                 recuperarDatos();
                 validarFomr();
 
                 int regPersona = personaDao.eliminar(persona);
                 int regUsuario = usuarioDao.eliminar(usuario);
                 limpiarForm();
-                if (regPersona > 0 && regUsuario > 0) {
+                if (regPersona > 0 && regUsuario > 0)
+                {
                     JOptionPane.showMessageDialog(null, "Se han eliminado los datos correctamente");
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
@@ -469,7 +516,10 @@ public class PanelUserNew extends javax.swing.JPanel {
         jlState = new javax.swing.JLabel();
         tfState = new javax.swing.JTextField();
         linea21 = new javax.swing.JSeparator();
+        btnInsertImage = new javax.swing.JButton();
+        jlFileSelect = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
         jlTitle.setText("Usuario");
@@ -490,8 +540,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(4, 5, 0, 5);
         add(jlName, gridBagConstraints);
-
-        tfName.setText("Paco");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -639,7 +687,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
         add(jlPostalCode, gridBagConstraints);
 
-        tfLastNameP.setText("Martinez");
         tfLastNameP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfLastNamePActionPerformed(evt);
@@ -653,8 +700,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfLastNameP, gridBagConstraints);
-
-        tfLastNameM.setText("Martinez");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -664,8 +709,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 20);
         add(tfLastNameM, gridBagConstraints);
-
-        tfEmail.setText("pmartinez@gmail.com");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 6;
@@ -675,8 +718,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfEmail, gridBagConstraints);
-
-        tfPhone1.setText("+52-9511911329");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -686,8 +727,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 20);
         add(tfPhone1, gridBagConstraints);
-
-        tfPhone2.setText("+521-8889991212");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 8;
@@ -696,8 +735,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfPhone2, gridBagConstraints);
-
-        tfMun.setText("Oaxaca de Juarez");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 16;
@@ -706,8 +743,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfMun, gridBagConstraints);
-
-        tfCol.setText("Estado de Oaxaca");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 16;
@@ -716,8 +751,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 20);
         add(tfCol, gridBagConstraints);
-
-        tfStreet.setText("Av. Independencia");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 18;
@@ -726,8 +759,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfStreet, gridBagConstraints);
-
-        tfHouseNumber.setText("120");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 18;
@@ -748,8 +779,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 12;
         add(rbWoman, gridBagConstraints);
-
-        tfRfc.setText("HCOEPARUI1010");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 12;
@@ -759,7 +788,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 20);
         add(tfRfc, gridBagConstraints);
 
-        tfCurp.setText("LOHP030617HOCPRDA3");
         tfCurp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfCurpActionPerformed(evt);
@@ -773,8 +801,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfCurp, gridBagConstraints);
-
-        tfPostalCode.setText("68000");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 14;
@@ -792,7 +818,7 @@ public class PanelUserNew extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 28;
+        gridBagConstraints.gridy = 31;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 114, 22, 114);
@@ -806,7 +832,7 @@ public class PanelUserNew extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 28;
+        gridBagConstraints.gridy = 31;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(14, 17, 17, 17);
@@ -820,7 +846,7 @@ public class PanelUserNew extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 28;
+        gridBagConstraints.gridy = 31;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 68, 13, 96);
@@ -972,8 +998,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
         add(jlUser, gridBagConstraints);
-
-        tfUser.setText("Thrs");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 22;
@@ -989,8 +1013,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LAST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 5);
         add(jlPassword, gridBagConstraints);
-
-        tfPassword.setText("Password1@");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 24;
@@ -1006,8 +1028,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LAST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 0, 0);
         add(jlConfirm, gridBagConstraints);
-
-        tfConfirm.setText("Password1@");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 24;
@@ -1068,8 +1088,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         add(linea20, gridBagConstraints);
-
-        tfEdad.setText("20");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 10;
@@ -1086,8 +1104,6 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LAST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 0, 5);
         add(jlState, gridBagConstraints);
-
-        tfState.setText("Oaxaca");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 14;
@@ -1104,6 +1120,31 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         add(linea21, gridBagConstraints);
+
+        btnInsertImage.setText("Insertar foto");
+        btnInsertImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertImageActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 28;
+        gridBagConstraints.gridwidth = 29;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 5, 0, 0);
+        add(btnInsertImage, gridBagConstraints);
+
+        jlFileSelect.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jlFileSelect.setText("Aun no ha seleccionado ningun archivo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 29;
+        gridBagConstraints.gridwidth = 43;
+        gridBagConstraints.ipadx = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 150, 10, 0);
+        add(jlFileSelect, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -1126,10 +1167,69 @@ public class PanelUserNew extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCurpActionPerformed
 
+    private void btnInsertImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertImageActionPerformed
+        //Crear un JFileChooser
+        JFileChooser chooser = personalizarVentana();
+        //Crear filtro
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("png, jpg", "png", "jpg");
+        chooser.setFileFilter(filter);
+        int result = chooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION)
+        {
+            File file = chooser.getSelectedFile();
+            if (file.getName().endsWith(".png") || file.getName().endsWith(".jpg"))
+            {
+                try
+                {
+                    //se obtiene el archivo seleccionado
+                    archivoo = new FileInputStream(chooser.getSelectedFile());
+                    this.longitudBytes = (int) chooser.getSelectedFile().length();
+                } catch (FileNotFoundException ex)
+                {
+                    Logger.getLogger(PanelUserNew.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //obtenemos ruta absoluta
+                ruta = file.getPath().replace('\\', '/');
+                System.out.println("Archivo Seleccionado: " + ruta);
+                this.jlFileSelect.setText(file.getName());
+            } else
+            {
+                System.out.println("Error: El archivo selecconado no es una imagen. ");
+            }
+        }
+        regresarEstiloOriginal();
+    }//GEN-LAST:event_btnInsertImageActionPerformed
+
+    private void tfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNameActionPerformed
+
+    private void tfMunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfMunActionPerformed
+
+    private static void regresarEstiloOriginal() {
+        try
+        {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e)
+        {
+            // Manejo de excepciones
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnInsertImage;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbRol;
     private javax.swing.JCheckBox cbSendEmail;
@@ -1138,6 +1238,7 @@ public class PanelUserNew extends javax.swing.JPanel {
     private javax.swing.JLabel jlConfirm;
     private javax.swing.JLabel jlCurp;
     private javax.swing.JLabel jlEmail;
+    private javax.swing.JLabel jlFileSelect;
     private javax.swing.JLabel jlHouseNumber;
     private javax.swing.JLabel jlLastNameM;
     private javax.swing.JLabel jlLastNameP;

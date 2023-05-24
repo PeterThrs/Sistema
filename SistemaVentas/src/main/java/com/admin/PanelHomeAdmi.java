@@ -19,7 +19,7 @@ public class PanelHomeAdmi extends javax.swing.JPanel {
     }
     
     public void configuracion(){
-        Configuracion.background(CodigoColor.cFondoGris, this);
+        Configuracion.background(CodigoColor.cFondoBlanco, this);
     }
 
     /**

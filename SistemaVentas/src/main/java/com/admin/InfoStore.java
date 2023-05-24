@@ -104,7 +104,7 @@ public class InfoStore extends javax.swing.JPanel {
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.gridwidth = 0;;
+        gbc.gridwidth = 0;
         gbc.ipady = 50;
         this.add(jlLogo, gbc);
 
@@ -166,6 +166,8 @@ public class InfoStore extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

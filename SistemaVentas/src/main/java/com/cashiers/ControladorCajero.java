@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cashiers;
 
 import com.classes.Persona;
@@ -12,30 +8,22 @@ import com.conexion.PersonaDao;
 import com.conexion.ProductoDAO;
 import com.conexion.TiendaDAO;
 import com.newLogin.LoginTemplate;
-import com.settings.CodigoColor;
-import com.settings.Configuracion;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Root
- */
 public class ControladorCajero {
 
     private ProductoDAO productoDao;
@@ -70,6 +58,11 @@ public class ControladorCajero {
                 vistaCajero.getJlNombreEmpresa().setText(tienda.getNombre());
                 vistaCajero.getJlSloga().setText(tienda.getSlogan());
                 vistaCajero.getJlgmail().setText(tienda.getEmail());
+                ImageIcon icono = usuario.getIcono();
+                if(icono!=null){
+                    ImageIcon iDimAux = new ImageIcon(icono.getImage().getScaledInstance(100, 100, Image.SCALE_AREA_AVERAGING));
+                    vistaCajero.getJlImagen().setIcon(iDimAux);
+                }
             }
             if (usuario != null) {
                 PersonaDao personaDao = new PersonaDao();
@@ -447,4 +440,7 @@ public class ControladorCajero {
 
     }
 
+    public Usuario getUuario(){
+        return usuario;
+    }
 }

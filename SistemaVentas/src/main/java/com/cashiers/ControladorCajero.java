@@ -328,12 +328,16 @@ public class ControladorCajero {
                         case KeyEvent.VK_UP -> {
                             int fila = vistaCajero.getTabla().getSelectedRow(); 
                             if(fila != -1){
+                                System.out.println("fila = " + fila);
+                                System.out.println("fila -1 = " + (fila -1));
                                 marcarRow(fila -1);
                             }
                         }
                         case KeyEvent.VK_DOWN -> {
                             int fila = vistaCajero.getTabla().getSelectedRow(); 
                             if(fila != -1){
+                                System.out.println("fila = " + fila);
+                                System.out.println("fila -1 = " + (fila -1));
                                 marcarRow(fila +1);
                             }
                         }

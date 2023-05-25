@@ -9,6 +9,8 @@ import com.conexion.ProductoDAO;
 import com.conexion.TiendaDAO;
 import com.newLogin.LoginTemplate;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
@@ -16,11 +18,14 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Ellipse2D;
 import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -60,8 +65,13 @@ public class ControladorCajero {
                 vistaCajero.getJlgmail().setText(tienda.getEmail());
                 ImageIcon icono = usuario.getIcono();
                 if(icono!=null){
+                    System.out.println("Entramos a modificar la foto del usuario");
                     ImageIcon iDimAux = new ImageIcon(icono.getImage().getScaledInstance(100, 100, Image.SCALE_AREA_AVERAGING));
-                    vistaCajero.getJlImagen().setIcon(iDimAux);
+                    vistaCajero.setJlImagen(imgCirculo(iDimAux));
+                }else {
+                    System.out.println("Entramos a modificar la foto por default");
+                    icono = new ImageIcon("src/main/resources/imagenes/peter/paisaje.jpg"); 
+                    vistaCajero.setJlImagen(imgCirculo(icono));
                 }
             }
             if (usuario != null) {
@@ -72,6 +82,28 @@ public class ControladorCajero {
         } catch (Exception ex) {
 
         }
+    }
+    
+    private JLabel imgCirculo(ImageIcon imageIcon){
+        
+        Image image = imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_AREA_AVERAGING); 
+        JLabel label  = new JLabel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+
+                // Crea un objeto Ellipse2D para definir la forma del círculo
+                Ellipse2D circle = new Ellipse2D.Float(0, 0, image.getWidth(this), image.getHeight(this));
+
+                // Aplica el recorte (clipping) en la representación gráfica de la imagen
+                Graphics2D g2d = (Graphics2D) g.create();
+                g2d.setClip(circle);
+                g2d.drawImage(image, 0, 0, null);
+                g2d.dispose();
+            }
+        };
+        return label; 
+        
     }
 
     private void actualizarTabla() {

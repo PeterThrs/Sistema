@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,6 +18,7 @@ import javax.swing.JPanel;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 import java.util.Arrays;
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -62,8 +65,8 @@ public class VistaCajero extends JFrame {
         //configurando ventana al 100%
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle bounds = env.getMaximumWindowBounds();
-        setResizable(false);
-        setUndecorated(true);
+        //setResizable(false);
+        //setUndecorated(true);
         setBounds(bounds);
 
         // Configuramos el layout de la ventana
@@ -113,15 +116,13 @@ public class VistaCajero extends JFrame {
 
     private void imagenes() {
         try {
-            this.jlImagen = new JLabel();
-            this.jlImagen.setSize(new Dimension(100, 100));
-            Icon icon = new ImageIcon(new ImageIcon("src/main/resources/imagenes/peter/austronauta.png").getImage().getScaledInstance(200, 200, Image.SCALE_AREA_AVERAGING));
-            this.jlImagen.setIcon(icon);
+            this.jlImagen = new JLabel(); 
+            
+            //(new ImageIcon("src/main/resources/imagenes/peter/paisaje.jpg"));
             //this.repaint();
-            this.jlImagen.setBackground(Color.MAGENTA);
             c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 60, 10), 0, 0);
             centrarTexto(jlImagen);
-            this.panelIzquierdo.add(jlImagen, c);
+            this.panelIzquierdo.add(jImagen, c);
         } catch (Exception ex) {
 
         }

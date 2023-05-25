@@ -35,30 +35,25 @@ public class UsuarioDao {
         Usuario usuario = null;
         List<Usuario> usuarios = new ArrayList<>();
 
-        try
-        {
+        try {
             coon = getConnection();
             stmt = coon.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 int idUsuario = rs.getInt("idUsuario");
                 //leer binario
                 Blob blob = rs.getBlob(2);
                 //pasar el binario a la imagen
                 ImageIcon icono = null;
-                try
-                {
-                    if (blob != null)
-                    {
+                try {
+                    if (blob != null) {
                         byte[] data = blob.getBytes(1, (int) blob.length());
                         //leer la imagen
                         BufferedImage img = ImageIO.read(new ByteArrayInputStream(data));
                         icono = new ImageIcon(img);
                     }
-                } catch (IOException ex)
-                {
+                } catch (IOException ex) {
                     Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -71,18 +66,14 @@ public class UsuarioDao {
                 usuarios.add(usuario);
             }
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace(System.out);
-        } finally
-        {
-            try
-            {
+        } finally {
+            try {
                 close(rs);
                 close(stmt);
                 close(coon);
-            } catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 ex.printStackTrace(System.out);
             }
         }
@@ -93,8 +84,7 @@ public class UsuarioDao {
         Connection coon = null;
         PreparedStatement stmt = null;
         int registros = 0;
-        try
-        {
+        try {
             coon = getConnection();
             stmt = coon.prepareStatement(SQL_INSERT);
             stmt.setBlob(1, usuario.getImagen(), longitud);
@@ -105,17 +95,13 @@ public class UsuarioDao {
 
             registros = stmt.executeUpdate();
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace(System.out);
-        } finally
-        {
-            try
-            {
+        } finally {
+            try {
                 Conexion.close(stmt);
                 Conexion.close(coon);
-            } catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 ex.printStackTrace(System.out);
             }
         }
@@ -127,8 +113,7 @@ public class UsuarioDao {
         PreparedStatement stmt = null;
         int registros = 0;
 
-        try
-        {
+        try {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_UPDATE);
             stmt.setBlob(1, usuario.getImagen(), longitud);
@@ -139,17 +124,13 @@ public class UsuarioDao {
             stmt.setInt(6, usuario.getIdUsuario());
             registros = stmt.executeUpdate();
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace(System.out);
-        } finally
-        {
-            try
-            {
+        } finally {
+            try {
                 Conexion.close(stmt);
                 Conexion.close(coon);
-            } catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 ex.printStackTrace(System.out);
             }
         }
@@ -161,24 +142,19 @@ public class UsuarioDao {
         PreparedStatement stmt = null;
         int registros = 0;
 
-        try
-        {
+        try {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_DELETE);
             stmt.setInt(1, usuario.getIdUsuario());
             registros = stmt.executeUpdate();
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace(System.out);
-        } finally
-        {
-            try
-            {
+        } finally {
+            try {
                 Conexion.close(stmt);
                 Conexion.close(coon);
-            } catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 ex.printStackTrace(System.out);
             }
         }
@@ -190,31 +166,26 @@ public class UsuarioDao {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        try
-        {
+        try {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_SELECT_WHERE);
             stmt.setInt(1, usuario.getIdUsuario());
             rs = stmt.executeQuery();
 
-            if (rs.next())
-            {
+            if (rs.next()) {
                 int idUsuario = rs.getInt("idUsuario");
                 //leer binario
                 Blob blob = rs.getBlob("foto");
                 //pasar el binario a la imagen
                 ImageIcon icono = null;
-                try
-                {
-                    if (blob != null)
-                    {
+                try {
+                    if (blob != null) {
                         byte[] data = blob.getBytes(1, (int) blob.length());
                         //leer la imagen
                         BufferedImage img = ImageIO.read(new ByteArrayInputStream(data));
                         icono = new ImageIcon(img);
                     }
-                } catch (IOException ex)
-                {
+                } catch (IOException ex) {
                     Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -225,17 +196,13 @@ public class UsuarioDao {
 
                 return new Usuario(idUsuario, icono, nomUsuario, contrasenia, idPersona, idRol);
             }
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace(System.out);
-        } finally
-        {
-            try
-            {
+        } finally {
+            try {
                 Conexion.close(stmt);
                 Conexion.close(coon);
-            } catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 ex.printStackTrace(System.out);
             }
         }

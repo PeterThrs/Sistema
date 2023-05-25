@@ -208,7 +208,7 @@ public class ControladorCajero {
                     Producto p = ticket.getProducto(i);
                     reg += productoDao.actualizar(p);
                 }
-                double pago = Double.parseDouble(JOptionPane.showInputDialog("Cantidad recibida: "));
+                double pago = Double.parseDouble(JOptionPane.showInputDialog(" -> Pago con: "));
                 //faltan validaciones
                 System.out.println(ticket.imprimirTicket(tienda, pago));
                 limpiarTabla();
@@ -249,7 +249,7 @@ public class ControladorCajero {
         vistaCajero.getBtnCobrar().addActionListener(e -> {
             cobrar();
         });
-        //btnCerrarSesion 
+        
         vistaCajero.getBtnCerrarSesion().addActionListener(e -> {
             vistaCajero.setVisible(false);
             vistaCajero.dispose();

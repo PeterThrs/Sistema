@@ -483,7 +483,7 @@ public class VistaCajero extends JFrame {
     public void setBtnCobrar(JButton btnCobrar) {
         this.btnCobrar = btnCobrar;
     }
-
+   
     public JButton getBtnAumentar() {
         return btnAumentar;
     }

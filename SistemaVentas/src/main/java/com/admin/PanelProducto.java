@@ -37,7 +37,7 @@ public class PanelProducto extends javax.swing.JPanel {
 
     public PanelProducto() {
         this.instancias();
-       
+
         this.VentanaEditar = false;
         this.ventanaAgregar = true;
 
@@ -46,16 +46,17 @@ public class PanelProducto extends javax.swing.JPanel {
         agregarEstilos();
         revisarEstado();
         precioVenta();
-
+        btnCancel.setVisible(false);
+        btnUpdate.setVisible(false);
     }
 
-    public void instancias(){
+    public void instancias() {
         this.departamentoDao = new DepartamentoDao();
         this.producto = new Producto();
         this.productoDao = new ProductoDAO();
         this.validar = Validaciones.getValidacion();
     }
-    
+
     //la ventana se ocupara para editar la informacion
     public PanelProducto(Producto producto) {
         this.producto = producto;
@@ -75,10 +76,12 @@ public class PanelProducto extends javax.swing.JPanel {
     }
 
     private void revisarEstado() {
-        if (this.ventanaAgregar) {
+        if (this.ventanaAgregar)
+        {
             this.btnUpdate.setEnabled(false);
             this.btnCancel.setEnabled(false);
-        } else {
+        } else
+        {
             this.btnCreate.setEnabled(false);
             this.tfBarCode.setEnabled(false);
         }
@@ -131,7 +134,7 @@ public class PanelProducto extends javax.swing.JPanel {
         Configuracion.robotoPlain14(this.cbInventory);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbInventory);
         Configuracion.background(CodigoColor.cFondoGris, this.cbInventory);
-        
+
     }
 
     private void configuracion() {
@@ -152,7 +155,8 @@ public class PanelProducto extends javax.swing.JPanel {
         this.cbDepartment.setSelectedIndex(producto.getIdDepartamento() - 1);
         boolean inventario = (producto.getOcupaInventario() == 1) ? true : false;
         this.cbInventory.setSelected(inventario);
-        if (inventario) {
+        if (inventario)
+        {
             this.tfTotal.setText(String.valueOf(producto.getCantidad()));
         }
 
@@ -173,30 +177,37 @@ public class PanelProducto extends javax.swing.JPanel {
     }
 
     private void estadoTfTotal() {
-        try {
+        try
+        {
             this.tfTotal.setEnabled(false);
             this.jlTotal.setEnabled(false);
             this.linea8.setVisible(false);
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
 
         }
     }
 
     private void checkBoxEventItemListener() {
-        try {
-            this.cbInventory.addItemListener(e -> {
-                if (this.cbInventory.isSelected()) {
+        try
+        {
+            this.cbInventory.addItemListener(e ->
+            {
+                if (this.cbInventory.isSelected())
+                {
                     System.out.println(cbInventory.isSelected());
                     this.tfTotal.setEnabled(true);
                     this.jlTotal.setEnabled(true);
                     this.linea8.setVisible(true);
-                } else {
+                } else
+                {
                     this.tfTotal.setEnabled(false);
                     this.jlTotal.setEnabled(false);
                     this.linea8.setVisible(false);
                 }
             });
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
 
         }
     }
@@ -204,7 +215,8 @@ public class PanelProducto extends javax.swing.JPanel {
     private void listDesplegable() {
         DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<>();
         List<Departamento> departamentos = DepartamentoDao.seleccionar();
-        departamentos.forEach(departamento -> {
+        departamentos.forEach(departamento ->
+        {
             dcbm.addElement(departamento.getDepartamento());
         });
         this.cbDepartment.setSelectedIndex(0);
@@ -215,24 +227,29 @@ public class PanelProducto extends javax.swing.JPanel {
 
     //calcular el precio
     private void precioVenta() {
-        if (!tfGanancia.getText().isEmpty()) {
-            try {
+        if (!tfGanancia.getText().isEmpty())
+        {
+            try
+            {
                 double ganancia = Double.parseDouble(this.tfGanancia.getText());
                 validar.validarCadena(this.tfPriceCost.getText());
                 double precioCosto = Double.parseDouble(this.tfPriceCost.getText());
                 double venta = precioCosto + (precioCosto * (ganancia / 100));
                 this.tfSalePrice.setText(String.valueOf(venta));
 
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
 
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
 
             }
         }
     }
 
     private void eventoGanancia() {
-        this.tfGanancia.addActionListener(e -> {
+        this.tfGanancia.addActionListener(e ->
+        {
             precioVenta();
         });
 
@@ -241,6 +258,7 @@ public class PanelProducto extends javax.swing.JPanel {
             public void focusGained(FocusEvent e) {
                 // El componente ha ganado el foco
             }
+
             @Override
             public void focusLost(FocusEvent e) {
                 // El componente ha perdido el foco
@@ -265,7 +283,8 @@ public class PanelProducto extends javax.swing.JPanel {
         this.idDepartamento = this.cbDepartment.getSelectedIndex() + 1;
 
         this.ocuparInventario = recuperarInventario(); //falta modificar
-        if (ocuparInventario == 1) {
+        if (ocuparInventario == 1)
+        {
             this.cantidad = Double.parseDouble(this.tfTotal.getText());
             validar.validarNegativo(this.cantidad);
         }
@@ -274,7 +293,8 @@ public class PanelProducto extends javax.swing.JPanel {
     private void validarForm() throws NumberFormatException, Exception {
         if (validar.validarCadena(this.codigo) && validar.validarCadena(this.nombre)
                 && validar.validarCadena(this.descripcion) && validar.validarNegativo(this.precioCosto)
-                && validar.validarNegativo(this.ganancia) && validar.validarNegativo(this.mayoreo)) {
+                && validar.validarNegativo(this.ganancia) && validar.validarNegativo(this.mayoreo))
+        {
             producto.setCodigo(this.codigo);
             producto.setNombre(this.nombre);
             producto.setPrecioCosto(this.precioCosto);
@@ -283,7 +303,8 @@ public class PanelProducto extends javax.swing.JPanel {
             producto.setDescripcion(descripcion);
             producto.setIdDepartamento(idDepartamento);
             producto.setOcupaInventario(ocuparInventario);
-            if (cantidad > 0) {
+            if (cantidad > 0)
+            {
                 producto.setCantidad(this.cantidad);
             }
 
@@ -292,18 +313,23 @@ public class PanelProducto extends javax.swing.JPanel {
 
     //insertar informacion a la tabla
     private void eventoInsertar() {
-        this.btnCreate.addActionListener(e -> {
-            try {
+        this.btnCreate.addActionListener(e ->
+        {
+            try
+            {
                 recuperarCampos();
                 validarForm();
                 int reg = productoDao.insertar(producto);
                 System.out.println("reg = " + reg);
-                if (reg > 0) {
+                if (reg > 0)
+                {
                     JOptionPane.showMessageDialog(null, "Se ha insertado los datos correctamente");
                 }
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
 
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
@@ -312,18 +338,23 @@ public class PanelProducto extends javax.swing.JPanel {
 
     //Actualizar informacion
     private void eventoActualizar() {
-        this.btnUpdate.addActionListener(e -> {
+        this.btnUpdate.addActionListener(e ->
+        {
             System.out.println("Evento para actualizar la informacion");
-            try {
+            try
+            {
                 recuperarCampos();
                 validarForm();
                 int reg = productoDao.actualizar(producto);
-                if (reg > 0) {
+                if (reg > 0)
+                {
                     JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente");
                 }
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
 
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
@@ -331,19 +362,24 @@ public class PanelProducto extends javax.swing.JPanel {
 
     //eliminar informacion
     private void eventoEliminar() {
-        this.btnCancel.addActionListener(e -> {
+        this.btnCancel.addActionListener(e ->
+        {
             System.out.println("Evento para eliminar el objeto de la BD");
-            try {
+            try
+            {
                 recuperarCampos();
                 validarForm();
                 int reg = productoDao.eliminar(producto);
-                if (reg > 0) {
+                if (reg > 0)
+                {
                     JOptionPane.showMessageDialog(null, "Se ha elinado el producto de la BD de datos");
                 }
                 limpiarForm();
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex)
+            {
 
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
@@ -456,8 +492,6 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfBarCode, gridBagConstraints);
-
-        tfDescription.setText("Galletas sabor Coco");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -482,8 +516,6 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(tfSalePrice, gridBagConstraints);
-
-        tfWholePrice.setText("7");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 14;
@@ -494,6 +526,11 @@ public class PanelProducto extends javax.swing.JPanel {
         add(tfWholePrice, gridBagConstraints);
 
         cbDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDepartmentActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 16;
@@ -620,8 +657,6 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 5, 0, 5);
         add(jlName, gridBagConstraints);
-
-        tfName.setText("Galletes");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -668,6 +703,10 @@ public class PanelProducto extends javax.swing.JPanel {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
 
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void cbDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDepartmentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbDepartmentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

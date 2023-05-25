@@ -104,7 +104,7 @@ public class InfoStore extends javax.swing.JPanel {
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.gridwidth = 0;;
+        gbc.gridwidth = 0;
         gbc.ipady = 50;
         this.add(jlLogo, gbc);
 

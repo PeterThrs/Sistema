@@ -265,7 +265,7 @@ public class VistaCajero extends JFrame {
             DefaultTableModel dtm = new DefaultTableModel(); 
             tabla.setModel(dtm);
             // Configurar los titulos de las columnas
-            String[] titulos = {"Codigo", "Descripcion del Producto", "Precio Venta", "Cant", "Importe", "Existencia"};
+            String[] titulos = {"Codigo", "Descripcion del Producto", "Precio Venta", "Cantidad", "Importe", "Existencia"};
             dtm.setColumnIdentifiers(titulos);
             // Configurar los tamaños de las columnas
             int[] tam = {50, 200, 50, 30, 70, 50};

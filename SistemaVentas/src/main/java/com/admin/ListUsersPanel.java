@@ -6,13 +6,11 @@ import com.classes.Usuario;
 import com.conexion.PersonaDao;
 import com.conexion.RolDAO;
 import com.conexion.UsuarioDao;
-import com.settings.CodigoColor;
 import com.settings.Configuracion;
 import com.settings.Recursos;
 import com.table.TableActionCellEditor;
 import com.table.TableActionCellRender;
 import com.table.TableActionEvent;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -104,7 +102,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     System.out.println("usuario = " + usuario);
                     System.out.println("persona = " + persona);
                     principalAdmin.cambiarPanelExterno(new PanelUserNew(usuario, persona));
-                    Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(), principalAdmin.getBtnInfoEmpresa(), principalAdmin.getBtnConfiguracion(), principalAdmin.getBtnCerrarSesion());
+                    Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(), principalAdmin.getBtnInfoEmpresa(), principalAdmin.getBtnCerrarSesion());
                     principalAdmin.repaint();
                 }
 

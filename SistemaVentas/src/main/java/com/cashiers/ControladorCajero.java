@@ -64,14 +64,10 @@ public class ControladorCajero {
                 vistaCajero.getJlSloga().setText(tienda.getSlogan());
                 vistaCajero.getJlgmail().setText(tienda.getEmail());
                 ImageIcon icono = usuario.getIcono();
-                if(icono!=null){
+                if (icono != null) {
                     System.out.println("Entramos a modificar la foto del usuario");
-                    ImageIcon iDimAux = new ImageIcon(icono.getImage().getScaledInstance(100, 100, Image.SCALE_AREA_AVERAGING));
-                    vistaCajero.setJlImagen(imgCirculo(iDimAux));
-                }else {
-                    System.out.println("Entramos a modificar la foto por default");
-                    icono = new ImageIcon("src/main/resources/imagenes/peter/paisaje.jpg"); 
-                    vistaCajero.setJlImagen(imgCirculo(icono));
+                    ImageIcon iDimAux = new ImageIcon(icono.getImage().getScaledInstance(200, 200, Image.SCALE_AREA_AVERAGING));
+                    vistaCajero.establecerImagen(iDimAux.getImage());
                 }
             }
             if (usuario != null) {
@@ -82,28 +78,6 @@ public class ControladorCajero {
         } catch (Exception ex) {
 
         }
-    }
-    
-    private JLabel imgCirculo(ImageIcon imageIcon){
-        
-        Image image = imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_AREA_AVERAGING); 
-        JLabel label  = new JLabel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-
-                // Crea un objeto Ellipse2D para definir la forma del círculo
-                Ellipse2D circle = new Ellipse2D.Float(0, 0, image.getWidth(this), image.getHeight(this));
-
-                // Aplica el recorte (clipping) en la representación gráfica de la imagen
-                Graphics2D g2d = (Graphics2D) g.create();
-                g2d.setClip(circle);
-                g2d.drawImage(image, 0, 0, null);
-                g2d.dispose();
-            }
-        };
-        return label; 
-        
     }
 
     private void actualizarTabla() {
@@ -351,22 +325,23 @@ public class ControladorCajero {
                         case KeyEvent.VK_SUBTRACT ->
                             decrementar();
                         case KeyEvent.VK_UP -> {
-                            int fila = vistaCajero.getTabla().getSelectedRow(); 
-                            if(fila != -1){
+                            int fila = vistaCajero.getTabla().getSelectedRow();
+                            if (fila != -1) {
                                 System.out.println("fila = " + fila);
-                                System.out.println("fila -1 = " + (fila -1));
-                                marcarRow(fila -1);
+                                System.out.println("fila -1 = " + (fila - 1));
+                                marcarRow(fila - 1);
                             }
                         }
                         case KeyEvent.VK_DOWN -> {
-                            int fila = vistaCajero.getTabla().getSelectedRow(); 
-                            if(fila != -1){
+                            int fila = vistaCajero.getTabla().getSelectedRow();
+                            if (fila != -1) {
                                 System.out.println("fila = " + fila);
-                                System.out.println("fila -1 = " + (fila -1));
-                                marcarRow(fila +1);
+                                System.out.println("fila -1 = " + (fila - 1));
+                                marcarRow(fila + 1);
                             }
                         }
-                        case KeyEvent.VK_BACK_SPACE -> eliminar();
+                        case KeyEvent.VK_BACK_SPACE ->
+                            eliminar();
 
                     }
 
@@ -463,8 +438,8 @@ public class ControladorCajero {
         try {
             if (!ticket.vacio() && ticket.getSize() > row && row >= 0) {
                 vistaCajero.getTabla().setRowSelectionInterval(row, row);
-            } else if(!ticket.vacio() && row >= ticket.getSize()){
-                vistaCajero.getTabla().setRowSelectionInterval(ticket.getSize() -1, ticket.getSize() -1);
+            } else if (!ticket.vacio() && row >= ticket.getSize()) {
+                vistaCajero.getTabla().setRowSelectionInterval(ticket.getSize() - 1, ticket.getSize() - 1);
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
@@ -472,7 +447,7 @@ public class ControladorCajero {
 
     }
 
-    public Usuario getUuario(){
+    public Usuario getUuario() {
         return usuario;
     }
 }

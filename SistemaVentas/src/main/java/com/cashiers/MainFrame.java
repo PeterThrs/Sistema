@@ -10,13 +10,17 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 400);
         setLocationRelativeTo(null);
+        agregarImagen();
+        setVisible(true);
+    }
 
+    public void agregarImagen() {
         // Carga la imagen desde el archivo
         ImageIcon imageIcon = new ImageIcon("src/main/resources/imagenes/peter/paisaje.jpg");
-        Image image = imageIcon.getImage().getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING); 
+        Image image = imageIcon.getImage().getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING);
 
         // Crea un JPanel personalizado para mostrar la imagen con forma de círculo
-        JLabel imageLabel = new JLabel() {
+        JPanel imagePanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -32,13 +36,10 @@ public class MainFrame extends JFrame {
             }
         };
 
-        
-
         // Establece el JPanel como el contenido principal de la ventana
         //getContentPane().add(imagePanel);
-        this.add(imageLabel); 
-        repaint(); 
-        setVisible(true);
+        this.add(imagePanel);
+        repaint();
     }
 
     public static void main(String[] args) {

@@ -5,9 +5,7 @@ import static com.conexion.Conexion.close;
 import static com.conexion.Conexion.getConnection;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,9 +20,9 @@ import javax.swing.ImageIcon;
 
 public class UsuarioDao {
 
-    private static final String SQL_SELECT = "SELECT idUsuario, foto, nombreUsuario, contrasenia, idPersona, idRol FROM usuario";
-    private static final String SQL_INSERT = "INSERT INTO usuario (foto, nombreUsuario, contrasenia, idPersona, idRol) values (?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE usuario SET foto=?, nombreUsuario=?, contrasenia=?, idPersona=?, idRol=? WHERE idUsuario=?";
+    private static final String SQL_SELECT = "SELECT idUsuario, estatus, foto, nombreUsuario, contrasenia, idPersona, idRol FROM usuario";
+    private static final String SQL_INSERT = "INSERT INTO usuario (estatus, foto, nombreUsuario, contrasenia, idPersona, idRol) values (?,?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE usuario SET estatus=?, foto=?, nombreUsuario=?, contrasenia=?, idPersona=?, idRol=? WHERE idUsuario=?";
     private static final String SQL_DELETE = "DELETE FROM usuario WHERE idUsuario = ?";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM usuario WHERE idUsuario = ?";
 
@@ -43,7 +41,7 @@ public class UsuarioDao {
             while (rs.next()) {
                 int idUsuario = rs.getInt("idUsuario");
                 //leer binario
-                Blob blob = rs.getBlob(2);
+                Blob blob = rs.getBlob(3);
                 //pasar el binario a la imagen
                 ImageIcon icono = null;
                 try {
@@ -56,13 +54,13 @@ public class UsuarioDao {
                 } catch (IOException ex) {
                     Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                int estatus = rs.getInt("estatus");
                 String nomUsuario = rs.getString("nombreUsuario");
                 String contrasenia = rs.getString("contrasenia");
                 int idPersona = rs.getInt("idPersona");
                 int idRol = rs.getInt("idRol");
 
-                usuario = new Usuario(idUsuario, icono, nomUsuario, contrasenia, idPersona, idRol);
+                usuario = new Usuario(idUsuario, estatus, icono, nomUsuario, contrasenia, idPersona, idRol);
                 usuarios.add(usuario);
             }
 
@@ -116,12 +114,13 @@ public class UsuarioDao {
         try {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_UPDATE);
-            stmt.setBlob(1, usuario.getImagen(), longitud);
-            stmt.setString(2, usuario.getNomUsuario());
-            stmt.setString(3, usuario.getContrasenia());
-            stmt.setInt(4, usuario.getIdPersona());
-            stmt.setInt(5, usuario.getIdRol());
-            stmt.setInt(6, usuario.getIdUsuario());
+            stmt.setInt(1, usuario.getStatus());
+            stmt.setBlob(2, usuario.getImagen(), longitud);
+            stmt.setString(3, usuario.getNomUsuario());
+            stmt.setString(4, usuario.getContrasenia());
+            stmt.setInt(5, usuario.getIdPersona());
+            stmt.setInt(6, usuario.getIdRol());
+            stmt.setInt(7, usuario.getIdUsuario());
             registros = stmt.executeUpdate();
 
         } catch (SQLException ex) {
@@ -189,12 +188,13 @@ public class UsuarioDao {
                     Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
+                int status = rs.getInt("estatus");
                 String nomUsuario = rs.getString("nombreUsuario");
                 String contrasenia = rs.getString("contrasenia");
                 int idPersona = rs.getInt("idPersona");
                 int idRol = rs.getInt("idRol");
 
-                return new Usuario(idUsuario, icono, nomUsuario, contrasenia, idPersona, idRol);
+                return new Usuario(idUsuario, status, icono, nomUsuario, contrasenia, idPersona, idRol);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);

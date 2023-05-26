@@ -176,7 +176,6 @@ public class VistaCajero extends JFrame {
             centrarTexto(j);
             Configuracion.robotoPlain16(j);
             Configuracion.foreground(Color.WHITE, j);
-            
         });
     }
 

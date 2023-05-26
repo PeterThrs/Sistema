@@ -12,9 +12,9 @@ import java.util.List;
 
 public class ProductoDAO {
 
-    private static final String SQL_SELECT = "SELECT codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento FROM producto";
-    private static final String SQL_INSERT = "INSERT INTO producto (codigo,nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento) values (?,?,?,?,?,?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE producto SET nombre=?, descripcion=?, precioCosto=?, ganancia=?, mayoreo=?, ocupaInventario=?, cantidad=?, idDepartamento=? WHERE codigo=?";
+    private static final String SQL_SELECT = "SELECT codigo, estatus, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento FROM producto";
+    private static final String SQL_INSERT = "INSERT INTO producto (codigo, estatus, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento) values (?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE producto SET estatus=?, nombre=?, descripcion=?, precioCosto=?, ganancia=?, mayoreo=?, ocupaInventario=?, cantidad=?, idDepartamento=? WHERE codigo=?";
     private static final String SQL_DELETE = "DELETE FROM producto WHERE codigo = ?";
     private static final String SQL_SELECT_WHERE = "SELECT * FROM producto WHERE codigo = ?";
 
@@ -31,6 +31,7 @@ public class ProductoDAO {
 
             while (rs.next()) {
                 String codigo = rs.getString("codigo");
+                int estatus = rs.getInt("estatus");
                 String nombre = rs.getString("nombre");
                 String descripcion = rs.getString("descripcion");
                 double precioCosto = rs.getDouble("precioCosto");
@@ -40,7 +41,7 @@ public class ProductoDAO {
                 double cantidad = rs.getDouble("cantidad");
                 int idDepartamento = rs.getInt("idDepartamento");
 
-                productos.add(new Producto(codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento));
+                productos.add(new Producto(codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, estatus, cantidad, idDepartamento));
             }
 
         } catch (SQLException ex) {
@@ -66,14 +67,15 @@ public class ProductoDAO {
             stmt = coon.prepareStatement(SQL_INSERT);
 
             stmt.setString(1, producto.getCodigo());
-            stmt.setString(2, producto.getNombre());
-            stmt.setString(3, producto.getDescripcion());
-            stmt.setDouble(4, producto.getPrecioCosto());
-            stmt.setDouble(5, producto.getGanancia());
-            stmt.setDouble(6, producto.getMayoreo());
-            stmt.setInt(7, producto.getOcupaInventario());
-            stmt.setDouble(8, producto.getCantidad());
-            stmt.setInt(9, producto.getIdDepartamento());
+            stmt.setInt(2, producto.getEstatus());
+            stmt.setString(3, producto.getNombre());
+            stmt.setString(4, producto.getDescripcion());
+            stmt.setDouble(5, producto.getPrecioCosto());
+            stmt.setDouble(6, producto.getGanancia());
+            stmt.setDouble(7, producto.getMayoreo());
+            stmt.setInt(8, producto.getOcupaInventario());
+            stmt.setDouble(9, producto.getCantidad());
+            stmt.setInt(10, producto.getIdDepartamento());
 
             registros = stmt.executeUpdate();
 
@@ -98,15 +100,16 @@ public class ProductoDAO {
         try {
             coon = Conexion.getConnection();
             stmt = coon.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, producto.getNombre());
-            stmt.setString(2, producto.getDescripcion());
-            stmt.setDouble(3, producto.getPrecioCosto());
-            stmt.setDouble(4, producto.getGanancia());
-            stmt.setDouble(5, producto.getMayoreo());
-            stmt.setInt(6, producto.getOcupaInventario());
-            stmt.setDouble(7, producto.getCantidad());
-            stmt.setInt(8, producto.getIdDepartamento());
-            stmt.setString(9, producto.getCodigo());
+            stmt.setInt(1, producto.getEstatus());
+            stmt.setString(2, producto.getNombre());
+            stmt.setString(3, producto.getDescripcion());
+            stmt.setDouble(4, producto.getPrecioCosto());
+            stmt.setDouble(5, producto.getGanancia());
+            stmt.setDouble(6, producto.getMayoreo());
+            stmt.setInt(7, producto.getOcupaInventario());
+            stmt.setDouble(8, producto.getCantidad());
+            stmt.setInt(9, producto.getIdDepartamento());
+            stmt.setString(10, producto.getCodigo());
 
             registros = stmt.executeUpdate();
 
@@ -160,6 +163,7 @@ public class ProductoDAO {
 
             if (rs.next()) {
                 String codigo = rs.getString("codigo");
+                int estatus = rs.getInt("estatus");
                 String nombre = rs.getString("nombre");
                 String descripcion = rs.getString("descripcion");
                 double precioCosto = rs.getDouble("precioCosto");
@@ -169,7 +173,7 @@ public class ProductoDAO {
                 double cantidad = rs.getDouble("cantidad");
                 int idDepartamento = rs.getInt("idDepartamento");
 
-                return new Producto(codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario, cantidad, idDepartamento);
+                return new Producto(codigo, nombre, descripcion, precioCosto, ganancia, mayoreo, ocupaInventario,estatus, cantidad, idDepartamento);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);

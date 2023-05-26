@@ -1,6 +1,8 @@
 package com.cashiers;
 
+import com.services.graphicServices.RecursosService;
 import com.settings.Configuracion;
+import com.settings.Recursos;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -17,7 +19,6 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.util.Arrays;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -31,8 +32,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VistaCajero extends JFrame {
 
-    private JPanel panelIzquierdo;
-    private JPanel panelDerecho;
+    private JPanel panelIzquierdo, panelDerecho, panelSupIzquierdo, panelInfIzquierdo;
     private GridBagConstraints c;
     private ImageIcon imagen;
     private JLabel jlImagen, jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero, jlCodigoProducto, jlEnunciadoTotal, jlTotal;
@@ -40,7 +40,7 @@ public class VistaCajero extends JFrame {
     private JButton btnAgregar, btnEliminar, btnCerrarSesion, btnCobrar, btnAumentar, btnDecrementar;
     private Color colorPrincipal;
     private JTextField tCodigo;
-
+    private Recursos recursos;
     public VistaCajero() {
         // Configuramos la ventana principal
         super("Cajero");
@@ -74,8 +74,9 @@ public class VistaCajero extends JFrame {
     }
 
     private void componentes() {
+        this.recursos = Recursos.getService();
         paneles();
-        imagenes();
+        establecerImagen();
         etiquetas();
         crearControl();
         crearTabla();
@@ -99,39 +100,83 @@ public class VistaCajero extends JFrame {
 
         // Creamos el panel derecho y lo añadimos a la ventana
         panelDerecho = new JPanel();
-        panelDerecho.setBackground(new Color(255,255,255));
+        panelDerecho.setBackground(new Color(255, 255, 255));
         panelDerecho.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         c.gridx = 1;
         c.gridy = 0;
         c.weightx = 0.80;
         c.weighty = 1;
         panelDerecho.setLayout(new GridBagLayout());
-        panelDerecho.setFocusable(true); 
+        panelDerecho.setFocusable(true);
         c.fill = GridBagConstraints.BOTH;
         add(panelDerecho, c);
+
+        // Panel superior izquierdo
+        this.panelSupIzquierdo = new JPanel();
+        this.panelSupIzquierdo.setBackground(this.colorPrincipal);
+        this.panelSupIzquierdo.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        c.gridx = 0;
+        c.gridy = 0;
+        c.weightx = 1;
+        c.weighty = 0.4;
+        c.fill = GridBagConstraints.BOTH;
+        this.panelSupIzquierdo.setLayout(new GridBagLayout());
+        this.panelIzquierdo.add(this.panelSupIzquierdo, c);
+
+        // Panel inferior izquierdo
+        this.panelInfIzquierdo = new JPanel();
+        this.panelInfIzquierdo.setBackground(this.colorPrincipal);
+        this.panelInfIzquierdo.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        GridBagConstraints infConstraints = new GridBagConstraints();
+        infConstraints.gridx = 0;
+        infConstraints.gridy = 1;
+        infConstraints.weightx = 1;
+        infConstraints.weighty = 0.6;
+        infConstraints.fill = GridBagConstraints.BOTH;
+        this.panelInfIzquierdo.setLayout(new GridBagLayout());
+        this.panelIzquierdo.add(this.panelInfIzquierdo, infConstraints);
+
     }
 
-    private void imagenes() {
+    private void establecerImagen() {
         try {
             this.jlImagen = new JLabel();
-            this.jlImagen.setSize(new Dimension(100, 100));
-            Icon icon = new ImageIcon(new ImageIcon("src/main/resources/imagenes/peter/austronauta.png").getImage().getScaledInstance(200, 200, Image.SCALE_AREA_AVERAGING));
-            this.jlImagen.setIcon(icon);
-            //this.repaint();
-            this.jlImagen.setBackground(Color.MAGENTA);
-            c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 60, 10), 0, 0);
-            centrarTexto(jlImagen);
-            this.panelIzquierdo.add(jlImagen, c);
-        } catch (Exception ex) {
+            // Carga la imagen desde el archivo
+            ImageIcon imageIcon = new ImageIcon("src/main/resources/imagenes/peter/paisaje.jpg");
+            Image image = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_AREA_AVERAGING);
 
+            this.jlImagen.setIcon(new ImageIcon(image));
+
+            RecursosService sr = RecursosService.getService();
+            this.jlImagen.setBorder(sr.getBCircular());
+            c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(0, 0, 0, 0), 0, 0);
+            this.panelSupIzquierdo.add(jlImagen, c);
+            this.panelSupIzquierdo.repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+        }
+    }
+    
+    public void establecerImagen(Image image) {
+        try {
+            this.jlImagen.setIcon(new ImageIcon(image));
+
+            RecursosService sr = RecursosService.getService();
+            this.jlImagen.setBorder(sr.getBCircular());
+            c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(0, 0, 0, 0), 0, 0);
+            this.panelSupIzquierdo.add(jlImagen, c);
+            this.panelSupIzquierdo.repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
         }
     }
 
     public void labelConf(JLabel... jl) {
         Arrays.asList(jl).forEach(j -> {
             centrarTexto(j);
-            Configuracion.robotoPlain14(j);
-            Configuracion.foreground(Color.WHITE,j);
+            Configuracion.robotoPlain16(j);
+            Configuracion.foreground(Color.WHITE, j);
+            
         });
     }
 
@@ -142,19 +187,19 @@ public class VistaCajero extends JFrame {
         this.jlNombreCajero = new JLabel();
 
         jlNombreEmpresa.setText("Nombre de la Tienda");
-        c = grid(0, 1, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
-        agregarAlPanel(panelIzquierdo, jlNombreEmpresa, c);
+        c = grid(0, 1, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(0, 0, 10, 0), 0, 0);
+        agregarAlPanel(this.panelInfIzquierdo, jlNombreEmpresa, c);
         jlSloga.setText("Slogan de la Tienda");
         c = grid(0, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
-        agregarAlPanel(panelIzquierdo, jlSloga, c);
+        agregarAlPanel(this.panelInfIzquierdo, jlSloga, c);
         jlgmail.setText("Email de la Tienda");
         c = grid(0, 3, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
-        agregarAlPanel(panelIzquierdo, jlgmail, c);
+        agregarAlPanel(this.panelInfIzquierdo, jlgmail, c);
         jlNombreCajero.setText("Nombre del Usuario");
-        c = grid(0, 4, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 10, 0), 0, 0);
-        agregarAlPanel(panelIzquierdo, jlNombreCajero, c);
-        
-        labelConf(jlNombreEmpresa, jlSloga,jlgmail, jlNombreCajero); 
+        c = grid(0, 4, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 0, 30, 0), 0, 0);
+        agregarAlPanel(this.panelInfIzquierdo, jlNombreCajero, c);
+
+        labelConf(jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero);
 
         //Btn cerrar Sesion
         btnCerrarSesion = new JButton("Cerrar Sesion");
@@ -164,12 +209,11 @@ public class VistaCajero extends JFrame {
         btnCerrarSesion.setFocusPainted(false);
         btnCerrarSesion.setBorderPainted(false);
         btnCerrarSesion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        Configuracion.robotoPlain14(btnCerrarSesion);
+        Configuracion.robotoPlain16(btnCerrarSesion);
         this.repaint();
-        c = grid(0, 5, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(50, 10, 10, 10), 0, 0);
-        agregarAlPanel(panelIzquierdo, btnCerrarSesion, c);
+        c = grid(0, 5, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(100, 10, 10, 10), 0, 0);
+        agregarAlPanel(this.panelInfIzquierdo, btnCerrarSesion, c);
 
-        
     }
 
     /**
@@ -227,6 +271,7 @@ public class VistaCajero extends JFrame {
         Configuracion.robotoPlain14(jlCodigoProducto);
         jlCodigoProducto.setOpaque(false);
         jlCodigoProducto.setBackground(Color.YELLOW);
+        jlCodigoProducto.setFont(recursos.getFontClasica());
         c = grid(0, 2, 1, 1, 1, 0, GridBagConstraints.NONE, GridBagConstraints.EAST, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, jlCodigoProducto, c);
 
@@ -239,7 +284,7 @@ public class VistaCajero extends JFrame {
         c = grid(2, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, btnAgregar, c);
         btnAgregar.setToolTipText("Agregar");
-        
+
         btnEliminar = new JButton("Eliminar");
         c = grid(3, 2, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, btnEliminar, c);
@@ -262,7 +307,7 @@ public class VistaCajero extends JFrame {
 
     public void cargarModeloTabla() {
         if (this.tabla != null) {
-            DefaultTableModel dtm = new DefaultTableModel(); 
+            DefaultTableModel dtm = new DefaultTableModel();
             tabla.setModel(dtm);
             // Configurar los titulos de las columnas
             String[] titulos = {"Codigo", "Descripcion del Producto", "Precio Venta", "Cantidad", "Importe", "Existencia"};
@@ -320,10 +365,10 @@ public class VistaCajero extends JFrame {
         agregarAlPanel(panelDerecho, jlEnunciadoTotal, c);
         c = grid(3, 20, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, jlTotal, c);
-            centrarTexto(jlTotal, jlEnunciadoTotal);
-            Configuracion.robotoBold20(jlTotal);
-            Configuracion.robotoBold16(jlEnunciadoTotal);
-            Configuracion.foreground(Color.BLACK, jlTotal, jlEnunciadoTotal);
+        centrarTexto(jlTotal, jlEnunciadoTotal);
+        Configuracion.robotoBold20(jlTotal);
+        Configuracion.robotoBold16(jlEnunciadoTotal);
+        Configuracion.foreground(Color.BLACK, jlTotal, jlEnunciadoTotal);
 
     }
 
@@ -483,7 +528,7 @@ public class VistaCajero extends JFrame {
     public void setBtnCobrar(JButton btnCobrar) {
         this.btnCobrar = btnCobrar;
     }
-
+   
     public JButton getBtnAumentar() {
         return btnAumentar;
     }

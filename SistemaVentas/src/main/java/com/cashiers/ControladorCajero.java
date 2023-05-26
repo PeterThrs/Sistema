@@ -9,6 +9,8 @@ import com.conexion.ProductoDAO;
 import com.conexion.TiendaDAO;
 import com.newLogin.LoginTemplate;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
@@ -16,11 +18,14 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Ellipse2D;
 import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,7 +33,9 @@ public class ControladorCajero {
 
     private ProductoDAO productoDao;
     private TiendaDAO tiendaDao;
+    private PersonaDao personaDao; 
     private Tienda tienda;
+    private Persona persona;
     private VistaCajero vistaCajero;
     private List<Producto> productosBD;
     private Ticket ticket;
@@ -39,6 +46,8 @@ public class ControladorCajero {
         this.usuario = usuario;
         this.productoDao = new ProductoDAO();
         this.ticket = new Ticket();
+        this.personaDao = new PersonaDao(); 
+        this.persona = new Persona();
         this.productosBD = productoDao.seleccionar();
         this.tiendaDao = new TiendaDAO();
         cargarInformacion();
@@ -59,9 +68,10 @@ public class ControladorCajero {
                 vistaCajero.getJlSloga().setText(tienda.getSlogan());
                 vistaCajero.getJlgmail().setText(tienda.getEmail());
                 ImageIcon icono = usuario.getIcono();
-                if(icono!=null){
-                    ImageIcon iDimAux = new ImageIcon(icono.getImage().getScaledInstance(100, 100, Image.SCALE_AREA_AVERAGING));
-                    vistaCajero.getJlImagen().setIcon(iDimAux);
+                if (icono != null) {
+                    System.out.println("Entramos a modificar la foto del usuario");
+                    ImageIcon iDimAux = new ImageIcon(icono.getImage().getScaledInstance(200, 200, Image.SCALE_AREA_AVERAGING));
+                    vistaCajero.establecerImagen(iDimAux.getImage());
                 }
             }
             if (usuario != null) {
@@ -208,11 +218,13 @@ public class ControladorCajero {
                     Producto p = ticket.getProducto(i);
                     reg += productoDao.actualizar(p);
                 }
-                double pago = Double.parseDouble(JOptionPane.showInputDialog("Cantidad recibida: "));
+                double pago = Double.parseDouble(JOptionPane.showInputDialog(" -> Pago con: "));
                 //faltan validaciones
-                System.out.println(ticket.imprimirTicket(tienda, pago));
+                persona = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona())); 
+                System.out.println(ticket.imprimirTicket(tienda, persona, pago));
                 limpiarTabla();
                 this.productoDao = new ProductoDAO();
+                this.persona = new Persona();
                 this.ticket = new Ticket();
                 this.productosBD = productoDao.seleccionar();
                 System.out.println("\n\n------------------------Imprimiendo el ticket------------------\n");
@@ -249,7 +261,7 @@ public class ControladorCajero {
         vistaCajero.getBtnCobrar().addActionListener(e -> {
             cobrar();
         });
-        //btnCerrarSesion 
+        
         vistaCajero.getBtnCerrarSesion().addActionListener(e -> {
             vistaCajero.setVisible(false);
             vistaCajero.dispose();
@@ -319,18 +331,23 @@ public class ControladorCajero {
                         case KeyEvent.VK_SUBTRACT ->
                             decrementar();
                         case KeyEvent.VK_UP -> {
-                            int fila = vistaCajero.getTabla().getSelectedRow(); 
-                            if(fila != -1){
-                                marcarRow(fila -1);
+                            int fila = vistaCajero.getTabla().getSelectedRow();
+                            if (fila != -1) {
+                                System.out.println("fila = " + fila);
+                                System.out.println("fila -1 = " + (fila - 1));
+                                marcarRow(fila - 1);
                             }
                         }
                         case KeyEvent.VK_DOWN -> {
-                            int fila = vistaCajero.getTabla().getSelectedRow(); 
-                            if(fila != -1){
-                                marcarRow(fila +1);
+                            int fila = vistaCajero.getTabla().getSelectedRow();
+                            if (fila != -1) {
+                                System.out.println("fila = " + fila);
+                                System.out.println("fila -1 = " + (fila - 1));
+                                marcarRow(fila + 1);
                             }
                         }
-                        case KeyEvent.VK_BACK_SPACE -> eliminar();
+                        case KeyEvent.VK_BACK_SPACE ->
+                            eliminar();
 
                     }
 
@@ -427,8 +444,8 @@ public class ControladorCajero {
         try {
             if (!ticket.vacio() && ticket.getSize() > row && row >= 0) {
                 vistaCajero.getTabla().setRowSelectionInterval(row, row);
-            } else if(!ticket.vacio() && row >= ticket.getSize()){
-                vistaCajero.getTabla().setRowSelectionInterval(ticket.getSize() -1, ticket.getSize() -1);
+            } else if (!ticket.vacio() && row >= ticket.getSize()) {
+                vistaCajero.getTabla().setRowSelectionInterval(ticket.getSize() - 1, ticket.getSize() - 1);
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
@@ -436,7 +453,7 @@ public class ControladorCajero {
 
     }
 
-    public Usuario getUuario(){
+    public Usuario getUuario() {
         return usuario;
     }
 }

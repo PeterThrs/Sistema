@@ -5,12 +5,18 @@ import com.classes.Tienda;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import com.classes.Persona;
+
 
 /**
  *
- * @author Root
+ * @author Alberto Cortés
+ * 
  */
+
 public class Ticket {
 
     private List<Producto> productos;
@@ -142,39 +148,56 @@ public class Ticket {
     public String productosEnTicket() {
         StringBuilder sb = new StringBuilder();
         // Imprimir encabezado de la tabla
-        sb.append(String.format("%-20s%-20s%-20s", "Descripción", "Cantidad", "Importe")).append("\n");
+        sb.append(String.format("%-8s%-22s%-5s", "CANT.", "ARTICULO", "PRECIO")).append("\n");
 
         // Imprimir los productos
         for (Producto p : productos) {
-            String descripcion = p.getDescripcion();
-            String cantidad = String.valueOf(p.getCantVenta());
-            String importe = String.valueOf(p.getImporte());
+            String Articulo = p.getDescripcion();
+            String Cantidad = String.valueOf(p.getCantVenta());
+            String Precio = String.valueOf(p.getImporte());
 
             // Ajustar la longitud de la descripción si es necesario
-            if (descripcion.length() > 20) {
-                descripcion = descripcion.substring(0, 17) + "...";
+            if (Articulo.length() > 12) {
+                Articulo = Articulo.substring(0, 15) + "...";
             }
 
             // Imprimir fila de la tabla
-            sb.append(String.format("%-20s%-20s%-20s", descripcion, cantidad, importe)).append("\n");
+            sb.append(String.format("%-8s%-22s%-5s", Cantidad, Articulo, Precio)).append("\n");
         }
         return sb.toString();
     }
 
-    public String imprimirTicket(Tienda tienda, double pago) {
+    public String imprimirTicket(Tienda tienda,Persona persona, double pago) {
         StringBuilder sb = new StringBuilder();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String fechaFormateada = formatoFecha.format(this.fecha);
-        sb.append("----------Ticket de venta----------").append("\n")
-                .append("Fecha: ").append(fechaFormateada).append("\n")
-                .append("Empresa: ").append(tienda.getNombre()).append("\n")
-                .append("\t").append(tienda.getSlogan()).append("\n")
-                .append("Email: ").append(tienda.getEmail()).append("\n\n")
-                .append("\tLista de Compra").append("\n")
-                .append(productosEnTicket()).append("\n\n")
-                .append("Total a pagar: ").append(this.total).append("\n\n")
-                .append("Pago con: ").append(pago).append("\n")
-                .append("Cambio: ").append(pago-this.total).append("\n\n");
+      
+        sb.     
+                 append("        R. F. C. \t").append(persona.getRFC()).append("\n")
+                .append("        SUCURSAL OAXACA 2 (105)").append("\n")
+                .append("   Calzada Francisco I. Madero 1332").append("\n")
+                .append("  Oaxaca De Juarez,\t").append(tienda.getEstado()).append("  C.P. \t").append(tienda.getCodigoPostal()).append("\n")
+                .append("---------- TICKET DE VENTA ----------").append("\n")
+                .append("         ").append(fechaFormateada).append("\n")
+                .append("            \t").append(tienda.getNombre()).append("\n")
+                .append("  \t").append(tienda.getSlogan()).append("\n")
+                .append("      Email: ").append(tienda.getEmail()).append("\n")
+                .append("-------------------------------------").append("\n")
+                .append(productosEnTicket()).append("\n")
+                .append("TOTAL M.N. $: ").append(this.total).append("\n")
+                .append("Efectivo $: ").append(pago).append("\n")
+                .append("CAMBIO $: ").append(pago-this.total).append("\n\n")
+                .append("      Le atendio: \t").append(persona.getNombre()).append("\n")
+                .append("     TU OPINION ES MUY IMPORTANTE").append("\n")
+                .append("COMPARTELA EN ENCUESTA.AURRERA.COM.MX").append("\n")
+                .append("Comentario o sugerencia").append(persona.getTelefono1()).append("\n")
+                .append("      visite www.aurrera.com.mx").append("\n\n")
+                .append("------- GRACIAS POR SU COMPRA -------").append("\n");
+        
+        Map<String, String> dataReporte = new HashMap<>();
+        dataReporte.put("nombreArchivo", "Ticket De Venta.pdf");
+        dataReporte.put("datos", sb.toString());
+        ReportePDF.generarReporte(dataReporte);
         
         return sb.toString(); 
     }

@@ -88,7 +88,7 @@ public class EditInfoStore extends javax.swing.JPanel {
                 this.tfCorreoE, this.tfMision, this.tfVision, this.tfCodigoPostal, this.tfEstado, tfMunicipio, tfColonia, tfCalle, this.tfNumCasa);
         Configuracion.withoutBorde(this.tfName, this.tfSlogan, this.tfPhone1, this.tfPhone2, this.tfCorreoE, this.tfMision, tfVision,
                 this.tfCorreoE, this.tfMision, this.tfVision, this.tfCodigoPostal, this.tfEstado, tfMunicipio, tfColonia, tfCalle, this.tfNumCasa);
-        Configuracion.background(CodigoColor.cFondoGris, this.tfName, this.tfSlogan, this.tfPhone1, this.tfPhone2, this.tfCorreoE, this.tfMision, tfVision,
+        Configuracion.background(CodigoColor.cFondoBlanco, this.tfName, this.tfSlogan, this.tfPhone1, this.tfPhone2, this.tfCorreoE, this.tfMision, tfVision,
                 this.tfCorreoE, this.tfMision, this.tfVision, this.tfCodigoPostal, this.tfEstado, tfMunicipio, tfColonia, tfCalle, this.tfNumCasa);
         Configuracion.foreground(CodigoColor.cLetrasTextField, this.tfName, this.tfSlogan, this.tfPhone1, this.tfPhone2, this.tfCorreoE, this.tfMision, tfVision,
                 this.tfCorreoE, this.tfMision, this.tfVision, this.tfCodigoPostal, this.tfEstado, tfMunicipio, tfColonia, tfCalle, this.tfNumCasa);

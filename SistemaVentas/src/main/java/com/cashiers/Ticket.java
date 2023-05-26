@@ -173,7 +173,7 @@ public class Ticket {
         String fechaFormateada = formatoFecha.format(this.fecha);
       
         sb.     
-                 append("         R. F. C. \t").append(persona.getRFC()).append("\n")
+                 append("        R. F. C. \t").append(persona.getRFC()).append("\n")
                 .append("        SUCURSAL OAXACA 2 (105)").append("\n")
                 .append("   Calzada Francisco I. Madero 1332").append("\n")
                 .append("  Oaxaca De Juarez,\t").append(tienda.getEstado()).append("  C.P. \t").append(tienda.getCodigoPostal()).append("\n")
@@ -187,10 +187,10 @@ public class Ticket {
                 .append("TOTAL M.N. $: ").append(this.total).append("\n")
                 .append("Efectivo $: ").append(pago).append("\n")
                 .append("CAMBIO $: ").append(pago-this.total).append("\n\n")
-                .append("         LE ATENDIO: \t").append(persona.getNombre()).append("\n")
+                .append("      Le atendio: \t").append(persona.getNombre()).append("\n")
                 .append("     TU OPINION ES MUY IMPORTANTE").append("\n")
                 .append("COMPARTELA EN ENCUESTA.AURRERA.COM.MX").append("\n")
-                .append("    Comentario o sugerencia  \t").append(persona.getTelefono1()).append("\n")
+                .append("Comentario o sugerencia").append(persona.getTelefono1()).append("\n")
                 .append("      visite www.aurrera.com.mx").append("\n\n")
                 .append("------- GRACIAS POR SU COMPRA -------").append("\n");
         

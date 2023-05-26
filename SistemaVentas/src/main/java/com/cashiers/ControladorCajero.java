@@ -33,6 +33,7 @@ public class ControladorCajero {
 
     private ProductoDAO productoDao;
     private TiendaDAO tiendaDao;
+    private PersonaDao personaDao; 
     private Tienda tienda;
     private Persona persona;
     private VistaCajero vistaCajero;
@@ -45,6 +46,7 @@ public class ControladorCajero {
         this.usuario = usuario;
         this.productoDao = new ProductoDAO();
         this.ticket = new Ticket();
+        this.personaDao = new PersonaDao(); 
         this.persona = new Persona();
         this.productosBD = productoDao.seleccionar();
         this.tiendaDao = new TiendaDAO();
@@ -218,6 +220,7 @@ public class ControladorCajero {
                 }
                 double pago = Double.parseDouble(JOptionPane.showInputDialog(" -> Pago con: "));
                 //faltan validaciones
+                persona = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona())); 
                 System.out.println(ticket.imprimirTicket(tienda, persona, pago));
                 limpiarTabla();
                 this.productoDao = new ProductoDAO();

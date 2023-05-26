@@ -2,12 +2,11 @@ package com.cashiers;
 
 import com.services.graphicServices.RecursosService;
 import com.settings.Configuracion;
+import com.settings.Recursos;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -19,9 +18,7 @@ import javax.swing.JPanel;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Rectangle;
-import java.awt.geom.Ellipse2D;
 import java.util.Arrays;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -43,7 +40,7 @@ public class VistaCajero extends JFrame {
     private JButton btnAgregar, btnEliminar, btnCerrarSesion, btnCobrar, btnAumentar, btnDecrementar;
     private Color colorPrincipal;
     private JTextField tCodigo;
-
+    private Recursos recursos;
     public VistaCajero() {
         // Configuramos la ventana principal
         super("Cajero");
@@ -77,6 +74,7 @@ public class VistaCajero extends JFrame {
     }
 
     private void componentes() {
+        this.recursos = Recursos.getService();
         paneles();
         establecerImagen();
         etiquetas();
@@ -272,6 +270,7 @@ public class VistaCajero extends JFrame {
         Configuracion.robotoPlain14(jlCodigoProducto);
         jlCodigoProducto.setOpaque(false);
         jlCodigoProducto.setBackground(Color.YELLOW);
+        jlCodigoProducto.setFont(recursos.getFontClasica());
         c = grid(0, 2, 1, 1, 1, 0, GridBagConstraints.NONE, GridBagConstraints.EAST, new Insets(10, 10, 10, 10), 0, 0);
         agregarAlPanel(panelDerecho, jlCodigoProducto, c);
 

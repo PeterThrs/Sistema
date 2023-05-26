@@ -1,10 +1,4 @@
-
 package com.cashiers;
-
-/**
- *
- * @author Alberto Cortés
- */
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;

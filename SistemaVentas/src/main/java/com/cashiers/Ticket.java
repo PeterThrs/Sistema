@@ -8,12 +8,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.classes.Persona;
 
 
 /**
  *
  * @author Alberto Cortés
+ * 
  */
+
 public class Ticket {
 
     private List<Producto> productos;
@@ -164,21 +167,31 @@ public class Ticket {
         return sb.toString();
     }
 
-    public String imprimirTicket(Tienda tienda, double pago) {
+    public String imprimirTicket(Tienda tienda,Persona persona, double pago) {
         StringBuilder sb = new StringBuilder();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String fechaFormateada = formatoFecha.format(this.fecha);
-        
-        sb.append("---------- TICKET DE VENTA ----------").append("\n")
+      
+        sb.     
+                 append("         R. F. C. \t").append(persona.getRFC()).append("\n")
+                .append("        SUCURSAL OAXACA 2 (105)").append("\n")
+                .append("   Calzada Francisco I. Madero 1332").append("\n")
+                .append("  Oaxaca De Juarez,\t").append(tienda.getEstado()).append("  C.P. \t").append(tienda.getCodigoPostal()).append("\n")
+                .append("---------- TICKET DE VENTA ----------").append("\n")
                 .append("         ").append(fechaFormateada).append("\n")
                 .append("            \t").append(tienda.getNombre()).append("\n")
                 .append("  \t").append(tienda.getSlogan()).append("\n")
                 .append("      Email: ").append(tienda.getEmail()).append("\n")
                 .append("-------------------------------------").append("\n")
                 .append(productosEnTicket()).append("\n")
-                .append("TOTAL: ").append(this.total).append("\n")
-                .append("Pago con: ").append(pago).append("\n")
-                .append("Cambio: ").append(pago-this.total).append("\n\n")
+                .append("TOTAL M.N. $: ").append(this.total).append("\n")
+                .append("Efectivo $: ").append(pago).append("\n")
+                .append("CAMBIO $: ").append(pago-this.total).append("\n\n")
+                .append("         LE ATENDIO: \t").append(persona.getNombre()).append("\n")
+                .append("     TU OPINION ES MUY IMPORTANTE").append("\n")
+                .append("COMPARTELA EN ENCUESTA.AURRERA.COM.MX").append("\n")
+                .append("    Comentario o sugerencia  \t").append(persona.getTelefono1()).append("\n")
+                .append("      visite www.aurrera.com.mx").append("\n\n")
                 .append("------- GRACIAS POR SU COMPRA -------").append("\n");
         
         Map<String, String> dataReporte = new HashMap<>();

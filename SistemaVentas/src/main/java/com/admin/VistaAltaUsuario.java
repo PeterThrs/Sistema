@@ -52,7 +52,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Root
  */
-public class VistaAltaUsuario extends javax.swing.JFrame {
+public class VistaAltaUsuario extends javax.swing.JPanel {
 
     private JLabel nombreVentana;
     private JLabel jlNombre, jlPaterno, jlMaterno, jlEmail, jlTel1, jlTel2, jlEdad, jlCurp, jlRfc, jlSexo, jlCodPosta, jlEstado, jlColonia, jlMun, jlNumCasa, jlCalle, jlUsuario, jlContrasenia, jlRol, jlConfirmar;
@@ -87,29 +87,32 @@ public class VistaAltaUsuario extends javax.swing.JFrame {
     private Entrada entrada;
 
     public VistaAltaUsuario(Entrada entrada, Usuario usuario, Persona persona) {
-        super("Cajero");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //super("Cajero");
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 600);
         this.setMinimumSize(new Dimension(1000, 600));
-        this.setLocationRelativeTo(this);
+        //this.setLocationRelativeTo(this);
         this.colorPrincipal = new Color(39, 54, 77);
         this.colorBlanco = new Color(255, 255, 255);
         this.c = new GridBagConstraints();
         this.entrada = entrada;
-        verificarEstado(usuario, persona);
+        
         cargarComponentes();
+        verificarEstado(usuario, persona);
 
     }
 
     private void verificarEstado(Usuario usuario, Persona persona) {
         switch (entrada) {
             case CONSULTAR:
-                this.persona = new Persona();
-                this.usuario = new Usuario();
+                this.usuario = usuario;
+                this.persona = persona;
+                cargarDatos(); 
                 break;
             case ELIMINAR:
                 this.usuario = usuario;
                 this.persona = persona;
+                cargarDatos(); 
                 break;
             case AGREGAR:
                 this.persona = new Persona();
@@ -118,6 +121,7 @@ public class VistaAltaUsuario extends javax.swing.JFrame {
             case EDITAR:
                 this.usuario = usuario;
                 this.persona = persona;
+                cargarDatos(); 
                 break;
         }
     }
@@ -159,7 +163,7 @@ public class VistaAltaUsuario extends javax.swing.JFrame {
 
         // Panel del titulo
         this.titulo = new JPanel();
-        this.titulo.setBackground(colorPrincipal);
+        this.titulo.setBackground(this.colorBlanco);
         this.titulo.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         c.gridx = 0;
         c.gridy = 0;
@@ -184,7 +188,7 @@ public class VistaAltaUsuario extends javax.swing.JFrame {
 
         //footer
         this.footer = new JPanel();
-        this.footer.setBackground(Color.YELLOW);
+        this.footer.setBackground(this.colorBlanco);
         this.footer.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         c.gridx = 0;
         c.gridy = 2;
@@ -252,8 +256,11 @@ public class VistaAltaUsuario extends javax.swing.JFrame {
                 this.nombreVentana = new JLabel("Editar Usuario");
                 break;
         }
-        c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 10, 10), 0, 0);
+        c = grid(0, 0, 1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER, new Insets(10, 10, 30, 10), 0, 0);
         agregarAlPanel(this.titulo, this.nombreVentana, c);
+        this.linea20 = new JSeparator();
+        c = grid(0, 1, 1, 1, 1, 0, GridBagConstraints.HORIZONTAL, GridBagConstraints.PAGE_END, new Insets(10, 10, 0, 10), 0, 0);
+        agregarAlPanel(this.titulo, this.linea20, c);
     }
 
     private void componentesContenidoIzq() {
@@ -573,8 +580,8 @@ public class VistaAltaUsuario extends javax.swing.JFrame {
             //Configuracion.background(CodigoColor.cFondoBlanco, this);
 
             //configuraciones de los JLabel
-            Configuracion.foreground(this.colorBlanco, this.nombreVentana);
-            Configuracion.robotoBold20(this.nombreVentana);
+            Configuracion.foreground(this.colorPrincipal, this.nombreVentana);
+            Configuracion.robotoBold24(this.nombreVentana);
             Configuracion.robotoPlain14(this.jlCalle, this.jlCodPosta, this.jlColonia, this.jlConfirmar, this.jlContrasenia,
                     this.jlCurp, this.jlEdad, this.jlEmail, this.jlEstado, this.jlMaterno, this.jlMun, this.jlNombre,
                     this.jlNumCasa, this.jlPaterno, this.jlRfc, this.jlRol, this.jlSexo, this.jlTel1, this.jlTel2, this.jlUsuario);
@@ -621,11 +628,11 @@ public class VistaAltaUsuario extends javax.swing.JFrame {
             //configuraciones de los jSeparator
             Configuracion.foreground(CodigoColor.cSeparatorRed, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
                     this.linea7, this.linea8, this.linea9, this.linea10, this.linea11, this.linea12, this.linea13, this.linea14,
-                    this.linea15, this.linea16, this.linea17, this.linea18, this.linea19);
+                    this.linea15, this.linea16, this.linea17, this.linea18, this.linea19, this.linea20);
             //Configuracion.foreground(CodigoColor.cFondoBtnAzul, this.linea15, this.linea16);
             Configuracion.background(CodigoColor.cFondoGris, this.linea1, this.linea2, this.linea3, this.linea4, this.linea5, this.linea6,
                     this.linea7, this.linea8, this.linea9, this.linea10, this.linea11, this.linea12, this.linea13, this.linea14,
-                    this.linea15, this.linea16, this.linea17, this.linea18, this.linea19);
+                    this.linea15, this.linea16, this.linea17, this.linea18, this.linea19, this.linea20);
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
         }

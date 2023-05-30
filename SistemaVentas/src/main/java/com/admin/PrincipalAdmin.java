@@ -1,5 +1,6 @@
 package com.admin;
 
+import com.admin.enumerador.Entrada;
 import com.librery.Animacion;
 import java.awt.Color;
 import java.awt.MouseInfo;
@@ -15,11 +16,7 @@ import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.RowFilter;
 import javax.swing.ToolTipManager;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 public class PrincipalAdmin extends javax.swing.JFrame {
 
@@ -740,7 +737,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         {
             buscaar.setVisible(false);
             buscaar.setEnabled(false);
-            new CambiaPanel(pnlPrincipal, new com.admin.PanelUserNew());
+            new CambiaPanel(pnlPrincipal, new com.admin.VistaAltaUsuario(Entrada.AGREGAR, null, null));
             Configuracion.colorSelectedBotones(this.btnAdminUser, this.btnHoome, this.btnAdminProductos, this.btnListarUsuarios, this.btnListarProductos, this.btnInfoEmpresa, this.btnCerrarSesion);
         } catch (Exception e)
         {

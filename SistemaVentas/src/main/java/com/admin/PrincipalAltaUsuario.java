@@ -5,6 +5,9 @@
 package com.admin;
 
 import com.admin.enumerador.Entrada;
+import com.cashiers.ControladorCajero;
+import com.cashiers.VistaCajero;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -13,8 +16,14 @@ import com.admin.enumerador.Entrada;
 public class PrincipalAltaUsuario {
 
     public static void main(String[] args) {
-        VistaAltaUsuario vau = new VistaAltaUsuario(Entrada.AGREGAR, null, null);
-        vau.setVisible(true);
+        Runnable runApplication = new Runnable() {
+            public void run() {
+                VistaAltaUsuario va = new VistaAltaUsuario(Entrada.CONSULTAR, null, null);
+                va.getClass();
+                va.setVisible(true);
+            }
+        };
+        SwingUtilities.invokeLater(runApplication);
     }
 
 }

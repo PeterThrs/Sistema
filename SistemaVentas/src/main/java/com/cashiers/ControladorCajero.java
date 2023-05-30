@@ -209,6 +209,9 @@ public class ControladorCajero {
 
     private void cobrar() {
         try {
+           
+            
+            
             System.out.println("\n\n------------------------Opcion de Cobrar------------------");
             int reg = 0;
             if (!ticket.vacio()) {
@@ -218,7 +221,10 @@ public class ControladorCajero {
                     Producto p = ticket.getProducto(i);
                     reg += productoDao.actualizar(p);
                 }
+                
                 double pago = Double.parseDouble(JOptionPane.showInputDialog(" -> Pago con: "));
+                
+                
                 //faltan validaciones
                 persona = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona())); 
                 System.out.println(ticket.imprimirTicket(tienda, persona, pago));
@@ -235,6 +241,7 @@ public class ControladorCajero {
             } else {
                 JOptionPane.showMessageDialog(null, "No hay productos en ticket", "Error", JOptionPane.ERROR_MESSAGE);
             }
+ 
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
         }

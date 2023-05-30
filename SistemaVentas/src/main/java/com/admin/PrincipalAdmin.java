@@ -737,7 +737,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         {
             buscaar.setVisible(false);
             buscaar.setEnabled(false);
-            new CambiaPanel(pnlPrincipal, new com.admin.VistaAltaUsuario(Entrada.AGREGAR, null, null));
+            new CambiaPanel(pnlPrincipal, new com.admin.PanelUserNew());
             Configuracion.colorSelectedBotones(this.btnAdminUser, this.btnHoome, this.btnAdminProductos, this.btnListarUsuarios, this.btnListarProductos, this.btnInfoEmpresa, this.btnCerrarSesion);
         } catch (Exception e)
         {

@@ -116,7 +116,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     System.out.println("Imprimiendo desde la clase Listar Usuarios");
                     System.out.println("usuario = " + usuario);
                     System.out.println("persona = " + persona);
-                    principalAdmin.cambiarPanelExterno(new VistaAltaUsuario(Entrada.EDITAR, usuario, persona));
+                    principalAdmin.cambiarPanelExterno(new PanelUserNew(usuario, persona));
                     Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(), principalAdmin.getBtnInfoEmpresa(), principalAdmin.getBtnCerrarSesion());
                     principalAdmin.repaint();
                 }
@@ -153,7 +153,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     System.out.println("Imprimiendo desde la clase Listar Usuarios");
                     System.out.println("usuario = " + usuario);
                     System.out.println("persona = " + persona);
-                    principalAdmin.cambiarPanelExterno(new VistaAltaUsuario(Entrada.CONSULTAR, usuario, persona));
+                    principalAdmin.cambiarPanelExterno(new PanelUserNew(usuario, persona));
                     Configuracion.colorSelectedBotones(principalAdmin.getBtnAdminUser(), principalAdmin.getBtnHoome(), principalAdmin.getBtnAdminProductos(), principalAdmin.getBtnListarUsuarios(), principalAdmin.getBtnListarProductos(), principalAdmin.getBtnInfoEmpresa(), principalAdmin.getBtnCerrarSesion());
                     principalAdmin.repaint();
                 }

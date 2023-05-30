@@ -112,10 +112,10 @@ public class PanelUserNew extends javax.swing.JPanel {
         Configuracion.withoutBorde(this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet, this.tfConfirm, this.tfPassword, this.tfUser, this.tfEdad, this.tfState);
-        Configuracion.background(CodigoColor.cFondoGris, this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
+        Configuracion.background(CodigoColor.cFondoBlanco, this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet, this.tfConfirm, this.tfPassword, this.tfUser, this.tfEdad, this.tfState);
-        Configuracion.foreground(CodigoColor.cLetrasNegro, this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
+        Configuracion.foreground(CodigoColor.cFondoBlanco, this.tfCol, this.tfCurp, this.tfEmail, this.tfHouseNumber, this.tfLastNameM,
                 this.tfLastNameP, this.tfMun, this.tfName, this.tfPhone1, this.tfPhone2, this.tfPostalCode, this.tfRfc,
                 this.tfStreet, this.tfConfirm, this.tfPassword, this.tfUser, this.tfEdad, this.tfState);
 
@@ -128,13 +128,13 @@ public class PanelUserNew extends javax.swing.JPanel {
         //configuraciones del JRadioButton
         Configuracion.robotoPlain14(this.rbMan, this.rbWoman);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.rbMan, this.rbWoman);
-        Configuracion.background(CodigoColor.cFondoGris, this.rbMan, this.rbWoman);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.rbMan, this.rbWoman);
 
         //Configuracion JCheckBox
         Configuracion.robotoPlain14(this.cbSendEmail);
         Configuracion.withoutBorde(this.cbSendEmail);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbSendEmail);
-        Configuracion.background(CodigoColor.cFondoGris, this.cbSendEmail);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.cbSendEmail);
 
         //Configuracion jComboBox
         Configuracion.robotoPlain14(this.cbRol);
@@ -185,7 +185,7 @@ public class PanelUserNew extends javax.swing.JPanel {
         this.cbRol.getEditor().getEditorComponent().setBackground(CodigoColor.cFondoGris);
         this.cbRol.setSelectedIndex(1);
         Configuracion.foreground(CodigoColor.cLetrasNegro, this.cbRol);
-        Configuracion.background(CodigoColor.cFondoGris, this.cbRol);
+        Configuracion.background(CodigoColor.cFondoBlanco, this.cbRol);
     }
 
     private void checkBoxItemListened() {
@@ -493,6 +493,8 @@ public class PanelUserNew extends javax.swing.JPanel {
         linea21 = new javax.swing.JSeparator();
         btnInsertImage = new javax.swing.JButton();
         jlFileSelect = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -1127,6 +1129,22 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 150, 10, 0);
         add(jlFileSelect, gridBagConstraints);
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("-------------------------------------------------------------");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 19;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
+        add(jLabel1, gridBagConstraints);
+
+        jLabel2.setText("-------------------------------------------------------------");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 19;
+        gridBagConstraints.gridwidth = 3;
+        add(jLabel2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -1210,6 +1228,8 @@ public class PanelUserNew extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbRol;
     private javax.swing.JCheckBox cbSendEmail;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jlAge;
     private javax.swing.JLabel jlCol;
     private javax.swing.JLabel jlConfirm;

@@ -13,6 +13,7 @@ import com.conexion.DepartamentoDao;
 import com.conexion.ProductoDAO;
 import com.settings.CodigoColor;
 import com.settings.Validaciones;
+import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.List;
@@ -93,7 +94,7 @@ public class PanelProducto extends javax.swing.JPanel {
         this.setSize(new Dimension(650, 600));
 
         //configuracion al JPanel
-        Configuracion.background(CodigoColor.cFondoBlanco, this);
+        Configuracion.background(new Color(255,255,255), this);
 
         //configuracion JLabel
         //titulo
@@ -110,9 +111,9 @@ public class PanelProducto extends javax.swing.JPanel {
                 this.tfWholePrice, this.tfName, this.tfGanancia);
         Configuracion.withoutBorde(this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice, this.tfTotal,
                 this.tfWholePrice, this.tfName, this.tfGanancia);
-        Configuracion.background(CodigoColor.cFondoGris, this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice,
+        Configuracion.background(new Color(255,255,255), this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice,
                 this.tfTotal, this.tfWholePrice, this.tfName, this.tfGanancia);
-        Configuracion.foreground(CodigoColor.cLetrasTextField, this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice,
+        Configuracion.foreground(new Color(255,255,255), this.tfBarCode, this.tfDescription, this.tfPriceCost, this.tfSalePrice,
                 this.tfTotal, this.tfWholePrice, this.tfName, this.tfGanancia);
 
         //configuracion JSeparator
@@ -424,8 +425,8 @@ public class PanelProducto extends javax.swing.JPanel {
         tfGanancia = new javax.swing.JTextField();
         linea11 = new javax.swing.JSeparator();
         linea12 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
         jlBarCode.setText("Código de Producto:");
@@ -698,6 +699,13 @@ public class PanelProducto extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         add(linea12, gridBagConstraints);
+
+        jLabel1.setText("-------------------------------------------------------------------------------");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridwidth = 5;
+        add(jLabel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -714,6 +722,7 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbDepartment;
     private javax.swing.JCheckBox cbInventory;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jlBarCode;
     private javax.swing.JLabel jlDepartment;
     private javax.swing.JLabel jlDescription;

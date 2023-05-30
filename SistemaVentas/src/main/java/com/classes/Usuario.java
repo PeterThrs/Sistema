@@ -14,6 +14,7 @@ public class Usuario {
     private int status;
     
     public Usuario() {
+        
     }
 
     public Usuario(int idUsuario) {//Se puede ocupar para eliminar un registro

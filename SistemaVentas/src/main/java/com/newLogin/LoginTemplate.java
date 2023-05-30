@@ -61,6 +61,8 @@ public class LoginTemplate extends JFrame {
         this.confVentana();
 
         eventos();
+        
+        setIconImage(new ImageIcon(getClass().getResource("/images/User.png")).getImage());
     }
 
     public void eventos() {

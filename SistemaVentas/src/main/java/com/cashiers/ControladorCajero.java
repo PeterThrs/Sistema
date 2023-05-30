@@ -31,6 +31,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class ControladorCajero {
 
+    static void setIconImage(Image image) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     private ProductoDAO productoDao;
     private TiendaDAO tiendaDao;
     private PersonaDao personaDao; 
@@ -40,7 +44,11 @@ public class ControladorCajero {
     private List<Producto> productosBD;
     private Ticket ticket;
     private Usuario usuario;
+    
+    
 
+    
+    
     public ControladorCajero(VistaCajero vistaCajero, Usuario usuario) {
         this.vistaCajero = vistaCajero;
         this.usuario = usuario;
@@ -52,6 +60,7 @@ public class ControladorCajero {
         this.tiendaDao = new TiendaDAO();
         cargarInformacion();
         acciones();
+        
     }
 
     private void acciones() {
@@ -62,6 +71,7 @@ public class ControladorCajero {
 
     private void cargarInformacion() {
         try {
+            
             tienda = tiendaDao.traerUltimo();
             if (tienda != null) {
                 vistaCajero.getJlNombreEmpresa().setText(tienda.getNombre());
@@ -463,4 +473,8 @@ public class ControladorCajero {
     public Usuario getUuario() {
         return usuario;
     }
+
+    
+
+    
 }

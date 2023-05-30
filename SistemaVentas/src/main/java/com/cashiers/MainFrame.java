@@ -7,13 +7,17 @@ import java.awt.geom.Ellipse2D;
 public class MainFrame extends JFrame {
 
     public MainFrame() {
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 400);
         setLocationRelativeTo(null);
         agregarImagen();
+        
         setVisible(true);
+        
     }
 
+    
     public void agregarImagen() {
         // Carga la imagen desde el archivo
         ImageIcon imageIcon = new ImageIcon("src/main/resources/imagenes/peter/paisaje.jpg");

@@ -18,10 +18,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class ListUsersPanel extends javax.swing.JPanel {
@@ -33,12 +35,19 @@ public class ListUsersPanel extends javax.swing.JPanel {
     private PrincipalAdmin principalAdmin;
     private UsuarioDao usuarioDao;
     private Recursos recursos;
-
+    private DefaultTableCellRenderer centerRenderer;
+    private String estatus;
+    
     public ListUsersPanel(PrincipalAdmin principalAdmin) {
+        estatus = "";
         usuarioDao = new UsuarioDao();
         recursos = Recursos.getService();
         initComponents();
         this.model = (DefaultTableModel) table.getModel();
+
+        centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
         this.principalAdmin = principalAdmin;
         anchoFilas();
         registrar();
@@ -49,24 +58,34 @@ public class ListUsersPanel extends javax.swing.JPanel {
     public void registrar() {
         model.setRowCount(0);
         this.usuarios = UsuarioDao.seleccionar();
-        usuarios.forEach(usuario
-                -> {
+
+        usuarios.forEach(usuario ->
+        {
+            String estatus = "";
+            estatus = (usuario.getStatus() == 1) ? "Activo" : "Inactivo";
             Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
             Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
-            model.addRow(new Object[]{
-                usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
+            model.addRow(new Object[]
+            {
+                usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), estatus, r.getNombre(), p.getTelefono1(), p.getEmail()
+
             });
         });
     }
 
     private void registrarPorFiltro(int id) {
-        this.usuarios.forEach(usuario
-                -> {
+
+        this.usuarios.forEach(usuario ->
+        {
+            estatus = (usuario.getStatus() == 1) ? "Activo" : "Inactivo";
             Persona p = PersonaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
             Rol r = RolDAO.seleccionIndividual(new Rol(usuario.getIdRol()));
-            if (id == r.getIdRol()) {
-                model.addRow(new Object[]{
-                    usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), r.getNombre(), p.getTelefono1(), p.getEmail()
+            if (id == r.getIdRol())
+            {
+                model.addRow(new Object[]
+                {
+                    usuario.getIdUsuario(), p.getNombre(), p.getApellidoPaterno(), p.getApellidoMaterno(), estatus, r.getNombre(), p.getTelefono1(), p.getEmail()
+
                 });
             }
         });
@@ -140,18 +159,35 @@ public class ListUsersPanel extends javax.swing.JPanel {
                 }
             };
 
-            table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
-            table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
-        } catch (Exception e) {
+
+            table.getColumnModel().getColumn(8).setCellRenderer(new TableActionCellRender());
+            table.getColumnModel().getColumn(8).setCellEditor(new TableActionCellEditor(event));
+
+            for (int i = 0; i < table.getColumnCount()-1; i++)
+            {
+                table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+        } catch (Exception e)
+        {
             e.printStackTrace(System.out);
         }
     }
 
     public void anchoFilas() {
         table.getColumnModel().getColumn(0).setPreferredWidth(15);
-        for (int i = 1; i < table.getColumnCount() - 1; i++) {
-            table.getColumnModel().getColumn(i).setPreferredWidth(160);
-        }
+
+        table.getColumnModel().getColumn(1).setPreferredWidth(100);
+        table.getColumnModel().getColumn(2).setPreferredWidth(100);
+        table.getColumnModel().getColumn(3).setPreferredWidth(100);
+        table.getColumnModel().getColumn(4).setPreferredWidth(100);
+        table.getColumnModel().getColumn(5).setPreferredWidth(100);
+        table.getColumnModel().getColumn(6).setPreferredWidth(100);
+        table.getColumnModel().getColumn(7).setPreferredWidth(100);
+        table.getColumnModel().getColumn(8).setPreferredWidth(50);
+//        for (int i = 1; i < table.getColumnCount() - 1; i++)
+//        {
+//            table.getColumnModel().getColumn(i).setPreferredWidth(160);
+//        }
     }
 
     public void clicSecundario() {
@@ -234,11 +270,11 @@ public class ListUsersPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido P", "Apellido M", "Rol", "Teléfono", "Correo e.", "Opciones"
+                "ID", "Nombre", "Apellido Paterno", "Apellido Materno", "Estatus", "Rol", "Teléfono", "Correo electrónico", "Opciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

@@ -1,10 +1,4 @@
-
 package com.cashiers;
-
-/**
- *
- * @author Alberto Cortés
- */
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
@@ -17,7 +11,7 @@ public class ReportePDF {
     
     public static void generarReporte(Map<String, String> dataReporte) {
         float ancho = 250f; // en unidades de puntos
-        float altura = 450f; // en unidades de puntos
+        float altura = 540f; // en unidades de puntos
         Rectangle pageSize = new Rectangle(ancho, altura);
         
         // Crear el documento
@@ -36,7 +30,8 @@ public class ReportePDF {
             Font fontNegrita = FontFactory.getFont(FontFactory.COURIER, 9);
 
             // Agregar una imagen centrada al documento
-            Image imagen = Image.getInstance("C:\\Users\\corte\\Documents\\4to Semestre\\Topicos Avanzados De Programacion\\Sistema De Ventas\\ProyectoFinal\\Proyecto F TAP\\Sistema\\SistemaVentas\\src\\main\\resources\\icono\\BA.png");
+            //System.out.println("TIENDAS BODEGA AURRERA SA DE CV \n");
+            Image imagen = Image.getInstance("src/main/resources/icono/BA.png");
             imagen.scaleToFit(100, 130); // Ajustar el tamaño de la imagen
             imagen.setAlignment(Image.ALIGN_CENTER); // Alinear la imagen al centro
             document.add(imagen);

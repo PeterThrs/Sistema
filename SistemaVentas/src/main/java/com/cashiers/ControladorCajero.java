@@ -33,7 +33,9 @@ public class ControladorCajero {
 
     private ProductoDAO productoDao;
     private TiendaDAO tiendaDao;
+    private PersonaDao personaDao; 
     private Tienda tienda;
+    private Persona persona;
     private VistaCajero vistaCajero;
     private List<Producto> productosBD;
     private Ticket ticket;
@@ -44,6 +46,8 @@ public class ControladorCajero {
         this.usuario = usuario;
         this.productoDao = new ProductoDAO();
         this.ticket = new Ticket();
+        this.personaDao = new PersonaDao(); 
+        this.persona = new Persona();
         this.productosBD = productoDao.seleccionar();
         this.tiendaDao = new TiendaDAO();
         cargarInformacion();
@@ -216,9 +220,11 @@ public class ControladorCajero {
                 }
                 double pago = Double.parseDouble(JOptionPane.showInputDialog(" -> Pago con: "));
                 //faltan validaciones
-                System.out.println(ticket.imprimirTicket(tienda, pago));
+                persona = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona())); 
+                System.out.println(ticket.imprimirTicket(tienda, persona, pago));
                 limpiarTabla();
                 this.productoDao = new ProductoDAO();
+                this.persona = new Persona();
                 this.ticket = new Ticket();
                 this.productosBD = productoDao.seleccionar();
                 System.out.println("\n\n------------------------Imprimiendo el ticket------------------\n");

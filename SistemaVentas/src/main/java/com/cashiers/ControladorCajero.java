@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cashiers;
 
+import cobrar.VentanaCobrar;
 import com.classes.Persona;
 import com.classes.Producto;
 import com.classes.Tienda;
@@ -12,35 +9,34 @@ import com.conexion.PersonaDao;
 import com.conexion.ProductoDAO;
 import com.conexion.TiendaDAO;
 import com.newLogin.LoginTemplate;
-import com.settings.CodigoColor;
-import com.settings.Configuracion;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Ellipse2D;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Root
- */
 public class ControladorCajero {
 
     private ProductoDAO productoDao;
     private TiendaDAO tiendaDao;
+    private PersonaDao personaDao; 
     private Tienda tienda;
+    private Persona persona;
     private VistaCajero vistaCajero;
     private List<Producto> productosBD;
     private Ticket ticket;
@@ -51,6 +47,8 @@ public class ControladorCajero {
         this.usuario = usuario;
         this.productoDao = new ProductoDAO();
         this.ticket = new Ticket();
+        this.personaDao = new PersonaDao(); 
+        this.persona = new Persona();
         this.productosBD = productoDao.seleccionar();
         this.tiendaDao = new TiendaDAO();
         cargarInformacion();
@@ -70,6 +68,12 @@ public class ControladorCajero {
                 vistaCajero.getJlNombreEmpresa().setText(tienda.getNombre());
                 vistaCajero.getJlSloga().setText(tienda.getSlogan());
                 vistaCajero.getJlgmail().setText(tienda.getEmail());
+                ImageIcon icono = usuario.getIcono();
+                if (icono != null) {
+                    System.out.println("Entramos a modificar la foto del usuario");
+                    ImageIcon iDimAux = new ImageIcon(icono.getImage().getScaledInstance(200, 200, Image.SCALE_AREA_AVERAGING));
+                    vistaCajero.establecerImagen(iDimAux.getImage());
+                }
             }
             if (usuario != null) {
                 PersonaDao personaDao = new PersonaDao();
@@ -95,8 +99,15 @@ public class ControladorCajero {
         vistaCajero.getTabla().repaint();
     }
 
+    private String validarCadena(String cadena) throws Exception {
+        if (!cadena.isEmpty()) {
+            return cadena;
+        }
+        throw new Exception("Campo vacio");
+    }
+
     private void agregarProducto() throws NumberFormatException, Exception {
-        String codigoProducto = vistaCajero.gettCodigo().getText();
+        String codigoProducto = validarCadena(vistaCajero.gettCodigo().getText());
         System.out.println("codigoProducto = " + codigoProducto);
         //recuperamos el producto
         Producto producto = productosBD.stream().filter(p -> (p.getCodigo().equals(codigoProducto))).findFirst().orElse(null);
@@ -127,7 +138,6 @@ public class ControladorCajero {
             actualizarPrecio();
             int pos = ticket.getSize() - 1;
             marcarRow(pos);
-            vistaCajero.gettCodigo().setText("");
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -135,6 +145,11 @@ public class ControladorCajero {
             //ex.printStackTrace(System.out);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
+        } finally {
+            vistaCajero.gettCodigo().setText("");
+            vistaCajero.getPanelDerecho().requestFocusInWindow();
+            vistaCajero.gettCodigo().setSelectionStart(0);
+            vistaCajero.gettCodigo().setSelectionEnd(0);
         }
     }
 
@@ -149,8 +164,7 @@ public class ControladorCajero {
                 actualizarTabla();
                 actualizarPrecio();
                 ticket.productosEnTicket();
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+                marcarRow(fila);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -170,8 +184,6 @@ public class ControladorCajero {
                 actualizarPrecio();
                 ticket.productosEnTicket();
                 marcarRow(fila);
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -190,8 +202,6 @@ public class ControladorCajero {
                 actualizarPrecio();
                 ticket.productosEnTicket();
                 marcarRow(fila);
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay elemento Seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -203,17 +213,22 @@ public class ControladorCajero {
             System.out.println("\n\n------------------------Opcion de Cobrar------------------");
             int reg = 0;
             if (!ticket.vacio()) {
+                
+                VentanaCobrar ventanaCobrar = new VentanaCobrar(vistaCajero.getVentana(), true,vistaCajero.getJlTotal().getText());
+                
                 //actualizar los datos en cada producto
                 ticket.realizarVenta();
                 for (int i = 0; i < ticket.getSize(); i++) {
                     Producto p = ticket.getProducto(i);
                     reg += productoDao.actualizar(p);
                 }
-                double pago = Double.parseDouble(JOptionPane.showInputDialog("Cantidad recibida: "));
+                double pago = Double.parseDouble(JOptionPane.showInputDialog(" -> Pago con: "));
                 //faltan validaciones
-                System.out.println(ticket.imprimirTicket(tienda, pago));
+                persona = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona())); 
+                System.out.println(ticket.imprimirTicket(tienda, persona, pago));
                 limpiarTabla();
                 this.productoDao = new ProductoDAO();
+                this.persona = new Persona();
                 this.ticket = new Ticket();
                 this.productosBD = productoDao.seleccionar();
                 System.out.println("\n\n------------------------Imprimiendo el ticket------------------\n");
@@ -222,13 +237,17 @@ public class ControladorCajero {
 
                 JOptionPane.showMessageDialog(null, "La venta se realizo exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "No hay productos Seleccionados", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No hay productos en ticket", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
         }
     }
 
+    private void hacerTicket(){
+        
+    }
+    
     private void accionesBotones() {
         //btn Agregar
         vistaCajero.getBtnAgregar().addActionListener(e -> {
@@ -250,7 +269,7 @@ public class ControladorCajero {
         vistaCajero.getBtnCobrar().addActionListener(e -> {
             cobrar();
         });
-        //btnCerrarSesion 
+        
         vistaCajero.getBtnCerrarSesion().addActionListener(e -> {
             vistaCajero.setVisible(false);
             vistaCajero.dispose();
@@ -291,10 +310,6 @@ public class ControladorCajero {
                             agregar();
 
                     }
-                    
-                    if (e.isControlDown() && keyCode == KeyEvent.VK_ENTER) {
-                        cobrar();
-                    }
 
                 } catch (Exception ex) {
 
@@ -323,7 +338,29 @@ public class ControladorCajero {
                             aumentar();
                         case KeyEvent.VK_SUBTRACT ->
                             decrementar();
+                        case KeyEvent.VK_UP -> {
+                            int fila = vistaCajero.getTabla().getSelectedRow();
+                            if (fila != -1) {
+                                System.out.println("fila = " + fila);
+                                System.out.println("fila -1 = " + (fila - 1));
+                                marcarRow(fila - 1);
+                            }
+                        }
+                        case KeyEvent.VK_DOWN -> {
+                            int fila = vistaCajero.getTabla().getSelectedRow();
+                            if (fila != -1) {
+                                System.out.println("fila = " + fila);
+                                System.out.println("fila -1 = " + (fila - 1));
+                                marcarRow(fila + 1);
+                            }
+                        }
+                        case KeyEvent.VK_BACK_SPACE ->
+                            eliminar();
 
+                    }
+
+                    if (e.isControlDown() && keyCode == KeyEvent.VK_ENTER) {
+                        cobrar();
                     }
                 } catch (Exception ex) {
 
@@ -413,8 +450,10 @@ public class ControladorCajero {
 
     private void marcarRow(int row) {
         try {
-            if (!ticket.vacio()) {
+            if (!ticket.vacio() && ticket.getSize() > row && row >= 0) {
                 vistaCajero.getTabla().setRowSelectionInterval(row, row);
+            } else if (!ticket.vacio() && row >= ticket.getSize()) {
+                vistaCajero.getTabla().setRowSelectionInterval(ticket.getSize() - 1, ticket.getSize() - 1);
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
@@ -422,4 +461,7 @@ public class ControladorCajero {
 
     }
 
+    public Usuario getUuario() {
+        return usuario;
+    }
 }

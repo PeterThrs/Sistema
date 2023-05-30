@@ -5,6 +5,7 @@ import com.conexion.TiendaDAO;
 import com.settings.CodigoColor;
 import com.settings.Configuracion;
 import com.settings.ObjGraficosService;
+import static com.settings.ObjGraficosService.personalizarVentana;
 import com.settings.Recursos;
 import com.settings.Validaciones;
 import java.awt.Dimension;
@@ -70,7 +71,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         this.setSize(new Dimension(650, 600));
 
         //configuracion al JPanel
-        Configuracion.background(CodigoColor.cFondoGris, this);
+        Configuracion.background(CodigoColor.cFondoBlanco, this);
 
         //titulo
         Configuracion.foreground(CodigoColor.cLetrasTituloAzul, this.jlTitle);
@@ -87,7 +88,7 @@ public class EditInfoStore extends javax.swing.JPanel {
                 this.tfCorreoE, this.tfMision, this.tfVision, this.tfCodigoPostal, this.tfEstado, tfMunicipio, tfColonia, tfCalle, this.tfNumCasa);
         Configuracion.withoutBorde(this.tfName, this.tfSlogan, this.tfPhone1, this.tfPhone2, this.tfCorreoE, this.tfMision, tfVision,
                 this.tfCorreoE, this.tfMision, this.tfVision, this.tfCodigoPostal, this.tfEstado, tfMunicipio, tfColonia, tfCalle, this.tfNumCasa);
-        Configuracion.background(CodigoColor.cFondoGris, this.tfName, this.tfSlogan, this.tfPhone1, this.tfPhone2, this.tfCorreoE, this.tfMision, tfVision,
+        Configuracion.background(CodigoColor.cFondoBlanco, this.tfName, this.tfSlogan, this.tfPhone1, this.tfPhone2, this.tfCorreoE, this.tfMision, tfVision,
                 this.tfCorreoE, this.tfMision, this.tfVision, this.tfCodigoPostal, this.tfEstado, tfMunicipio, tfColonia, tfCalle, this.tfNumCasa);
         Configuracion.foreground(CodigoColor.cLetrasTextField, this.tfName, this.tfSlogan, this.tfPhone1, this.tfPhone2, this.tfCorreoE, this.tfMision, tfVision,
                 this.tfCorreoE, this.tfMision, this.tfVision, this.tfCodigoPostal, this.tfEstado, tfMunicipio, tfColonia, tfCalle, this.tfNumCasa);
@@ -167,8 +168,8 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.ipadx = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(17, 220, 0, 0);
         add(jSlogan, gridBagConstraints);
 
@@ -176,8 +177,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(14, 220, 0, 0);
         add(jPhone1, gridBagConstraints);
@@ -186,16 +186,19 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(7, 230, 0, 0);
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(7, 221, 0, 0);
         add(jPhone2, gridBagConstraints);
 
         jCorreoE.setText("Correo electronico:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 220, 0, 0);
         add(jCorreoE, gridBagConstraints);
@@ -204,7 +207,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 20;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 220, 0, 0);
         add(jMision, gridBagConstraints);
@@ -213,10 +216,16 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 24;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 220, 0, 0);
         add(jVision, gridBagConstraints);
+
+        tfSlogan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSloganActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 23;
         gridBagConstraints.gridy = 6;
@@ -356,7 +365,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 220, 0, 0);
@@ -437,7 +446,7 @@ public class EditInfoStore extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 28;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(7, 220, 0, 0);
         add(jCodigoPostal, gridBagConstraints);
@@ -641,19 +650,8 @@ public class EditInfoStore extends javax.swing.JPanel {
             Logger.getLogger(EditInfoStore.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifica tus datos");
         }
+        
     }//GEN-LAST:event_btnCreateActionPerformed
-
-    private static JFileChooser personalizarVentana() {
-        try
-        {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)
-        {
-            Logger.getLogger(EditInfoStore.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JFileChooser chooser = new JFileChooser();
-        return chooser;
-    }
 
     private static void regresarEstiloOriginal() {
         try
@@ -739,6 +737,10 @@ public class EditInfoStore extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifica tus datos");
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void tfSloganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSloganActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfSloganActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;

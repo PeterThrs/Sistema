@@ -24,10 +24,8 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import static java.awt.image.ImageObserver.HEIGHT;
 import java.net.URI;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -177,7 +175,7 @@ public class LoginTemplate extends JFrame {
         } else
         {
             Usuario usuario = buscar(user, password);
-            if (usuario != null)
+            if (usuario != null && usuario.getStatus()!=0)
             {
                 int idRol = usuario.getIdRol();
                 switch (idRol)
@@ -405,7 +403,7 @@ public class LoginTemplate extends JFrame {
         );
         lFacebook = sObjGraficos.construirJLabel(null, 20, 460, 30, 30,
                 sRecursos.getCMano(), iDimAux, null, null, null, null, "a");
-        lFacebook.setToolTipText("Página de los creadores del programa");
+        lFacebook.setToolTipText("Soporte");
         pIzquierda.add(lFacebook);
 
 //        iDimAux = new ImageIcon(

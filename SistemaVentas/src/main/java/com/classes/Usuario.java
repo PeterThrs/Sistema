@@ -1,15 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.classes;
+
+import java.io.FileInputStream;
+import javax.swing.ImageIcon;
 
 public class Usuario {
     private int idUsuario;
+    private FileInputStream imagen;
+    private ImageIcon icono;
     private String nomUsuario;
     private String contrasenia;
     private int idPersona;
     private int idRol;
+    private int status;
     
     public Usuario() {
     }
@@ -18,19 +20,41 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(String nombreUsuario, String contrasenia, int idPersona, int idRol) {//No necesitamos la llave primaria para hacer un registro
+    public Usuario(int status, FileInputStream imagen, String nombreUsuario, String contrasenia, int idPersona, int idRol) {//No necesitamos la llave primaria para hacer un registro
+        this.status=status;
+        this.imagen = imagen;
+        this.icono = icono;
         this.nomUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.idPersona = idPersona;
         this.idRol = idRol;
     }
     
-    public Usuario(int idUsuario, String nombreUsuario, String contrasenia, int idPersona, int idRol) {//PAra el caso de la modificación
+    public Usuario(int idUsuario, int status, ImageIcon icono, String nombreUsuario, String contrasenia, int idPersona, int idRol) {//PAra el caso de la modificación
         this.idUsuario = idUsuario;
+        this.status = status;
+        this.icono = icono;
+        this.imagen = imagen;
         this.nomUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.idPersona = idPersona;
         this.idRol = idRol;
+    }
+
+    public ImageIcon getIcono() {
+        return icono;
+    }
+
+    public void setIcono(ImageIcon icono) {
+        this.icono = icono;
+    }
+    
+    public FileInputStream getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(FileInputStream imagen) {
+        this.imagen = imagen;
     }
 
     public int getIdUsuario() {
@@ -71,6 +95,14 @@ public class Usuario {
 
     public void setIdRol(int idRol) {
         this.idRol = idRol;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
     
     @Override

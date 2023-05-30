@@ -3,6 +3,7 @@ package com.classes;
 public class Producto {
 
     private String codigo;
+    private int estatus;
     private String nombre;
     private String descripcion;
     private double precioCosto;
@@ -28,11 +29,11 @@ public class Producto {
     public Producto(int ocupaInventario) {
         this();
         this.ocupaInventario = ocupaInventario;
-
     }
 
-    public Producto(String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, double cantidad, int idDepartamento) {
+    public Producto(String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, int estatus ,double cantidad, int idDepartamento) {
         this();
+        this.estatus = estatus;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precioCosto = precioCosto;
@@ -43,8 +44,9 @@ public class Producto {
         this.idDepartamento = idDepartamento;
     }
 
-    public Producto(String codigo, String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, double cantidad, int idDepartamento) {
+    public Producto(String codigo, String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, int estatus, double cantidad, int idDepartamento) {
         this();
+        this.estatus = estatus;
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -202,6 +204,14 @@ public class Producto {
         return existencia;
     }
 
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
+    }
+    
     @Override
     public String toString() {
         return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precioCosto=" + precioCosto + ", ganancia=" + ganancia + ", mayoreo=" + mayoreo + ", ocupaInventario=" + ocupaInventario + ", stock=" + stock + ", idDepartamento=" + idDepartamento + ", totalVender=" + cantVenta + ", importe=" + importe + ", precioFinal=" + precioFinal + ", existencia=" + existencia + '}';

@@ -1,58 +1,48 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cashiers;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 public class MainFrame extends JFrame {
-    private JTable table;
 
     public MainFrame() {
-        // Configuración básica de la ventana JFrame
-        setTitle("Ventana de ejemplo");
-        setSize(400, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 400);
+        setLocationRelativeTo(null);
+        agregarImagen();
+        setVisible(true);
+    }
 
-        // Crear una matriz de datos para la JTable (solo para ejemplificar)
-        Object[][] data = {
-                {"Juan", "Pérez"},
-                {"María", "Gómez"},
-                {"Carlos", "López"}
+    public void agregarImagen() {
+        // Carga la imagen desde el archivo
+        ImageIcon imageIcon = new ImageIcon("src/main/resources/imagenes/peter/paisaje.jpg");
+        Image image = imageIcon.getImage().getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING);
+
+        // Crea un JPanel personalizado para mostrar la imagen con forma de círculo
+        JPanel imagePanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+
+                // Crea un objeto Ellipse2D para definir la forma del círculo
+                Ellipse2D circle = new Ellipse2D.Float(0, 0, image.getWidth(this), image.getHeight(this));
+
+                // Aplica el recorte (clipping) en la representación gráfica de la imagen
+                Graphics2D g2d = (Graphics2D) g.create();
+                g2d.setClip(circle);
+                g2d.drawImage(image, 0, 0, null);
+                g2d.dispose();
+            }
         };
 
-        // Crear un array con los nombres de las columnas (solo para ejemplificar)
-        String[] columnNames = {"Nombre", "Apellido"};
-
-        // Crear la JTable con los datos y los nombres de las columnas
-        table = new JTable(data, columnNames);
-        JScrollPane scrollPane = new JScrollPane(table);
-
-        // Agregar un MouseListener a la JTable para deseleccionarla cuando se hace clic fuera de ella
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                table.requestFocusInWindow(); // Solicitar el foco para la JTable
-                table.clearSelection(); // Limpiar la selección de la JTable
-            }
-        });
-
-        // Agregar el JScrollPane (con la JTable) al JFrame
-        add(scrollPane);
+        // Establece el JPanel como el contenido principal de la ventana
+        //getContentPane().add(imagePanel);
+        this.add(imagePanel);
+        repaint();
     }
 
     public static void main(String[] args) {
-        // Crear y mostrar la ventana
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                MainFrame frame = new MainFrame();
-                frame.setVisible(true);
-            }
-        });
+        SwingUtilities.invokeLater(() -> new MainFrame());
     }
 }

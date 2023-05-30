@@ -15,37 +15,42 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.admin.CambiaPanel;
+import com.admin.InfoStore;
 import com.newLogin.LoginTemplate;
 import com.settings.Configuracion;
+import java.awt.Cursor;
 import javax.swing.ImageIcon;
+import javax.swing.ToolTipManager;
+
 public class VentanaContador extends javax.swing.JFrame {
 
     int x, y;
-    /**
-     * Creates new form Principal
-     */
-    
+
     public VentanaContador() {
         initComponents();
-          setIconImage(new ImageIcon(getClass().getResource("/images/950305.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/images/950305.png")).getImage());
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
         this.btnHome.setSelected(true);
-        new CambiaPanel(pnlPrincipal, new pnlHomeContador());
+        new CambiaPanel(pnlPrincipal, new InfoStore());
         setVisible(true);
         desactivarBotonesIniciar();
+        
+        jButton1.setToolTipText("Deslizar");
+        ToolTipManager.sharedInstance().setInitialDelay(0);
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     public void desactivarBotonesIniciar() {
-        this.btnGrafica.setColorNormal(new Color(239, 238, 244));
+        this.btnGrafica.setColorNormal(new Color(255, 255, 255));
         this.btnGrafica.setColorHover(new Color(204, 204, 204));
         this.btnGrafica.setColorPressed(new Color(204, 204, 204));
 
-        this.btnCerrarSesion.setColorNormal(new Color(239, 238, 244));
+        this.btnCerrarSesion.setColorNormal(new Color(255, 255, 255));
         this.btnCerrarSesion.setColorHover(new Color(204, 204, 204));
         this.btnCerrarSesion.setColorPressed(new Color(204, 204, 204));
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,7 +64,6 @@ public class VentanaContador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         btnGrafica = new com.librery.RSButtonMetro();
-        jPanel5 = new javax.swing.JPanel();
         btnHome = new com.librery.RSButtonMetro();
         btnCerrarSesion = new com.librery.RSButtonMetro();
         jPanel2 = new javax.swing.JPanel();
@@ -74,14 +78,14 @@ public class VentanaContador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        pnlMenu.setBackground(new java.awt.Color(239, 238, 244));
+        pnlMenu.setBackground(new java.awt.Color(255, 255, 255));
         pnlMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(239, 238, 244)));
 
         btnGrafica.setForeground(new java.awt.Color(128, 128, 131));
         btnGrafica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosContador/ventas.png"))); // NOI18N
         btnGrafica.setText("Historial Financiero");
         btnGrafica.setColorHover(new java.awt.Color(204, 204, 204));
-        btnGrafica.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnGrafica.setColorNormal(new java.awt.Color(255, 255, 255));
         btnGrafica.setColorPressed(new java.awt.Color(204, 204, 204));
         btnGrafica.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnGrafica.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -100,24 +104,11 @@ public class VentanaContador extends javax.swing.JFrame {
             }
         });
 
-        jPanel5.setBackground(new java.awt.Color(239, 238, 244));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
-        );
-
         btnHome.setForeground(new java.awt.Color(128, 128, 131));
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
         btnHome.setText("Home");
         btnHome.setColorHover(new java.awt.Color(204, 204, 204));
-        btnHome.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnHome.setColorNormal(new java.awt.Color(255, 255, 255));
         btnHome.setColorPressed(new java.awt.Color(204, 204, 204));
         btnHome.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnHome.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -136,12 +127,11 @@ public class VentanaContador extends javax.swing.JFrame {
             }
         });
 
-        btnCerrarSesion.setBackground(new java.awt.Color(239, 238, 244));
         btnCerrarSesion.setForeground(new java.awt.Color(128, 128, 131));
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         btnCerrarSesion.setText("Cerrar Sesión");
         btnCerrarSesion.setColorHover(new java.awt.Color(204, 204, 204));
-        btnCerrarSesion.setColorNormal(new java.awt.Color(239, 238, 244));
+        btnCerrarSesion.setColorNormal(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setColorPressed(new java.awt.Color(204, 204, 204));
         btnCerrarSesion.setColorTextHover(new java.awt.Color(128, 128, 131));
         btnCerrarSesion.setColorTextNormal(new java.awt.Color(128, 128, 131));
@@ -164,7 +154,6 @@ public class VentanaContador extends javax.swing.JFrame {
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlMenuLayout.createSequentialGroup()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,9 +168,7 @@ public class VentanaContador extends javax.swing.JFrame {
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(251, 251, 251)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 423, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -321,19 +308,23 @@ public class VentanaContador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGraficaMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        if (pnlMenu.isVisible()){
+
+        if (pnlMenu.isVisible())
+        {
             pnlMenu.setVisible(false);
-        }else{
-            pnlMenu.setVisible(true);   
+        } else
+        {
+            pnlMenu.setVisible(true);
         }
-        
+
         try
         {
             int posicion = pnlMenu.getX();
-            if(posicion > -1){
+            if (posicion > -1)
+            {
                 Animacion.mover_izquierda(0, -264, 2, 2, pnlMenu);
-            }else{
+            } else
+            {
                 Animacion.mover_derecha(-264, 0, 2, 2, pnlMenu);
             }
         } catch (Exception e)
@@ -392,7 +383,7 @@ public class VentanaContador extends javax.swing.JFrame {
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         try
         {
-            new CambiaPanel(pnlPrincipal, new pnlHomeContador());
+            new CambiaPanel(pnlPrincipal, new InfoStore());
             Configuracion.colorSelectedBotones(this.btnHome, this.btnGrafica, this.btnCerrarSesion);
         } catch (Exception e)
         {
@@ -408,20 +399,27 @@ public class VentanaContador extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(VentanaContador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(VentanaContador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(VentanaContador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(VentanaContador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -430,10 +428,12 @@ public class VentanaContador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
+                try
+                {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     new VentanaContador().setVisible(true);
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)
+                {
                     Logger.getLogger(VentanaContador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -448,7 +448,6 @@ public class VentanaContador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlMenu;

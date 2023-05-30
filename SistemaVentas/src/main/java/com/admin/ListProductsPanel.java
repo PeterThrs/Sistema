@@ -14,10 +14,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.management.relation.RoleStatus;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class ListProductsPanel extends javax.swing.JPanel {
@@ -28,15 +31,22 @@ public class ListProductsPanel extends javax.swing.JPanel {
     private ProductoDAO productoDAO;
     private DepartamentoDao departamentoDao;
     private Recursos recursos;
-
+    private DefaultTableCellRenderer centerRenderer;
+    private String estatus;
+    
     public ListProductsPanel(PrincipalAdmin principalAdmin) {
         initComponents();
+        estatus = "";
         recursos = Recursos.getService();
         this.principalAdmin = principalAdmin;
         this.model = (DefaultTableModel) table.getModel();
         this.productoDAO = new ProductoDAO();
         this.departamentoDao = new DepartamentoDao();
         this.productos = productoDAO.seleccionar();
+
+        centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
         configuracion();
         clicSecundario();
     }
@@ -53,9 +63,10 @@ public class ListProductsPanel extends javax.swing.JPanel {
         {
             Producto p = productoDAO.seleccionIndividual(new Producto(producto.getCodigo()));
             Departamento dep = departamentoDao.seleccionIndividual(new Departamento(p.getIdDepartamento()));
+            estatus = (producto.getEstatus()==1) ? "Disponible" : "No disponible";
             model.addRow(new Object[]
             {
-                producto.getCodigo(), producto.getNombre(), producto.getPrecioCosto(), producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
+                producto.getCodigo(), producto.getNombre(), "$"+producto.getPrecioCosto(), "$"+producto.getMayoreo(), producto.getCantidad(),estatus, dep.getDepartamento()
             });
         });
     }
@@ -69,7 +80,7 @@ public class ListProductsPanel extends javax.swing.JPanel {
             {
                 model.addRow(new Object[]
                 {
-                    producto.getCodigo(), producto.getNombre(), producto.getPrecioCosto(), producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
+                    producto.getCodigo(), producto.getNombre(), "$"+producto.getPrecioCosto(), "$"+producto.getMayoreo(), producto.getCantidad(), dep.getDepartamento()
                 });
             }
         });
@@ -108,16 +119,28 @@ public class ListProductsPanel extends javax.swing.JPanel {
                 System.out.println("View row : " + row);
             }
         };
-        table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
-        table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
+        table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
+        table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
+
+        for (int i = 0; i < table.getColumnCount() - 1; i++)
+        {
+            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     public void anchoFilas() {
-        table.getColumnModel().getColumn(0).setPreferredWidth(30);
-        for (int i = 1; i < table.getColumnCount() - 1; i++)
-        {
-            table.getColumnModel().getColumn(i).setPreferredWidth(150);
-        }
+        table.getColumnModel().getColumn(0).setPreferredWidth(15);
+        table.getColumnModel().getColumn(1).setPreferredWidth(100);
+        table.getColumnModel().getColumn(2).setPreferredWidth(100);
+        table.getColumnModel().getColumn(3).setPreferredWidth(100);
+        table.getColumnModel().getColumn(4).setPreferredWidth(100);
+        table.getColumnModel().getColumn(5).setPreferredWidth(100);
+        table.getColumnModel().getColumn(6).setPreferredWidth(100);
+        table.getColumnModel().getColumn(7).setPreferredWidth(50);
+//        for (int i = 1; i < table.getColumnCount() - 1; i++)
+//        {
+//            table.getColumnModel().getColumn(i).setPreferredWidth(150);
+//        }
     }
 
     public void clicSecundario() {
@@ -201,11 +224,11 @@ public class ListProductsPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Precio", "Mayoreo", "Cantidad en inventario", "Departamento", "Opciones"
+                "ID", "Nombre", "Precio", "Mayoreo", "Cantidad en inventario", "Estatus", "Departamento", "Opciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

@@ -215,6 +215,7 @@ public class ControladorCajero {
             ticket.realizarVenta();
             for (int i = 0; i < ticket.getSize(); i++) {
                 Producto p = ticket.getProducto(i);
+                productoDao.actualizar(p);
             }
             //faltan validaciones
             persona = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));

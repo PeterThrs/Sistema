@@ -29,7 +29,6 @@ public class Producto {
     public Producto(int ocupaInventario) {
         this();
         this.ocupaInventario = ocupaInventario;
-
     }
 
     public Producto(String nombre, String descripcion, double precioCosto, double ganancia, double mayoreo, int ocupaInventario, int estatus ,double cantidad, int idDepartamento) {

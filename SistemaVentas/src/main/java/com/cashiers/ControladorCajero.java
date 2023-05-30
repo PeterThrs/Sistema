@@ -34,20 +34,21 @@ public class ControladorCajero {
 
     private ProductoDAO productoDao;
     private TiendaDAO tiendaDao;
-    private PersonaDao personaDao; 
+    private PersonaDao personaDao;
     private Tienda tienda;
     private Persona persona;
     private VistaCajero vistaCajero;
     private List<Producto> productosBD;
     private Ticket ticket;
     private Usuario usuario;
+    private boolean ventaRealizada;
 
     public ControladorCajero(VistaCajero vistaCajero, Usuario usuario) {
         this.vistaCajero = vistaCajero;
         this.usuario = usuario;
         this.productoDao = new ProductoDAO();
         this.ticket = new Ticket();
-        this.personaDao = new PersonaDao(); 
+        this.personaDao = new PersonaDao();
         this.persona = new Persona();
         this.productosBD = productoDao.seleccionar();
         this.tiendaDao = new TiendaDAO();
@@ -208,34 +209,34 @@ public class ControladorCajero {
         }
     }
 
+    private void estadoVenta() {
+        if (this.ventaRealizada) {
+            System.out.println("----------------------La venta fue realizada -------------------------");
+            ticket.realizarVenta();
+            for (int i = 0; i < ticket.getSize(); i++) {
+                Producto p = ticket.getProducto(i);
+            }
+            //faltan validaciones
+            persona = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona()));
+
+            limpiarTabla();
+            this.productoDao = new ProductoDAO();
+            this.persona = new Persona();
+            this.ticket = new Ticket();
+            this.productosBD = productoDao.seleccionar();
+
+            JOptionPane.showMessageDialog(null, "La venta se realizo exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
     private void cobrar() {
         try {
             System.out.println("\n\n------------------------Opcion de Cobrar------------------");
-            int reg = 0;
             if (!ticket.vacio()) {
+                this.ventaRealizada = false;
+                VentanaCobrar ventanaCobrar = new VentanaCobrar(vistaCajero.getVentana(), true, vistaCajero.getJlTotal().getText(),this);
+                estadoVenta(); 
                 
-                VentanaCobrar ventanaCobrar = new VentanaCobrar(vistaCajero.getVentana(), true,vistaCajero.getJlTotal().getText());
-                
-                //actualizar los datos en cada producto
-                ticket.realizarVenta();
-                for (int i = 0; i < ticket.getSize(); i++) {
-                    Producto p = ticket.getProducto(i);
-                    reg += productoDao.actualizar(p);
-                }
-                double pago = Double.parseDouble(JOptionPane.showInputDialog(" -> Pago con: "));
-                //faltan validaciones
-                persona = personaDao.seleccionIndividual(new Persona(usuario.getIdPersona())); 
-                System.out.println(ticket.imprimirTicket(tienda, persona, pago));
-                limpiarTabla();
-                this.productoDao = new ProductoDAO();
-                this.persona = new Persona();
-                this.ticket = new Ticket();
-                this.productosBD = productoDao.seleccionar();
-                System.out.println("\n\n------------------------Imprimiendo el ticket------------------\n");
-                System.out.println("Imprimimos nuevamente los datos de la bd");
-                productosBD.forEach(System.out::println);
-
-                JOptionPane.showMessageDialog(null, "La venta se realizo exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "No hay productos en ticket", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -244,10 +245,10 @@ public class ControladorCajero {
         }
     }
 
-    private void hacerTicket(){
-        
+    private void hacerTicket() {
+
     }
-    
+
     private void accionesBotones() {
         //btn Agregar
         vistaCajero.getBtnAgregar().addActionListener(e -> {
@@ -269,7 +270,7 @@ public class ControladorCajero {
         vistaCajero.getBtnCobrar().addActionListener(e -> {
             cobrar();
         });
-        
+
         vistaCajero.getBtnCerrarSesion().addActionListener(e -> {
             vistaCajero.setVisible(false);
             vistaCajero.dispose();
@@ -464,4 +465,13 @@ public class ControladorCajero {
     public Usuario getUuario() {
         return usuario;
     }
+
+    public boolean isVentaRealizada() {
+        return ventaRealizada;
+    }
+
+    public void setVentaRealizada(boolean ventaRealizada) {
+        this.ventaRealizada = ventaRealizada;
+    }
+
 }

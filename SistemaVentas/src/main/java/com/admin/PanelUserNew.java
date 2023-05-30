@@ -694,6 +694,12 @@ public class PanelUserNew extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         add(tfEmail, gridBagConstraints);
+
+        tfPhone1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPhone1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -1178,6 +1184,10 @@ public class PanelUserNew extends javax.swing.JPanel {
     private void tfMunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMunActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfMunActionPerformed
+
+    private void tfPhone1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPhone1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPhone1ActionPerformed
 
     private static void regresarEstiloOriginal() {
         try {

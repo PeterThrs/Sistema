@@ -23,7 +23,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jlBarCode">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Codigo de Producto:"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo de Producto:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">

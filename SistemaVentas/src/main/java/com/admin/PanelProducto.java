@@ -428,7 +428,7 @@ public class PanelProducto extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
-        jlBarCode.setText("Codigo de Producto:");
+        jlBarCode.setText("Código de Producto:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;

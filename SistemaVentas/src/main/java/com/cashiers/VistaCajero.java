@@ -201,7 +201,7 @@ public class VistaCajero extends JFrame {
         labelConf(jlNombreEmpresa, jlSloga, jlgmail, jlNombreCajero);
 
         //Btn cerrar Sesion
-        btnCerrarSesion = new JButton("Cerrar Sesion");
+        btnCerrarSesion = new JButton("Cerrar Sesión");
         btnCerrarSesion.setBackground(new Color(139, 0, 0)); // rojo oscuro
         btnCerrarSesion.setForeground(Color.WHITE);
         btnCerrarSesion.setFocusable(false);
@@ -266,7 +266,7 @@ public class VistaCajero extends JFrame {
     }
 
     private void crearControl() {
-        jlCodigoProducto = new JLabel("Codigo de Producto: ");
+        jlCodigoProducto = new JLabel("Código de Producto: ");
         Configuracion.robotoPlain14(jlCodigoProducto);
         jlCodigoProducto.setOpaque(false);
         jlCodigoProducto.setBackground(Color.YELLOW);
@@ -309,7 +309,7 @@ public class VistaCajero extends JFrame {
             DefaultTableModel dtm = new DefaultTableModel();
             tabla.setModel(dtm);
             // Configurar los titulos de las columnas
-            String[] titulos = {"Codigo", "Descripcion del Producto", "Precio Venta", "Cantidad", "Importe", "Existencia"};
+            String[] titulos = {"Código", "Descripción del Producto", "Precio Venta", "Cantidad", "Importe", "Existencia"};
             dtm.setColumnIdentifiers(titulos);
             // Configurar los tamaños de las columnas
             int[] tam = {50, 200, 50, 30, 70, 50};

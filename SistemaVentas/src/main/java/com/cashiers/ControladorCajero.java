@@ -1,5 +1,6 @@
 package com.cashiers;
 
+import cobrar.VentanaCobrar;
 import com.classes.Persona;
 import com.classes.Producto;
 import com.classes.Tienda;
@@ -212,6 +213,9 @@ public class ControladorCajero {
             System.out.println("\n\n------------------------Opcion de Cobrar------------------");
             int reg = 0;
             if (!ticket.vacio()) {
+                
+                VentanaCobrar ventanaCobrar = new VentanaCobrar(vistaCajero.getVentana(), true,vistaCajero.getJlTotal().getText());
+                
                 //actualizar los datos en cada producto
                 ticket.realizarVenta();
                 for (int i = 0; i < ticket.getSize(); i++) {
@@ -240,6 +244,10 @@ public class ControladorCajero {
         }
     }
 
+    private void hacerTicket(){
+        
+    }
+    
     private void accionesBotones() {
         //btn Agregar
         vistaCajero.getBtnAgregar().addActionListener(e -> {
